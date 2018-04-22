@@ -16,16 +16,19 @@ public class EstuaryView extends JPanel{
 	
 	PlayerPanel playerPanel;
 	BuoyPanel buoyPanel;
+	TimerPanel timerPanel;
 	
 	EstuaryView(Model model){
 		playerPanel = new PlayerPanel();
 		buoyPanel = new BuoyPanel();
+		timerPanel = new TimerPanel();
 		
 		setFocusable(true);
 		
 		this.frame = new JFrame();
 		this.frame.add(playerPanel);
 		this.frame.add(buoyPanel);
+		this.frame.add(timerPanel);
 		this.frame.add(this);
 		
 		this.setBackground(Color.BLUE);
@@ -39,6 +42,7 @@ public class EstuaryView extends JPanel{
 	public void update(Model model){
 		playerPanel.updateLocation(model.player);
 		buoyPanel.updateLocation(model.buoy);
+		timerPanel.updateValue(model.timer);
 		this.repaint();
 	}
 	
@@ -47,6 +51,7 @@ public class EstuaryView extends JPanel{
 		super.paintComponent(g);
 		buoyPanel.paintComponent(g);
 		playerPanel.paintComponent(g);
+		timerPanel.paintComponent(g);
     }
 	
 }

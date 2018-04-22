@@ -10,16 +10,19 @@ public class Model extends KeyAdapter {
 	final int height = 1000;
 	Vessel player;
 	Buoy buoy;
+	Timer timer;
 	
 	Model(){
 		player = new Vessel(width/2, height - 100);
 		buoy = new Buoy(width/2, 100);
+		timer = new Timer();
 	}
 	
 	// all individual model update methods in central method
 	void modelUpdate() {
 		buoy.update();
 		player.update();
+		timer.update();
 	}
 	
 	@Override
