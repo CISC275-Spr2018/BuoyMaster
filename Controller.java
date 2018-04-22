@@ -54,7 +54,7 @@ public class Controller implements ActionListener{
 			public void run(){
 				new Controller();
 				JOptionPane.showMessageDialog(null, "Retrieve the salinity data from the buoy!");
-				view.addKeyListener(model);
+				view.addKeyListener(new keyListener(model));
 				view.setVisible(true);
 			}
 		});
