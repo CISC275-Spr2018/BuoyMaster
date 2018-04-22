@@ -25,8 +25,6 @@ class Model extends KeyAdapter{
 	private OrcImage action = OrcImage.IDLE_S;
 	private Direction orcDir = Direction.SOUTHEAST;
 	private boolean isFire;
-	
-	int maxIncrement = 4;
 
 	Model(int width, int height, int imageWidth, int imageHeight){
 		this.width = width;
@@ -122,12 +120,18 @@ class Model extends KeyAdapter{
 		return isFire;
 	}
 	
+	/* Arvin :
+	 *  All these methods do is max out X or Y increments at a certain value.
+	 *  There is definely a better way to do this, probably involving modulo,
+	 * 	but this is just a test.
+	 */
+	
 	public int whatOverallIncrementXLeft() {
-		if (this.xIncr < -5){
+		if (this.xIncr < -5){ // for example, xIncr can never be lower than -5 (or some other number)
 			return 0;
 		}
 		else {
-			return maxIncrement;
+			return 4;
 		}
 		
 	}
@@ -136,7 +140,7 @@ class Model extends KeyAdapter{
 			return 0;
 		}
 		else {
-			return maxIncrement;
+			return 4;
 		}
 		
 	}
@@ -145,7 +149,7 @@ class Model extends KeyAdapter{
 			return 0;
 		}
 		else {
-			return maxIncrement;
+			return 4;
 		}
 		
 	}
@@ -154,12 +158,14 @@ class Model extends KeyAdapter{
 			return 0;
 		}
 		else {
-			return maxIncrement;
+			return 4;
 		}
 		
 	}
 	
-	//updates direction based on key pressed
+	/* Arvin: 
+	 *  key presses now modify x/yIncrements directly
+	 */
 	@Override
 	public void keyPressed(KeyEvent e) {
 
