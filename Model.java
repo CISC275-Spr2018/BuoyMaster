@@ -20,9 +20,14 @@ public class Model extends KeyAdapter {
 	
 	// all individual model update methods in central method
 	void modelUpdate() {
-		buoy.update();
-		player.update();
-		timer.update();
+		if (timer.value > 0) {
+			buoy.update();
+			player.update();
+			timer.update();
+		}
+		else {
+			timer.message = "Game over kid";
+		}
 	}
 	
 	@Override

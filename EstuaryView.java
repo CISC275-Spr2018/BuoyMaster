@@ -21,7 +21,7 @@ public class EstuaryView extends JPanel{
 	EstuaryView(Model model){
 		playerPanel = new PlayerPanel();
 		buoyPanel = new BuoyPanel();
-		timerPanel = new TimerPanel();
+		timerPanel = new TimerPanel(model.timer);
 		
 		setFocusable(true);
 		
@@ -42,7 +42,6 @@ public class EstuaryView extends JPanel{
 	public void update(Model model){
 		playerPanel.updateLocation(model.player);
 		buoyPanel.updateLocation(model.buoy);
-		timerPanel.updateValue(model.timer);
 		this.repaint();
 	}
 	

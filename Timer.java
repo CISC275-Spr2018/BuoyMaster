@@ -1,6 +1,7 @@
 class Timer {
 	int value;
 	int increment;
+	String message;
 	
 	Timer(){
 		value = 100;
@@ -9,5 +10,6 @@ class Timer {
 	
 	void update() {
 		value -= increment;
+		message = value + "";
 	}
 }
