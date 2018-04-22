@@ -21,6 +21,8 @@ public class timerListener implements ActionListener {
 		}
 		if(countdown<0){
 			label.setText("The data was not retrieved in time!");
+			 JOptionPane.showMessageDialog(null,"Game Over!");
+			    System.exit(0); 
 		}
 	}
 	
