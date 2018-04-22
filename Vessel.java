@@ -7,9 +7,8 @@ public class Vessel extends gamePiece{
 	}
 	
 	void update() {
-		this.xLoc += this.xVel;
-		this.yLoc += this.yVel;
-		System.out.println(xLoc + ", " + yLoc);
+		super.update();
+		System.out.println("Player location: " + this.xLoc + " ," + this.yLoc);
 	}
 	
 }

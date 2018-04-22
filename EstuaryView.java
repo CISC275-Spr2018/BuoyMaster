@@ -3,6 +3,10 @@ import java.awt.Graphics;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+/*
+ * Main View class for the game.
+ * Will hold all different Panels of objects - PlayerPanel, BuoyPanel, etc.
+ */
 public class EstuaryView extends JPanel{
 
 	

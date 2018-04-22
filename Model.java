@@ -1,6 +1,10 @@
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+/*
+ * Main Model for entire state of the game.
+ * Will hold all different parts - player Vessels, Sandbars, Buoy, etc.
+ */
 public class Model extends KeyAdapter {
 	final int width = 1000;
 	final int height = 1000;
@@ -14,6 +18,7 @@ public class Model extends KeyAdapter {
 	
 	// all individual model update methods in central method
 	void modelUpdate() {
+		buoy.update();
 		player.update();
 	}
 	

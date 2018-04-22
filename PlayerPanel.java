@@ -7,6 +7,9 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
+/*
+ * PlayerPanel that holds info on how to draw our player's Vessel
+ */
 public class PlayerPanel extends JPanel{
 	int x;
 	int y;

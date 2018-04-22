@@ -4,9 +4,12 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
+
+/*
+ * BuoyPanel that holds info on how to draw our buoy
+ */
 
 public class BuoyPanel extends JPanel{
 	int x;

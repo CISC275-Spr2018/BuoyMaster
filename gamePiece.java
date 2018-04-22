@@ -9,5 +9,8 @@ public abstract class gamePiece {
 		return false;
 	}
 	
-	
+	void update() {
+		this.xLoc += this.xVel;
+		this.yLoc += this.yVel;
+	}
 }
