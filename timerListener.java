@@ -19,6 +19,9 @@ public class timerListener implements ActionListener {
 		if (countdown==10){
 			label.setFont(new Font(label.getFont().getFontName(),Font.PLAIN,label.getFont().getSize()*2));
 		}
+		if(countdown<0){
+			label.setText("The data was not retrieved in time!");
+		}
 	}
 	
 }
