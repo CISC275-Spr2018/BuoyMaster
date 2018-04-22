@@ -1,3 +1,4 @@
+import java.awt.BorderLayout; 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -7,7 +8,7 @@ import java.util.HashMap;
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
@@ -36,6 +37,8 @@ class View extends JPanel {
 	private int picNum = 0;
 	BufferedImage[] pics;
 
+	JLabel label;
+	JPanel panel=new JPanel();
 	//Read image from file and return
 	private BufferedImage createImage(OrcImage image) {//String path){
 		BufferedImage bufferedImage;
@@ -48,20 +51,19 @@ class View extends JPanel {
 		return null;
 		// TODO: Change this method so you can load other orc animation bitmaps
 	}
-	View(JButton button){
+	View(timerListener t){
 		setFocusable(true); // necessary to take key inputs
 		
-		this.width=500;
-		this.height=300;
+		this.width=900;
+		this.height=800;
 		this.imageWidth=165;
 		this.imageHeight=165;
 		this.frame = new JFrame();
 		this.frame.add(this);
-		this.button = button;
-		this.add(this.button);
-		
-		
-		
+		this.label=t.label;
+		this.panel.add(label, BorderLayout.NORTH);
+		this.frame.getContentPane().add(panel);
+
 		images = new HashMap<OrcImage,BufferedImage[]>();
 		for(OrcImage orcImage : OrcImage.values()) { //use an enum to map directions to images
 			BufferedImage img = createImage(orcImage);
@@ -73,7 +75,7 @@ class View extends JPanel {
 		}
 		//this.frame.setSize(100,100);
 		this.action = OrcImage.FORWARD_S;
-		this.frame.setBackground(Color.gray);
+		this.frame.setBackground(Color.blue);
 		this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.frame.setSize(this.width, this.height);
 		this.frame.setVisible(true);
@@ -101,12 +103,9 @@ class View extends JPanel {
 			picNum=0;//reset the animation
 		}
 
-		setBackground(Color.gray);
+		setBackground(Color.blue);
 		this.picNum = (this.picNum + 1) % this.action.frameCount();
 		this.frame.getGraphics().drawImage(this.images.get(this.action)[this.picNum],this.x,this.y,Color.gray, this);
-		this.add(this.button);
-		this.button.setVisible(true);
-		this.button.repaint();
 		this.prevAction = this.action;
 	}
 }
