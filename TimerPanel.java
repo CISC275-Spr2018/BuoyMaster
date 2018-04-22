@@ -8,15 +8,15 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 public class TimerPanel extends JPanel{
-	int value;
+	Timer timer;
 	
-	void updateValue(Timer t){
-		this.value = t.value;
+	TimerPanel(Timer t){
+		timer = t;
 	}
 	
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		 g.setFont(new Font("TimesRoman", Font.PLAIN, 54));
-    	g.drawString("" + value, 50, 50);
+    	g.drawString(timer.message, 50, 50);
     }
 }
