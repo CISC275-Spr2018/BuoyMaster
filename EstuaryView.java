@@ -19,8 +19,8 @@ public class EstuaryView extends JPanel{
 	TimerPanel timerPanel;
 	
 	EstuaryView(Model model){
-		playerPanel = new PlayerPanel();
-		buoyPanel = new BuoyPanel();
+		playerPanel = new PlayerPanel(model.player);
+		buoyPanel = new BuoyPanel(model.buoy);
 		timerPanel = new TimerPanel(model.timer);
 		
 		setFocusable(true);
@@ -38,10 +38,8 @@ public class EstuaryView extends JPanel{
 		this.frame.setVisible(true);
 	}
 	
-	// all individual view update methods in central method
+	
 	public void update(Model model){
-		playerPanel.updateLocation(model.player);
-		buoyPanel.updateLocation(model.buoy);
 		this.repaint();
 	}
 	

@@ -14,6 +14,11 @@ import javax.swing.JPanel;
 public class BuoyPanel extends JPanel{
 	int x;
 	int y;
+	Buoy buoy;
+	
+	BuoyPanel(Buoy b){
+		buoy = b;
+	}
 	
 	void updateLocation(Buoy buoy) {
 		x = buoy.xLoc;
@@ -28,7 +33,7 @@ public class BuoyPanel extends JPanel{
 		}
 		super.paintComponent(g);
 		g.setColor(Color.gray);
-    	g.drawImage(img, x, y, Color.BLUE, this);
+    	g.drawImage(img, buoy.xLoc, buoy.yLoc, Color.BLUE, this);
     }
 	
 	public Dimension getPreferredSize() {

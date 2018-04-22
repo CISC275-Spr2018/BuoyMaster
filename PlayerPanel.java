@@ -13,10 +13,10 @@ import javax.swing.JPanel;
 public class PlayerPanel extends JPanel{
 	int x;
 	int y;
+	Vessel player;
 	
-	void updateLocation(Vessel player) {
-		x = player.xLoc;
-		y = player.yLoc;
+	PlayerPanel(Vessel v){
+		player = v;
 	}
 	
 	protected void paintComponent(Graphics g) {
@@ -27,7 +27,7 @@ public class PlayerPanel extends JPanel{
 		}
 		super.paintComponent(g);
 		g.setColor(Color.gray);
-    	g.drawImage(img, x, y, Color.BLUE, this);
+    	g.drawImage(img, player.xLoc, player.yLoc, Color.BLUE, this);
     }
 	
 	public Dimension getPreferredSize() {

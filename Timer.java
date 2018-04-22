@@ -6,6 +6,7 @@ class Timer {
 	Timer(){
 		value = 100;
 		increment = 1;
+		message = "";
 	}
 	
 	void update() {
