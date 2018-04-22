@@ -28,8 +28,6 @@ public class Controller implements ActionListener {
 			public void run(){
 				Controller c = new Controller();
 				c.EView.addKeyListener(c.model);
-				JOptionPane.showMessageDialog(null, "Retrieve the salinity data from the buoy!");
-
 			}
 		});
 	}
