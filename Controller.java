@@ -1,4 +1,4 @@
-import java.awt.EventQueue;
+import java.awt.EventQueue; 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -17,9 +17,9 @@ public class Controller implements ActionListener{
 
 	private static Model model;
 	private static View view;
+	private static Buoy buoy;
 	private final static int DRAWDELAY = 50;
 	private static boolean updateFlag= true;
-	JButton button = new JButton("Toggle");
 	ModelUpdateLogic mul; // Arvin: needed to give the Controller a ModelUpdateLogic 
 	
 	//literally just a clock to count the game ticks
@@ -28,17 +28,16 @@ public class Controller implements ActionListener{
 	
 	
 	public Controller(){
-		button.setSize(20,20);
-		//button.addActionListener(new ButtonClickHandler(model));
-		
-		view = new View(button);
-		model = new Model(view.getWidth(), view.getHeight(), view.getImageWidth(), view.getImageHeight());
-		view.button.addActionListener(new ButtonClickHandler(model));
-		mul = new ModelUpdateLogic(model); // Arvin: create a new ModelUpdateLogic and give it the Model
-		
-		
 		Timer t = new Timer(DRAWDELAY, this);
-		t.start();
+		timerListener tL=new timerListener();
+		Timer timer=new Timer(1000, tL);
+		view=new View(tL);
+		model = new Model(view.getWidth(), view.getHeight(), view.getImageWidth(), view.getImageHeight());
+		buoy= new Buoy(view.getWidth(), view.getHeight(), view.getImageWidth(), view.getImageHeight());
+		mul = new ModelUpdateLogic(model); // Arvin: create a new ModelUpdateLogic and give it the Model
+		timer.start();
+		Timer t1 = new Timer(DRAWDELAY, this);
+		t1.start();
 	}
 	
 	
