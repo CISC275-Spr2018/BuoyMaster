@@ -52,8 +52,8 @@ public class Controller implements ActionListener{
 	public static void main(String[] args){
 		EventQueue.invokeLater(new Runnable(){
 			public void run(){
-				
 				new Controller();
+				JOptionPane.showMessageDialog(null, "Retrieve the salinity data from the buoy!");
 				view.addKeyListener(model);
 				view.setVisible(true);
 			}
