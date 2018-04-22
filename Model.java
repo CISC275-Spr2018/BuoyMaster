@@ -120,48 +120,6 @@ class Model extends KeyAdapter{
 		return isFire;
 	}
 	
-	/* Arvin :
-	 *  All these methods do is max out X or Y increments at a certain value.
-	 *  There is definely a better way to do this, probably involving modulo,
-	 * 	but this is just a test.
-	 */
-	
-	public int whatOverallIncrementXLeft() {
-		if (this.xIncr < -5){ // for example, xIncr can never be lower than -5 (or some other number)
-			return 0;
-		}
-		else {
-			return 4;
-		}
-		
-	}
-	public int whatOverallIncrementXRight() {
-		if (this.xIncr > 5){
-			return 0;
-		}
-		else {
-			return 4;
-		}
-		
-	}
-	public int whatOverallIncrementYDown() {
-		if (this.yIncr > 7){
-			return 0;
-		}
-		else {
-			return 4;
-		}
-		
-	}
-	public int whatOverallIncrementYUp() {
-		if (this.yIncr < -7){
-			return 0;
-		}
-		else {
-			return 4;
-		}
-		
-	}
 	
 	/* Arvin: 
 	 *  key presses now modify x/yIncrements directly
@@ -170,21 +128,21 @@ class Model extends KeyAdapter{
 	public void keyPressed(KeyEvent e) {
 
 		int key = e.getKeyCode();
-		if (key == KeyEvent.VK_LEFT) {
-			xIncr -= whatOverallIncrementXLeft();
+		if (key == KeyEvent.VK_LEFT && xIncr > -5) {
+			xIncr -= 4;
 		}
 
-		if (key == KeyEvent.VK_RIGHT) {
-			xIncr += whatOverallIncrementXRight();
+		if (key == KeyEvent.VK_RIGHT && xIncr < 5) {
+			xIncr += 4;
 		}
 		
 		
-		if (key == KeyEvent.VK_UP) {
-			yIncr -= whatOverallIncrementYUp();
+		if (key == KeyEvent.VK_UP && yIncr > -7) {
+			yIncr -= 4;
 		}
 
-		if (key == KeyEvent.VK_DOWN) {
-			yIncr += whatOverallIncrementYDown();
+		if (key == KeyEvent.VK_DOWN && yIncr < 7) {
+			yIncr += 4;
 		}
 		
 	}
