@@ -12,5 +12,6 @@ public class Buoy extends gamePiece{
 	@Override
 	public void onCollide() {
 		gameMessage.message = "you got the data, now return!";
+		this.yVel = -1;
 	}
 }
