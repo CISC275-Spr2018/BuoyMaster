@@ -5,6 +5,13 @@
  * to update values in Model
  */
 
+/*
+ * Arvin:
+ * ModelUpdateLogic class holds all methods pertaining to updating
+ * the model. Controller should now call this class's updateLocationAndDirection()
+ * to update values in Model
+ */
+
 public class ModelUpdateLogic {
 	private Model model;
 	
@@ -18,6 +25,7 @@ public class ModelUpdateLogic {
 		//if(!isMoving) return;
 		//jump action needs to pre-empt like everything else...
 		
+		/*
 		if(!model.getIsMoving()) {
 			model.setAction(OrcImage.idle(model.getOrcDir()));
 			return;
@@ -29,10 +37,13 @@ public class ModelUpdateLogic {
 			model.setXDir(-1);
 		if((model.getY()+model.getImageHeight()>model.getHeight()) || model.getY()<0)
 			model.setYDir(-1);
+		*/
+		
 		model.setX(model.getXIncr()*model.getXDir());
 		model.setY(model.getYIncr()*model.getYDir());
 
 
+		/*
 		if(model.getXDir()>0 && model.getYDir()>0) //x+,y+: d+r
 			model.setOrcDir(Direction.SOUTHEAST);
 		else if(model.getXDir()>0 && model.getYDir()<0)//x+,y-: u+r
@@ -41,31 +52,7 @@ public class ModelUpdateLogic {
 			model.setOrcDir(Direction.SOUTHWEST);
 		else if(model.getXDir()<0 && model.getYDir()<0)//x-,y-: u+l
 			model.setOrcDir(Direction.NORTHWEST);
-		
-		if(model.getIsJumping()) {
-			model.setAction(OrcImage.jump(model.getOrcDir()));
-			if(jumpStart<0) //start the animation timer
-				jumpStart=tick_counter;
-			if(tick_counter >= jumpStart+model.getAction().frameCount()) { //if enough time has passed for a jump
-				model.toggleJumping(); //toggle the animation flag
-				jumpStart=-1; // reset the animation timer
-			}
-		}
-		
-		if(model.getIsFire()) { // Arvin : moved Dan's fire update code from Model into ModelUpdateLogic
-			model.setAction(OrcImage.fire(model.getOrcDir()));
-			model.setXIncr(0);
-			model.setYIncr(0);
-			if(fireStart<0) {
-				fireStart=tick_counter;
-			}
-			if(tick_counter >= fireStart+model.getAction().frameCount()) {
-				model.toggleFire();
-				fireStart=-1;
-				model.setXIncr(8);
-				model.setYIncr(2);
-			}		
-		}
+		*/
 		
 	}
 
