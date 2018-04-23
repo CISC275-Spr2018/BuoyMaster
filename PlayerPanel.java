@@ -50,7 +50,7 @@ public class PlayerPanel extends JPanel{
 	BufferedImage createImage(String filename) {
 		BufferedImage img = null;
 		try {
-		    img = ImageIO.read(new File(filename));
+		    img = ImageIO.read(new File("images\\" + filename));
 		} catch (IOException e) {
 		}
 		return img;
