@@ -70,9 +70,6 @@ class View extends JPanel {
 		this.frame.setSize(this.width, this.height);
 		this.frame.setVisible(true);
 		this.t=t;		
-		button=new JButton("Start");
-		button.addActionListener(new startClickHandler(this));
-		this.frame.add(this.button);
 		this.label=t.label;
 		this.panel.add(label, BorderLayout.NORTH);
 		this.frame.getContentPane().add(panel);
