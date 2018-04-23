@@ -15,7 +15,6 @@ public class Vessel extends gamePiece{
 	@Override
 	public void onCollide() {
 		// TODO Auto-generated method stub
-		
 	}
 	
 }

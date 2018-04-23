@@ -12,17 +12,20 @@ public class Model extends KeyAdapter {
 	Buoy buoy;
 	Timer timer;
 	GameMessage gameMessage;
+	SandBar sandBar;
 	
 	Model(){
 		player = new Vessel(width/2, height - 100);
 		timer = new Timer();
 		gameMessage = new GameMessage();
 		buoy = new Buoy(width/2, 100, gameMessage);
+		sandBar = new SandBar(width/2, height/2, timer, gameMessage);
 	}
 	
 	// all individual model update methods in central method
 	void modelUpdate() {
 		buoy.hasCollided(player);
+		sandBar.hasCollided(player);
 		if (timer.value > 0) {
 			buoy.update();
 			player.update();

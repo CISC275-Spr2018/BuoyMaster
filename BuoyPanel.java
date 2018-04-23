@@ -12,18 +12,18 @@ import javax.swing.JPanel;
  */
 
 public class BuoyPanel extends JPanel{
+	BufferedImage img;
 	Buoy buoy;
 	
 	BuoyPanel(Buoy b){
-		buoy = b;
-	}
-	
-	protected void paintComponent(Graphics g) {
-		BufferedImage img = null;
 		try {
 		    img = ImageIO.read(new File("images\\buoy.png"));
 		} catch (IOException e) {
 		}
+		buoy = b;
+	}
+	
+	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Color c = new Color(0, 0, 0, 0); // transparent color
     	g.drawImage(img, buoy.xLoc, buoy.yLoc, c, this);
