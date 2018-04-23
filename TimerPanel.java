@@ -11,7 +11,7 @@ public class TimerPanel extends JPanel{
 	
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.setFont(new Font("Comic Sans MS", Font.PLAIN, 54));
+		g.setFont(new Font("TimesRoman", Font.PLAIN, 54));
     	g.drawString(timer.message, 25, 50);
     }
 }

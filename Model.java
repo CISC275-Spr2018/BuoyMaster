@@ -19,7 +19,7 @@ public class Model extends KeyAdapter {
 		timer = new Timer();
 		gameMessage = new GameMessage();
 		buoy = new Buoy(width/2, 100, gameMessage);
-		sandBar = new SandBar(width/2, height/2, timer, gameMessage);
+		sandBar = new SandBar(100, height/2, timer, gameMessage);
 	}
 	
 	// all individual model update methods in central method
@@ -30,6 +30,7 @@ public class Model extends KeyAdapter {
 			buoy.update();
 			player.update();
 			timer.update();
+			sandBar.update();
 		}
 		else {
 			timer.message = "Game over kid";

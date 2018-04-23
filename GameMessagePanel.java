@@ -12,7 +12,7 @@ public class GameMessagePanel extends JPanel{
 	
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.setFont(new Font("Comic Sans MS", Font.PLAIN, 30));
+		g.setFont(new Font("TimesRoman", Font.PLAIN, 30));
     	g.drawString(gameMessage.message, 25, 85);
     }
 }

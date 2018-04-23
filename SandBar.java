@@ -5,6 +5,7 @@ public class SandBar extends gamePiece{
 	
 	SandBar(int x, int y, Timer t, GameMessage g){
 		this.xLoc = x;
+		this.xVel = 3;
 		this.yLoc = y;
 		timer = t;
 		gameMessage = g;
