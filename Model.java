@@ -21,13 +21,14 @@ public class Model extends KeyAdapter {
 		gameMessage = new GameMessage();
 		buoy = new Buoy(width/2, 100, gameMessage);
 		sandBar = new SandBar(100, height/2, timer, gameMessage);
-		dock = new Dock(800, height/2+150);
+		dock = new Dock(800, height/2+150,timer,gameMessage);
 	}
 	
 	// all individual model update methods in central method
 	void modelUpdate() {
 		buoy.hasCollided(player);
 		sandBar.hasCollided(player);
+		dock.hasCollided(player);
 		if (timer.value > 0) {
 			buoy.update();
 			player.update();
