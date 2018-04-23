@@ -1,10 +1,5 @@
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 public class TimerPanel extends JPanel{
@@ -16,7 +11,7 @@ public class TimerPanel extends JPanel{
 	
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		 g.setFont(new Font("TimesRoman", Font.PLAIN, 54));
+		 g.setFont(new Font("Comic Sans MS", Font.PLAIN, 54));
     	g.drawString(timer.message, 50, 50);
     }
 }
