@@ -25,8 +25,8 @@ public class BuoyPanel extends JPanel{
 		} catch (IOException e) {
 		}
 		super.paintComponent(g);
-		g.setColor(Color.gray);
-    	g.drawImage(img, buoy.xLoc, buoy.yLoc, Color.BLUE, this);
+		Color c = new Color(0, 0, 0, 0); // transparent color
+    	g.drawImage(img, buoy.xLoc, buoy.yLoc, c, this);
     }
 	
 	public Dimension getPreferredSize() {

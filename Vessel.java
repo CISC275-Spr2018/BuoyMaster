@@ -11,5 +11,11 @@ public class Vessel extends gamePiece{
 		System.out.print("Player location: " + this.xLoc + " ," + this.yLoc);
 		System.out.println(" | Player increment: " + this.xVel + ", " + this.yVel);
 	}
+
+	@Override
+	public void onCollide() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

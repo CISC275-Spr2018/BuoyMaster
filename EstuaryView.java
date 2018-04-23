@@ -17,11 +17,13 @@ public class EstuaryView extends JPanel{
 	PlayerPanel playerPanel;
 	BuoyPanel buoyPanel;
 	TimerPanel timerPanel;
+	GameMessagePanel gameMessagePanel;
 	
 	EstuaryView(Model model){
 		playerPanel = new PlayerPanel(model.player);
 		buoyPanel = new BuoyPanel(model.buoy);
 		timerPanel = new TimerPanel(model.timer);
+		gameMessagePanel = new GameMessagePanel(model.gameMessage);
 		
 		setFocusable(true);
 		
@@ -46,6 +48,7 @@ public class EstuaryView extends JPanel{
 		buoyPanel.paintComponent(g);
 		playerPanel.paintComponent(g);
 		timerPanel.paintComponent(g);
+		gameMessagePanel.paintComponent(g);
     }
 	
 }

@@ -58,8 +58,8 @@ public class PlayerPanel extends JPanel{
 	
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.setColor(Color.gray);
-    	g.drawImage(getImage(), player.xLoc, player.yLoc, Color.BLUE, this);
+		Color c = new Color(0, 0, 0, 0); // transparent color
+    	g.drawImage(getImage(), player.xLoc, player.yLoc, c, this);
     }
 	
 	public Dimension getPreferredSize() {
