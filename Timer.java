@@ -4,7 +4,7 @@ class Timer {
 	String message;
 	
 	Timer(){
-		value = 100;
+		value = 500;
 		increment = 1;
 		message = "";
 	}

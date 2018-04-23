@@ -20,7 +20,7 @@ public class Controller implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		model.modelUpdate();
-		EView.update(model);
+		EView.update();
 	}
 	
 	public static void main(String[] args){

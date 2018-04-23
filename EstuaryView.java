@@ -26,9 +26,6 @@ public class EstuaryView extends JPanel{
 		setFocusable(true);
 		
 		this.frame = new JFrame();
-		this.frame.add(playerPanel);
-		this.frame.add(buoyPanel);
-		this.frame.add(timerPanel);
 		this.frame.add(this);
 		
 		this.setBackground(Color.BLUE);
@@ -39,7 +36,7 @@ public class EstuaryView extends JPanel{
 	}
 	
 	
-	public void update(Model model){
+	public void update(){
 		this.repaint();
 	}
 	
