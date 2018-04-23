@@ -15,7 +15,7 @@ public class SandBarPanel extends JPanel{
 	SandBarPanel(SandBar s){
 		sandBar = s;
 		try {
-		    img = ImageIO.read(new File("images\\sandbar.png"));
+		    img = ImageIO.read(new File("images/sandbar.png"));
 		} catch (IOException e) {
 		}
 	}
