@@ -13,6 +13,7 @@ public class Model extends KeyAdapter {
 	Timer timer;
 	GameMessage gameMessage;
 	SandBar sandBar;
+	Dock dock;
 	
 	Model(){
 		player = new Vessel(width/2, height - 100);
@@ -20,6 +21,7 @@ public class Model extends KeyAdapter {
 		gameMessage = new GameMessage();
 		buoy = new Buoy(width/2, 100, gameMessage);
 		sandBar = new SandBar(100, height/2, timer, gameMessage);
+		dock = new Dock(width/2 + 75, height-120);
 	}
 	
 	// all individual model update methods in central method
