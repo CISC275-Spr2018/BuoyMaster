@@ -12,17 +12,10 @@ import javax.swing.JPanel;
  */
 
 public class BuoyPanel extends JPanel{
-	int x;
-	int y;
 	Buoy buoy;
 	
 	BuoyPanel(Buoy b){
 		buoy = b;
-	}
-	
-	void updateLocation(Buoy buoy) {
-		x = buoy.xLoc;
-		y = buoy.yLoc;
 	}
 	
 	protected void paintComponent(Graphics g) {
