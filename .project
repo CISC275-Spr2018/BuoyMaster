@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>BuoyUMLGit</name>
+	<name>spring-2018-275-lab-7-11-3</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -14,56 +14,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>src/Buoy.java</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/Documents/Java%20Stuff/BuoyMaster/Buoy.java</locationURI>
-		</link>
-		<link>
-			<name>src/BuoyPanel.java</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/Documents/Java%20Stuff/BuoyMaster/BuoyPanel.java</locationURI>
-		</link>
-		<link>
-			<name>src/Controller.java</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/Documents/Java%20Stuff/BuoyMaster/Controller.java</locationURI>
-		</link>
-		<link>
-			<name>src/EstuaryView.java</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/Documents/Java%20Stuff/BuoyMaster/EstuaryView.java</locationURI>
-		</link>
-		<link>
-			<name>src/Model.java</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/Documents/Java%20Stuff/BuoyMaster/Model.java</locationURI>
-		</link>
-		<link>
-			<name>src/PlayerPanel.java</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/Documents/Java%20Stuff/BuoyMaster/PlayerPanel.java</locationURI>
-		</link>
-		<link>
-			<name>src/Timer.java</name>
-			<type>1</type>
-			<location>C:/Users/arvin_000/Documents/Java Stuff/BuoyMaster/Timer.java</location>
-		</link>
-		<link>
-			<name>src/TimerPanel.java</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/Documents/Java%20Stuff/BuoyMaster/TimerPanel.java</locationURI>
-		</link>
-		<link>
-			<name>src/Vessel.java</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/Documents/Java%20Stuff/BuoyMaster/Vessel.java</locationURI>
-		</link>
-		<link>
-			<name>src/gamePiece.java</name>
-			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/Documents/Java%20Stuff/BuoyMaster/gamePiece.java</locationURI>
-		</link>
-	</linkedResources>
 </projectDescription>
