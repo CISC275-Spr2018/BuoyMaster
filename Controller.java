@@ -46,7 +46,7 @@ public class Controller implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		//model.updateLocationAndDirection(tick_counter);
 		mul.updateLocationAndDirection(tick_counter); // Arvin: updates called by the ModelUpdateLogic class instead of the Model itself
-		view.update(model);
+		view.update(model,buoy);
 		tick_counter+=1;
 	}
 	 
