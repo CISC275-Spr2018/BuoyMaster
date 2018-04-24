@@ -9,20 +9,25 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 public class SandBarPanel extends JPanel{
-	SandBar sandBar;
+	private int xDrawLoc;
+	private int yDrawLoc;
 	BufferedImage img;
 	
-	SandBarPanel(SandBar s){
-		sandBar = s;
+	SandBarPanel(){
 		try {
-		    img = ImageIO.read(new File("images/sandbar.png"));
+		    img = ImageIO.read(new File("images\\sandbar.png"));
 		} catch (IOException e) {
 		}
+	}
+	
+	void update(int x, int y) {
+		xDrawLoc = x;
+		yDrawLoc = y;
 	}
 	
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Color c = new Color(0, 0, 0, 0); // transparent color
-    	g.drawImage(img, sandBar.xLoc, sandBar.yLoc, c, this);
+    	g.drawImage(img, xDrawLoc, yDrawLoc, c, this);
     }
 }

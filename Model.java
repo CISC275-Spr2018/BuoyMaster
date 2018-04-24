@@ -6,16 +6,18 @@ import java.awt.event.KeyEvent;
  * Will hold all different parts - player Vessels, Sandbars, Buoy, etc.
  */
 public class Model extends KeyAdapter {
-	final int width = 1000;
-	final int height = 1000;
-	Vessel player;
-	Buoy buoy;
-	Timer timer;
-	GameMessage gameMessage;
-	SandBar sandBar;
-	Dock dock;
+	private final int width;
+	private final int height;
+	private Vessel player;
+	private Buoy buoy;
+	private Timer timer;
+	private GameMessage gameMessage;
+	private SandBar sandBar;
+	private Dock dock;
 	
-	Model(){
+	Model(int x, int y){
+		width = x;
+		height = y;
 		player = new Vessel(width/2, height - 100);
 		timer = new Timer();
 		gameMessage = new GameMessage();
@@ -33,12 +35,38 @@ public class Model extends KeyAdapter {
 			player.update();
 			timer.update();
 			sandBar.update();
+			dock.update();
 		}
 		else {
 			timer.message = "Game over kid";
 		}
 	}
 	
+	public Vessel getPlayer() {
+		return player;
+	}
+	public Buoy getBuoy() {
+		return buoy;
+	}
+	public Timer getTimer() {
+		return timer;
+	}
+	public GameMessage getGameMessage() {
+		return gameMessage;
+	}
+	public SandBar getSandBar() {
+		return sandBar;
+	}
+	public Dock getDock() {
+		return dock;
+	}
+	public int getWidth() {
+		return width;
+	}
+	public int getHeight() {
+		return height;
+	}
+
 	@Override
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();
