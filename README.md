@@ -1,1 +1,0 @@
-This is a fork of the controllable orc animation lab. We should modify this to get to a working alpha.
