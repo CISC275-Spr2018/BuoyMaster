@@ -18,6 +18,7 @@ public class EstuaryView extends JPanel{
 	private GameMessagePanel gameMessagePanel;
 	private SandBarPanel sandBarPanel;
 	private DockPanel dockPanel;
+	WakePanel wp;
 	
 	EstuaryView(int width, int height){
 		this.width = width;
@@ -28,6 +29,7 @@ public class EstuaryView extends JPanel{
 		gameMessagePanel = new GameMessagePanel();
 		sandBarPanel = new SandBarPanel();
 		dockPanel = new DockPanel();
+		wp = new WakePanel();
 		
 		setFocusable(true);
 		
@@ -48,6 +50,7 @@ public class EstuaryView extends JPanel{
 		sandBarPanel.update(model.getSandBar().getXLoc(), model.getSandBar().getYLoc());
 		timerPanel.update(model.getTimer().message);
 		gameMessagePanel.update(model.getGameMessage().message);
+		wp.updateAll(model);
 		this.repaint();
 	}
 	
@@ -55,12 +58,12 @@ public class EstuaryView extends JPanel{
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		buoyPanel.paintComponent(g);
+		wp.paintComponent(g);
 		vesselPanel.paintComponent(g);
 		timerPanel.paintComponent(g);
 		gameMessagePanel.paintComponent(g);
 		sandBarPanel.paintComponent(g);
 		dockPanel.paintComponent(g);
-		
     }
 	
 }

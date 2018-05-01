@@ -1,18 +1,28 @@
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class Vessel extends GamePiece{
+	WakeCollection wakes;
+	int wakeStrength = 3;
 
 	Vessel(int x, int y){
 		this.xLoc = x;
 		this.yLoc = y;
+		wakes = new WakeCollection();
 	}
 	
 	void update() {
+		wakes.removeDeadWakes();
 		checkDirection();
+		wakes.addWake(this.xLoc, this.yLoc, -this.xVel, -this.yVel, this.wakeStrength);
+		wakes.update();
 		super.update();
 		System.out.print("Player location: " + this.xLoc + " ," + this.yLoc);
-		System.out.println(" | Player increment: " + this.xVel + ", " + this.yVel);
+		System.out.print(" | Player increment: " + this.xVel + ", " + this.yVel);
+		System.out.println(" | sandbars: ");
 	}
+	
 	
 	String checkDirection() {
 		if (xVel == 0 && yVel < 0) { // north
