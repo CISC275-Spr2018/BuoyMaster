@@ -9,28 +9,23 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 public class DockPanel extends JPanel{
-	int x;
-	int y;
-	Dock d;
+	private int xDrawLoc;
+	private int yDrawLoc;
 	
-	DockPanel(Dock d){
-		this.d = d;
-	}
-	
-	void updateLocation(Dock d) {
-		x = d.xLoc;
-		y = d.yLoc;
+	void update(int x, int y) {
+		xDrawLoc = x;
+		yDrawLoc = y;
 	}
 	
 	protected void paintComponent(Graphics g) {
 		BufferedImage img = null;
 		try {
-		    img = ImageIO.read(new File("images/dock.png"));
+		    img = ImageIO.read(new File("images\\dock.png"));
 		} catch (IOException e) {
 		}
 		super.paintComponent(g);
 		Color c = new Color(0, 0, 0, 0);
-    	g.drawImage(img, d.xLoc, d.yLoc, c, this);
+    	g.drawImage(img, xDrawLoc, yDrawLoc, c, this);
     }
 	
 	public Dimension getPreferredSize() {

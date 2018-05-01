@@ -1,7 +1,7 @@
 
-public class SandBar extends gamePiece{
-	Timer timer;
-	GameMessage gameMessage;
+public class SandBar extends GamePiece{
+	private Timer timer;
+	private GameMessage gameMessage;
 	
 	SandBar(int x, int y, Timer t, GameMessage g){
 		this.xLoc = x;

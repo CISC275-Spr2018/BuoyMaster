@@ -5,13 +5,15 @@ import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
 public class Controller implements ActionListener {
+	private final int width = 1000;
+	private final int height = 1000;
 	private final static int DRAWDELAY = 50;
-	Model model;
-	EstuaryView EView;
+	private Model model;
+	private EstuaryView EView;
 	
 	public Controller(){
-		model = new Model();
-		EView = new EstuaryView(model);
+		model = new Model(width, height);
+		EView = new EstuaryView(width, height);
 		
 		Timer t = new Timer(DRAWDELAY, this);
 		t.start();
@@ -20,7 +22,7 @@ public class Controller implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		model.modelUpdate();
-		EView.update();
+		EView.update(model);
 	}
 	
 	public static void main(String[] args){

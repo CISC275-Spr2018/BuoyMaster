@@ -8,41 +8,49 @@ import javax.swing.JPanel;
  * Will hold all different Panels of objects - PlayerPanel, BuoyPanel, etc.
  */
 public class EstuaryView extends JPanel{
-
+	private final int width;
+	private final int height;
+	private JFrame frame;
 	
-	JFrame frame;
-	int xLoc;
-	int yLoc;
+	private VesselPanel vesselPanel;
+	private BuoyPanel buoyPanel;
+	private TimerPanel timerPanel;
+	private GameMessagePanel gameMessagePanel;
+	private SandBarPanel sandBarPanel;
+	private DockPanel dockPanel;
+	WakePanel wp;
 	
-	PlayerPanel playerPanel;
-	BuoyPanel buoyPanel;
-	TimerPanel timerPanel;
-	GameMessagePanel gameMessagePanel;
-	SandBarPanel sandBarPanel;
-	DockPanel dockPanel;
-	
-	EstuaryView(Model model){
-		playerPanel = new PlayerPanel(model.player);
-		buoyPanel = new BuoyPanel(model.buoy);
-		timerPanel = new TimerPanel(model.timer);
-		gameMessagePanel = new GameMessagePanel(model.gameMessage);
-		sandBarPanel = new SandBarPanel(model.sandBar);
-		dockPanel = new DockPanel(model.dock);
+	EstuaryView(int width, int height){
+		this.width = width;
+		this.height = height;
+		vesselPanel = new VesselPanel();
+		buoyPanel = new BuoyPanel();
+		timerPanel = new TimerPanel();
+		gameMessagePanel = new GameMessagePanel();
+		sandBarPanel = new SandBarPanel();
+		dockPanel = new DockPanel();
+		wp = new WakePanel();
 		
 		setFocusable(true);
 		
 		this.frame = new JFrame();
 		this.frame.add(this);
 		
-		this.setBackground(Color.BLUE);
-		
+		this.setBackground(Color.CYAN.darker().darker());
 		this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.frame.setSize(model.width, model.height);
+		this.frame.setSize(width, height);
 		this.frame.setVisible(true);
 	}
 	
-	
-	public void update(){
+	// update all panels
+	public void update(Model model){
+		buoyPanel.update(model.getBuoy().getXLoc(), model.getBuoy().getYLoc());
+		dockPanel.update(model.getDock().getXLoc(), model.getDock().getYLoc());
+		vesselPanel.update(model.getPlayer().getXLoc(), model.getPlayer().getYLoc(), model.getPlayer().checkDirection());
+		sandBarPanel.update(model.getSandBar().getXLoc(), model.getSandBar().getYLoc());
+		timerPanel.update(model.getTimer().message);
+		gameMessagePanel.update(model.getGameMessage().message);
+		wp.updateAll(model);
 		this.repaint();
 	}
 	
@@ -50,12 +58,12 @@ public class EstuaryView extends JPanel{
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		buoyPanel.paintComponent(g);
-		playerPanel.paintComponent(g);
+		wp.paintComponent(g);
+		vesselPanel.paintComponent(g);
 		timerPanel.paintComponent(g);
 		gameMessagePanel.paintComponent(g);
 		sandBarPanel.paintComponent(g);
 		dockPanel.paintComponent(g);
-		
     }
 	
 }
