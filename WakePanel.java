@@ -10,23 +10,14 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 public class WakePanel extends JPanel{
-	BufferedImage img;
 	HashSet<Wake> wakesPanel;
 	
 	WakePanel(){
 		wakesPanel = new HashSet<Wake>();
-		try {
-		    img = ImageIO.read(new File("images\\wake.png"));
-		} catch (IOException e) {
-		}
 	}
 	
 	void updateAll(Model model) {
-		removeDeadWakes();
-		for (Wake w : model.getPlayer().wakes.wakes) {
-			w.img = createImage(w.direct);
-			wakesPanel.add(w);
-		}
+		wakesPanel = model.getPlayer().wakes.wakes;
 	}
 	
 	BufferedImage createImage(String filename) {
@@ -52,7 +43,8 @@ public class WakePanel extends JPanel{
 		super.paintComponent(g);
 		Color c = new Color(0, 0, 0, 0); // transparent color
 		for (Wake w : wakesPanel) {
-			g.drawImage(w.img, w.xLoc + 10, w.yLoc + 10, c, this);
+			BufferedImage img = createImage(w.direct);
+			g.drawImage(img, w.xLoc + 10, w.yLoc + 10, c, this);
 		}
 	}
 }

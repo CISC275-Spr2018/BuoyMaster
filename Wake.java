@@ -1,7 +1,6 @@
 import java.awt.image.BufferedImage;
 
 public class Wake extends GamePiece{
-	BufferedImage img;
 	int wakeLife = 20;
 	String direct;
 	
