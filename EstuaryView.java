@@ -191,12 +191,12 @@ public class EstuaryView extends JPanel{
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		buoyPanel.paintComponent(g);
+		wp.paintComponent(g);
 		playerPanel.paintComponent(g);
 		timerPanel.paintComponent(g);
 		gameMessagePanel.paintComponent(g);
 		sandBarPanel.paintComponent(g);
 		dockPanel.paintComponent(g);
-		
 		
     }
 
