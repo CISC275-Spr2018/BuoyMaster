@@ -1,5 +1,5 @@
 
-public class SandBar extends gamePiece{
+public class SandBar extends GamePiece{
 	Timer timer;
 	GameMessage gameMessage;
 	

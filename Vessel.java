@@ -1,5 +1,5 @@
 
-public class Vessel extends gamePiece{
+public class Vessel extends GamePiece{
 
 	Vessel(int x, int y){
 		this.xLoc = x;

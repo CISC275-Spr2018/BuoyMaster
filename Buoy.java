@@ -1,5 +1,5 @@
 
-public class Buoy extends gamePiece{
+public class Buoy extends GamePiece{
 	GameMessage gameMessage;
 	Buoy(int x, int y, GameMessage g){
 		this.xLoc = x;
