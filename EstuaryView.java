@@ -171,8 +171,8 @@ public class EstuaryView extends JPanel{
 	    am.put("LeftArrow", new ArrowAction("LeftArrow"));
 		am.put("UpArrow", new ArrowAction("UpArrow"));
 		am.put("DownArrow", new ArrowAction("DownArrow"));
-		this.frame.add(panel);
 		
+		this.frame.add(panel);
 		this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	}

@@ -15,8 +15,6 @@ public class Controller implements ActionListener {
 		EView = new EstuaryView(model);
 		Timer t = new Timer(DRAWDELAY, this);
 		t.start();
-		
-		
 	}
 	@Override
 	/*@param takes in an ActionEvent arg0
@@ -34,9 +32,7 @@ public class Controller implements ActionListener {
 		EventQueue.invokeLater(new Runnable(){
 			public void run(){
 				Controller c = new Controller();
-			
 				}
-			
 		});
 	}
 }

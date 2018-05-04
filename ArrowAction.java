@@ -22,7 +22,7 @@ public class ArrowAction extends AbstractAction{
 		else if (cmd.equalsIgnoreCase("UpArrow") && c.model.player.getYVel() > -7) {
 			c.model.player.setYVel(-4);
 		}
-		else if (cmd.equalsIgnoreCase("DownArrow;")&& c.model.player.getYVel() < 7) {
+		else if (cmd.equalsIgnoreCase("DownArrow")&& c.model.player.getYVel() < 7) {
 			c.model.player.setYVel(4);
 		}
 	}
