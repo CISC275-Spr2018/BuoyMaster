@@ -23,7 +23,18 @@ public abstract class gamePiece implements Collidable{
 	boolean withinYRange(gamePiece g2) {
 		return (this.yLoc < g2.yLoc + 50) && (this.yLoc > g2.yLoc - 50);
 	}
-	
+	public int getYVel(){
+		return this.yVel;
+	}
+	public int getXVel(){
+		return this.xVel;
+	}
+	public void setXVel(int x){
+		this.xVel+=x;
+	}
+	public void setYVel(int y){
+		this.yVel+=y;
+	}
 	void update() {
 		this.xLoc += this.xVel;
 		this.yLoc += this.yVel;

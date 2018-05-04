@@ -34,7 +34,7 @@ public class Controller implements ActionListener {
 		EventQueue.invokeLater(new Runnable(){
 			public void run(){
 				Controller c = new Controller();
-				c.EView.addKeyListener(c.model);
+			
 				}
 			
 		});

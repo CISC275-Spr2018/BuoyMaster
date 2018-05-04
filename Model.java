@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
  * Will hold all different parts - player Vessels, Sandbars, Buoy, etc.
  */
 public class Model extends KeyAdapter {
-	final int width = 1000;
+	final int width = 2000;
 	final int height = 1000;
 	Vessel player;
 	Buoy buoy;

@@ -9,13 +9,18 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.ActionMap;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.InputMap;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
+import javax.swing.KeyStroke;
+
+import com.sun.glass.events.KeyEvent;
 
 /*
  * Main View class for the game.
@@ -40,8 +45,11 @@ public class EstuaryView extends JPanel{
 	CardLayout cl= new CardLayout();
 	Controller c;
 	
+	
 	EstuaryView(Model model){
+		
 		panel.setLayout(cl);
+		
 		//create start panel stuff
 		//startPanel.setSize(model.width, model.height);
 		JButton button1 = new JButton("Start");
@@ -138,6 +146,7 @@ public class EstuaryView extends JPanel{
 		sandBarPanel = new SandBarPanel(model.sandBar);
 		dockPanel = new DockPanel(model.dock);
 		estuaryPanel=this;
+		estuaryPanel.addKeyListener(model);
 		this.frame = new JFrame();
 		this.requestFocus();
 		this.frame.setBackground(Color.BLUE.darker().darker());
@@ -145,8 +154,25 @@ public class EstuaryView extends JPanel{
 		this.frame.setSize(1000,5000);
 		this.frame.setVisible(true);
 		panel.add(estuaryPanel, "3");
-		panel.requestFocusInWindow();
+		panel.setFocusable(true);
+		
+		//create maps for keybinding
+		InputMap im= this.getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW);
+		ActionMap am=this.getActionMap();
+				
+		//set key actions for panel in input map
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0), "UpArrow");
+		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0), "RightArrow");
+	    im.put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0), "LeftArrow");			    im.put(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0), "UpArrow");
+	    im.put(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0), "DownArrow");
+			   
+	    //set key actions for actionmap
+	    am.put("RightArrow", new ArrowAction("RightArrow"));
+	    am.put("LeftArrow", new ArrowAction("LeftArrow"));
+		am.put("UpArrow", new ArrowAction("UpArrow"));
+		am.put("DownArrow", new ArrowAction("DownArrow"));
 		this.frame.add(panel);
+		
 		this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	}
