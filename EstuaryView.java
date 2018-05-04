@@ -44,6 +44,8 @@ public class EstuaryView extends JPanel{
 	DockPanel dockPanel;
 	CardLayout cl= new CardLayout();
 	Controller c;
+	WakePanel wp;
+	WakeCollection wc;
 	
 	
 	EstuaryView(Model model){
@@ -145,6 +147,9 @@ public class EstuaryView extends JPanel{
 		gameMessagePanel = new GameMessagePanel(model.gameMessage);
 		sandBarPanel = new SandBarPanel(model.sandBar);
 		dockPanel = new DockPanel(model.dock);
+		wp = new WakePanel();
+		wc = model.player.wakes;
+		
 		estuaryPanel=this;
 		estuaryPanel.addKeyListener(model);
 		this.frame = new JFrame();
@@ -178,6 +183,7 @@ public class EstuaryView extends JPanel{
 	}
 	
 	public void update(){
+		wp.updateAll(wc);
 		this.repaint();
 	}
 	
