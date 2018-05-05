@@ -24,9 +24,11 @@ public class BoatSelectionPanel  extends JPanel {
 	BufferedImage img3 = null;
     JButton button3=null;
 	BoatSelectionPanel(){
+		
 		setFocusable(true);
 		this.frame = new JFrame();
-		this.frame.add(this);
+		frame.getContentPane().setLayout(new BorderLayout());
+		this.setLayout(new BorderLayout());
 		this.setBackground(Color.BLUE);
 		this.frame.setSize(1000,1000);
 	
@@ -41,29 +43,28 @@ public class BoatSelectionPanel  extends JPanel {
 		button1.setBorder(BorderFactory.createEmptyBorder());
 		button1.setContentAreaFilled(false);
 		button1.setActionCommand("select");
+		button1.addActionListener(new SpeedBoatListener());
 		button2 = new JButton(new ImageIcon(img2));
 		button2.addActionListener(new JetSkiListener());
 		button2.setActionCommand("select");
-		button2.setBorder(BorderFactory.createEtchedBorder());
+		button2.setBorder(BorderFactory.createEmptyBorder());
 		button2.setContentAreaFilled(false);
 		button3 = new JButton(new ImageIcon(img3));
 		button3.addActionListener(new FishingBoatListener());
 		button3.setActionCommand("select");
-		button3.setBorder(BorderFactory.createEtchedBorder());
+		button3.setBorder(BorderFactory.createEmptyBorder());
 		button3.setContentAreaFilled(false);   
-//		button1.setBounds(0, 150, 20, 20);
-//		button2.setBounds(10, 350, 20, 20);
-//		button3.setBounds(10,550,20,20);
-		 
-		    this.add(button1,BorderLayout.NORTH);
-		    this.add(button2,BorderLayout.CENTER);
-		    this.add(button3,BorderLayout.SOUTH);
-//		    button1.setLocation(10, 150);
-//		    button2.setLocation(10,350);
-//		    button3.setLocation(10,550);
+		button1.setSize(20,20);
+		button2.setSize(20,20);
+		button3.setSize(30,30);
+		this.add(button1,BorderLayout.NORTH);
+		this.add(button2,BorderLayout.CENTER);
+		this.add(button3,BorderLayout.SOUTH);
+	
+			 
 		} catch (IOException e) {
 		}
-		
+		this.frame.add(this);
 		
 	
 	}
@@ -78,41 +79,39 @@ public class BoatSelectionPanel  extends JPanel {
 		
 		super.paintComponent(g);
 		g.setFont(new Font("Comic Sans MS", Font.PLAIN, 50));
-    	g.drawString("Select Your Boat", 300, 40);
+    	g.drawString("Select Your Boat", 10, 40);
 		Color c = new Color(0, 0, 0, 0);
 //    	g.drawImage(img1, 10, 150, c, this);
 //    	g.drawImage(img2, 10, 550, c, this);
 //    	g.drawImage(img3, 10, 350, c, this);
-    	g.drawRect(250, 150, RectangleX, RectangleY);
-    	g.fillRect(250, 150, RectangleX-20, RectangleY); 
+    	g.drawRect(800, 50, RectangleX, RectangleY);
+    	g.fillRect(800, 50, RectangleX-20, RectangleY); 
     	g.setFont(new Font("Times New Roman", Font.PLAIN,20));
-    	g.drawString(Speed, 400, 160);
-    	g.drawRect(250, 180, RectangleX, RectangleY);
-    	g.fillRect(250, 180, RectangleX-20, RectangleY);
-    	g.drawString(WakeSize, 400, 190);
-    	g.drawRect(250, 210, RectangleX, RectangleY);
-    	g.fillRect(250, 210, RectangleX-100, RectangleY);
-    	g.drawString(Turning, 400, 220);
-    	g.drawRect(250, 350, RectangleX, RectangleY);
-    	g.fillRect(250, 350, RectangleX-50, RectangleY);
-    	g.drawString(Speed, 400, 360);
-    	g.drawRect(250, 380, RectangleX, RectangleY);
-    	g.fillRect(250, 380, RectangleX-50, RectangleY);
-    	g.drawString(WakeSize, 400, 390);
-    	g.drawRect(250, 410, RectangleX, RectangleY);
-    	g.fillRect(250, 410, RectangleX-50, RectangleY);
-    	g.drawString(Turning, 400, 420);
-    	g.drawRect(250, 550, RectangleX, RectangleY);
-    	g.fillRect(250, 550, RectangleX-100, RectangleY);
-    	g.drawString(Speed, 400, 560);
-    	g.drawRect(250, 580, RectangleX, RectangleY);
-    	g.fillRect(250, 580, RectangleX-100, RectangleY);
-    	g.drawString(WakeSize, 400, 580);
-    	g.drawRect(250, 610, RectangleX, RectangleY);
-    	g.fillRect(250, 610, RectangleX-20, RectangleY);
-    	g.drawString(Turning, 400, 620);
+    	g.drawString(Speed, 700, 60);
+    	g.drawRect(800, 80, RectangleX, RectangleY);
+    	g.fillRect(800, 80, RectangleX-20, RectangleY);
+    	g.drawString(WakeSize, 700, 90);
+    	g.drawRect(800, 110, RectangleX, RectangleY);
+    	g.fillRect(800, 110, RectangleX-100, RectangleY);
+    	g.drawString(Turning, 700, 120);
+    	g.drawRect(800, 350, RectangleX, RectangleY);
+    	g.fillRect(800, 350, RectangleX-50, RectangleY);
+    	g.drawString(Speed, 700, 360);
+    	g.drawRect(800, 380, RectangleX, RectangleY);
+    	g.fillRect(800, 380, RectangleX-50, RectangleY);
+    	g.drawString(WakeSize, 700, 390);
+    	g.drawRect(800, 410, RectangleX, RectangleY);
+    	g.fillRect(800, 410, RectangleX-50, RectangleY);
+    	g.drawString(Turning, 700, 420);
+    	g.drawRect(800, 620, RectangleX, RectangleY);
+    	g.fillRect(800, 620, RectangleX-100, RectangleY);
+    	g.drawString(Speed, 700, 630);
+    	g.drawRect(800, 650, RectangleX, RectangleY);
+    	g.fillRect(800, 650, RectangleX-100, RectangleY);
+    	g.drawString(WakeSize, 700, 660);
+    	g.drawRect(800, 680, RectangleX, RectangleY);
+    	g.fillRect(800, 680, RectangleX-20, RectangleY);
+    	g.drawString(Turning, 700, 690);
 
     }
 }
-
-
