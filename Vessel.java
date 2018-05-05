@@ -1,5 +1,5 @@
 
-public class Vessel extends gamePiece{
+public class Vessel extends GamePiece{
 	WakeCollection wakes;
 	int wakeStrength = 3;
 
