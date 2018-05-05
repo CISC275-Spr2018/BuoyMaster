@@ -28,6 +28,7 @@ public class Model extends KeyAdapter {
 		buoy = new Buoy(width/2, 100,rand,gameMessage);
 		sandBar = new SandBar(100, height/2, timer, gameMessage);
 		dock = new Dock(width/2 + 75, height-120);
+		
 		questions[0]="The salinity of an estuary can range from .5-25 PPT. Was the measrument at the buoy within this range of good values?";
 		questions[1]="The salinity of an estuary can range from .5-25 PPT. Was the measrument at the buoy within this range of good values?";
 		questions[2]="The salinity of an estuary can range from .5-25 PPT. Was the measrument at the buoy within this range of good values?";

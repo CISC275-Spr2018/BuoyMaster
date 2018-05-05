@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 public class Buoy extends gamePiece{
 	GameMessage gameMessage;
 	boolean show = true;
-	public boolean hasCollected=false;
+	public boolean hasCollected=true;
 	String[] data= new String[15];
 	int rand;
 	
