@@ -29,7 +29,7 @@ public class BoatSelectionPanel  extends JPanel {
 		this.frame = new JFrame();
 		frame.getContentPane().setLayout(new BorderLayout());
 		this.setLayout(new BorderLayout());
-		this.setBackground(Color.BLUE);
+		this.setBackground(Color.BLUE.darker().darker());
 		this.frame.setSize(1000,1000);
 	
 		try {
