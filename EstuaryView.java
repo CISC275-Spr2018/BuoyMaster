@@ -14,17 +14,6 @@ import javax.swing.JPanel;
 public class EstuaryView extends JFrame{
 	private final int width;
 	private final int height;
-	
-	/*
-	private JFrame frame;
-	private VesselPanel vesselPanel;
-	private BuoyPanel buoyPanel;
-	private TimerPanel timerPanel
-	private GameMessagePanel gameMessagePanel;
-	private SandBarPanel sandBarPanel;
-	private DockPanel dockPanel;
-	WakePanel wp;
-	*/
 	EstuaryPanel estuaryPanel;
 	StartScreen startScreen;
 	SelectionScreen selectionScreen;
@@ -60,37 +49,9 @@ public class EstuaryView extends JFrame{
 		this.setSize(width, height);
 		this.setVisible(true);
 	}
-	
-	/*
-	// update all panels
-	public void update(Model model){
-		buoyPanel.update(model.getBuoy().getXLoc(), model.getBuoy().getYLoc());
-		dockPanel.update(model.getDock().getXLoc(), model.getDock().getYLoc());
-		vesselPanel.update(model.getPlayer().getXLoc(), model.getPlayer().getYLoc(), model.getPlayer().checkDirection());
-		sandBarPanel.update(model);
-		timerPanel.update(model.getTimer().message);
-		gameMessagePanel.update(model.getGameMessage().message);
-		wp.updateAll(model);
-		this.repaint();
-	}
-	*/
 	public void update(Model model){
 		estuaryPanel.update(model);
 		factScreen.setVisible(model.getBuoy().hasCollided(model.getPlayer()));
 	}
-	
-	/*
-	// all individual paint methods in central method
-	protected void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		buoyPanel.paintComponent(g);
-		wp.paintComponent(g);
-		vesselPanel.paintComponent(g);
-		timerPanel.paintComponent(g);
-		gameMessagePanel.paintComponent(g);
-		sandBarPanel.paintComponent(g);
-		dockPanel.paintComponent(g);
-    }
-    */
 	
 }
