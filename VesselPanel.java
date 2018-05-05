@@ -8,30 +8,36 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 /*
- * BuoyPanel that holds info on how to draw our buoy
+ * PlayerPanel that holds info on how to draw our player's Vessel
  */
-
-public class BuoyPanel extends JPanel{
-	private BufferedImage img;
+public class VesselPanel extends JPanel{
+	private String directionDraw;
 	private int xDrawLoc;
 	private int yDrawLoc;
 	
-	BuoyPanel(){
-		try {
-		    img = ImageIO.read(new File("images\\buoy.png"));
-		} catch (IOException e) {
-		}
+	BufferedImage getImage() {
+		return createImage(directionDraw);
 	}
 	
-	void update(int x, int y) {
+	void update(int x, int y, String d) {
 		xDrawLoc = x;
 		yDrawLoc = y;
+		directionDraw = d;
+	}
+	
+	BufferedImage createImage(String filename) {
+		BufferedImage img = null;
+		try {
+		    img = ImageIO.read(new File("images\\" + filename + ".png"));
+		} catch (IOException e) {
+		}
+		return img;
 	}
 	
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Color c = new Color(0, 0, 0, 0); // transparent color
-    	g.drawImage(img, xDrawLoc, yDrawLoc, c, this);
+    	g.drawImage(getImage(), xDrawLoc, yDrawLoc, c, this);
     }
 	
 	public Dimension getPreferredSize() {

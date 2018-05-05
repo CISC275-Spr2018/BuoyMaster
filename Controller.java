@@ -1,39 +1,69 @@
-import java.awt.EventQueue; 
+import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.AbstractAction;
 import javax.swing.Timer;
 
 public class Controller implements ActionListener {
+	private final int width = 1000;
+	private final int height = 1000;
 	private final static int DRAWDELAY = 50;
-	static Model model;
-	static EstuaryView EView2;
-	static EstuaryView EView;
-	static boolean start=false;
+	private Model model;
+	private EstuaryView EView;
+	GameKeyListener gkl;
+	
+	boolean start = false;
+	
 	public Controller(){
-		model = new Model();
-		EView = new EstuaryView(model);
-		Timer t = new Timer(DRAWDELAY, this);
-		t.start();
-	}
-	@Override
-	/*@param takes in an ActionEvent arg0
-	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
-	 */
-	public void actionPerformed(ActionEvent arg0) {
-		if(start)
-		model.modelUpdate();
-		EView.update();
-	}
-	
-	
-	public static void main(String[] args){
+		model = new Model(width, height);
+		EView = new EstuaryView(width, height);
+		gkl = new GameKeyListener(model.getPlayer(), EView);
+		EView.addKeyListener(gkl);
 		
-		EventQueue.invokeLater(new Runnable(){
+		EView.selectionScreen.boat1.addActionListener(this);
+		EView.selectionScreen.boat2.addActionListener(this);
+		EView.selectionScreen.boat3.addActionListener(this);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// boats start in different positions to test if the buttons actually work
+		if (e.getSource() == EView.selectionScreen.boat1) {
+			model.setVessel(new Speedboat(100, 100));
+		}
+		if (e.getSource() == EView.selectionScreen.boat2) {
+			model.setVessel(new Jetski(500, 500));
+		}
+		if (e.getSource() == EView.selectionScreen.boat3) {
+			model.setVessel(new Speedboat(800, 800));
+		}
+		gkl = new GameKeyListener(model.getPlayer(), EView);
+		EView.addKeyListener(gkl);
+		start = true;
+		
+	}
+	
+	void update() {
+		if (start) {
+			EView.layers.moveToFront(EView.estuaryPanel);
+			model.modelUpdate();
+			EView.update(model);
+		}
+	}
+	
+	public static void main(String[] args) {
+    	EventQueue.invokeLater(new Runnable(){
 			public void run(){
 				Controller c = new Controller();
-				}
+				Timer t = new Timer(DRAWDELAY, new AbstractAction() {
+					public void actionPerformed(ActionEvent e) {
+						c.update();
+						c.EView.repaint();
+					}
+				});
+				t.start();
+			}
 		});
-	}
+    }
 }
-	

@@ -16,8 +16,8 @@ public class WakePanel extends JPanel{
 		wakesPanel = new HashSet<Wake>();
 	}
 	
-	void updateAll(WakeCollection w) {
-		wakesPanel = w.wakes;
+	void updateAll(Model model) {
+		wakesPanel = model.getPlayer().wakes.wakes;
 	}
 	
 	BufferedImage createImage(String filename) {

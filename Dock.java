@@ -1,4 +1,4 @@
-public class Dock extends gamePiece{
+public class Dock extends GamePiece{
 	Dock(int x, int y){
 		this.xLoc = x;
 		this.yLoc = y;
