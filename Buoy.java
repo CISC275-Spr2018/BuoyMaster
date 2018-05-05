@@ -41,11 +41,11 @@ public class Buoy extends gamePiece{
 	@Override
 	public void onCollide() {
 		gameMessage.message = "you got the data, now return!";
-		hasCollected=true;
 		this.yVel = -1;
 		if(show){
 			show=!show;
-			JOptionPane.showMessageDialog(null, createRandomFact());	
+			JOptionPane.showMessageDialog(null, createRandomFact());
+			hasCollected=true;
 		}
 	}
 }

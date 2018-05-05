@@ -51,122 +51,122 @@ public class Model extends KeyAdapter {
 	}
 	
 	
-	void askQuestion(){
-		if(buoy.hasCollected){
-			if (player.yLoc==height/2){
-				if(!asked){
-					asked=true;
-					if (rand<7){
-						reply=JOptionPane.showConfirmDialog(null,askRandomQuestion(),"Salinity Question",reply);
-						switch(rand){
-						case 0:
-							if(reply==JOptionPane.YES_OPTION){
-								if(!showAnswer){
-									showAnswer=true;
-									JOptionPane.showMessageDialog(null, "Correct!");	
-									timer.value+=30;
-								}
-							}
-							else{
-								if(!showAnswer){
-									showAnswer=true;
-									JOptionPane.showMessageDialog(null, "Incorrect, that is a good salinity. The ocean is 35 PPT!");	
-								}
-							}
-						case 1:
-							if(reply==JOptionPane.NO_OPTION){
-								if(!showAnswer){
-									showAnswer=true;
-									JOptionPane.showMessageDialog(null, "Correct!");	
-									timer.value+=30;
-								}
-							}
-							else{
-								if(!showAnswer){
-									showAnswer=true;
-									JOptionPane.showMessageDialog(null, "Incorrect, that is a high salinity. The ocean is 35 PPT!");	
-								}
-							}
-						case 2:
-							if(reply==JOptionPane.YES_OPTION){
-								if(!showAnswer){
-									showAnswer=true;
-									JOptionPane.showMessageDialog(null, "Correct!");	
-									timer.value+=30;
-								}
-							}
-							else{
-								if(!showAnswer){
-									showAnswer=true;
-									JOptionPane.showMessageDialog(null, "Incorrect, that is a good salinity. The ocean is 35 PPT!");	
-								}
-							}
-						case 3:
-							if(reply==JOptionPane.NO_OPTION){
-								if(!showAnswer){
-									showAnswer=true;
-									JOptionPane.showMessageDialog(null, "Correct!");	
-									timer.value+=30;
-								}
-							}
-							else{
-								if(!showAnswer){
-									showAnswer=true;
-									JOptionPane.showMessageDialog(null, "Incorrect, that is a high salinity. The ocean is 35 PPT!");	
-								}
-							}
-						case 4:
-							if(reply==JOptionPane.YES_OPTION){
-								if(!showAnswer){
-									showAnswer=true;
-									JOptionPane.showMessageDialog(null, "Correct!");	
-									timer.value+=30;
-								}
-							}
-							else{
-								if(!showAnswer){
-									showAnswer=true;
-									JOptionPane.showMessageDialog(null, "Incorrect, that is a good salinity. The ocean is 35 PPT!");	
-								}
-							}
-						case 5:
-							if(reply==JOptionPane.YES_OPTION){
-								if(!showAnswer){
-									showAnswer=true;
-									JOptionPane.showMessageDialog(null, "Correct!");	
-									timer.value+=30;
-								}
-							}
-							else{
-								if(!showAnswer){
-									showAnswer=true;
-									JOptionPane.showMessageDialog(null, "Incorrect, that is a good salinity. The ocean is 35 PPT!");	
-								}
-							}
-						case 6:
-							if(reply==JOptionPane.YES_OPTION){
-								if(!showAnswer){
-									showAnswer=true;
-									JOptionPane.showMessageDialog(null, "Correct!");	
-									timer.value+=30;
-								}
-							}
-							else{
-								if(!showAnswer){
-									showAnswer=true;
-									JOptionPane.showMessageDialog(null, "Incorrect, that is a good salinity. The ocean is 35 PPT!");	
-								}
-							}
-						}
-					}
-					if (rand>=7 && rand<12){
-					
-					}
-						
-				}
-			}
-		}
-	}
+//	void askQuestion(){
+//		if(buoy.hasCollected){
+//			if (player.yLoc==height/2){
+//				if(!asked){
+//					asked=true;
+//					if (rand<7){
+//						reply=JOptionPane.showConfirmDialog(null,askRandomQuestion(),"Salinity Question",reply);
+//						switch(rand){
+//						case 0:
+//							if(reply==JOptionPane.YES_OPTION){
+//								if(!showAnswer){
+//									showAnswer=true;
+//									JOptionPane.showMessageDialog(null, "Correct!");	
+//									timer.value+=30;
+//								}
+//							}
+//							else{
+//								if(!showAnswer){
+//									showAnswer=true;
+//									JOptionPane.showMessageDialog(null, "Incorrect, that is a good salinity. The ocean is 35 PPT!");	
+//								}
+//							}
+//						case 1:
+//							if(reply==JOptionPane.NO_OPTION){
+//								if(!showAnswer){
+//									showAnswer=true;
+//									JOptionPane.showMessageDialog(null, "Correct!");	
+//									timer.value+=30;
+//								}
+//							}
+//							else{
+//								if(!showAnswer){
+//									showAnswer=true;
+//									JOptionPane.showMessageDialog(null, "Incorrect, that is a high salinity. The ocean is 35 PPT!");	
+//								}
+//							}
+//						case 2:
+//							if(reply==JOptionPane.YES_OPTION){
+//								if(!showAnswer){
+//									showAnswer=true;
+//									JOptionPane.showMessageDialog(null, "Correct!");	
+//									timer.value+=30;
+//								}
+//							}
+//							else{
+//								if(!showAnswer){
+//									showAnswer=true;
+//									JOptionPane.showMessageDialog(null, "Incorrect, that is a good salinity. The ocean is 35 PPT!");	
+//								}
+//							}
+//						case 3:
+//							if(reply==JOptionPane.NO_OPTION){
+//								if(!showAnswer){
+//									showAnswer=true;
+//									JOptionPane.showMessageDialog(null, "Correct!");	
+//									timer.value+=30;
+//								}
+//							}
+//							else{
+//								if(!showAnswer){
+//									showAnswer=true;
+//									JOptionPane.showMessageDialog(null, "Incorrect, that is a high salinity. The ocean is 35 PPT!");	
+//								}
+//							}
+//						case 4:
+//							if(reply==JOptionPane.YES_OPTION){
+//								if(!showAnswer){
+//									showAnswer=true;
+//									JOptionPane.showMessageDialog(null, "Correct!");	
+//									timer.value+=30;
+//								}
+//							}
+//							else{
+//								if(!showAnswer){
+//									showAnswer=true;
+//									JOptionPane.showMessageDialog(null, "Incorrect, that is a good salinity. The ocean is 35 PPT!");	
+//								}
+//							}
+//						case 5:
+//							if(reply==JOptionPane.YES_OPTION){
+//								if(!showAnswer){
+//									showAnswer=true;
+//									JOptionPane.showMessageDialog(null, "Correct!");	
+//									timer.value+=30;
+//								}
+//							}
+//							else{
+//								if(!showAnswer){
+//									showAnswer=true;
+//									JOptionPane.showMessageDialog(null, "Incorrect, that is a good salinity. The ocean is 35 PPT!");	
+//								}
+//							}
+//						case 6:
+//							if(reply==JOptionPane.YES_OPTION){
+//								if(!showAnswer){
+//									showAnswer=true;
+//									JOptionPane.showMessageDialog(null, "Correct!");	
+//									timer.value+=30;
+//								}
+//							}
+//							else{
+//								if(!showAnswer){
+//									showAnswer=true;
+//									JOptionPane.showMessageDialog(null, "Incorrect, that is a good salinity. The ocean is 35 PPT!");	
+//								}
+//							}
+//						}
+//					}
+//					if (rand>=7 && rand<12){
+//					
+//					}
+//						
+//				}
+//			}
+//		}
+//	}
 	// all individual model update methods in central method
 	void modelUpdate() {
 		buoy.hasCollided(player);
