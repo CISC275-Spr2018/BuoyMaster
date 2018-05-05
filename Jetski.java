@@ -3,6 +3,7 @@ public class Jetski extends Vessel{
 
 	Jetski(){
 		super();
+		vesselType = "jet_ski";
 		maxXVel = 10;
 		maxYVel = 14;
 		this.wakeStrength = 2;

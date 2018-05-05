@@ -11,24 +11,24 @@ import javax.swing.JPanel;
  * PlayerPanel that holds info on how to draw our player's Vessel
  */
 public class VesselPanel extends JPanel{
-	private String directionDraw;
+	private String typeAndDirection;
 	private int xDrawLoc;
 	private int yDrawLoc;
 	
 	BufferedImage getImage() {
-		return createImage(directionDraw);
+		return createImage(typeAndDirection);
 	}
 	
-	void update(int x, int y, String d) {
+	void update(int x, int y, String s) {
 		xDrawLoc = x;
 		yDrawLoc = y;
-		directionDraw = d;
+		typeAndDirection = s;
 	}
 	
-	BufferedImage createImage(String filename) {
+	BufferedImage createImage(String vesselPath) {
 		BufferedImage img = null;
 		try {
-		    img = ImageIO.read(new File("images\\" + filename + ".png"));
+		    img = ImageIO.read(new File("images\\vessels\\" + vesselPath + ".png"));
 		} catch (IOException e) {
 		}
 		return img;

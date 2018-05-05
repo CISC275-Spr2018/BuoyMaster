@@ -5,6 +5,7 @@ import java.util.Collection;
 public abstract class Vessel extends GamePiece{
 	int maxXVel;
 	int maxYVel;
+	String vesselType;
 	WakeCollection wakes;
 	int wakeStrength = 3;
 
@@ -34,33 +35,35 @@ public abstract class Vessel extends GamePiece{
 	
 	
 	String checkDirection() {
+		String direction;
 		if (xVel == 0 && yVel < 0) { // north
-			return "boat_north";
+			direction = "north";
 		}
-		if (xVel > 0 && yVel < 0) { // northeast
-			return"boat_northeast";
+		else if (xVel > 0 && yVel < 0) { // northeast
+			direction ="northeast";
 		}
-		if (xVel > 0 && yVel == 0) { // east
-			return "boat_east";
+		else if (xVel > 0 && yVel == 0) { // east
+			direction = "east";
 		}
-		if (xVel > 0 && yVel > 0) { // southeast
-			return "boat_southeast";
+		else if (xVel > 0 && yVel > 0) { // southeast
+			direction = "southeast";
 		}
-		if (xVel == 0 && yVel > 0) { // south
-			return "boat_south";
+		else if (xVel == 0 && yVel > 0) { // south
+			direction = "south";
 		}
-		if (xVel < 0 && yVel > 0) { // southwest
-			return "boat_southwest";
+		else if (xVel < 0 && yVel > 0) { // southwest
+			direction = "southwest";
 		}
-		if (xVel < 0 && yVel == 0) { // west
-			return "boat_west";
+		else if (xVel < 0 && yVel == 0) { // west
+			direction = "west";
 		}
-		if (xVel < 0 && yVel < 0) { // northwest
-			return "boat_northwest";
+		else if (xVel < 0 && yVel < 0) { // northwest
+			direction = "northwest";
 		}
 		else {
-			return "boat_east";
+			direction = "east";
 		}
+		return vesselType + "\\" + direction;
 	}
 
 	@Override

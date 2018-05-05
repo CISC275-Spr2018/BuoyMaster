@@ -3,6 +3,7 @@ public class FishingBoat extends Vessel{
 	
 	FishingBoat() {
 		super();
+		vesselType = "fishing_boat";
 		maxXVel = 5;
 		maxYVel = 7;
 		this.wakeStrength = 5;

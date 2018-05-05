@@ -3,6 +3,7 @@ public class Speedboat extends Vessel{
 	
 	Speedboat(){
 		super();
+		vesselType = "speed_boat";
 		maxXVel = 14;
 		maxYVel = 16;
 		this.wakeStrength = 1;
