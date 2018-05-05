@@ -17,7 +17,7 @@ public class BuoyPanel extends JPanel{
 	
 	BuoyPanel(Buoy b){
 		try {
-		    img = ImageIO.read(new File("images/buoy.png"));
+		    img = ImageIO.read(new File("images//buoy.png"));
 		} catch (IOException e) {
 		}
 		buoy = b;
