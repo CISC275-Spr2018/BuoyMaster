@@ -53,7 +53,7 @@ public class Controller implements ActionListener {
 	public static void main(String[] args) {
     	EventQueue.invokeLater(new Runnable(){
 			public void run(){
-				Controller c = new Controller();
+				final Controller c = new Controller();
 				Timer t = new Timer(DRAWDELAY, new AbstractAction() {
 					public void actionPerformed(ActionEvent e) {
 						c.update();
