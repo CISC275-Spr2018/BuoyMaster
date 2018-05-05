@@ -14,12 +14,13 @@ public class Model extends KeyAdapter {
 	GameMessage gameMessage;
 	SandBar sandBar;
 	Dock dock;
+	int rand;
 	
 	Model(){
 		player = new Vessel(width/2, height - 100);
 		timer = new Timer();
 		gameMessage = new GameMessage();
-		buoy = new Buoy(width/2, 100, gameMessage);
+		buoy = new Buoy(width/2, 100,rand,gameMessage);
 		sandBar = new SandBar(100, height/2, timer, gameMessage);
 		dock = new Dock(width/2 + 75, height-120);
 	}
