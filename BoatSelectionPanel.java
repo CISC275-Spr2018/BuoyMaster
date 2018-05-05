@@ -37,33 +37,42 @@ public class BoatSelectionPanel  extends JPanel {
 		img1 = ImageIO.read(new File("Images/boat_east.png"));
 		img2 = ImageIO.read(new File("Images/boat_east.png"));
 		img3 = ImageIO.read(new File("Images/boat_east.png"));
-		    
+		
+		//button1 attributes
 		button1 = new JButton(new ImageIcon(img1));
-			
 		button1.setBorder(BorderFactory.createEmptyBorder());
 		button1.setContentAreaFilled(false);
 		button1.setActionCommand("select");
 		button1.addActionListener(new SpeedBoatListener());
+		//button2 attributes
 		button2 = new JButton(new ImageIcon(img2));
 		button2.addActionListener(new JetSkiListener());
 		button2.setActionCommand("select");
 		button2.setBorder(BorderFactory.createEmptyBorder());
 		button2.setContentAreaFilled(false);
+		//button3 attributes
 		button3 = new JButton(new ImageIcon(img3));
 		button3.addActionListener(new FishingBoatListener());
 		button3.setActionCommand("select");
 		button3.setBorder(BorderFactory.createEmptyBorder());
 		button3.setContentAreaFilled(false);   
+		
 		button1.setSize(20,20);
 		button2.setSize(20,20);
 		button3.setSize(30,30);
+		//add buttons based on their layouts
+		//1 is top
+		//2 is center
+		//3 is south
 		this.add(button1,BorderLayout.NORTH);
 		this.add(button2,BorderLayout.CENTER);
 		this.add(button3,BorderLayout.SOUTH);
 	
 			 
 		} catch (IOException e) {
+		
 		}
+		
 		this.frame.add(this);
 		
 	
@@ -81,9 +90,8 @@ public class BoatSelectionPanel  extends JPanel {
 		g.setFont(new Font("Comic Sans MS", Font.PLAIN, 50));
     	g.drawString("Select Your Boat", 10, 40);
 		Color c = new Color(0, 0, 0, 0);
-//    	g.drawImage(img1, 10, 150, c, this);
-//    	g.drawImage(img2, 10, 550, c, this);
-//    	g.drawImage(img3, 10, 350, c, this);
+		
+		//create the stats 
     	g.drawRect(800, 50, RectangleX, RectangleY);
     	g.fillRect(800, 50, RectangleX-20, RectangleY); 
     	g.setFont(new Font("Times New Roman", Font.PLAIN,20));
