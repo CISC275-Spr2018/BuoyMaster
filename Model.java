@@ -39,33 +39,4 @@ public class Model extends KeyAdapter {
 			timer.message = "Game over kid";
 		}
 	}
-	
-	@Override
-	public void keyPressed(KeyEvent e) {
-		int key = e.getKeyCode();
-		if (key == KeyEvent.VK_LEFT && player.xVel > -5) {
-			player.xVel -= 4;
-		}
-		if (key == KeyEvent.VK_RIGHT && player.xVel < 5) {
-			player.xVel += 4;
-		}	
-		if (key == KeyEvent.VK_UP && player.yVel > -7) {
-			player.yVel -= 4;
-		}
-		if (key == KeyEvent.VK_DOWN && player.yVel < 7) {
-			player.yVel += 4;
-		}
-	}
-	@Override
-	public void keyReleased(KeyEvent e) {
-		int key = e.getKeyCode();
-		if (key == KeyEvent.VK_LEFT) {
-		}
-		if (key == KeyEvent.VK_RIGHT) {
-		}
-		if (key == KeyEvent.VK_UP) {
-		}
-		if (key == KeyEvent.VK_DOWN) {
-		}
-	}
 }

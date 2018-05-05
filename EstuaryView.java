@@ -103,9 +103,10 @@ public class EstuaryView extends JPanel{
 		ActionMap am=this.getActionMap();
 				
 		//set key actions for panel in input map
-		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0), "UpArrow");
+
 		im.put(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0), "RightArrow");
-	    im.put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0), "LeftArrow");			    im.put(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0), "UpArrow");
+	    im.put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0), "LeftArrow");			    
+	    im.put(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0), "UpArrow");
 	    im.put(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0), "DownArrow");
 			   
 	    //set key actions for actionmap
