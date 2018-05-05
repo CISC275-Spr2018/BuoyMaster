@@ -87,6 +87,8 @@ public class Buoy extends GamePiece{
 							if(!showAnswer){
 								showAnswer=true;
 								JOptionPane.showMessageDialog(null, "Correct!");	
+								CorrectListener cl=new CorrectListener();
+								cl.addTime();
 //								Model.timer.value+=30;
 							}
 						}
@@ -100,7 +102,9 @@ public class Buoy extends GamePiece{
 						if(reply==JOptionPane.NO_OPTION){
 							if(!showAnswer){
 								showAnswer=true;
-								JOptionPane.showMessageDialog(null, "Correct!");	
+								JOptionPane.showMessageDialog(null, "Correct!");
+								CorrectListener cl=new CorrectListener();
+								cl.addTime();
 								//timer.value+=30;
 							}
 						}
@@ -114,7 +118,9 @@ public class Buoy extends GamePiece{
 						if(reply==JOptionPane.YES_OPTION){
 							if(!showAnswer){
 								showAnswer=true;
-								JOptionPane.showMessageDialog(null, "Correct!");	
+								JOptionPane.showMessageDialog(null, "Correct!");
+								CorrectListener cl=new CorrectListener();
+								cl.addTime();
 							//	timer.value+=30;
 							}
 						}
@@ -129,6 +135,8 @@ public class Buoy extends GamePiece{
 							if(!showAnswer){
 								showAnswer=true;
 								JOptionPane.showMessageDialog(null, "Correct!");	
+								CorrectListener cl=new CorrectListener();
+								cl.addTime();
 							//	timer.value+=30;
 							}
 						}
@@ -143,6 +151,8 @@ public class Buoy extends GamePiece{
 							if(!showAnswer){
 								showAnswer=true;
 								JOptionPane.showMessageDialog(null, "Correct!");	
+								CorrectListener cl=new CorrectListener();
+								cl.addTime();
 							//	timer.value+=30;
 							}
 						}
@@ -156,7 +166,9 @@ public class Buoy extends GamePiece{
 						if(reply==JOptionPane.YES_OPTION){
 							if(!showAnswer){
 								showAnswer=true;
-								JOptionPane.showMessageDialog(null, "Correct!");	
+								JOptionPane.showMessageDialog(null, "Correct!");
+								CorrectListener cl=new CorrectListener();
+								cl.addTime();
 							//	timer.value+=30;
 							}
 						}
@@ -171,6 +183,8 @@ public class Buoy extends GamePiece{
 							if(!showAnswer){
 								showAnswer=true;
 								JOptionPane.showMessageDialog(null, "Correct!");	
+								CorrectListener cl=new CorrectListener();
+								cl.addTime();
 								//timer.value+=30;
 							}
 						}
