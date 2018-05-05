@@ -16,7 +16,6 @@ import javax.swing.InputMap;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
@@ -34,7 +33,7 @@ public class EstuaryView extends JPanel{
 	int yLoc;
 	JPanel panel= new JPanel();
 	JPanel startPanel = new JPanel(new BorderLayout());
-	JPanel selectionPanel=new JPanel(new BorderLayout());
+	JPanel selectionPanel=new BoatSelectionPanel();
 	JPanel estuaryPanel;
 	PlayerPanel playerPanel;
 	BuoyPanel buoyPanel;
@@ -75,66 +74,66 @@ public class EstuaryView extends JPanel{
 		});
 		//stuff for selection panel
 		//selectionPanel.setSize(model.width, model.height);
-		BufferedImage choice1 = null;
-		BufferedImage choice2=null;
-		BufferedImage choice3=null;
-		try {
-			choice1 = ImageIO.read(new File("images/boat_east.png"));
-			choice2=ImageIO.read(new File("images/boat_east.png"));
-			choice3= ImageIO.read(new File("images/boat_east.png"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		JButton button2 = new JButton(new ImageIcon(choice1));
-		button2.setBorder(BorderFactory.createEmptyBorder());
-		button2.setContentAreaFilled(false);
-	    button2.setSize(20,20);
-	    button2.setVisible(true);
-	    button2.setActionCommand("select");
-		button2.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent arg0){
-				cl.show(panel, "3");
-				c.start=true;
-		
-			}
-		});
-		
-		JButton button3 = new JButton(new ImageIcon(choice2));
-		button3.setBorder(BorderFactory.createEmptyBorder());
-		button3.setContentAreaFilled(false);
-	    button3.setSize(20,20);
-	    button3.setVisible(true);
-	    button3.setActionCommand("select");
-		button3.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent arg0){
-				cl.show(panel, "3");
-				c.start=true;
-		
-			}
-		});
-		
-		JButton button4 = new JButton(new ImageIcon(choice3));
-		button4.setBorder(BorderFactory.createEmptyBorder());
-		button4.setContentAreaFilled(false);
-	    button4.setSize(20,20);
-	    button4.setVisible(true);
-	    button4.setActionCommand("select");
-		button4.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent arg0){
-				cl.show(panel, "3");
-				c.start=true;
-		
-			}
-		});
-		
-	    selectionPanel.add(button2,BorderLayout.NORTH);
-	    selectionPanel.add(button3,BorderLayout.CENTER);
-	    selectionPanel.add(button4,BorderLayout.SOUTH);
+//		BufferedImage choice1 = null;
+//		BufferedImage choice2=null;
+//		BufferedImage choice3=null;
+//		try {
+//			choice1 = ImageIO.read(new File("images/boat_east.png"));
+//			choice2=ImageIO.read(new File("images/boat_east.png"));
+//			choice3= ImageIO.read(new File("images/boat_east.png"));
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
+//		JButton button2 = new JButton(new ImageIcon(choice1));
+//		button2.setBorder(BorderFactory.createEmptyBorder());
+//		button2.setContentAreaFilled(false);
+//	    button2.setSize(20,20);
+//	    button2.setVisible(true);
+//	    button2.setActionCommand("select");
+//		button2.addActionListener(new ActionListener(){
+//			@Override
+//			public void actionPerformed(ActionEvent arg0){
+//				cl.show(panel, "3");
+//				c.start=true;
+//		
+//			}
+//		});
+//		
+//		JButton button3 = new JButton(new ImageIcon(choice2));
+//		button3.setBorder(BorderFactory.createEmptyBorder());
+//		button3.setContentAreaFilled(false);
+//	    button3.setSize(20,20);
+//	    button3.setVisible(true);
+//	    button3.setActionCommand("select");
+//		button3.addActionListener(new ActionListener(){
+//			@Override
+//			public void actionPerformed(ActionEvent arg0){
+//				cl.show(panel, "3");
+//				c.start=true;
+//		
+//			}
+//		});
+//		
+//		JButton button4 = new JButton(new ImageIcon(choice3));
+//		button4.setBorder(BorderFactory.createEmptyBorder());
+//		button4.setContentAreaFilled(false);
+//	    button4.setSize(20,20);
+//	    button4.setVisible(true);
+//	    button4.setActionCommand("select");
+//		button4.addActionListener(new ActionListener(){
+//			@Override
+//			public void actionPerformed(ActionEvent arg0){
+//				cl.show(panel, "3");
+//				c.start=true;
+//		
+//			}
+//		});
+//		
+//	    selectionPanel.add(button2,BorderLayout.NORTH);
+//	    selectionPanel.add(button3,BorderLayout.CENTER);
+//	    selectionPanel.add(button4,BorderLayout.SOUTH);
 	    selectionPanel.setBackground(Color.BLUE.darker().darker());
 	    panel.add(startPanel, "1");
 	    panel.add(selectionPanel, "2");
