@@ -43,6 +43,8 @@ public class EstuaryView extends JPanel{
 	DockPanel dockPanel;
 	CardLayout cl= new CardLayout();
 	Controller c;
+	WakePanel wp;
+	WakeCollection wc;
 	
 	
 	EstuaryView(Model model){
@@ -74,6 +76,7 @@ public class EstuaryView extends JPanel{
 		});
 		//stuff for selection panel
 		//selectionPanel.setSize(model.width, model.height);
+<<<<<<< HEAD
 //		BufferedImage choice1 = null;
 //		BufferedImage choice2=null;
 //		BufferedImage choice3=null;
@@ -135,6 +138,69 @@ public class EstuaryView extends JPanel{
 //	    selectionPanel.add(button3,BorderLayout.CENTER);
 //	    selectionPanel.add(button4,BorderLayout.SOUTH);
 	    selectionPanel.setBackground(Color.BLUE.darker().darker());
+=======
+// 		BufferedImage choice1 = null;
+// 		BufferedImage choice2=null;
+// 		BufferedImage choice3=null;
+// 		try {
+// 			choice1 = ImageIO.read(new File("images/boat_east.png"));
+// 			choice2=ImageIO.read(new File("images/boat_east.png"));
+// 			choice3= ImageIO.read(new File("images/boat_east.png"));
+// 		} catch (IOException e) {
+// 			// TODO Auto-generated catch block
+// 			e.printStackTrace();
+// 		}
+		
+// 		JButton button2 = new JButton(new ImageIcon(choice1));
+// 		button2.setBorder(BorderFactory.createEmptyBorder());
+// 		button2.setContentAreaFilled(false);
+// 	    button2.setSize(20,20);
+// 	    button2.setVisible(true);
+// 	    button2.setActionCommand("select");
+// 		button2.addActionListener(new ActionListener(){
+// 			@Override
+// 			public void actionPerformed(ActionEvent arg0){
+// 				cl.show(panel, "3");
+// 				c.start=true;
+		
+// 			}
+// 		});
+		
+// 		JButton button3 = new JButton(new ImageIcon(choice2));
+// 		button3.setBorder(BorderFactory.createEmptyBorder());
+// 		button3.setContentAreaFilled(false);
+// 	    button3.setSize(20,20);
+// 	    button3.setVisible(true);
+// 	    button3.setActionCommand("select");
+// 		button3.addActionListener(new ActionListener(){
+// 			@Override
+// 			public void actionPerformed(ActionEvent arg0){
+// 				cl.show(panel, "3");
+// 				c.start=true;
+		
+// 			}
+// 		});
+		
+// 		JButton button4 = new JButton(new ImageIcon(choice3));
+// 		button4.setBorder(BorderFactory.createEmptyBorder());
+// 		button4.setContentAreaFilled(false);
+// 	    button4.setSize(20,20);
+// 	    button4.setVisible(true);
+// 	    button4.setActionCommand("select");
+// 		button4.addActionListener(new ActionListener(){
+// 			@Override
+// 			public void actionPerformed(ActionEvent arg0){
+// 				cl.show(panel, "3");
+// 				c.start=true;
+		
+// 			}
+// 		});
+		
+// 	    selectionPanel.add(button2,BorderLayout.NORTH);
+// 	    selectionPanel.add(button3,BorderLayout.CENTER);
+// 	    selectionPanel.add(button4,BorderLayout.SOUTH);
+// 	    selectionPanel.setBackground(Color.BLUE.darker().darker());
+>>>>>>> c65822141585240b058f1b9193d76d8fdf262a78
 	    panel.add(startPanel, "1");
 	    panel.add(selectionPanel, "2");
 	   
@@ -144,6 +210,9 @@ public class EstuaryView extends JPanel{
 		gameMessagePanel = new GameMessagePanel(model.gameMessage);
 		sandBarPanel = new SandBarPanel(model.sandBar);
 		dockPanel = new DockPanel(model.dock);
+		wp = new WakePanel();
+		wc = model.player.wakes;
+		
 		estuaryPanel=this;
 		estuaryPanel.addKeyListener(model);
 		this.frame = new JFrame();
@@ -177,6 +246,7 @@ public class EstuaryView extends JPanel{
 	}
 	
 	public void update(){
+		wp.updateAll(wc);
 		this.repaint();
 	}
 	
@@ -184,12 +254,12 @@ public class EstuaryView extends JPanel{
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		buoyPanel.paintComponent(g);
+		wp.paintComponent(g);
 		playerPanel.paintComponent(g);
 		timerPanel.paintComponent(g);
 		gameMessagePanel.paintComponent(g);
 		sandBarPanel.paintComponent(g);
 		dockPanel.paintComponent(g);
-		
 		
     }
 

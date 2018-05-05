@@ -115,5 +115,3 @@ public class BoatSelectionPanel  extends JPanel {
 
     }
 }
-
-
