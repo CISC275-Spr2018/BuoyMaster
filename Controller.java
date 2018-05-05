@@ -41,7 +41,6 @@ public class Controller implements ActionListener {
 		gkl = new GameKeyListener(model.getPlayer(), EView);
 		EView.addKeyListener(gkl);
 		start = true;
-		
 	}
 	
 	void update() {

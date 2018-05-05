@@ -27,12 +27,6 @@ public class GameKeyListener implements KeyListener {
 		if (key == KeyEvent.VK_DOWN && player.yVel < 7) {
 			player.yVel += 4;
 		}
-		if (key == KeyEvent.VK_0) {
-			Eview.layers.moveToFront(Eview.estuaryPanel);
-		}
-		if (key == KeyEvent.VK_1) {
-			Eview.layers.moveToBack(Eview.estuaryPanel);
-		}
 		
 	}
 	@Override

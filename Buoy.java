@@ -1,6 +1,7 @@
 
 public class Buoy extends GamePiece{
 	private GameMessage gameMessage;
+	
 	Buoy(int x, int y, GameMessage g){
 		this.xLoc = x;
 		this.yLoc = y;
@@ -12,6 +13,6 @@ public class Buoy extends GamePiece{
 	@Override
 	public void onCollide() {
 		gameMessage.message = "you got the data, now return!";
-		this.yVel = -1;
+		//this.yVel = -1;
 	}
 }

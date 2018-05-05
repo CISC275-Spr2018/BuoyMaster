@@ -15,6 +15,9 @@ public class Model{
 	private GameMessage gameMessage;
 	SandBarCollection sandBarCollection;
 	private Dock dock;
+	QuestionTrigger qt;
+	
+	boolean pause = false;
 	
 	Model(int x, int y){
 		width = x;
@@ -25,6 +28,7 @@ public class Model{
 		buoy = new Buoy(width/2, 100, gameMessage);
 		sandBarCollection = new SandBarCollection();
 		dock = new Dock(width/2 + 75, height-120);
+		qt = new QuestionTrigger(500, 500, this);
 		
 		sandBarCollection.addSandBar(100, 200, timer, gameMessage);
 		sandBarCollection.addRandomSandBar(timer, gameMessage);
@@ -33,17 +37,19 @@ public class Model{
 	
 	// all individual model update methods in central method
 	void modelUpdate() {
-		buoy.hasCollided(player);
-		sandBarCollection.checkAllCollision(player);
-		if (timer.value > 0) {
-			buoy.update();
-			player.update();
-			timer.update();
-			sandBarCollection.updateAll();
-			dock.update();
-		}
-		else {
-			timer.message = "Game over kid";
+		if (!pause) {
+			buoy.hasCollided(player);
+			sandBarCollection.checkAllCollision(player);
+			if (timer.value > 0) {
+				buoy.update();
+				player.update();
+				timer.update();
+				sandBarCollection.updateAll();
+				dock.update();
+			}
+			else {
+				timer.message = "Game over kid";
+			}
 		}
 	}
 	

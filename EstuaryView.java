@@ -28,6 +28,7 @@ public class EstuaryView extends JFrame{
 	EstuaryPanel estuaryPanel;
 	StartScreen startScreen;
 	SelectionScreen selectionScreen;
+	FactScreen factScreen;
 	JLayeredPane layers;
 	
 	EstuaryView(int width, int height){
@@ -36,8 +37,13 @@ public class EstuaryView extends JFrame{
 		estuaryPanel = new EstuaryPanel();
 		startScreen = new StartScreen(this);
 		selectionScreen = new SelectionScreen(this);
+		factScreen = new FactScreen();
 		layers = new JLayeredPane();
 		
+		factScreen.setBounds(500, 500, 250, 250);
+		estuaryPanel.add(factScreen);
+		
+		factScreen.setVisible(false);
 		
 		estuaryPanel.setBounds(0, 0, 1000, 1000);
 		startScreen.setBounds(0, 0, 1000, 1000);
@@ -70,6 +76,7 @@ public class EstuaryView extends JFrame{
 	*/
 	public void update(Model model){
 		estuaryPanel.update(model);
+		factScreen.setVisible(model.getBuoy().hasCollided(model.getPlayer()));
 	}
 	
 	/*
