@@ -1,3 +1,5 @@
+import javax.swing.JOptionPane;
+
 public class Dock extends GamePiece{
 	Dock(int x, int y){
 		this.xLoc = x;
@@ -8,7 +10,7 @@ public class Dock extends GamePiece{
 
 	@Override
 	public void onCollide() {
-		// TODO Auto-generated method stub
-		
+		JOptionPane.showMessageDialog(null, "You returned with the data!");
+		System.exit(0);
 	} 
 }

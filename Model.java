@@ -28,7 +28,7 @@ public class Model extends KeyAdapter {
 		buoy = new Buoy(width/2, 100,rand,gameMessage);
 		sandBar = new SandBar(100, height/2, timer, gameMessage);
 		dock = new Dock(width/2 + 75, height-120);
-		rand=random.nextInt(100000000)%15;
+		rand=random.nextInt(14);
 	}
 		
 	

@@ -46,7 +46,7 @@ public class Buoy extends GamePiece{
 		questions[4]="The salinity of an estuary can range from .5-25 PPT. Was the measrument at the buoy within this range of good values?";
 		questions[5]="The salinity of an estuary can range from .5-25 PPT. Was the measrument at the buoy within this range of good values?";
 		questions[6]="The salinity of an estuary can range from .5-25 PPT. Was the measrument at the buoy within this range of good values?";
-		questions[7]="Temperatures estuaries can vary greatly.";
+		questions[7]="Temperatures estuaries can vary greatly .";
 		questions[8]="The temperature of the water is 52 degrees Farenheit";
 		questions[9]="The temperature of the water is 50 degrees Farenheit";
 		questions[10]="The temperature of the water is 65 degrees Farenheit";
