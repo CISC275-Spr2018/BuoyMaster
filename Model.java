@@ -1,6 +1,7 @@
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.concurrent.ThreadLocalRandom;
 
 /*
  * Main Model for entire state of the game.
@@ -15,24 +16,20 @@ public class Model{
 	private GameMessage gameMessage;
 	SandBarCollection sandBarCollection;
 	private Dock dock;
-	QuestionTrigger qt;
+	int health = 100000;
 	
 	boolean pause = false;
 	
 	Model(int x, int y){
 		width = x;
 		height = y;
-		player = new Vessel(width/2, height - 100);
+		player = null;
 		timer = new Timer();
 		gameMessage = new GameMessage();
-		buoy = new Buoy(width/2, 100, gameMessage);
+		buoy = new Buoy(width - 100, 100, gameMessage);
 		sandBarCollection = new SandBarCollection();
-		dock = new Dock(width/2 + 75, height-120);
-		qt = new QuestionTrigger(500, 500, this);
+		dock = new Dock(0, height/2);
 		
-		sandBarCollection.addSandBar(100, 200, timer, gameMessage);
-		sandBarCollection.addRandomSandBar(timer, gameMessage);
-		sandBarCollection.addRandomSandBar(timer, gameMessage);
 	}
 	
 	// all individual model update methods in central method
@@ -40,6 +37,10 @@ public class Model{
 		if (!pause) {
 			buoy.hasCollided(player);
 			sandBarCollection.checkAllCollision(player);
+			health -= player.wakeStrength;
+			if (health > 0 && ThreadLocalRandom.current().nextInt(0, health + 1) % player.wakeStrength == 0){
+				sandBarCollection.addRandomSandBar(player, timer, gameMessage);
+			}
 			if (timer.value > 0) {
 				buoy.update();
 				player.update();
@@ -50,6 +51,9 @@ public class Model{
 			else {
 				timer.message = "Game over kid";
 			}
+			
+			System.out.print("Player location: " + player.xLoc + " ," + player.yLoc);
+			System.out.println(" | Player increment: " + player.xVel + ", " + player.yVel);
 		}
 	}
 	

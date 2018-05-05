@@ -30,11 +30,11 @@ public abstract class GamePiece implements Collidable{
 	}
 
 	boolean withinXRange(GamePiece g2) {
-		return (this.xLoc < g2.xLoc + 50) && (this.xLoc > g2.xLoc - 50);
+		return (this.xLoc < g2.xLoc + 25) && (this.xLoc > g2.xLoc - 25);
 	}
 	
 	boolean withinYRange(GamePiece g2) {
-		return (this.yLoc < g2.yLoc + 50) && (this.yLoc > g2.yLoc - 50);
+		return (this.yLoc < g2.yLoc + 25) && (this.yLoc > g2.yLoc - 25);
 	}
 	
 	void update() {

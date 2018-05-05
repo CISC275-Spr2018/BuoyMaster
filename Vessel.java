@@ -2,11 +2,23 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class Vessel extends GamePiece{
+public abstract class Vessel extends GamePiece{
+	int maxXVel;
+	int maxYVel;
 	WakeCollection wakes;
 	int wakeStrength = 3;
 
+	Vessel(){
+		maxXVel = 0;
+		maxYVel = 0;
+		this.xLoc = 0;
+		this.yLoc = 500;
+		wakes = new WakeCollection();
+	}
+	
 	Vessel(int x, int y){
+		maxXVel = 0;
+		maxYVel = 0;
 		this.xLoc = x;
 		this.yLoc = y;
 		wakes = new WakeCollection();
@@ -18,9 +30,6 @@ public class Vessel extends GamePiece{
 		wakes.addWake(this.xLoc, this.yLoc, -this.xVel, -this.yVel, this.wakeStrength);
 		wakes.update();
 		super.update();
-		System.out.print("Player location: " + this.xLoc + " ," + this.yLoc);
-		System.out.print(" | Player increment: " + this.xVel + ", " + this.yVel);
-		System.out.println(" | sandbars: ");
 	}
 	
 	
@@ -50,7 +59,7 @@ public class Vessel extends GamePiece{
 			return "boat_northwest";
 		}
 		else {
-			return "boat_north";
+			return "boat_east";
 		}
 	}
 

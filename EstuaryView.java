@@ -1,5 +1,7 @@
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Toolkit;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -34,9 +36,9 @@ public class EstuaryView extends JFrame{
 		
 		factScreen.setVisible(false);
 		
-		estuaryPanel.setBounds(0, 0, 1000, 1000);
-		startScreen.setBounds(0, 0, 1000, 1000);
-		selectionScreen.setBounds(0, 0, 1000, 1000);
+		estuaryPanel.setBounds(0, 0, width, height);
+		startScreen.setBounds(0, 0, width, height);
+		selectionScreen.setBounds(0, 0, width, height);
 		layers.add(estuaryPanel, new Integer(1), 2);
 	    layers.add(startScreen, new Integer(1), 0);
 	    layers.add(selectionScreen, new Integer(1), 1);
