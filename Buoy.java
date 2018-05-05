@@ -6,6 +6,7 @@ import javax.swing.JOptionPane;
 public class Buoy extends gamePiece{
 	GameMessage gameMessage;
 	boolean show = true;
+	public boolean hasCollected=false;
 	String[] data= new String[15];
 	int rand;
 	
@@ -28,13 +29,9 @@ public class Buoy extends gamePiece{
 		data[9]="The temperature of the water is 50 degrees Farenheit";
 		data[10]="The temperature of the water is 65 degrees Farenheit";
 		data[11]="The temperature of the water is 74 degrees Farenheit";
-		data[12]="";
-		data[13]="";
-		data[14]="";
-		data[15]="";
-		
-		
-		
+		data[12]="The pH of the water is 4";
+		data[13]="The pH of the water is 6";
+		data[14]="The pH of the water is 8";
 		
 	}
 	public String createRandomFact(){
@@ -44,6 +41,7 @@ public class Buoy extends gamePiece{
 	@Override
 	public void onCollide() {
 		gameMessage.message = "you got the data, now return!";
+		hasCollected=true;
 		this.yVel = -1;
 		if(show){
 			show=!show;
