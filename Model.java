@@ -1,6 +1,7 @@
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 /*
@@ -17,8 +18,7 @@ public class Model{
 	SandBarCollection sandBarCollection;
 	private Dock dock;
 	int health = 100000;
-	
-	boolean pause = false;
+	ShoreLine shoreline;
 	
 	Model(int x, int y){
 		width = x;
@@ -28,33 +28,38 @@ public class Model{
 		gameMessage = new GameMessage();
 		buoy = new Buoy(width - 100, 100, gameMessage);
 		sandBarCollection = new SandBarCollection();
-		dock = new Dock(0, height/2);
-		
+		dock = new Dock(0, height/2, buoy, timer, gameMessage);
+		shoreline = new ShoreLine(0, 420);
 	}
 	
 	// all individual model update methods in central method
 	void modelUpdate() {
-		if (!pause) {
-			buoy.hasCollided(player);
-			sandBarCollection.checkAllCollision(player);
-			health -= player.wakeStrength;
-			if (health > 0 && ThreadLocalRandom.current().nextInt(0, health + 1) % player.wakeStrength == 0){
-				sandBarCollection.addRandomSandBar(player, timer, gameMessage);
-			}
-			if (timer.value > 0) {
-				buoy.update();
-				player.update();
-				timer.update();
-				sandBarCollection.updateAll();
-				dock.update();
-			}
-			else {
-				timer.message = "Game over kid";
-			}
-			
-			System.out.print("Player location: " + player.xLoc + " ," + player.yLoc);
-			System.out.println(" | Player increment: " + player.xVel + ", " + player.yVel);
+		Random r = new Random();
+		int i = r.nextInt((health - 0) + 1) + 0;
+		health -= player.wakeStrength;
+		
+		
+		buoy.hasCollided(player);
+		sandBarCollection.checkAllCollision(player);
+		dock.hasCollided(player);
+		
+		if (health > 0 && i % player.wakeStrength == 0){
+			sandBarCollection.addRandomSandBar(player, timer, gameMessage, player);
 		}
+		
+		if (sandBarCollection.sandBars.size() % 5 == 1) {
+			shoreline.yLoc++;
+		}
+		
+		buoy.update();
+		player.update();
+		timer.update();
+		sandBarCollection.updateAll();
+		dock.update();
+	
+		
+		System.out.print("Player location: " + player.xLoc + " ," + player.yLoc);
+		System.out.println(" | Player increment: " + player.xVel + ", " + player.yVel);
 	}
 	
 	public Vessel getPlayer() {

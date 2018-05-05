@@ -12,7 +12,6 @@ public class QuestionTrigger extends GamePiece{
 	@Override
 	public void onCollide() {
 		// TODO Auto-generated method stub
-		model.pause = true;
 	}
 
 }

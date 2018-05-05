@@ -11,6 +11,7 @@ public class EstuaryPanel extends JPanel{
 	private SandBarPanel sandBarPanel;
 	private DockPanel dockPanel;
 	WakePanel wp;
+	ShorelinePanel slp;
 	
 	EstuaryPanel() {
 		vesselPanel = new VesselPanel();
@@ -20,6 +21,7 @@ public class EstuaryPanel extends JPanel{
 		sandBarPanel = new SandBarPanel();
 		dockPanel = new DockPanel();
 		wp = new WakePanel();
+		slp = new ShorelinePanel();
 		this.setBackground(Color.CYAN.darker().darker());
 	}
 	
@@ -31,17 +33,19 @@ public class EstuaryPanel extends JPanel{
 		timerPanel.update(model.getTimer().message);
 		gameMessagePanel.update(model.getGameMessage().message);
 		wp.updateAll(model);
+		slp.update(model.shoreline.xLoc, model.shoreline.yLoc);
 		this.repaint();
 	}
 	
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		buoyPanel.paintComponent(g);
+		sandBarPanel.paintComponent(g);
 		wp.paintComponent(g);
+		dockPanel.paintComponent(g);
 		vesselPanel.paintComponent(g);
+		buoyPanel.paintComponent(g);
 		timerPanel.paintComponent(g);
 		gameMessagePanel.paintComponent(g);
-		sandBarPanel.paintComponent(g);
-		dockPanel.paintComponent(g);
+		slp.paintComponent(g);
     }
 }

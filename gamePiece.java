@@ -4,6 +4,7 @@ public abstract class GamePiece implements Collidable{
 	protected int yLoc;
 	protected int xVel;
 	protected int yVel;
+	private final int range = 30;
 	
 	boolean hasCollided(GamePiece g2) {
 		boolean collide = withinXRange(g2) && withinYRange(g2);
@@ -30,11 +31,11 @@ public abstract class GamePiece implements Collidable{
 	}
 
 	boolean withinXRange(GamePiece g2) {
-		return (this.xLoc < g2.xLoc + 25) && (this.xLoc > g2.xLoc - 25);
+		return (this.xLoc < g2.xLoc + range) && (this.xLoc > g2.xLoc - range);
 	}
 	
 	boolean withinYRange(GamePiece g2) {
-		return (this.yLoc < g2.yLoc + 25) && (this.yLoc > g2.yLoc - 25);
+		return (this.yLoc < g2.yLoc + range) && (this.yLoc > g2.yLoc - range);
 	}
 	
 	void update() {

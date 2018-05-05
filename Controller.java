@@ -6,8 +6,8 @@ import javax.swing.AbstractAction;
 import javax.swing.Timer;
 
 public class Controller implements ActionListener {
-	private final int width = 1920;
-	private final int height = 1080;
+	private final int width = 1280;
+	private final int height = 720;
 	private final static int DRAWDELAY = 50;
 	private Model model;
 	private EstuaryView EView;
@@ -43,7 +43,7 @@ public class Controller implements ActionListener {
 	}
 	
 	void update() {
-		if (start) {
+		if (start && model.getTimer().value > 0) {
 			EView.layers.moveToFront(EView.estuaryPanel);
 			model.modelUpdate();
 			EView.update(model);

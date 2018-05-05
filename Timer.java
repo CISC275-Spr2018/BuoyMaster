@@ -12,5 +12,8 @@ class Timer {
 	void update() {
 		value -= increment;
 		message = value + "";
+		if (value <= 0) {
+			message = "Out of time!";
+		}
 	}
 }

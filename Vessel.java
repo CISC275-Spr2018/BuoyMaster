@@ -12,7 +12,7 @@ public abstract class Vessel extends GamePiece{
 		maxXVel = 0;
 		maxYVel = 0;
 		this.xLoc = 0;
-		this.yLoc = 500;
+		this.yLoc = 300;
 		wakes = new WakeCollection();
 	}
 	
