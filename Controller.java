@@ -20,22 +20,22 @@ public class Controller implements ActionListener {
 		EView = new EstuaryView(width, height);
 		EView.addKeyListener(gkl);
 		
-		EView.selectionScreen.boat1.addActionListener(this);
-		EView.selectionScreen.boat2.addActionListener(this);
-		EView.selectionScreen.boat3.addActionListener(this);
+		EView.selectionScreen.jetSki.addActionListener(this);
+		EView.selectionScreen.fishingBoat.addActionListener(this);
+		EView.selectionScreen.speedBoat.addActionListener(this);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// boats start in different positions to test if the buttons actually work
-		if (e.getSource() == EView.selectionScreen.boat1) {
-			model.setVessel(new Speedboat());
-		}
-		if (e.getSource() == EView.selectionScreen.boat2) {
+		if (e.getSource() == EView.selectionScreen.jetSki) {
 			model.setVessel(new Jetski());
 		}
-		if (e.getSource() == EView.selectionScreen.boat3) {
+		if (e.getSource() == EView.selectionScreen.fishingBoat) {
 			model.setVessel(new FishingBoat());
+		}
+		if (e.getSource() == EView.selectionScreen.speedBoat) {
+			model.setVessel(new Speedboat());
 		}
 		gkl = new GameKeyListener(model.getPlayer(), EView);
 		EView.addKeyListener(gkl);

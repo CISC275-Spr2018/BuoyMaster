@@ -23,7 +23,7 @@ public class WakePanel extends JPanel{
 	BufferedImage createImage(String filename) {
 		BufferedImage img = null;
 		try {
-		    img = ImageIO.read(new File("images\\" + filename + ".png"));
+		    img = ImageIO.read(new File("images\\wake\\" + filename + ".png"));
 		} catch (IOException e) {
 		}
 		return img;

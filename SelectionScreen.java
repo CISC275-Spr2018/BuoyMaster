@@ -6,29 +6,29 @@ import javax.swing.JPanel;
 
 public class SelectionScreen extends JPanel implements ActionListener{
 	EstuaryView EView;
-	JButton boat1;
-	JButton boat2;
-	JButton boat3;
+	JButton jetSki;
+	JButton fishingBoat;
+	JButton speedBoat;
 	
 	SelectionScreen(EstuaryView e){
 		EView = e;
 		EView.startScreen.startButton.addActionListener(this);
 		
-		boat1 = new JButton("boat1");
-		boat2 = new JButton("boat2");
-		boat3 = new JButton("boat3");
+		jetSki = new JButton("Jet Ski");
+		fishingBoat = new JButton("Fishing Boat");
+		speedBoat = new JButton("Speed Boat");
 		
-		boat1.setFocusable(false);
-		boat2.setFocusable(false);
-		boat3.setFocusable(false);
+		jetSki.setFocusable(false);
+		fishingBoat.setFocusable(false);
+		speedBoat.setFocusable(false);
 		
-		this.add(boat1);
-		this.add(boat2);
-		this.add(boat3);
+		this.add(jetSki);
+		this.add(fishingBoat);
+		this.add(speedBoat);
 		
-		boat1.addActionListener(this);
-		boat2.addActionListener(this);
-		boat3.addActionListener(this);
+		jetSki.addActionListener(this);
+		fishingBoat.addActionListener(this);
+		speedBoat.addActionListener(this);
 	}
 
 	@Override
