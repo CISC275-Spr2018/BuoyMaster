@@ -47,7 +47,7 @@ public class EstuaryView extends JPanel{
 		buoyPanel.update(model.getBuoy().getXLoc(), model.getBuoy().getYLoc());
 		dockPanel.update(model.getDock().getXLoc(), model.getDock().getYLoc());
 		vesselPanel.update(model.getPlayer().getXLoc(), model.getPlayer().getYLoc(), model.getPlayer().checkDirection());
-		sandBarPanel.update(model.getSandBar().getXLoc(), model.getSandBar().getYLoc());
+		sandBarPanel.update(model);
 		timerPanel.update(model.getTimer().message);
 		gameMessagePanel.update(model.getGameMessage().message);
 		wp.updateAll(model);

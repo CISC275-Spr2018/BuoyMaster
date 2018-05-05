@@ -12,7 +12,7 @@ public class Model extends KeyAdapter {
 	private Buoy buoy;
 	private Timer timer;
 	private GameMessage gameMessage;
-	private SandBar sandBar;
+	SandBarCollection sandBarCollection;
 	private Dock dock;
 	
 	Model(int x, int y){
@@ -22,19 +22,23 @@ public class Model extends KeyAdapter {
 		timer = new Timer();
 		gameMessage = new GameMessage();
 		buoy = new Buoy(width/2, 100, gameMessage);
-		sandBar = new SandBar(100, height/2, timer, gameMessage);
+		sandBarCollection = new SandBarCollection();
 		dock = new Dock(width/2 + 75, height-120);
+		
+		sandBarCollection.addSandBar(100, 200, timer, gameMessage);
+		sandBarCollection.addRandomSandBar(timer, gameMessage);
+		sandBarCollection.addRandomSandBar(timer, gameMessage);
 	}
 	
 	// all individual model update methods in central method
 	void modelUpdate() {
 		buoy.hasCollided(player);
-		sandBar.hasCollided(player);
+		sandBarCollection.checkAllCollision(player);
 		if (timer.value > 0) {
 			buoy.update();
 			player.update();
 			timer.update();
-			sandBar.update();
+			sandBarCollection.updateAll();
 			dock.update();
 		}
 		else {
@@ -53,9 +57,6 @@ public class Model extends KeyAdapter {
 	}
 	public GameMessage getGameMessage() {
 		return gameMessage;
-	}
-	public SandBar getSandBar() {
-		return sandBar;
 	}
 	public Dock getDock() {
 		return dock;
@@ -81,6 +82,9 @@ public class Model extends KeyAdapter {
 		}
 		if (key == KeyEvent.VK_DOWN && player.yVel < 7) {
 			player.yVel += 4;
+		}
+		if (key == KeyEvent.VK_F) {
+			sandBarCollection.addRandomSandBar(timer, gameMessage);
 		}
 	}
 	@Override

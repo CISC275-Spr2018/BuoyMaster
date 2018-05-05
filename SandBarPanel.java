@@ -4,13 +4,13 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashSet;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 public class SandBarPanel extends JPanel{
-	private int xDrawLoc;
-	private int yDrawLoc;
+	HashSet<SandBar> sandBars;
 	BufferedImage img;
 	
 	SandBarPanel(){
@@ -20,14 +20,15 @@ public class SandBarPanel extends JPanel{
 		}
 	}
 	
-	void update(int x, int y) {
-		xDrawLoc = x;
-		yDrawLoc = y;
+	void update(Model m) {
+		sandBars = m.sandBarCollection.sandBars;
 	}
 	
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Color c = new Color(0, 0, 0, 0); // transparent color
-    	g.drawImage(img, xDrawLoc, yDrawLoc, c, this);
+    	for (SandBar s : sandBars) {
+    		g.drawImage(img, s.xLoc + 10, s.yLoc + 10, c, this);
+    	}
     }
 }
