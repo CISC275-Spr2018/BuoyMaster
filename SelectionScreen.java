@@ -5,14 +5,11 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class SelectionScreen extends JPanel implements ActionListener{
-	View view;
 	JButton jetSki;
 	JButton fishingBoat;
 	JButton speedBoat;
 	
-	SelectionScreen(View view){
-		this.view = view;
-		view.startScreen.startButton.addActionListener(this);
+	SelectionScreen(){
 		
 		jetSki = new JButton("Jet Ski");
 		fishingBoat = new JButton("Fishing Boat");
@@ -20,7 +17,7 @@ public class SelectionScreen extends JPanel implements ActionListener{
 		
 		jetSki.setFocusable(false);
 		fishingBoat.setFocusable(false);
-		speedBoat.setFocusable(false);
+		speedBoat.setFocusable(false); // Keeps focus on the game so arrow keys work
 		
 		this.add(jetSki);
 		this.add(fishingBoat);
@@ -33,7 +30,5 @@ public class SelectionScreen extends JPanel implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		view.layers.moveToFront(view.selectionScreen);
 	}
-
 }

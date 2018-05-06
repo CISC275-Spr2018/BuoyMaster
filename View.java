@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,46 +15,40 @@ import javax.swing.JPanel;
  * Will hold all different Panels of objects - PlayerPanel, BuoyPanel, etc.
  */
 public class View extends JFrame{
-	private final int width;
-	private final int height;
-	EstuaryPanel estuaryPanel;
+	EstuaryScreen estuaryScreen;
 	StartScreen startScreen;
 	SelectionScreen selectionScreen;
 	FactScreen factScreen;
 	JLayeredPane layers;
 	
 	View(int width, int height){
-		this.width = width;
-		this.height = height;
-		estuaryPanel = new EstuaryPanel();
-		startScreen = new StartScreen(this);
-		selectionScreen = new SelectionScreen(this);
-		factScreen = new FactScreen();
+		this.setSize(width, height);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		startScreen = new StartScreen();
+		selectionScreen = new SelectionScreen();
+		estuaryScreen = new EstuaryScreen();
+		
 		layers = new JLayeredPane();
 		
-		factScreen.setBounds(500, 500, 250, 250);
-		estuaryPanel.add(factScreen);
+		//factScreen = new FactScreen();
+		//factScreen.setBounds(500, 500, 250, 250);
+		//estuaryScreen.add(factScreen);
+		//factScreen.setVisible(false);
 		
-		factScreen.setVisible(false);
-		
-		estuaryPanel.setBounds(0, 0, width, height);
-		startScreen.setBounds(0, 0, width, height);
+		startScreen.setBounds(0, 0, width, height); // Sets the size of each of the screens
 		selectionScreen.setBounds(0, 0, width, height);
-		layers.add(estuaryPanel, new Integer(1), 2);
-	    layers.add(startScreen, new Integer(1), 0);
-	    layers.add(selectionScreen, new Integer(1), 1);
+		estuaryScreen.setBounds(0, 0, width, height);
 		
-		setFocusable(true);
-		
+	    layers.add(startScreen, 1, 0); //Not certain why an integer is needed as a constraint but it is.
+	    layers.add(selectionScreen, 1, 1);
+	    layers.add(estuaryScreen, 1, 2);
 		this.add(layers);
 		
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(width, height);
 		this.setVisible(true);
 	}
 	public void update(Model model){
-		estuaryPanel.update(model);
-		factScreen.setVisible(model.getBuoy().hasCollided(model.getPlayer()));
+		estuaryScreen.update(model);
+		//factScreen.setVisible(model.getBuoy().hasCollided(model.getPlayer()));
 	}
-	
 }

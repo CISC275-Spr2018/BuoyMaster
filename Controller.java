@@ -44,7 +44,7 @@ public class Controller implements ActionListener {
 	
 	void update() {
 		if (start && !model.gameOver) {
-			view.layers.moveToFront(view.estuaryPanel);
+			view.layers.moveToFront(view.estuaryScreen);
 			model.modelUpdate();
 			view.update(model);
 		}

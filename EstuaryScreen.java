@@ -3,7 +3,7 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
-public class EstuaryPanel extends JPanel{
+public class EstuaryScreen extends JPanel{
 	private VesselPanel vesselPanel;
 	private BuoyPanel buoyPanel;
 	private TimerPanel timerPanel;
@@ -13,7 +13,7 @@ public class EstuaryPanel extends JPanel{
 	WakePanel wp;
 	ShorelinePanel slp;
 	
-	EstuaryPanel() {
+	EstuaryScreen() {
 		vesselPanel = new VesselPanel();
 		buoyPanel = new BuoyPanel();
 		timerPanel = new TimerPanel();
