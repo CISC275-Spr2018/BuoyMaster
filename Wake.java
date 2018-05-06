@@ -18,33 +18,35 @@ public class Wake extends GamePiece{
 	}
 	
 	String checkDirection() {
+		String direction;
 		if (xVel == 0 && yVel < 0) { // north
-			return "wake_north";
+			direction = "north";
 		}
-		if (xVel > 0 && yVel < 0) { // northeast
-			return"wake_northeast";
+		else if (xVel > 0 && yVel < 0) { // northeast
+			direction = "northeast";
 		}
-		if (xVel > 0 && yVel == 0) { // east
-			return "wake_east";
+		else if (xVel > 0 && yVel == 0) { // east
+			direction = "east";
 		}
-		if (xVel > 0 && yVel > 0) { // southeast
-			return "wake_southeast";
+		else if (xVel > 0 && yVel > 0) { // southeast
+			direction = "southeast";
 		}
-		if (xVel == 0 && yVel > 0) { // south
-			return "wake_south";
+		else if (xVel == 0 && yVel > 0) { // south
+			direction = "south";
 		}
-		if (xVel < 0 && yVel > 0) { // southwest
-			return "wake_southwest";
+		else if (xVel < 0 && yVel > 0) { // southwest
+			direction = "southwest";
 		}
-		if (xVel < 0 && yVel == 0) { // west
-			return "wake_west";
+		else if (xVel < 0 && yVel == 0) { // west
+			direction = "west";
 		}
-		if (xVel < 0 && yVel < 0) { // northwest
-			return "wake_northwest";
+		else if (xVel < 0 && yVel < 0) { // northwest
+			direction = "northwest";
 		}
 		else {
-			return "";
+			direction = "";
 		}
+		return direction;
 	}
 
 	@Override
