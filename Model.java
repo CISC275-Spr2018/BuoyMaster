@@ -22,9 +22,9 @@ public class Model{
 	boolean gameOver = false;
 	
 	
-	Model(int x, int y){
-		width = x;
-		height = y;
+	Model(int width, int height){
+		this.width = width;
+		this.height = height;
 		player = null;
 		timer = new Timer();
 		gameMessage = new GameMessage();
@@ -40,13 +40,12 @@ public class Model{
 		int i = r.nextInt((health - 0) + 1) + 0;
 		health -= player.updatesBetweenWakes;
 		
-		
 		buoy.hasCollided(player);
 		sandBarCollection.checkAllCollision(player);
 		dock.hasCollided(player);
 		
 		if (health > 0 && i % player.updatesBetweenWakes == 0){
-			sandBarCollection.addRandomSandBar(player, gameMessage, player);
+			sandBarCollection.addRandomSandBar(player, timer, gameMessage, player);
 		}
 		
 		if (sandBarCollection.sandBars.size() % 5 == 1) {
@@ -58,10 +57,6 @@ public class Model{
 		sandBarCollection.updateAll();
 		dock.dataCollected(buoy.collectedStatus());
 	
-		
-		if(gameOver){
-			System.out.println("The game has ended.");
-		}
 	}
 	
 	public Vessel getPlayer() {

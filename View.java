@@ -47,7 +47,7 @@ public class View extends JFrame{
 		
 		this.setVisible(true);
 	}
-	public void update(Model model){
+	public void update(Model model){ //this method should take something other than the entire model object //// TO DO!!!!!!!!
 		estuaryScreen.update(model);
 		//factScreen.setVisible(model.getBuoy().hasCollided(model.getPlayer()));
 	}

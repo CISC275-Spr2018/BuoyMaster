@@ -2,7 +2,7 @@
 public class JetSki extends Vessel{
 	JetSki(){
 		super();
-		vesselType = "jet_ski";
+		type = VesselType.JETSKI;
 		maxVel = 10;
 		this.updatesBetweenWakes = 2;
 	}

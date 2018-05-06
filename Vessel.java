@@ -5,7 +5,7 @@ import java.util.Collection;
 public abstract class Vessel extends GamePiece{
 	int maxVel;
 	Direction dir = Direction.EAST;
-	String vesselType;
+	VesselType type;
 	WakeCollection wakes;
 	int updatesBetweenWakes = 3; //How many times the model is updated between a wake being emitted behind the vessel
 
@@ -61,8 +61,8 @@ public abstract class Vessel extends GamePiece{
 		// TODO Auto-generated method stub
 	}
 	
-	public String getVesselType(){
-		return vesselType;
+	public VesselType getVesselType(){
+		return type;
 	}
 	
 }
