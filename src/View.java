@@ -26,9 +26,11 @@ public class View extends JFrame{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		startScreen = new StartScreen();
+		startScreen.setBackground(Color.CYAN.darker().darker());
 		selectionScreen = new SelectionScreen();
 		estuaryScreen = new EstuaryScreen();
-		
+		estuaryScreen.setBackground(Color.CYAN.darker().darker());
+		startScreen.setBackground(Color.CYAN.darker().darker());
 		layers = new JLayeredPane();
 		
 		//factScreen = new FactScreen();
@@ -47,8 +49,8 @@ public class View extends JFrame{
 		
 		this.setVisible(true);
 	}
-	public void update(Model model){ //this method should take something other than the entire model object //// TO DO!!!!!!!!
-		estuaryScreen.update(model);
+	public void update(int bX, int bY, int dX, int dY, int pX, int pY, VesselType vessel, Direction direction, SandBarCollection sbc, String message, String timerMessage, WakeCollection wc, int sLX, int sLY){ //this method should take something other than the entire model object //// TO DO!!!!!!!!
+		estuaryScreen.update( bX,  bY,  dX,  dY,  pX,  pY,  vessel,  direction,  sbc,  message,  timerMessage,  wc,  sLX,  sLY);
 		//factScreen.setVisible(model.getBuoy().hasCollided(model.getPlayer()));
 	}
 }
