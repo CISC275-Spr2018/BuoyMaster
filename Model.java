@@ -38,14 +38,14 @@ public class Model{
 	void modelUpdate() {
 		Random r = new Random();
 		int i = r.nextInt((health - 0) + 1) + 0;
-		health -= player.wakeStrength;
+		health -= player.updatesBetweenWakes;
 		
 		
 		buoy.hasCollided(player);
 		sandBarCollection.checkAllCollision(player);
 		dock.hasCollided(player);
 		
-		if (health > 0 && i % player.wakeStrength == 0){
+		if (health > 0 && i % player.updatesBetweenWakes == 0){
 			sandBarCollection.addRandomSandBar(player, gameMessage, player);
 		}
 		

@@ -15,16 +15,16 @@ public class GameKeyListener implements KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();
-		if (key == KeyEvent.VK_LEFT && player.xVel > -player.maxXVel) {
+		if (key == KeyEvent.VK_LEFT && player.xVel > -player.maxVel) {
 			player.xVel -= 4;
 		}
-		if (key == KeyEvent.VK_RIGHT && player.xVel < player.maxXVel) {
+		if (key == KeyEvent.VK_RIGHT && player.xVel < player.maxVel) {
 			player.xVel += 4;
 		}	
-		if (key == KeyEvent.VK_UP && player.yVel > -player.maxYVel) {
+		if (key == KeyEvent.VK_UP && player.yVel > -player.maxVel) {
 			player.yVel -= 4;
 		}
-		if (key == KeyEvent.VK_DOWN && player.yVel < player.maxYVel) {
+		if (key == KeyEvent.VK_DOWN && player.yVel < player.maxVel) {
 			player.yVel += 4;
 		}
 		
