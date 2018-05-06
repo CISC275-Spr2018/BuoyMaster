@@ -53,7 +53,6 @@ public class Model{
 			shoreline.yLoc++;
 		}
 		
-		buoy.update();
 		player.update();
 		gameOver = timer.update() || dock.arrivedWithData;
 		sandBarCollection.updateAll();

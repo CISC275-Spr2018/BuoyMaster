@@ -4,17 +4,20 @@ public abstract class GamePiece implements Collidable{
 	protected int yLoc;
 	protected int xVel;
 	protected int yVel;
-	private final int range = 30;
+	private int collisionRange =30; //Default set to 30 but will be changed for different pieces.
 	
-	boolean hasCollided(GamePiece g2) {
-		boolean collide = withinXRange(g2) && withinYRange(g2);
-		if (collide) {
+	boolean hasCollided(GamePiece g2) { //checks to see if g2 is within collisionRange of this gamePiece. If so, calls onCollide.
+		boolean withinCollisionRange = withinXRange(g2) && withinYRange(g2); //calls helper functions to check if g2 is within range
+		if(withinCollisionRange){
 			this.onCollide();
-			return collide;
 		}
-		else {
-			return false;
-		}
+		return withinCollisionRange;
+	}
+	boolean withinXRange(GamePiece g2) {
+		return (this.xLoc < g2.xLoc + collisionRange) && (this.xLoc > g2.xLoc - collisionRange);
+	}
+	boolean withinYRange(GamePiece g2) {
+		return (this.yLoc < g2.yLoc + collisionRange) && (this.yLoc > g2.yLoc - collisionRange);
 	}
 	
 	public int getXLoc() {
@@ -29,16 +32,8 @@ public abstract class GamePiece implements Collidable{
 	public int getYVel() {
 		return yVel;
 	}
-
-	boolean withinXRange(GamePiece g2) {
-		return (this.xLoc < g2.xLoc + range) && (this.xLoc > g2.xLoc - range);
-	}
 	
-	boolean withinYRange(GamePiece g2) {
-		return (this.yLoc < g2.yLoc + range) && (this.yLoc > g2.yLoc - range);
-	}
-	
-	void update() {
+	void updateLocation() {
 		this.xLoc += this.xVel;
 		this.yLoc += this.yVel;
 	}

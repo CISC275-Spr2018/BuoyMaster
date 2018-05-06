@@ -12,7 +12,7 @@ public class Wake extends GamePiece{
 	}
 	
 	void update() {
-		super.update();
+		super.updateLocation();
 		wakeLife--;
 		direct = checkDirection();
 	}
@@ -51,8 +51,6 @@ public class Wake extends GamePiece{
 
 	@Override
 	public void onCollide() {
-		// TODO Auto-generated method stub
-		
+		//nothing happens when a wake collides with another game object
 	}
-
 }

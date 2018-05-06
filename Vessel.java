@@ -30,7 +30,7 @@ public abstract class Vessel extends GamePiece{
 		checkDirection();
 		wakes.addWake(this.xLoc, this.yLoc, -this.xVel, -this.yVel, this.wakeStrength);
 		wakes.update();
-		super.update();
+		super.updateLocation();
 	}
 	
 	

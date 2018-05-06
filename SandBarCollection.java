@@ -33,7 +33,7 @@ public class SandBarCollection {
 	
 	void updateAll() {
 		for (SandBar s : sandBars) {
-			s.update();
+			s.updateLocation();
 		}
 	}
 }
