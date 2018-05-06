@@ -1,8 +1,8 @@
 import java.awt.image.BufferedImage;
 
 public class Wake extends GamePiece{
+	Direction dir;
 	int wakeLife = 20;
-	String direct;
 	
 	Wake(int x, int y, int xv, int yv){
 		this.xLoc = x;
@@ -14,39 +14,41 @@ public class Wake extends GamePiece{
 	void update() {
 		super.updateLocation();
 		wakeLife--;
-		direct = checkDirection();
+		dir = checkDirection();
 	}
 	
-	String checkDirection() {
-		String direction;
+	Direction checkDirection() {
 		if (xVel == 0 && yVel < 0) { // north
-			direction = "north";
+			dir = Direction.NORTH;
 		}
 		else if (xVel > 0 && yVel < 0) { // northeast
-			direction = "northeast";
+			dir = Direction.NORTHEAST;
 		}
 		else if (xVel > 0 && yVel == 0) { // east
-			direction = "east";
+			dir = Direction.EAST;
 		}
 		else if (xVel > 0 && yVel > 0) { // southeast
-			direction = "southeast";
+			dir = Direction.SOUTHEAST;
 		}
 		else if (xVel == 0 && yVel > 0) { // south
-			direction = "south";
+			dir = Direction.SOUTH;
 		}
 		else if (xVel < 0 && yVel > 0) { // southwest
-			direction = "southwest";
+			dir = Direction.SOUTHWEST;
 		}
 		else if (xVel < 0 && yVel == 0) { // west
-			direction = "west";
+			dir = Direction.WEST;
 		}
 		else if (xVel < 0 && yVel < 0) { // northwest
-			direction = "northwest";
+			dir = Direction.NORTHWEST;
 		}
-		else {
-			direction = "";
+		else if (xVel > 0 && yVel == 0){ // east
+			dir = Direction.EAST;
 		}
-		return direction;
+		else{
+			return null;
+		}
+		return dir;
 	}
 
 	@Override

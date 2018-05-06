@@ -4,6 +4,7 @@ import java.util.Collection;
 
 public abstract class Vessel extends GamePiece{
 	int maxVel;
+	Direction dir = Direction.EAST;
 	String vesselType;
 	WakeCollection wakes;
 	int updatesBetweenWakes = 3; //How many times the model is updated between a wake being emitted behind the vessel
@@ -24,41 +25,44 @@ public abstract class Vessel extends GamePiece{
 	}
 	
 	
-	String checkDirection() {
-		String direction;
+	Direction checkDirection() {
 		if (xVel == 0 && yVel < 0) { // north
-			direction = "north";
+			dir = Direction.NORTH;
 		}
 		else if (xVel > 0 && yVel < 0) { // northeast
-			direction ="northeast";
+			dir = Direction.NORTHEAST;
 		}
 		else if (xVel > 0 && yVel == 0) { // east
-			direction = "east";
+			dir = Direction.EAST;
 		}
 		else if (xVel > 0 && yVel > 0) { // southeast
-			direction = "southeast";
+			dir = Direction.SOUTHEAST;
 		}
 		else if (xVel == 0 && yVel > 0) { // south
-			direction = "south";
+			dir = Direction.SOUTH;
 		}
 		else if (xVel < 0 && yVel > 0) { // southwest
-			direction = "southwest";
+			dir = Direction.SOUTHWEST;
 		}
 		else if (xVel < 0 && yVel == 0) { // west
-			direction = "west";
+			dir = Direction.WEST;
 		}
 		else if (xVel < 0 && yVel < 0) { // northwest
-			direction = "northwest";
+			dir = Direction.NORTHWEST;
 		}
-		else {
-			direction = "east";
+		else { // east
+			dir = Direction.EAST;
 		}
-		return vesselType + "\\" + direction;
+		return dir;
 	}
 
 	@Override
 	public void onCollide() {
 		// TODO Auto-generated method stub
+	}
+	
+	public String getVesselType(){
+		return vesselType;
 	}
 	
 }

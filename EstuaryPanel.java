@@ -28,9 +28,10 @@ public class EstuaryPanel extends JPanel{
 	public void update(Model model){
 		buoyPanel.update(model.getBuoy().getXLoc(), model.getBuoy().getYLoc());
 		dockPanel.update(model.getDock().getXLoc(), model.getDock().getYLoc());
-		vesselPanel.update(model.getPlayer().getXLoc(), model.getPlayer().getYLoc(), model.getPlayer().checkDirection());
+		vesselPanel.update(model.getPlayer().getXLoc(), model.getPlayer().getYLoc(), model.getPlayer().getVesselType(), model.getPlayer().checkDirection());
 		sandBarPanel.update(model);
 		timerPanel.update(model.getTimer().message);
+		
 		gameMessagePanel.update(model.getGameMessage().message);
 		wp.updateAll(model);
 		slp.update(model.shoreline.xLoc, model.shoreline.yLoc);

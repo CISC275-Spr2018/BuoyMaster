@@ -20,11 +20,13 @@ public class WakePanel extends JPanel{
 		wakesPanel = model.getPlayer().wakes.wakes;
 	}
 	
-	BufferedImage createImage(String filename) {
+	BufferedImage createImage(Direction dir) {
 		BufferedImage img = null;
-		try {
-		    img = ImageIO.read(new File("images\\wake\\" + filename + ".png"));
-		} catch (IOException e) {
+		if(dir != null){ //If direction is null, the boat isn't moving and there is no wake.
+			try {
+			    img = ImageIO.read(new File("images\\wake\\" + dir.getName() + ".png"));
+			} catch (IOException e) {
+			}
 		}
 		return img;
 	}
@@ -43,7 +45,7 @@ public class WakePanel extends JPanel{
 		super.paintComponent(g);
 		Color c = new Color(0, 0, 0, 0); // transparent color
 		for (Wake w : wakesPanel) {
-			BufferedImage img = createImage(w.direct);
+			BufferedImage img = createImage(w.dir);
 			g.drawImage(img, w.xLoc + 10, w.yLoc + 10, c, this);
 		}
 	}
