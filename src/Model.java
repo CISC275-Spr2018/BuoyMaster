@@ -9,6 +9,7 @@ import java.util.concurrent.ThreadLocalRandom;
  * Will hold all different parts - player Vessels, Sandbars, Buoy, etc.
  */
 public class Model{
+	
 	private final int width;
 	private final int height;
 	private Timer timer;
