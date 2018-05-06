@@ -9,7 +9,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
-
+/*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
+ * 
+ */
 /*
  * Main View class for the game.
  * Will hold all different Panels of objects - PlayerPanel, BuoyPanel, etc.
@@ -20,7 +22,10 @@ public class View extends JFrame{
 	SelectionScreen selectionScreen;
 	FactScreen factScreen;
 	JLayeredPane layers;
-	
+	/*Constructor for the view 
+	 * @param width width of screen
+	 * @param height height of screen
+	 */
 	View(int width, int height){
 		this.setSize(width, height);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -49,6 +54,24 @@ public class View extends JFrame{
 		
 		this.setVisible(true);
 	}
+	
+	/*Updates the view based on model input 
+	 *  @param bX x coordinate of buoy
+	 * @param bY y coordinate of buoy
+	 * @param dX x coordinate of dock
+	 * @param dY y coordinate of dock
+	 * @param pX x coordinate of player
+	 * @param pY y coordinate of player
+	 * @param vessel the type of boat the user selected
+	 * @param direction indicates the direction in which the users are moving
+	 * @param sbc passes in the SandBarCollection necessary for making sandbars
+	 * @param timerMessage passes in the time left on the timer
+	 * @param message creates the game message depending on if the user collected data or not
+	 * @param wc passes in the WakeCollection of the model in order to create wake behind the boat 
+	 * @param sLX x coordinate of the shore line
+	 * @param sLY y coordinate of the shore line
+	 * 
+	 */
 	public void update(int bX, int bY, int dX, int dY, int pX, int pY, VesselType vessel, Direction direction, SandBarCollection sbc, String message, String timerMessage, WakeCollection wc, int sLX, int sLY){ //this method should take something other than the entire model object //// TO DO!!!!!!!!
 		estuaryScreen.update( bX,  bY,  dX,  dY,  pX,  pY,  vessel,  direction,  sbc,  message,  timerMessage,  wc,  sLX,  sLY);
 		//factScreen.setVisible(model.getBuoy().hasCollided(model.getPlayer()));

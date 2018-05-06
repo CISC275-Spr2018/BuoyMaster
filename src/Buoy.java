@@ -1,7 +1,9 @@
 import java.util.Random;
 
 import javax.swing.JOptionPane;
-
+/*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
+ * 
+ */
 public class Buoy extends GamePiece{
 	private GameMessage gameMessage;
 	// Set true once the player makes contact with the buoy and collects the data
@@ -14,7 +16,12 @@ public class Buoy extends GamePiece{
 	boolean fact=true;
 	boolean question=false;
 	//Buoy constructor
-	
+	/*Buoy constructor
+	 * @param x this is the x position of buoy in the frame
+	 * @param y this is the y position of the buoy in the frame
+	 * @param g this is the gamemessage which appears when the user makes contact with the buoy telling them they have collected the data
+	 * 	
+	 */
 	Buoy(int x, int y, GameMessage g){
 		this.xLoc = x;
 		this.yLoc = y;
@@ -57,17 +64,23 @@ public class Buoy extends GamePiece{
 		questions[13]="The temperature of the water is 72 degrees Farenheit";
 		questions[14]="The temperature of the water is 35 degrees Farenheit";
 	}
-
+	/*
+	 *@return returns a random question from the question array 
+	 */
 	public String askRandomQuestion(){
 		return questions[rand];
 	}
-	
+	/*
+	 * @return returns a random fact from fact array
+	 */
 	public String createRandomFact(){
 		return data[rand];	
 	}
-	public int getRandom(){
-		return rand;
-	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see Collidable#onCollide()
+	 */
 	@Override
 	//onCollide method for buoy
 	public void onCollide() {
@@ -84,7 +97,9 @@ public class Buoy extends GamePiece{
 		}
 		
 	}
-	
+	/*
+	 *@return returns the status of collected 
+	 */
 	public boolean collectedStatus(){
 		return collected;
 	}

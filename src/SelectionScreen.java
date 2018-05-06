@@ -10,13 +10,17 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-
+/*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
+ * 
+ */
 public class SelectionScreen extends JPanel implements ActionListener{
 	JButton jetSki;
 	JButton fishingBoat;
 	JButton speedBoat;
 	VesselType type;
-	
+	/*Constructor for the SelectionScreen class
+	 * 
+	 */
 	SelectionScreen(){
 		
 		jetSki = new JButton("Jet Ski");
@@ -36,6 +40,10 @@ public class SelectionScreen extends JPanel implements ActionListener{
 		this.add(fishingBoat);
 		this.add(speedBoat);
 	}
+	/*
+	 * (non-Javadoc)
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		this.setVisible(false);	//The SelectionScreen disappears when a vessel button is pressed

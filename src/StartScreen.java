@@ -4,11 +4,15 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
-
+/*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
+ * 
+ */
 public class StartScreen extends JPanel implements ActionListener{
 	JButton startButton;
 	boolean start = false;
-	
+	/*Constructor for the StartScreen
+	 * 
+	 */
 	StartScreen(){
 		this.setLayout(new BorderLayout());
 		startButton = new JButton("Start");
@@ -16,7 +20,10 @@ public class StartScreen extends JPanel implements ActionListener{
 		this.add(startButton,BorderLayout.SOUTH);
 		startButton.addActionListener(this);
 	}
-
+	/*
+	 * (non-Javadoc)
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		this.setVisible(false); //The StartScreen disappears when the button is pressed
