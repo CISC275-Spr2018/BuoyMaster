@@ -5,11 +5,11 @@ import java.awt.event.KeyListener;
 
 public class GameKeyListener implements KeyListener {
 	Vessel player;
-	EstuaryView Eview;
+	View view;
 	
-	GameKeyListener(Vessel v, EstuaryView view){
+	GameKeyListener(Vessel v, View view){
 		this.player = v;
-		Eview = view;
+		this.view = view;
 	}
 	
 	@Override

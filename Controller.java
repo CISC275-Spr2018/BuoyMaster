@@ -10,43 +10,43 @@ public class Controller implements ActionListener {
 	private final int height = 720;
 	private final static int DRAWDELAY = 50;
 	private Model model;
-	private EstuaryView EView;
+	private View view;
 	GameKeyListener gkl;
 	
 	boolean start = false;
 	
 	public Controller(){
 		model = new Model(width, height);
-		EView = new EstuaryView(width, height);
-		EView.addKeyListener(gkl);
+		view = new View(width, height);
+		view.addKeyListener(gkl);
 		
-		EView.selectionScreen.jetSki.addActionListener(this);
-		EView.selectionScreen.fishingBoat.addActionListener(this);
-		EView.selectionScreen.speedBoat.addActionListener(this);
+		view.selectionScreen.jetSki.addActionListener(this);
+		view.selectionScreen.fishingBoat.addActionListener(this);
+		view.selectionScreen.speedBoat.addActionListener(this);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// boats start in different positions to test if the buttons actually work
-		if (e.getSource() == EView.selectionScreen.jetSki) {
+		if (e.getSource() == view.selectionScreen.jetSki) {
 			model.setVessel(new Jetski());
 		}
-		if (e.getSource() == EView.selectionScreen.fishingBoat) {
+		if (e.getSource() == view.selectionScreen.fishingBoat) {
 			model.setVessel(new FishingBoat());
 		}
-		if (e.getSource() == EView.selectionScreen.speedBoat) {
+		if (e.getSource() == view.selectionScreen.speedBoat) {
 			model.setVessel(new Speedboat());
 		}
-		gkl = new GameKeyListener(model.getPlayer(), EView);
-		EView.addKeyListener(gkl);
+		gkl = new GameKeyListener(model.getPlayer(), view);
+		view.addKeyListener(gkl);
 		start = true;
 	}
 	
 	void update() {
 		if (start && !model.gameOver) {
-			EView.layers.moveToFront(EView.estuaryPanel);
+			view.layers.moveToFront(view.estuaryPanel);
 			model.modelUpdate();
-			EView.update(model);
+			view.update(model);
 		}
 	}
 	
@@ -57,7 +57,7 @@ public class Controller implements ActionListener {
 				Timer t = new Timer(DRAWDELAY, new AbstractAction() {
 					public void actionPerformed(ActionEvent e) {
 						c.update();
-						c.EView.repaint();
+						c.view.repaint();
 					}
 				});
 				t.start();

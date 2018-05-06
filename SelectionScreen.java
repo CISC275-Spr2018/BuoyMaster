@@ -5,14 +5,14 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class SelectionScreen extends JPanel implements ActionListener{
-	EstuaryView EView;
+	View view;
 	JButton jetSki;
 	JButton fishingBoat;
 	JButton speedBoat;
 	
-	SelectionScreen(EstuaryView e){
-		EView = e;
-		EView.startScreen.startButton.addActionListener(this);
+	SelectionScreen(View view){
+		this.view = view;
+		view.startScreen.startButton.addActionListener(this);
 		
 		jetSki = new JButton("Jet Ski");
 		fishingBoat = new JButton("Fishing Boat");
@@ -33,7 +33,7 @@ public class SelectionScreen extends JPanel implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		EView.layers.moveToFront(EView.selectionScreen);
+		view.layers.moveToFront(view.selectionScreen);
 	}
 
 }

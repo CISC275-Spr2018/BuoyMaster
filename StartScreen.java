@@ -6,13 +6,13 @@ import javax.swing.JPanel;
 
 public class StartScreen extends JPanel{
 	JButton startButton;
-	EstuaryView EView;
+	View view;
 	boolean start = false;
 	
-	StartScreen(EstuaryView e){
+	StartScreen(View view){
 		startButton = new JButton("Start");
 		startButton.setFocusable(false);
-		EView = e; 
+		this.view = view; 
 		this.add(startButton);
 	}
 

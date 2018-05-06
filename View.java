@@ -13,7 +13,7 @@ import javax.swing.JPanel;
  * Main View class for the game.
  * Will hold all different Panels of objects - PlayerPanel, BuoyPanel, etc.
  */
-public class EstuaryView extends JFrame{
+public class View extends JFrame{
 	private final int width;
 	private final int height;
 	EstuaryPanel estuaryPanel;
@@ -22,7 +22,7 @@ public class EstuaryView extends JFrame{
 	FactScreen factScreen;
 	JLayeredPane layers;
 	
-	EstuaryView(int width, int height){
+	View(int width, int height){
 		this.width = width;
 		this.height = height;
 		estuaryPanel = new EstuaryPanel();
