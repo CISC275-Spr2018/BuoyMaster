@@ -1,7 +1,10 @@
 
 public class Buoy extends GamePiece{
 	private GameMessage gameMessage;
-	boolean collected = false; // Set true once the player makes contact with the buoy and collects the data
+	// Set true once the player makes contact with the buoy and collects the data
+	boolean collected = false; 
+	
+	//Buoy constructor
 	
 	Buoy(int x, int y, GameMessage g){
 		this.xLoc = x;
@@ -12,6 +15,7 @@ public class Buoy extends GamePiece{
 	}
 
 	@Override
+	//onCollide method for buoy
 	public void onCollide() {
 		gameMessage.message = "You have retrieved the data, now return to the dock before sunset!";
 		collected = true;
