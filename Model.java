@@ -28,7 +28,7 @@ public class Model{
 		gameMessage = new GameMessage();
 		buoy = new Buoy(width - 100, 100, gameMessage);
 		sandBarCollection = new SandBarCollection();
-		dock = new Dock(0, height/2, buoy, timer, gameMessage);
+		dock = new Dock(0, height/2, timer, gameMessage);
 		shoreline = new ShoreLine(0, 420);
 	}
 	
@@ -55,7 +55,7 @@ public class Model{
 		player.update();
 		timer.update();
 		sandBarCollection.updateAll();
-		dock.update();
+		dock.dataCollected(buoy.collectedStatus());
 	
 		
 		System.out.print("Player location: " + player.xLoc + " ," + player.yLoc);
