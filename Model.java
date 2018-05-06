@@ -11,14 +11,16 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Model{
 	private final int width;
 	private final int height;
-	private Vessel player;
-	private Buoy buoy;
 	private Timer timer;
+	private Vessel player;
+	private Dock dock;
+	private Buoy buoy;
 	private GameMessage gameMessage;
 	SandBarCollection sandBarCollection;
-	private Dock dock;
 	int health = 100000;
 	ShoreLine shoreline;
+	boolean gameOver = false;
+	
 	
 	Model(int x, int y){
 		width = x;
@@ -28,7 +30,7 @@ public class Model{
 		gameMessage = new GameMessage();
 		buoy = new Buoy(width - 100, 100, gameMessage);
 		sandBarCollection = new SandBarCollection();
-		dock = new Dock(0, height/2, timer, gameMessage);
+		dock = new Dock(0, height/2, gameMessage);
 		shoreline = new ShoreLine(0, 420);
 	}
 	
@@ -44,7 +46,7 @@ public class Model{
 		dock.hasCollided(player);
 		
 		if (health > 0 && i % player.wakeStrength == 0){
-			sandBarCollection.addRandomSandBar(player, timer, gameMessage, player);
+			sandBarCollection.addRandomSandBar(player, gameMessage, player);
 		}
 		
 		if (sandBarCollection.sandBars.size() % 5 == 1) {
@@ -53,13 +55,14 @@ public class Model{
 		
 		buoy.update();
 		player.update();
-		timer.update();
+		gameOver = timer.update() || dock.arrivedWithData;
 		sandBarCollection.updateAll();
 		dock.dataCollected(buoy.collectedStatus());
 	
 		
-		System.out.print("Player location: " + player.xLoc + " ," + player.yLoc);
-		System.out.println(" | Player increment: " + player.xVel + ", " + player.yVel);
+		if(gameOver){
+			System.out.println("The game has ended.");
+		}
 	}
 	
 	public Vessel getPlayer() {

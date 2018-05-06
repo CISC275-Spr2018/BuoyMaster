@@ -43,7 +43,7 @@ public class Controller implements ActionListener {
 	}
 	
 	void update() {
-		if (start && model.getTimer().value > 0) {
+		if (start && !model.gameOver) {
 			EView.layers.moveToFront(EView.estuaryPanel);
 			model.modelUpdate();
 			EView.update(model);

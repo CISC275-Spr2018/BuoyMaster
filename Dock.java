@@ -1,20 +1,19 @@
 public class Dock extends GamePiece{
-	Timer timer;
+	boolean arrivedWithData = false;
 	GameMessage gameMessage;
 	boolean collected = false; // to be updated once the buoy collected is true
-	Dock(int x, int y, Timer t, GameMessage g){
+	Dock(int x, int y, GameMessage g){
 		this.xLoc = x;
 		this.yLoc = y;
 		this.xVel = 0;
 		this.yVel = 0;
 		gameMessage = g;
-		timer = t;
 	}
 
 	@Override
 	public void onCollide() {
 		if (collected) {
-			timer.value = 0;
+			arrivedWithData = true;
 			gameMessage.message = "You have successfully returned the data!";
 		}
 	}
