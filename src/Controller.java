@@ -45,7 +45,7 @@ public class Controller implements ActionListener {
 	void update() {
 		if (start && !model.gameOver) { //the game runs from start until gameOver is true
 			model.modelUpdate();
-			view.update(model); //this method should take something other than the entire model object //// TO DO!!!!!!!!
+			view.update(model.getBuoy().getXLoc(), model.getBuoy().getYLoc(),model.getDock().getXLoc(),model.getDock().getYLoc(),model.getPlayer().getXLoc(),model.getPlayer().getYLoc(),model.getPlayer().getVesselType(),model.getPlayer().checkDirection(),model.sandBarCollection,model.getTimer().message,model.getGameMessage().message,model.getPlayer().wakes,model.shoreline.getXLoc(),model.shoreline.getYLoc()); //this method should take something other than the entire model object //// TO DO!!!!!!!!
 		}
 	}
 

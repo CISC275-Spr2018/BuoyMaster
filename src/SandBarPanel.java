@@ -20,8 +20,8 @@ public class SandBarPanel extends JPanel{
 		}
 	}
 	
-	void update(Model m) {
-		sandBars = m.sandBarCollection.sandBars;
+	void update(SandBarCollection sbc) {
+		sandBars = sbc.sandBars;
 	}
 	
 	protected void paintComponent(Graphics g) {

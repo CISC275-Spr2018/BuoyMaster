@@ -25,16 +25,15 @@ public class EstuaryScreen extends JPanel{
 		this.setBackground(Color.CYAN.darker().darker());
 	}
 	
-	public void update(Model model){
-		buoyPanel.update(model.getBuoy().getXLoc(), model.getBuoy().getYLoc());
-		dockPanel.update(model.getDock().getXLoc(), model.getDock().getYLoc());
-		vesselPanel.update(model.getPlayer().getXLoc(), model.getPlayer().getYLoc(), model.getPlayer().getVesselType(), model.getPlayer().checkDirection());
-		sandBarPanel.update(model);
-		timerPanel.update(model.getTimer().message);
-		
-		gameMessagePanel.update(model.getGameMessage().message);
-		wp.updateAll(model);
-		slp.update(model.shoreline.xLoc, model.shoreline.yLoc);
+	public void update(int bX, int bY, int dX, int dY, int pX, int pY, VesselType vessel, Direction direction, SandBarCollection sbc, String message, String timerMessage, WakeCollection wc, int sLX, int sLY){
+		buoyPanel.update(bX, bY);
+		dockPanel.update( dX, dY);
+		vesselPanel.update(pX, pY, vessel, direction);
+		sandBarPanel.update(sbc);
+		timerPanel.update(timerMessage);
+		gameMessagePanel.update(message);
+		wp.updateAll(wc);
+		slp.update(sLX, sLY);
 		this.repaint();
 	}
 	
