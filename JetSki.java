@@ -1,7 +1,7 @@
 
-public class Jetski extends Vessel{
+public class JetSki extends Vessel{
 
-	Jetski(){
+	JetSki(){
 		super();
 		vesselType = "jet_ski";
 		maxXVel = 10;
@@ -9,7 +9,7 @@ public class Jetski extends Vessel{
 		this.wakeStrength = 2;
 	}
 	
-	Jetski(int x, int y) {
+	JetSki(int x, int y) {
 		super(x, y);
 		this.wakeStrength = 2;
 		// TODO Auto-generated constructor stub

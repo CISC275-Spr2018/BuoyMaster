@@ -29,13 +29,13 @@ public class Controller implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// boats start in different positions to test if the buttons actually work
 		if (e.getSource() == view.selectionScreen.jetSki) {
-			model.setVessel(new Jetski());
+			model.setVessel(new JetSki());
 		}
 		if (e.getSource() == view.selectionScreen.fishingBoat) {
 			model.setVessel(new FishingBoat());
 		}
 		if (e.getSource() == view.selectionScreen.speedBoat) {
-			model.setVessel(new Speedboat());
+			model.setVessel(new SpeedBoat());
 		}
 		gkl = new GameKeyListener(model.getPlayer(), view);
 		view.addKeyListener(gkl);
