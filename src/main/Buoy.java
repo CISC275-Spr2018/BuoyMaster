@@ -20,6 +20,7 @@ public class Buoy extends GamePiece{
 	boolean question=false;
 	boolean asked=false;
 	boolean showAnswer=false;
+	boolean correct=false;
 	//Buoy constructor
 	/*Buoy constructor
 	 * @param x this is the x position of buoy in the frame
@@ -111,8 +112,7 @@ public class Buoy extends GamePiece{
 							if(!showAnswer){
 								showAnswer=true;
 								JOptionPane.showMessageDialog(null, "Correct! You get a 30 time bonus");	
-								CorrectListener cl=new CorrectListener();
-								cl.addTime();
+								correct=true;
 							}
 						}
 						else{
@@ -127,8 +127,7 @@ public class Buoy extends GamePiece{
 								showAnswer=true;
 								JOptionPane.showMessageDialog(null, "Correct! You get a 30 time bonus");
 								CorrectListener cl=new CorrectListener();
-								cl.addTime();
-							}
+								correct=true;							}
 						}
 						else{
 							if(!showAnswer){
@@ -142,8 +141,7 @@ public class Buoy extends GamePiece{
 								showAnswer=true;
 								JOptionPane.showMessageDialog(null, "Correct! You get a 30 time bonus");
 								CorrectListener cl=new CorrectListener();
-								cl.addTime();
-							}
+								correct=true;							}
 						}
 						else{
 							if(!showAnswer){
@@ -157,8 +155,7 @@ public class Buoy extends GamePiece{
 								showAnswer=true;
 								JOptionPane.showMessageDialog(null, "Correct! You get a 30 time bonus");	
 								CorrectListener cl=new CorrectListener();
-								cl.addTime();
-							}
+								correct=true;							}
 						}
 						else{
 							if(!showAnswer){
@@ -172,8 +169,7 @@ public class Buoy extends GamePiece{
 								showAnswer=true;
 								JOptionPane.showMessageDialog(null, "Correct! You get a 30 time bonus");	
 								CorrectListener cl=new CorrectListener();
-								cl.addTime();
-							}
+								correct=true;							}
 						}
 						else{
 							if(!showAnswer){
@@ -187,8 +183,7 @@ public class Buoy extends GamePiece{
 								showAnswer=true;
 								JOptionPane.showMessageDialog(null, "Correct! You get a 30 time bonus");
 								CorrectListener cl=new CorrectListener();
-								cl.addTime();
-		
+								correct=true;		
 							}
 						}
 						else{
@@ -203,8 +198,7 @@ public class Buoy extends GamePiece{
 								showAnswer=true;
 								JOptionPane.showMessageDialog(null, "Correct!");	
 								CorrectListener cl=new CorrectListener();
-								cl.addTime();
-							
+								correct=true;							
 							}
 						}
 						else{
@@ -224,8 +218,7 @@ public class Buoy extends GamePiece{
 								showAnswer=true;
 								JOptionPane.showMessageDialog(null, "Correct! You get a 30 time bonus");	
 								CorrectListener cl=new CorrectListener();
-								cl.addTime();
-							}
+								correct=true;							}
 						}
 						else{
 							if(!showAnswer){
@@ -239,8 +232,7 @@ public class Buoy extends GamePiece{
 								showAnswer=true;
 								JOptionPane.showMessageDialog(null, "Correct! You get a 30 time bonus");
 								CorrectListener cl=new CorrectListener();
-								cl.addTime();
-							}
+								correct=true;							}
 						}
 						else{
 							if(!showAnswer){
@@ -254,8 +246,7 @@ public class Buoy extends GamePiece{
 								showAnswer=true;
 								JOptionPane.showMessageDialog(null, "Correct!, You get a 30 time bonus");
 								CorrectListener cl=new CorrectListener();
-								cl.addTime();
-							}
+								correct=true;							}
 						}
 						else{
 							if(!showAnswer){
@@ -269,8 +260,7 @@ public class Buoy extends GamePiece{
 								showAnswer=true;
 								JOptionPane.showMessageDialog(null, "Correct! You get a 30 time bonus");	
 								CorrectListener cl=new CorrectListener();
-								cl.addTime();
-							}
+								correct=true;							}
 						}
 						else{
 							if(!showAnswer){
@@ -284,8 +274,7 @@ public class Buoy extends GamePiece{
 								showAnswer=true;
 								JOptionPane.showMessageDialog(null, "Correct! You get a 30 time bonus");	
 								CorrectListener cl=new CorrectListener();
-								cl.addTime();
-							}
+								correct=true;							}
 						}
 						else{
 							if(!showAnswer){
@@ -304,8 +293,7 @@ public class Buoy extends GamePiece{
 								showAnswer=true;
 								JOptionPane.showMessageDialog(null, "Correct! You get a 30 time bonus");	
 								CorrectListener cl=new CorrectListener();
-								cl.addTime();
-							}
+								correct=true;							}
 						}
 						else{
 							if(!showAnswer){
@@ -319,8 +307,7 @@ public class Buoy extends GamePiece{
 								showAnswer=true;
 								JOptionPane.showMessageDialog(null, "Correct! You get a 30 time bonus");
 								CorrectListener cl=new CorrectListener();
-								cl.addTime();
-							}
+								correct=true;							}
 						}
 						else{
 							if(!showAnswer){
@@ -334,8 +321,7 @@ public class Buoy extends GamePiece{
 								showAnswer=true;
 								JOptionPane.showMessageDialog(null, "Correct!, You get a 30 time bonus");
 								CorrectListener cl=new CorrectListener();
-								cl.addTime();
-							}
+								correct=true;							}
 						}
 						else{
 							if(!showAnswer){

@@ -24,10 +24,11 @@ public class Model{
 	int health = 100000;
 	ShoreLine shoreline;
 	boolean gameOver = false;
+	boolean addTime=false;
 	
 	/*Constructor for the model 
 	 * @param width width of the screen
-	 * @param height hieght of the screen
+	 * @param height height of the screen
 	 * 
 	 */
 	Model(int width, int height){
@@ -85,6 +86,14 @@ public class Model{
 	 */
 	public Timer getTimer() {
 		return timer;
+	}
+	public boolean addTime(){
+		if(buoy.correct){
+			return true;
+		}
+		else{
+			return false;
+		}
 	}
 	/*@return returns the current GameMessage
 	 * 

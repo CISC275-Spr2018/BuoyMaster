@@ -28,7 +28,7 @@ public class Controller implements ActionListener {
 		view.selectionScreen.speedBoat.addActionListener(this);
 	}
 	public Model getModel(){
-		return this.model;
+		return model;
 	}
 /*
  * (non-Javadoc)
@@ -57,6 +57,9 @@ public class Controller implements ActionListener {
 		if (start && !model.gameOver) { //the game runs from start until gameOver is true
 			model.modelUpdate();
 			view.update(model.getBuoy().getXLoc(), model.getBuoy().getYLoc(),model.getDock().getXLoc(),model.getDock().getYLoc(),model.getPlayer().getXLoc(),model.getPlayer().getYLoc(),model.getPlayer().getVesselType(),model.getPlayer().checkDirection(),model.sandBarCollection,model.getTimer().message,model.getGameMessage().message,model.getPlayer().wakes,model.shoreline.getXLoc(),model.shoreline.getYLoc());
+		}
+		if (start && model.addTime){
+			model.getTimer().increment();
 		}
 	}
 /*Main method starts the run method for the event queue 

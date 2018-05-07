@@ -19,7 +19,7 @@ public class ShorelinePanel extends JPanel{
 	 */
 	ShorelinePanel() {
 		try {
-		    img = ImageIO.read(new File("images\\shoreline.png"));
+		    img = ImageIO.read(new File("images/shoreline.png"));
 		} catch (IOException e) {
 		}
 	}

@@ -36,7 +36,7 @@ public class WakePanel extends JPanel{
 		BufferedImage img = null;
 		if(dir != null){ //If direction is null, the boat isn't moving and there is no wake.
 			try {
-			    img = ImageIO.read(new File("images\\wake\\" + dir.getName() + ".png"));
+			    img = ImageIO.read(new File("images/wake/" + dir.getName() + ".png"));
 			} catch (IOException e) {
 			}
 		}

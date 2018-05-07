@@ -51,7 +51,7 @@ public class VesselPanel extends JPanel{
 	BufferedImage createImage(VesselType type, Direction dir) {
 		BufferedImage img = null;
 		try {
-		    img = ImageIO.read(new File("images\\vessels\\" + type.getName() + "\\" + dir.getName() + ".png"));
+		    img = ImageIO.read(new File("images/vessels/" + type.getName() + "/" + dir.getName() + ".png"));
 		} catch (IOException e) {
 		}
 		return img;

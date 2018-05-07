@@ -29,7 +29,7 @@ public class DockPanel extends JPanel{
 	protected void paintComponent(Graphics g) {
 		BufferedImage img = null;
 		try {
-		    img = ImageIO.read(new File("images\\dock.png"));
+		    img = ImageIO.read(new File("images/dock.png"));
 		} catch (IOException e) {
 		}
 		super.paintComponent(g);
