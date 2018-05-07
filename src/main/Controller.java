@@ -4,18 +4,23 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.AbstractAction;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
 public class Controller implements ActionListener {
 	private final int width = 1280;
 	private final int height = 720;
 	private final static int DRAWDELAY = 50;
+	int reply;
+	boolean restart=true;
 	private Model model;
 	private View view;
 	GameKeyListener gkl;
 
 	boolean start = false;
-
+/*Constructor for the Controller class
+ * 
+ */
 	public Controller(){
 		model = new Model(width, height);
 		view = new View(width, height);
@@ -25,7 +30,13 @@ public class Controller implements ActionListener {
 		view.selectionScreen.fishingBoat.addActionListener(this);
 		view.selectionScreen.speedBoat.addActionListener(this);
 	}
-
+	public Model getModel(){
+		return model;
+	}
+/*
+ * (non-Javadoc)
+ * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+ */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		//sets the boat type based on the button pressed
@@ -42,14 +53,42 @@ public class Controller implements ActionListener {
 		view.addKeyListener(gkl);
 		start = true;
 	}
-
+	/*Updates the model and the view based on the updates which happened in the model
+	 * 
+	 */
 	void update() {
 		if (start && !model.gameOver) { //the game runs from start until gameOver is true
 			model.modelUpdate();
-			view.update(model); //this method should take something other than the entire model object //// TO DO!!!!!!!!
+			view.update(model.getBuoy().getXLoc(), model.getBuoy().getYLoc(),model.getDock().getXLoc(),model.getDock().getYLoc(),model.getPlayer().getXLoc(),model.getPlayer().getYLoc(),model.getPlayer().getVesselType(),model.getPlayer().checkDirection(),model.sandBarCollection,model.getTimer().message,model.getGameMessage().message,model.getPlayer().wakes,model.shoreline.getXLoc(),model.shoreline.getYLoc());
+		}
+		if (start && model.addTime){
+			model.getTimer().increment();
+		}
+		if(model.gameOver){
+			reply=JOptionPane.showConfirmDialog(null,"Would you like to retry?","Restart",reply);
+				
+			if(reply==JOptionPane.YES_OPTION){
+				model.gameOver=!model.gameOver;
+				Controller c = new Controller();
+				model = new Model(width, height);
+				view = new View(width, height);
+				c.model=model;
+				c.view=view;
+				c.view.addKeyListener(gkl);
+
+				c.view.selectionScreen.jetSki.addActionListener(this);
+				c.view.selectionScreen.fishingBoat.addActionListener(this);
+				c.view.selectionScreen.speedBoat.addActionListener(this);
+				
+			}
+			if(reply==JOptionPane.NO_OPTION){
+				System.exit(0);
+			}
 		}
 	}
-
+/*Main method starts the run method for the event queue 
+ * 
+ */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable(){
 			public void run(){

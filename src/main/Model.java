@@ -4,12 +4,15 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
-
+/*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
+ * 
+ */
 /*
  * Main Model for entire state of the game.
  * Will hold all different parts - player Vessels, Sandbars, Buoy, etc.
  */
 public class Model{
+	
 	private final int width;
 	private final int height;
 	private Timer timer;
@@ -21,8 +24,13 @@ public class Model{
 	int health = 100000;
 	ShoreLine shoreline;
 	boolean gameOver = false;
+	boolean addTime=false;
 	
-	
+	/*Constructor for the model 
+	 * @param width width of the screen
+	 * @param height height of the screen
+	 * 
+	 */
 	public Model(int width, int height){
 		this.width = width;
 		this.height = height;
@@ -35,7 +43,9 @@ public class Model{
 		shoreline = new ShoreLine(0, 420);
 	}
 	
-	// all individual model update methods in central method
+	/*All individual model update methods in central method
+	 * 
+	 */
 	public void modelUpdate() {
 		Random r = new Random();
 		int i = r.nextInt((health - 0) + 1) + 0;
@@ -59,28 +69,60 @@ public class Model{
 		dock.dataCollected(buoy.collectedStatus());
 	
 	}
-	
+	/*@return returns the vessel the player is using
+	 * 
+	 */
 	public Vessel getPlayer() {
 		return player;
 	}
+	/*@return returns the Buoy
+	 * 
+	 */
 	public Buoy getBuoy() {
 		return buoy;
 	}
+	/*@return returns the Timer
+	 * 
+	 */
 	public Timer getTimer() {
 		return timer;
 	}
+	public boolean addTime(){
+		if(buoy.correct){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	/*@return returns the current GameMessage
+	 * 
+	 */
 	public GameMessage getGameMessage() {
 		return gameMessage;
 	}
+	/*@return returns the dock
+	 * 
+	 */
 	public Dock getDock() {
 		return dock;
 	}
+	/*@return returns the width of the screen
+	 * 
+	 */
 	public int getWidth() {
 		return width;
 	}
+	/*@return returns the height of the screen
+	 * 
+	 */
 	public int getHeight() {
 		return height;
 	}
+	/*Sets the user's vessel selection
+	 * @param v user's vessel selection
+	 * 
+	 */
 	public void setVessel(Vessel v) {
 		this.player = v;
 	}
