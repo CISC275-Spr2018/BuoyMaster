@@ -4,12 +4,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.AbstractAction;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
 public class Controller implements ActionListener {
 	private final int width = 1280;
 	private final int height = 720;
 	private final static int DRAWDELAY = 50;
+	int reply;
+	boolean restart=true;
 	private Model model;
 	private View view;
 	GameKeyListener gkl;
@@ -60,6 +63,27 @@ public class Controller implements ActionListener {
 		}
 		if (start && model.addTime){
 			model.getTimer().increment();
+		}
+		if(model.gameOver){
+			reply=JOptionPane.showConfirmDialog(null,"Would you like to retry?","Restart",reply);
+				
+			if(reply==JOptionPane.YES_OPTION){
+				model.gameOver=!model.gameOver;
+				Controller c = new Controller();
+				model = new Model(width, height);
+				view = new View(width, height);
+				c.model=model;
+				c.view=view;
+				c.view.addKeyListener(gkl);
+
+				c.view.selectionScreen.jetSki.addActionListener(this);
+				c.view.selectionScreen.fishingBoat.addActionListener(this);
+				c.view.selectionScreen.speedBoat.addActionListener(this);
+				
+			}
+			if(reply==JOptionPane.NO_OPTION){
+				System.exit(0);
+			}
 		}
 	}
 /*Main method starts the run method for the event queue 
