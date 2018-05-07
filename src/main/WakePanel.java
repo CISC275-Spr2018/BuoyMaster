@@ -9,18 +9,29 @@ import java.util.HashSet;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
-
+/*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
+ * 
+ */
 public class WakePanel extends JPanel{
 	HashSet<Wake> wakesPanel;
-	
+	/*Creates the HashSet of wakes
+	 * 
+	 */
 	WakePanel(){
 		wakesPanel = new HashSet<Wake>();
 	}
-	
-	void updateAll(Model model) {
-		wakesPanel = model.getPlayer().wakes.wakes;
+	/*updates all wakes in a wake collection
+	 * @param wc WakeCollection to add to wakesPanel
+	 * 
+	 */
+	void updateAll(WakeCollection wc) {
+		wakesPanel = wc.wakes;
 	}
-	
+	/*@param dir Direction of wake 
+	 * @return returns a buffered image of a wake based on direction
+	 * 
+	 * 
+	 */
 	BufferedImage createImage(Direction dir) {
 		BufferedImage img = null;
 		if(dir != null){ //If direction is null, the boat isn't moving and there is no wake.
@@ -31,7 +42,9 @@ public class WakePanel extends JPanel{
 		}
 		return img;
 	}
-	
+	/*Remvoes wakes which wakeLife is below zero. 
+	 * 
+	 */
 	void removeDeadWakes() {
 		ArrayList<Wake> old = new ArrayList<Wake>();
 		for (Wake w : wakesPanel) {
@@ -41,7 +54,10 @@ public class WakePanel extends JPanel{
 		}
 		wakesPanel.removeAll(old);
 	}
-	
+	/*
+	 * (non-Javadoc)
+	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
+	 */
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Color c = new Color(0, 0, 0, 0); // transparent color

@@ -1,8 +1,13 @@
 package main;
 
+/*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
+ * 
+ */
 public class SpeedBoat extends Vessel{
-	
-	public SpeedBoat(){
+	/*Constructor for the SpeedBoat
+	 * 
+	 */
+	SpeedBoat(){
 		super();
 		type = VesselType.SPEEDBOAT;
 		maxVel = 14;

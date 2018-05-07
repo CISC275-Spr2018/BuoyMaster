@@ -15,7 +15,9 @@ public class Controller implements ActionListener {
 	GameKeyListener gkl;
 
 	boolean start = false;
-
+/*Constructor for the Controller class
+ * 
+ */
 	public Controller(){
 		model = new Model(width, height);
 		view = new View(width, height);
@@ -25,7 +27,10 @@ public class Controller implements ActionListener {
 		view.selectionScreen.fishingBoat.addActionListener(this);
 		view.selectionScreen.speedBoat.addActionListener(this);
 	}
-
+/*
+ * (non-Javadoc)
+ * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+ */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		//sets the boat type based on the button pressed
@@ -42,14 +47,18 @@ public class Controller implements ActionListener {
 		view.addKeyListener(gkl);
 		start = true;
 	}
-
+	/*Updates the model and the view based on the updates which happened in the model
+	 * 
+	 */
 	void update() {
 		if (start && !model.gameOver) { //the game runs from start until gameOver is true
 			model.modelUpdate();
-			view.update(model); //this method should take something other than the entire model object //// TO DO!!!!!!!!
+			view.update(model.getBuoy().getXLoc(), model.getBuoy().getYLoc(),model.getDock().getXLoc(),model.getDock().getYLoc(),model.getPlayer().getXLoc(),model.getPlayer().getYLoc(),model.getPlayer().getVesselType(),model.getPlayer().checkDirection(),model.sandBarCollection,model.getTimer().message,model.getGameMessage().message,model.getPlayer().wakes,model.shoreline.getXLoc(),model.shoreline.getYLoc());
 		}
 	}
-
+/*Main method starts the run method for the event queue 
+ * 
+ */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable(){
 			public void run(){

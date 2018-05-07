@@ -3,16 +3,24 @@ package main;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
+/*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
+ * 
+ */
 public class GameKeyListener implements KeyListener {
 	Vessel player;
 	View view;
-	
+	/*Constructor for the GameKeyListener
+	 * @param v sets the player to the vessel
+	 * @param view passes in the view
+	 */
 	GameKeyListener(Vessel v, View view){
 		this.player = v;
 		this.view = view;
 	}
-	
+	/*
+	 * (non-Javadoc)
+	 * @see java.awt.event.KeyListener#keyPressed(java.awt.event.KeyEvent)
+	 */
 	@Override
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();
@@ -30,6 +38,10 @@ public class GameKeyListener implements KeyListener {
 		}
 		
 	}
+	/*
+	 * (non-Javadoc)
+	 * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)
+	 */
 	@Override
 	public void keyReleased(KeyEvent e) {
 		int key = e.getKeyCode();
@@ -44,9 +56,12 @@ public class GameKeyListener implements KeyListener {
 	}
 
 	@Override
+	/*
+	 * (non-Javadoc)
+	 * @see java.awt.event.KeyListener#keyTyped(java.awt.event.KeyEvent)
+	 */
 	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 }
-
