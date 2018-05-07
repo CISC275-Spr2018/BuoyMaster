@@ -17,7 +17,7 @@ public class StartScreen extends JPanel implements ActionListener{
 		this.setLayout(new BorderLayout());
 		startButton = new JButton("Start");
 		startButton.setFocusable(false);
-		this.add(startButton,BorderLayout.SOUTH);
+		this.add(startButton);
 		startButton.addActionListener(this);
 	}
 	/*
