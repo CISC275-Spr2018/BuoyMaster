@@ -2,8 +2,11 @@ package main;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 /*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
@@ -15,11 +18,19 @@ public class StartScreen extends JPanel implements ActionListener{
 	 * 
 	 */
 	StartScreen(){
+		JPanel logoPanel = new JPanel();
+		JLabel logoLabel = new JLabel("", JLabel.CENTER);
+		add(logoLabel);
+		ImageIcon title = new ImageIcon("images/logo.png");
+		logoLabel.setIcon(title);
 		
 		startButton = new JButton("Start");
 		startButton.setFocusable(false);
 		this.add(startButton);
 		startButton.addActionListener(this);
+		
+		
+		
 	}
 	/*
 	 * (non-Javadoc)

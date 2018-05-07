@@ -92,7 +92,7 @@ public class Buoy extends GamePiece{
 	public void onCollide() {
 		
 		if(fact){
-			gameMessage.message = "you got the data, now return!";
+			gameMessage.message = "Return to the dock with the data.";
 			this.yVel = -1;
 			if(show){
 				show=!show;

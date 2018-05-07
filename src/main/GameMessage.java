@@ -9,6 +9,6 @@ public class GameMessage {
 	 * 
 	 */
 	GameMessage(){
-		this.message = "collect the data at the buoy";
+		this.message = "Go collect data from the buoy.";
 	}
 }
