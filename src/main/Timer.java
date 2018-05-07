@@ -15,6 +15,9 @@ class Timer {
 		decrement = 1;
 		message = "";
 	}
+	int getTime(){
+		return this.timeLeft;
+	}
 	/*Updates the timer as time goes on by decrementing.
 	 * 
 	 */

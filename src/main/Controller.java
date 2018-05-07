@@ -27,6 +27,9 @@ public class Controller implements ActionListener {
 		view.selectionScreen.fishingBoat.addActionListener(this);
 		view.selectionScreen.speedBoat.addActionListener(this);
 	}
+	public Model getModel(){
+		return this.model;
+	}
 /*
  * (non-Javadoc)
  * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
