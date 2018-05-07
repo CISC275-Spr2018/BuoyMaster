@@ -7,7 +7,7 @@ public class SpeedBoat extends Vessel{
 	/*Constructor for the SpeedBoat
 	 * 
 	 */
-	SpeedBoat(){
+	public SpeedBoat(){
 		super();
 		type = VesselType.SPEEDBOAT;
 		maxVel = 14;

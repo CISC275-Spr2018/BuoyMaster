@@ -31,7 +31,7 @@ public class Model{
 	 * @param height height of the screen
 	 * 
 	 */
-	Model(int width, int height){
+	public Model(int width, int height){
 		this.width = width;
 		this.height = height;
 		player = null;
@@ -46,7 +46,7 @@ public class Model{
 	/*All individual model update methods in central method
 	 * 
 	 */
-	void modelUpdate() {
+	public void modelUpdate() {
 		Random r = new Random();
 		int i = r.nextInt((health - 0) + 1) + 0;
 		health -= player.updatesBetweenWakes;
@@ -123,7 +123,7 @@ public class Model{
 	 * @param v user's vessel selection
 	 * 
 	 */
-	void setVessel(Vessel v) {
+	public void setVessel(Vessel v) {
 		this.player = v;
 	}
 

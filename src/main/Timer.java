@@ -2,7 +2,7 @@ package main;
 /*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
  */
-class Timer {
+public class Timer {
 	int timeLeft;
 	int decrement;
 	String message; //message to be displayed when time runs out
