@@ -14,5 +14,5 @@ public class GameMessagePanel extends JPanel{
 		super.paintComponent(g);
 		g.setFont(new Font("TimesRoman", Font.PLAIN, 30));
     	g.drawString(gameMessage.message, 25, 85);
-    }
+    } 
 }

@@ -28,4 +28,11 @@ public abstract class gamePiece implements Collidable{
 		this.xLoc += this.xVel;
 		this.yLoc += this.yVel;
 	}
+	
+	void buoyCollision(gamePiece p2) {
+		if(hasCollided(p2)==true) {
+			if(p2 instanceof Buoy) {
+			}
+		}
+	}
 }

@@ -12,6 +12,7 @@ import javax.swing.JPanel;
  */
 public class PlayerPanel extends JPanel{
 	Vessel player;
+	gamePiece gp;
 	
 	PlayerPanel(Vessel v){
 		player = v;
