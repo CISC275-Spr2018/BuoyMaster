@@ -2,6 +2,7 @@ package main;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.Serializable;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 /*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
@@ -11,7 +12,7 @@ import java.util.concurrent.ThreadLocalRandom;
  * Main Model for entire state of the game.
  * Will hold all different parts - player Vessels, Sandbars, Buoy, etc.
  */
-public class Model{
+public class Model implements Serializable{
 	
 	private final int width;
 	private final int height;

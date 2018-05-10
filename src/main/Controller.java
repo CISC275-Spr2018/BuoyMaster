@@ -2,12 +2,13 @@ package main;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.Serializable;
 
 import javax.swing.AbstractAction;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
-public class Controller implements ActionListener {
+public class Controller implements ActionListener, Serializable{
 	private final int width = 1280;
 	private final int height = 720;
 	private final static int DRAWDELAY = 50;
