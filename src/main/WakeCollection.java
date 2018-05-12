@@ -8,7 +8,7 @@ import java.util.HashSet;
  * 
  */
 public class WakeCollection {
-	HashSet<Wake> wakes = new HashSet<Wake>();
+	ArrayList<Wake> wakes = new ArrayList<Wake>();
 	int wakeStagger;
 	/*Adds the wake to the WakeCollection
 	 * @param x x coordinate of wake
@@ -17,28 +17,15 @@ public class WakeCollection {
 	 * @param yv y velocity of wake
 	 * @param boatStrength strength of boat to be used to mod wakeStagger
 	 */	
-	void addWake(int x, int y, int xv, int yv, int boatStrength) {
+	void addWake(int x, int y, double velocity, double rotationAngle, int boatStrength) {
 		if (wakeStagger % boatStrength == 0) {
-			wakes.add(new Wake(x, y, xv, yv));
+			wakes.add(new Wake(x, y, velocity, rotationAngle));
 		}
-	}
-	/*Removes wakes which wake life is below zero
-	 * 
-	 */
-	void removeDeadWakes() {
-		ArrayList<Wake> old = new ArrayList<Wake>();
-		for (Wake w : wakes) {
-			if (w.wakeLife <= 0) {
-				old.add(w);
-			}
-		}
-		wakes.removeAll(old);
 	}
 	/*Updates the WakeCollection class to remove wakes which have less than zero wake life 
 	 * 
 	 */
 	void update() {
-		removeDeadWakes();
 		for (Wake w : wakes) {
 			w.update();
 		}

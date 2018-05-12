@@ -64,17 +64,13 @@ public class VesselPanel extends JPanel{
 	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
 	 */
 	protected void paintComponent(Graphics g) {
-		//super.paintComponent(g);  // This was originally in the code but I'm fairly certain it is pointless -Greg
 		Color c = new Color(0, 0, 0, 0); // transparent color
-    	//g.drawImage(getImage(), xDrawLoc, yDrawLoc, c, this);
     	
     	BufferedImage img = getImage();
 		AffineTransform at = AffineTransform.getTranslateInstance(xDrawLoc,yDrawLoc);
 		at.rotate(-Math.toRadians(drawAngle), img.getWidth()/2, img.getHeight()/2);
 		Graphics2D g2d = (Graphics2D)g;
 		g2d.drawImage(img, at, null);
-		//repaint();
-    	
     	
     }
 	/*

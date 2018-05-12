@@ -6,21 +6,20 @@ import java.awt.image.BufferedImage;
  * 
  */
 public class Wake extends GamePiece{
-	Direction dir;
-	int wakeLife = 20;
+	int wakeLife = 20; // wake will staty around for 20 updates
 	/*Constructor for the Wake Class
 	 * @param x x coordinate of wake
 	 * @param y y coordinate of wake
 	 * @param xv x velocity of wake
 	 * @param yv y velocity of wake
 	 */
-	Wake(int x, int y, int xv, int yv){
+	Wake(int x, int y, double velocity, double rotationAngle){
 		this.xLoc = x;
 		this.yLoc = y;
-		//this.xVel = xv;
-		//this.yVel = yv;
+		this.velocity = velocity;
+		this.rotationAngle = rotationAngle;
 	}
-	/*Updates the wake class by decrementing the life of each wake
+	/*Updates the position and decrements the life of each wake
 	 * 
 	 */
 	void update() {
