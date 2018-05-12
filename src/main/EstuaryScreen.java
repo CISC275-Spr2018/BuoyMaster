@@ -63,12 +63,13 @@ public class EstuaryScreen extends JPanel{
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		sandBarPanel.paintComponent(g);
-		wp.paintComponent(g);
 		dockPanel.paintComponent(g);
-		vesselPanel.paintComponent(g);
+		
 		buoyPanel.paintComponent(g);
 		timerPanel.paintComponent(g);
 		gameMessagePanel.paintComponent(g);
 		slp.paintComponent(g);
+		wp.paintComponent(g);
+		vesselPanel.paintComponent(g);
     }
 }

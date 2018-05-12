@@ -53,8 +53,7 @@ public class WakeCollection {
 	void update() {
 		removeDeadWakes();
 		for (Wake w : wakes) {
-			w.updateLocation();
-			w.wakeLife--;
+			w.update();
 		}
 		wakeStagger+=5;
 	}

@@ -1,4 +1,5 @@
 package main;
+import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -46,8 +47,10 @@ public class WakePanel extends JPanel{
 			}
 			BufferedImage img = createImage();
 			AffineTransform at = AffineTransform.getTranslateInstance(w.xLoc,w.yLoc);
+			at.scale(1.0/w.opacity,1.0/w.opacity);
 			at.rotate(-Math.toRadians(w.rotationAngle), img.getWidth()/2, img.getHeight()/2);
 			Graphics2D g2d = (Graphics2D)g;
+			g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, w.opacity));
 			g2d.drawImage(img, at, null);
 		}
 	}

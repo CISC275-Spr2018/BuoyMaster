@@ -11,7 +11,7 @@ public abstract class Vessel extends GamePiece{
 	double turnRate; //The rate at which the boat will turn.
 	VesselType type;
 	WakeCollection wakes;
-	int updatesBetweenWakes = 3; //How many times the model is updated between a wake being emitted behind the vessel
+	int updatesBetweenWakes = 3; //default value
 	/*Constructor for the vessel class
 	 * 
 	 */
