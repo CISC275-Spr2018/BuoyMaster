@@ -1,10 +1,11 @@
 package main;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Random;
 /*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
  */
-public class SandBarCollection {
+public class SandBarCollection implements Serializable{
 	HashSet<SandBar> sandBars = new HashSet<SandBar>();
 	/*@param min minimum number for range of random number
 	 * @param max maximum number for range of random number

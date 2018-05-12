@@ -1,11 +1,11 @@
 package main;
 import java.awt.image.BufferedImage;
-
+import java.io.Serializable;
 import java.awt.image.BufferedImage;
 /*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
  */
-public class Wake extends GamePiece{
+public class Wake extends GamePiece implements Serializable{
 	Direction dir;
 	int wakeLife = 20;
 	/*Constructor for the Wake Class

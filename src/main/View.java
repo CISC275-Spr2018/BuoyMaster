@@ -1,5 +1,7 @@
 package main;
 import java.awt.Color;
+import java.io.Serializable;
+
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 /*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
@@ -9,7 +11,7 @@ import javax.swing.JLayeredPane;
  * Main View class for the game.
  * Will hold all different Panels of objects - PlayerPanel, BuoyPanel, etc.
  */
-public class View extends JFrame{
+public class View extends JFrame implements Serializable{
 	EstuaryScreen estuaryScreen;
 	StartScreen startScreen;
 	SelectionScreen selectionScreen;

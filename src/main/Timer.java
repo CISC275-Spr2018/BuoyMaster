@@ -1,8 +1,11 @@
 package main;
+
+import java.io.Serializable;
+
 /*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
  */
-public class Timer {
+public class Timer implements Serializable{
 	int timeLeft;
 	int decrement;
 	String message; //message to be displayed when time runs out
