@@ -8,8 +8,10 @@ import java.util.HashSet;
  * 
  */
 public class WakeCollection {
+	final int maximumWakesOnScreen = 50;
 	ArrayList<Wake> wakes = new ArrayList<Wake>();
 	int wakeStagger;
+	int wakeIndex = 0;
 	/*Adds the wake to the WakeCollection
 	 * @param x x coordinate of wake
 	 * @param y y coordinate of wake
@@ -17,18 +19,43 @@ public class WakeCollection {
 	 * @param yv y velocity of wake
 	 * @param boatStrength strength of boat to be used to mod wakeStagger
 	 */	
-	void addWake(int x, int y, double velocity, double rotationAngle, int boatStrength) {
-		if (wakeStagger % boatStrength == 0) {
-			wakes.add(new Wake(x, y, velocity, rotationAngle));
+
+
+	void addWake(int x, int y, double velocity, double rotationAngle, int updatesBetweenWakes) {
+		if(wakeStagger % updatesBetweenWakes ==0){ // 
+			if(wakes.size() < maximumWakesOnScreen){
+				wakes.add(new Wake(x, y, velocity, rotationAngle));
+			}
+			else{ //Replaces existing wakes if the maximumWakesOnScreen has been reached
+				if(wakeIndex >= maximumWakesOnScreen) wakeIndex = 0;
+				wakes.set(wakeIndex, new Wake(x, y, velocity, rotationAngle));
+				wakeIndex ++;
+			}	
 		}
+		wakeStagger++;
 	}
-	/*Updates the WakeCollection class to remove wakes which have less than zero wake life 
+	
+	//Removes old wakes (This can't be done while iterating the wakes ArrayList)
+	void removeDeadWakes() {
+		HashSet<Wake> oldWakes = new HashSet<Wake>();
+		for (Wake w : wakes) {
+			if (w.wakeLife <= 0) {
+				oldWakes.add(w);
+			}
+		}
+		wakes.removeAll(oldWakes);
+	}
+	
+
+	/*Updates the position and decrements the life of each wake
 	 * 
 	 */
 	void update() {
+		removeDeadWakes();
 		for (Wake w : wakes) {
-			w.update();
+			w.updateLocation();
+			w.wakeLife--;
 		}
-		wakeStagger++;
+		wakeStagger+=5;
 	}
 }

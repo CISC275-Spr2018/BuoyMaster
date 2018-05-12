@@ -15,25 +15,16 @@ import javax.swing.JPanel;
  * 
  */
 public class WakePanel extends JPanel{
-	ArrayList<Wake> wakesPanel;
-	
-	
-	WakePanel(){
-		wakesPanel = new ArrayList<Wake>();
-	}
+	WakeCollection wakeCollection;
 	
 	/*updates all wakes in a wake collection
 	 * @param wc WakeCollection to add to wakesPanel
 	 * 
 	 */
 	void updateAll(WakeCollection wc) {
-		wakesPanel = wc.wakes;
+		wakeCollection = wc;
 	}
-	/*@param dir Direction of wake 
-	 * @return returns a buffered image of a wake based on direction
-	 * 
-	 * 
-	 */
+	
 	BufferedImage createImage() {
 		BufferedImage img = null;
 
@@ -49,18 +40,15 @@ public class WakePanel extends JPanel{
 	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
 	 */
 	protected void paintComponent(Graphics g) {
-		Color c = new Color(0, 0, 0, 0); // transparent color
-		for (Wake w : wakesPanel) {
+		for (Wake w : wakeCollection.wakes) {
 			if(w.wakeLife <= 0){
-				this.setVisible(false);
+				//something
 			}
-			else if(w.velocity > 0.1 || w.velocity < -0.1){
-				BufferedImage img = createImage();
-				AffineTransform at = AffineTransform.getTranslateInstance(w.xLoc,w.yLoc);
-				at.rotate(-Math.toRadians(w.rotationAngle), img.getWidth()/2, img.getHeight()/2);
-				Graphics2D g2d = (Graphics2D)g;
-				g2d.drawImage(img, at, null);
-			}
+			BufferedImage img = createImage();
+			AffineTransform at = AffineTransform.getTranslateInstance(w.xLoc,w.yLoc);
+			at.rotate(-Math.toRadians(w.rotationAngle), img.getWidth()/2, img.getHeight()/2);
+			Graphics2D g2d = (Graphics2D)g;
+			g2d.drawImage(img, at, null);
 		}
 	}
 }

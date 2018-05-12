@@ -26,7 +26,9 @@ public abstract class Vessel extends GamePiece{
 	 * 
 	 */
 	void update() {
-		wakes.addWake(this.xLoc, this.yLoc, -this.velocity/2, this.rotationAngle, this.updatesBetweenWakes); //wakeVelocity set to opposite of boat velocity
+		if(velocity > 0.1 || velocity < -0.1){ //Adds no wake if velocity is near 0
+			wakes.addWake(this.xLoc, this.yLoc, -this.velocity/2, this.rotationAngle, this.updatesBetweenWakes); //wakeVelocity set to opposite of boat velocity
+		}
 		wakes.update();
 		super.updateLocation();
 	}
