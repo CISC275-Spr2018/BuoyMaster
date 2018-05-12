@@ -89,7 +89,7 @@ public class Model implements Serializable{
 			
 		}
 		if(!dock.mt){
-			tutorial=false;
+			
 		}
 		if(!tutorial){
 		buoy=new Buoy(width - 100, 100, gameMessage);
