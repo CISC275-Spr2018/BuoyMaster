@@ -13,6 +13,7 @@ public class View extends JFrame{
 	EstuaryScreen estuaryScreen;
 	StartScreen startScreen;
 	SelectionScreen selectionScreen;
+	TutorialScreen tutorialScreen;
 	FactScreen factScreen;
 	JLayeredPane layers;
 	/*Constructor for the view 
@@ -29,6 +30,8 @@ public class View extends JFrame{
 		estuaryScreen = new EstuaryScreen();
 		estuaryScreen.setBackground(Color.CYAN.darker().darker());
 		startScreen.setBackground(Color.CYAN.darker().darker());
+		tutorialScreen=new TutorialScreen();
+		tutorialScreen.setBackground(Color.CYAN.darker().darker());
 		layers = new JLayeredPane();
 		
 		//factScreen = new FactScreen();
@@ -42,7 +45,8 @@ public class View extends JFrame{
 		
 	    layers.add(startScreen, 1, 0); //Not certain why an integer is needed as a constraint but it is.
 	    layers.add(selectionScreen, 1, 1);
-	    layers.add(estuaryScreen, 1, 2);
+	    layers.add(tutorialScreen,1,2);
+	    layers.add(estuaryScreen, 1,3);
 		this.add(layers);
 		
 		this.setVisible(true);
@@ -65,7 +69,7 @@ public class View extends JFrame{
 	 * @param sLY y coordinate of the shore line
 	 * 
 	 */
-	public void update(int bX, int bY, int dX, int dY, int pX, int pY, VesselType vessel, Direction direction, SandBarCollection sbc, String message, String timerMessage, WakeCollection wc, int sLX, int sLY){ //this method should take something other than the entire model object //// TO DO!!!!!!!!
+	public void update(int bX, int bY, int dX, int dY, int pX, int pY, VesselType vessel, Direction direction, SandBarCollection sbc, String message, String timerMessage, WakeCollection wc, int sLX, int sLY){ 
 		estuaryScreen.update( bX,  bY,  dX,  dY,  pX,  pY,  vessel,  direction,  sbc,  message,  timerMessage,  wc,  sLX,  sLY);
 		//factScreen.setVisible(model.getBuoy().hasCollided(model.getPlayer()));
 	}

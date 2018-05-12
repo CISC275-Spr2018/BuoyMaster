@@ -20,12 +20,14 @@ public class Model implements Serializable{
 	private Vessel player;
 	private Dock dock;
 	private Buoy buoy;
+	private Arrow arrow;
 	private GameMessage gameMessage;
 	SandBarCollection sandBarCollection;
 	int health = 100000;
 	ShoreLine shoreline;
 	boolean gameOver = false;
 	boolean addTime=false;
+	boolean tutorial=true;
 	
 	/*Constructor for the model 
 	 * @param width width of the screen
@@ -38,16 +40,26 @@ public class Model implements Serializable{
 		player = null;
 		timer = new Timer();
 		gameMessage = new GameMessage();
-		buoy = new Buoy(width - 100, 100, gameMessage);
+		buoy = new Buoy(width - 250, 100, gameMessage);
 		sandBarCollection = new SandBarCollection();
 		dock = new Dock(0, height/2, gameMessage);
 		shoreline = new ShoreLine(0, 420);
+		arrow=new Arrow(width-250, 100);
 	}
 	
 	/*All individual model update methods in central method
 	 * 
 	 */
 	public void modelUpdate() {
+		if (tutorial){
+			Random r = new Random();
+			int l = r.nextInt((health - 0) + 1) + 0;
+			health -= player.updatesBetweenWakes;
+			buoy.hasCollided(player);
+		}
+		
+		if(!tutorial){
+		buoy=new Buoy(width - 100, 100, gameMessage);
 		Random r = new Random();
 		int i = r.nextInt((health - 0) + 1) + 0;
 		health -= player.updatesBetweenWakes;
@@ -68,7 +80,7 @@ public class Model implements Serializable{
 		gameOver = timer.update() || dock.arrivedWithData;
 		sandBarCollection.updateAll();
 		dock.dataCollected(buoy.collectedStatus());
-	
+		}
 	}
 	/*@return returns the vessel the player is using
 	 * 
