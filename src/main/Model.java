@@ -48,13 +48,13 @@ public class Model implements Serializable{
 	public void modelUpdate() {
 		Random r = new Random();
 		int i = r.nextInt((health - 0) + 1) + 0;
-		health -= player.updatesBetweenWakes;
+		health -= player.wakeStrength;
 		
 		buoy.hasCollided(player);
 		sandBarCollection.checkAllCollision(player);
 		dock.hasCollided(player);
 		
-		if (health > 0 && i % player.updatesBetweenWakes == 0){
+		if (health > 0 && i % player.wakeStrength == 0){
 			sandBarCollection.addRandomSandBar(player, timer, gameMessage, player);
 		}
 		

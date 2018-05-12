@@ -13,7 +13,7 @@ public class FishingBoat extends Vessel{
 		maxVel = 5;
 		this.acceleration = 2;
 		this.turnRate = 10; //degrees turned per update (should be a factor of 360)
-		this.updatesBetweenWakes = 5;
+		this.wakeStrength = 8;
 	}
 
 }

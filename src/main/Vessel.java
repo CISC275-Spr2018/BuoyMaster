@@ -11,7 +11,7 @@ public abstract class Vessel extends GamePiece{
 	double turnRate; //The rate at which the boat will turn.
 	VesselType type;
 	WakeCollection wakes;
-	int updatesBetweenWakes = 3; //default value
+	double wakeStrength = 10;
 	/*Constructor for the vessel class
 	 * 
 	 */
@@ -27,7 +27,7 @@ public abstract class Vessel extends GamePiece{
 	 */
 	void update() {
 		if(velocity > 0.1 || velocity < -0.1){ //Adds no wake if velocity is near 0
-			wakes.addWake(this.xLoc, this.yLoc, -this.velocity/2, this.rotationAngle, this.updatesBetweenWakes); //wakeVelocity set to opposite of boat velocity
+			wakes.addWake(this.xLoc, this.yLoc, this.wakeStrength, this.rotationAngle); //wakeVelocity set to opposite of boat velocity
 		}
 		wakes.update();
 		super.updateLocation();

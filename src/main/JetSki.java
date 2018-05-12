@@ -13,6 +13,6 @@ public class JetSki extends Vessel{
 		maxVel = 10;
 		this.acceleration = 4;
 		this.turnRate = 15; //degrees turned per update (should be a factor of 360)
-		this.updatesBetweenWakes = 2;
+		this.wakeStrength = 12;
 	}
 }
