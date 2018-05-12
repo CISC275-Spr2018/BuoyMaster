@@ -8,6 +8,7 @@ public abstract class GamePiece implements Collidable{
 	protected int yLoc;
 	protected int xVel;
 	protected int yVel;
+	protected double rotationAngle;
 	private int collisionRange =30; //Default set to 30 but will be changed for different pieces.
 
 	/* Method to check if collision has occurred between to GamePieces
@@ -61,10 +62,15 @@ public abstract class GamePiece implements Collidable{
 	public int getYVel() {
 		return yVel;
 	}
+	
+	double getRotationAngle() {	
+		return rotationAngle;
+	}
 	/*Updates the location of a GamePiece based on the x and y velocities
 	 * 
 	 */
 	void updateLocation() {
+		this.rotationAngle = -Math.toDegrees(Math.atan2(this.yVel, this.xVel)); //Sets the rotation angle based on the velocity
 		this.xLoc += this.xVel;
 		this.yLoc += this.yVel;
 	}

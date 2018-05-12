@@ -25,45 +25,11 @@ public abstract class Vessel extends GamePiece{
 	 */
 	void update() {
 		wakes.removeDeadWakes();
-		checkDirection();
 		wakes.addWake(this.xLoc, this.yLoc, -this.xVel, -this.yVel, this.updatesBetweenWakes);
 		wakes.update();
 		super.updateLocation();
 	}
 	
-	/*@return returns the current direction the user is going in 
-	 * 
-	 */
-	Direction checkDirection() {
-		if (xVel == 0 && yVel < 0) { // north
-			dir = Direction.NORTH;
-		}
-		else if (xVel > 0 && yVel < 0) { // northeast
-			dir = Direction.NORTHEAST;
-		}
-		else if (xVel > 0 && yVel == 0) { // east
-			dir = Direction.EAST;
-		}
-		else if (xVel > 0 && yVel > 0) { // southeast
-			dir = Direction.SOUTHEAST;
-		}
-		else if (xVel == 0 && yVel > 0) { // south
-			dir = Direction.SOUTH;
-		}
-		else if (xVel < 0 && yVel > 0) { // southwest
-			dir = Direction.SOUTHWEST;
-		}
-		else if (xVel < 0 && yVel == 0) { // west
-			dir = Direction.WEST;
-		}
-		else if (xVel < 0 && yVel < 0) { // northwest
-			dir = Direction.NORTHWEST;
-		}
-		else { // east
-			dir = Direction.EAST;
-		}
-		return dir;
-	}
 	/*
 	 * (non-Javadoc)
 	 * @see Collidable#onCollide()

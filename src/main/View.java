@@ -65,8 +65,8 @@ public class View extends JFrame{
 	 * @param sLY y coordinate of the shore line
 	 * 
 	 */
-	public void update(int bX, int bY, int dX, int dY, int pX, int pY, VesselType vessel, Direction direction, SandBarCollection sbc, String message, String timerMessage, WakeCollection wc, int sLX, int sLY){ //this method should take something other than the entire model object //// TO DO!!!!!!!!
-		estuaryScreen.update( bX,  bY,  dX,  dY,  pX,  pY,  vessel,  direction,  sbc,  message,  timerMessage,  wc,  sLX,  sLY);
+	public void update(int bX, int bY, int dX, int dY, int pX, int pY, VesselType vessel, double drawAngle, SandBarCollection sbc, String message, String timerMessage, WakeCollection wc, int sLX, int sLY){ //this method should take something other than the entire model object //// TO DO!!!!!!!!
+		estuaryScreen.update( bX,  bY,  dX,  dY,  pX,  pY,  vessel,  drawAngle,  sbc,  message,  timerMessage,  wc,  sLX,  sLY);
 		//factScreen.setVisible(model.getBuoy().hasCollided(model.getPlayer()));
 	}
 }
