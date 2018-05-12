@@ -26,13 +26,16 @@ public class Controller implements ActionListener, Serializable{
 		model = new Model(width, height);
 		view = new View(width, height);
 		view.addKeyListener(gkl);
-
+		
 		view.selectionScreen.jetSki.addActionListener(this);
 		view.selectionScreen.fishingBoat.addActionListener(this);
 		view.selectionScreen.speedBoat.addActionListener(this);
 	}
 	public Model getModel(){
 		return model;
+	}
+	public View getView(){
+		return view;
 	}
 /*
  * (non-Javadoc)
@@ -60,26 +63,20 @@ public class Controller implements ActionListener, Serializable{
 	void update() {
 		if (start && !model.gameOver) { //the game runs from start until gameOver is true
 			model.modelUpdate();
-			view.update(model.getBuoy().getXLoc(), model.getBuoy().getYLoc(),model.getDock().getXLoc(),model.getDock().getYLoc(),model.getPlayer().getXLoc(),model.getPlayer().getYLoc(),model.getPlayer().getVesselType(),model.getPlayer().checkDirection(),model.sandBarCollection,model.getTimer().message,model.getGameMessage().message,model.getPlayer().wakes,model.shoreline.getXLoc(),model.shoreline.getYLoc());
+			view.update(model.getBuoy().getXLoc(), model.getBuoy().getYLoc(),model.getDock().getXLoc(),model.getDock().getYLoc(),model.getPlayer().getXLoc(),model.getPlayer().getYLoc(),model.getPlayer().getVesselType(),model.getPlayer().checkDirection(),model.sandBarCollection,model.getTimer().message,model.getGameMessage().message,model.getPlayer().wakes,model.shoreline.getXLoc(),model.shoreline.getYLoc(),model.getArrow().getXLoc(),model.getArrow().getYLoc());
 		}
 		if (start && model.addTime){
 			model.getTimer().increment();
+		}
+		if(model.gameStart){
+			view.tutorialScreen.setVisible(false);
+			model.setStart(false);
 		}
 		if(model.gameOver){
 			reply=JOptionPane.showConfirmDialog(null,"Would you like to retry?","Restart",reply);
 				
 			if(reply==JOptionPane.YES_OPTION){
-				model.gameOver=!model.gameOver;
-				Controller c = new Controller();
-				model = new Model(width, height);
-				view = new View(width, height);
-				c.model=model;
-				c.view=view;
-				c.view.addKeyListener(gkl);
-
-				c.view.selectionScreen.jetSki.addActionListener(this);
-				c.view.selectionScreen.fishingBoat.addActionListener(this);
-				c.view.selectionScreen.speedBoat.addActionListener(this);
+				model=new Model(width, height);
 				
 			}
 			if(reply==JOptionPane.NO_OPTION){

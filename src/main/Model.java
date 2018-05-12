@@ -5,6 +5,8 @@ import java.awt.event.KeyListener;
 import java.io.Serializable;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
+
+import javax.swing.JOptionPane;
 /*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
  */
@@ -28,6 +30,9 @@ public class Model implements Serializable{
 	boolean gameOver = false;
 	boolean addTime=false;
 	boolean tutorial=true;
+	boolean tutorialSandbar=true;
+	boolean startShow=false;
+	boolean gameStart=false;
 	
 	/*Constructor for the model 
 	 * @param width width of the screen
@@ -40,26 +45,56 @@ public class Model implements Serializable{
 		player = null;
 		timer = new Timer();
 		gameMessage = new GameMessage();
-		buoy = new Buoy(width - 250, 100, gameMessage);
+		buoy = new Buoy(width - 600, 100, gameMessage);
 		sandBarCollection = new SandBarCollection();
 		dock = new Dock(0, height/2, gameMessage);
 		shoreline = new ShoreLine(0, 420);
-		arrow=new Arrow(width-250, 100);
+		arrow=new Arrow(width-585, 20);
 	}
 	
 	/*All individual model update methods in central method
 	 * 
 	 */
+	static int randomNum(int min, int max){
+		Random r = new Random();
+		int i = r.nextInt((max - min) + 1) + min;
+		return i;
+	}
 	public void modelUpdate() {
 		if (tutorial){
+			if(startShow){
+				JOptionPane.showMessageDialog(null, "Use your arrow keys to guide you through the estuary.");
+				startShow=false;
+			}
 			Random r = new Random();
 			int l = r.nextInt((health - 0) + 1) + 0;
 			health -= player.updatesBetweenWakes;
+			buoy.setTutorial(true);
 			buoy.hasCollided(player);
-		}
+			
+			player.update();
+			dock.hasCollided(player);
+			if (buoy.sandBar){
+				if (tutorialSandbar){
+					sandBarCollection.addSandBar(randomNum(10, player.xLoc) - 50, 620, timer, gameMessage, player);
+					tutorialSandbar=false;
+				}
+			}
+			sandBarCollection.checkAllCollision(player);
+			sandBarCollection.updateAll();
+			if (buoy.moveArrow){
+				arrow=new Arrow(10, height/2-75);
+			}
 		
+			
+		}
+		if(!dock.mt){
+			tutorial=false;
+		}
 		if(!tutorial){
 		buoy=new Buoy(width - 100, 100, gameMessage);
+		buoy.setTutorial(false);
+		dock.setTutorial(false);
 		Random r = new Random();
 		int i = r.nextInt((health - 0) + 1) + 0;
 		health -= player.updatesBetweenWakes;
@@ -120,6 +155,9 @@ public class Model implements Serializable{
 	public Dock getDock() {
 		return dock;
 	}
+	public Arrow getArrow(){
+		return arrow;
+	}
 	/*@return returns the width of the screen
 	 * 
 	 */
@@ -138,6 +176,9 @@ public class Model implements Serializable{
 	 */
 	public void setVessel(Vessel v) {
 		this.player = v;
+	}
+	public void setStart(boolean start){
+		this.gameStart=true;
 	}
 
 }

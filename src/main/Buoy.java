@@ -21,6 +21,10 @@ public class Buoy extends GamePiece{
 	boolean asked=false;
 	boolean showAnswer=false;
 	boolean correct=false;
+	boolean tutorial=true;
+	boolean tutorialShow=true;
+	boolean sandBar=false;
+	boolean moveArrow=false;
 	//Buoy constructor
 	/*Buoy constructor
 	 * @param x this is the x position of buoy in the frame
@@ -82,7 +86,15 @@ public class Buoy extends GamePiece{
 	public String createRandomFact(){
 		return data[rand];	
 	}
-	
+	public void setTutorial(boolean b){
+		this.tutorial=b;
+	}
+	public boolean getTutorial(){
+		return this.tutorial;
+	}
+	public boolean getMoveArrow(){
+		return moveArrow;
+	}
 	/*
 	 * (non-Javadoc)
 	 * @see Collidable#onCollide()
@@ -90,23 +102,33 @@ public class Buoy extends GamePiece{
 	@Override
 	//onCollide method for buoy
 	public void onCollide() {
-		
-		if(fact){
-			gameMessage.message = "Return to the dock with the data.";
-			this.yVel = -1;
-			if(show){
-				show=!show;
-				JOptionPane.showMessageDialog(null, createRandomFact());
-				collected=true;
-				question=true;
+		if(tutorial){
+			if(tutorialShow){
+			JOptionPane.showMessageDialog(null, "Return to Dock! Avoid the sandbars! They are bad for the boat!");
+			tutorialShow=false;
+			sandBar=true;
+			moveArrow=true;
 			}
 		}
-		if (question){
-			if(!asked){
-				asked=true;
-				if (rand<7){
-					reply=JOptionPane.showConfirmDialog(null,askRandomQuestion(),"Salinity Question",reply);
-					switch(rand){
+		if(!tutorial){
+			if(fact){
+				gameMessage.message = "Return to the dock with the data.";
+				this.yVel = -1;
+				if(show){
+					show=!show;
+					JOptionPane.showMessageDialog(null, createRandomFact());
+					collected=true;
+					question=true;
+					fact=false;
+				}
+			}
+			if (question){
+				question=false;
+				if(!asked){
+					asked=true;
+					if (rand<7){
+						reply=JOptionPane.showConfirmDialog(null,askRandomQuestion(),"Salinity Question",reply);
+						switch(rand){
 					case 0:
 						if(reply==JOptionPane.YES_OPTION){
 							if(!showAnswer){
@@ -333,8 +355,9 @@ public class Buoy extends GamePiece{
 				}
 			}
 		}
+		}
+	}
 		
-	}	
 	/*
 	 *@return returns the status of collected 
 	 */

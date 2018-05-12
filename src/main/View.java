@@ -41,6 +41,7 @@ public class View extends JFrame{
 		
 		startScreen.setBounds(0, 0, width, height); // Sets the size of each of the screens
 		selectionScreen.setBounds(0, 0, width, height);
+		tutorialScreen.setBounds(0, 0, width, height);
 		estuaryScreen.setBounds(0, 0, width, height);
 		
 	    layers.add(startScreen, 1, 0); //Not certain why an integer is needed as a constraint but it is.
@@ -69,8 +70,8 @@ public class View extends JFrame{
 	 * @param sLY y coordinate of the shore line
 	 * 
 	 */
-	public void update(int bX, int bY, int dX, int dY, int pX, int pY, VesselType vessel, Direction direction, SandBarCollection sbc, String message, String timerMessage, WakeCollection wc, int sLX, int sLY){ 
+	public void update(int bX, int bY, int dX, int dY, int pX, int pY, VesselType vessel, Direction direction, SandBarCollection sbc, String message, String timerMessage, WakeCollection wc, int sLX, int sLY, int aX, int aY){ 
+		tutorialScreen.update(bX,  bY,  dX,  dY,  pX,  pY,  vessel,  direction,  sbc,  wc,  sLX,  sLY, aX, aY);
 		estuaryScreen.update( bX,  bY,  dX,  dY,  pX,  pY,  vessel,  direction,  sbc,  message,  timerMessage,  wc,  sLX,  sLY);
-		//factScreen.setVisible(model.getBuoy().hasCollided(model.getPlayer()));
 	}
 }

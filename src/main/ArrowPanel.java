@@ -14,22 +14,21 @@ public class ArrowPanel extends JPanel {
 	private BufferedImage img;
 	private int xDrawLoc;
 	private int yDrawLoc;
-	/*Constructor for the BuoyPanel. It draws the Arrow for the tutorial
+	/*Constructor for the Arrow. It draws the Arrow for the tutorial
 	 * 
 	 */
 	ArrowPanel(){
 		try {
-		    img = ImageIO.read(new File("images/buoy.png"));
+		    img = ImageIO.read(new File("images/arrow.png"));
 		} catch (IOException e) {
 		}
 	}
 	/* Updates the Arrow panel with the Arrows x and y coordinate
-	 * @param x buoys x coordinate
-	 * @param y buoy's y coordinate
+	 * 
 	 */
 	void update(int x, int y) {
 		xDrawLoc = x;
-		yDrawLoc = y;
+		yDrawLoc = y+1;
 	}
 	/*
 	 * (non-Javadoc)

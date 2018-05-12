@@ -1,7 +1,8 @@
 package main;
 
 public class Arrow extends GamePiece {
-	boolean atBuouy=false;
+	boolean atBuoy=true;
+	boolean atDock=false;
 	Arrow(int x, int y){
 		this.xLoc=x;
 		this.yLoc=y;
@@ -11,6 +12,10 @@ public class Arrow extends GamePiece {
 	@Override
 	public void onCollide() {
 			
+	}
+	public void goToDock(){
+		atBuoy=false;
+		atDock=true;
 	}
 	
 	
