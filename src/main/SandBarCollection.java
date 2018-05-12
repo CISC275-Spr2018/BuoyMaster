@@ -36,8 +36,8 @@ public class SandBarCollection {
 	 * @param v user's vessel selection
 	 * 
 	 */
-	void addSandBar(int x, int y, int xVel, int yVel, Timer t, GameMessage g, Vessel v) {
-		this.sandBars.add(new SandBar(x, y, xVel, yVel, t, g, v));
+	void addSandBar(int x, int y, double velocity, Timer t, GameMessage g, Vessel v) {
+		this.sandBars.add(new SandBar(x, y, velocity, t, g, v));
 	}
 	/*Creates a random SandBar
 	 * 

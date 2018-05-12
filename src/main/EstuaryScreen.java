@@ -45,10 +45,10 @@ public class EstuaryScreen extends JPanel{
 	 * @param sLX x coordinate of the shore line
 	 * @param sLY y coordinate of the shore line
  	 */
-	public void update(int bX, int bY, int dX, int dY, int pX, int pY, VesselType vessel, Direction direction, SandBarCollection sbc, String timerMessage, String message, WakeCollection wc, int sLX, int sLY){
+	public void update(int bX, int bY, int dX, int dY, int pX, int pY, VesselType vessel, double rotationAngle, SandBarCollection sbc, String timerMessage, String message, WakeCollection wc, int sLX, int sLY){
 		buoyPanel.update(bX, bY);
 		dockPanel.update( dX, dY);
-		vesselPanel.update(pX, pY, vessel, direction);
+		vesselPanel.update(pX, pY, vessel, rotationAngle);
 		sandBarPanel.update(sbc);
 		timerPanel.update(timerMessage);
 		gameMessagePanel.update(message);

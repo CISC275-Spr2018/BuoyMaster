@@ -24,17 +24,26 @@ public class GameKeyListener implements KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();
-		if (key == KeyEvent.VK_LEFT && player.xVel > -player.maxVel) {
-			player.xVel -= 4;
+		
+		
+		
+		if (key == KeyEvent.VK_LEFT) {
+			player.rotationAngle += player.turnRate;
 		}
-		if (key == KeyEvent.VK_RIGHT && player.xVel < player.maxVel) {
-			player.xVel += 4;
+		if (key == KeyEvent.VK_RIGHT) {
+			player.rotationAngle -= player.turnRate;
 		}	
-		if (key == KeyEvent.VK_UP && player.yVel > -player.maxVel) {
-			player.yVel -= 4;
+		
+		if (key == KeyEvent.VK_UP && player.velocity < player.maxVel) {
+			player.velocity += 4;
 		}
-		if (key == KeyEvent.VK_DOWN && player.yVel < player.maxVel) {
-			player.yVel += 4;
+		if (key == KeyEvent.VK_DOWN && player.velocity > -player.maxVel/3) { //Sets max reverse speed to a third of max forward speed
+			player.velocity -= 4;
+		}
+		
+		// This is just for debugging and finding out values midgame.
+		if (key == KeyEvent.VK_G){
+			System.out.println(player.rotationAngle);
 		}
 		
 	}

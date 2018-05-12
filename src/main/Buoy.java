@@ -31,8 +31,7 @@ public class Buoy extends GamePiece{
 	Buoy(int x, int y, GameMessage g){
 		this.xLoc = x;
 		this.yLoc = y;
-		this.xVel = 0;
-		this.yVel = 0;
+		this.velocity = 0;
 		this.gameMessage = g;
 		rand=random.nextInt(14);
 		
@@ -93,7 +92,6 @@ public class Buoy extends GamePiece{
 		
 		if(fact){
 			gameMessage.message = "Return to the dock with the data.";
-			this.yVel = -1;
 			if(show){
 				show=!show;
 				JOptionPane.showMessageDialog(null, createRandomFact());

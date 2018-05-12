@@ -17,8 +17,8 @@ public class Wake extends GamePiece{
 	Wake(int x, int y, int xv, int yv){
 		this.xLoc = x;
 		this.yLoc = y;
-		this.xVel = xv;
-		this.yVel = yv;
+		//this.xVel = xv;
+		//this.yVel = yv;
 	}
 	/*Updates the wake class by decrementing the life of each wake
 	 * 
@@ -26,44 +26,10 @@ public class Wake extends GamePiece{
 	void update() {
 		super.updateLocation();
 		wakeLife--;
-		dir = checkDirection();
 	}
 	/*@return returns the direction of the wake
 	 * 
 	 */
-	Direction checkDirection() {
-		if (xVel == 0 && yVel < 0) { // north
-			dir = Direction.NORTH;
-		}
-		else if (xVel > 0 && yVel < 0) { // northeast
-			dir = Direction.NORTHEAST;
-		}
-		else if (xVel > 0 && yVel == 0) { // east
-			dir = Direction.EAST;
-		}
-		else if (xVel > 0 && yVel > 0) { // southeast
-			dir = Direction.SOUTHEAST;
-		}
-		else if (xVel == 0 && yVel > 0) { // south
-			dir = Direction.SOUTH;
-		}
-		else if (xVel < 0 && yVel > 0) { // southwest
-			dir = Direction.SOUTHWEST;
-		}
-		else if (xVel < 0 && yVel == 0) { // west
-			dir = Direction.WEST;
-		}
-		else if (xVel < 0 && yVel < 0) { // northwest
-			dir = Direction.NORTHWEST;
-		}
-		else if (xVel > 0 && yVel == 0){ // east
-			dir = Direction.EAST;
-		}
-		else{
-			return null;
-		}
-		return dir;
-	}
 	/*
 	 * (non-Javadoc)
 	 * @see Collidable#onCollide()

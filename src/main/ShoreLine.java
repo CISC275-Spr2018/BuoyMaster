@@ -20,8 +20,8 @@ public class ShoreLine extends GamePiece{
 	ShoreLine(int x, int y){
 		this.xLoc = x;
 		this.yLoc = y;
-		this.xVel = 0;
-		this.yVel = 10;
+		this.rotationAngle = 90;
+		this.velocity = 10;
 	}
 
 }

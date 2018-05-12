@@ -16,11 +16,10 @@ public class SandBar extends GamePiece{
 	 * @param g GameMessage which gets set for hitting a SandBar
 	 * @param v user's vessel choice
 	 */
-	SandBar(int x, int y, int xVel, int yVel, Timer t, GameMessage g, Vessel v){
+	SandBar(int x, int y, double velocity, Timer t, GameMessage g, Vessel v){
 		this.xLoc = x;
 		this.yLoc = y;
-		this.xVel = xVel;
-		this.yVel = yVel;
+		this.velocity = velocity;
 		
 		timer = t;
 		gameMessage = g;
@@ -34,8 +33,9 @@ public class SandBar extends GamePiece{
 	 */
 	SandBar(int x, int y, Timer t, GameMessage g, Vessel v){
 		this.xLoc = x;
-		this.yVel = -5;
 		this.yLoc = y;
+		this.velocity = 5;
+		this.rotationAngle = 90;
 		timer = t;
 		gameMessage = g;
 		player = v;

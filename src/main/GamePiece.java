@@ -6,9 +6,10 @@ package main;
 public abstract class GamePiece implements Collidable{
 	protected int xLoc;
 	protected int yLoc;
-	protected int xVel;
-	protected int yVel;
-	private int collisionRange =30; //Default set to 30 but will be changed for different pieces.
+	protected double velocity;
+	//protected double velocityAngle; //The angle that it is currently traveling in degrees.
+	protected double rotationAngle; //The angle at which the image is drawn.
+	protected int collisionRange =30; //Default set to 30 but will be changed for different pieces.
 
 	/* Method to check if collision has occurred between to GamePieces
 	 * @param g2 second GamePiece which one GamePiece may come into contact with
@@ -52,20 +53,18 @@ public abstract class GamePiece implements Collidable{
 	/*
 	 *@return returns the x velocity of a GamePiece 
 	 */
-	public int getXVel() {
-		return xVel;
+	public double getRotationAngle(){
+		return rotationAngle;
 	}
-	/*
-	 *@return returns the y velocity of a GamePiece 
-	 */
-	public int getYVel() {
-		return yVel;
+	public double getVelocity(){
+		return velocity;
 	}
 	/*Updates the location of a GamePiece based on the x and y velocities
 	 * 
 	 */
 	void updateLocation() {
-		this.xLoc += this.xVel;
-		this.yLoc += this.yVel;
+		this.xLoc += (Math.cos(Math.toRadians(this.rotationAngle)))*(this.velocity);
+		this.yLoc -= (Math.sin(Math.toRadians(this.rotationAngle)))*(this.velocity);
+		//Note: y is reversed since for a JFrame, location (1,1) is where (1,-1) would be in regular Cartesian.
 	}
 }

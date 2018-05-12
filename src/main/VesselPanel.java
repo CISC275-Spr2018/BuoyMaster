@@ -2,9 +2,12 @@ package main;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
@@ -14,6 +17,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
@@ -22,14 +26,13 @@ import javax.swing.JPanel;
  */
 public class VesselPanel extends JPanel{
 	private VesselType type;
-	private Direction dir;
+	private double drawAngle;
 	private int xDrawLoc;
 	private int yDrawLoc;
-	/*@returns the buffered image for the vessel based on type selected and direction 
-	 * 
-	 */
+	
+	//returns the buffered image for the vessel based on type selected and direction 
 	BufferedImage getImage() {
-		return createImage(type, dir);
+		return createImage(type);
 	}
 	/*Updates the view with the vessel based on updated aspects
 	 * @param x x coordinate of the vessel
@@ -37,21 +40,21 @@ public class VesselPanel extends JPanel{
 	 * @param type the type of boat the user is using
 	 * @param dir the direction the vessel is in
 	 */
-	void update(int x, int y, VesselType type, Direction dir) {
+	void update(int x, int y, VesselType type, double drawAngle) {
 		xDrawLoc = x;
 		yDrawLoc = y;
+		this.drawAngle = drawAngle;
 		this.type = type;
-		this.dir = dir;
 	}
 	/*@param type the type of vessel the user is using
 	 * @param dir the direction the vessel is going in
 	 * @return returns a buffered image of the vessel 
 	 * 
 	 */
-	BufferedImage createImage(VesselType type, Direction dir) {
+	BufferedImage createImage(VesselType type) {
 		BufferedImage img = null;
 		try {
-		    img = ImageIO.read(new File("images/vessels/" + type.getName() + "/" + dir.getName() + ".png"));
+		    img = ImageIO.read(new File("images/vessels/" + type.getName() + "/east.png"));
 		} catch (IOException e) {
 		}
 		return img;
@@ -61,9 +64,18 @@ public class VesselPanel extends JPanel{
 	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
 	 */
 	protected void paintComponent(Graphics g) {
-		super.paintComponent(g);
+		//super.paintComponent(g);  // This was originally in the code but I'm fairly certain it is pointless -Greg
 		Color c = new Color(0, 0, 0, 0); // transparent color
-    	g.drawImage(getImage(), xDrawLoc, yDrawLoc, c, this);
+    	//g.drawImage(getImage(), xDrawLoc, yDrawLoc, c, this);
+    	
+    	BufferedImage img = getImage();
+		AffineTransform at = AffineTransform.getTranslateInstance(xDrawLoc,yDrawLoc);
+		at.rotate(-Math.toRadians(drawAngle), img.getWidth()/2, img.getHeight()/2);
+		Graphics2D g2d = (Graphics2D)g;
+		g2d.drawImage(img, at, null);
+		//repaint();
+    	
+    	
     }
 	/*
 	 * (non-Javadoc)

@@ -15,8 +15,7 @@ public class Dock extends GamePiece{
 	Dock(int x, int y, GameMessage g){
 		this.xLoc = x;
 		this.yLoc = y;
-		this.xVel = 0;
-		this.yVel = 0;
+		this.velocity = 0;
 		gameMessage = g;
 	}
 	/*
@@ -30,9 +29,8 @@ public class Dock extends GamePiece{
 			gameMessage.message = "You have successfully returned the data!";
 		}
 	}
-	/*
-	 * 
-	 */
+
+	
 	public void dataCollected(boolean buoyStatus){
 		collected = buoyStatus;
 	}

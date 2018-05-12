@@ -6,8 +6,9 @@ import java.util.Collection;
  * 
  */
 public abstract class Vessel extends GamePiece{
-	int maxVel;
-	Direction dir = Direction.EAST;
+	double maxVel;
+	double acceleration;
+	double turnRate; //The rate at which the boat will turn.
 	VesselType type;
 	WakeCollection wakes;
 	int updatesBetweenWakes = 3; //How many times the model is updated between a wake being emitted behind the vessel
@@ -16,6 +17,7 @@ public abstract class Vessel extends GamePiece{
 	 */
 	Vessel(){
 		maxVel = 0;
+		rotationAngle = 0; //Boat starts still, facing east.
 		this.xLoc = 0;
 		this.yLoc = 300;
 		wakes = new WakeCollection();
@@ -24,46 +26,16 @@ public abstract class Vessel extends GamePiece{
 	 * 
 	 */
 	void update() {
-		wakes.removeDeadWakes();
-		checkDirection();
-		wakes.addWake(this.xLoc, this.yLoc, -this.xVel, -this.yVel, this.updatesBetweenWakes);
-		wakes.update();
+		//wakes.removeDeadWakes();
+		//wakes.addWake(this.xLoc, this.yLoc, -this.xVel, -this.yVel, this.updatesBetweenWakes);
+		//wakes.update();
 		super.updateLocation();
 	}
 	
 	/*@return returns the current direction the user is going in 
 	 * 
 	 */
-	Direction checkDirection() {
-		if (xVel == 0 && yVel < 0) { // north
-			dir = Direction.NORTH;
-		}
-		else if (xVel > 0 && yVel < 0) { // northeast
-			dir = Direction.NORTHEAST;
-		}
-		else if (xVel > 0 && yVel == 0) { // east
-			dir = Direction.EAST;
-		}
-		else if (xVel > 0 && yVel > 0) { // southeast
-			dir = Direction.SOUTHEAST;
-		}
-		else if (xVel == 0 && yVel > 0) { // south
-			dir = Direction.SOUTH;
-		}
-		else if (xVel < 0 && yVel > 0) { // southwest
-			dir = Direction.SOUTHWEST;
-		}
-		else if (xVel < 0 && yVel == 0) { // west
-			dir = Direction.WEST;
-		}
-		else if (xVel < 0 && yVel < 0) { // northwest
-			dir = Direction.NORTHWEST;
-		}
-		else { // east
-			dir = Direction.EAST;
-		}
-		return dir;
-	}
+	
 	/*
 	 * (non-Javadoc)
 	 * @see Collidable#onCollide()
