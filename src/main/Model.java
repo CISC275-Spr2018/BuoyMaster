@@ -41,13 +41,14 @@ public class Model implements Serializable{
 		buoy = new Buoy(width - 100, 100, gameMessage);
 		sandBarCollection = new SandBarCollection();
 		dock = new Dock(0, height/2, gameMessage);
-		shoreline = new ShoreLine(0, 420);
+		shoreline = new ShoreLine(0, 420, timer, gameMessage);
 	}
 	
 	/*All individual model update methods in central method
 	 * 
 	 */
 	public void modelUpdate() {
+		//sandBarCollection.addShorelineBoundaries(timer, gameMessage);
 		Random r = new Random();
 		int i = r.nextInt((health - 0) + 1) + 0;
 		health -= player.updatesBetweenWakes;
@@ -55,16 +56,18 @@ public class Model implements Serializable{
 		buoy.hasCollided(player);
 		sandBarCollection.checkAllCollision(player);
 		dock.hasCollided(player);
+		shoreline.hasCollided(player);
 		
 		if (health > 0 && i % player.updatesBetweenWakes == 0){
-			sandBarCollection.addRandomSandBar(player, timer, gameMessage, player);
+			sandBarCollection.addRandomSandBar(player, timer, gameMessage, player.xLoc);
 		}
 		
 		if (sandBarCollection.sandBars.size() % 5 == 1) {
 			shoreline.yLoc++;
+			shoreline.shiftCollisionPoints(1);
 		}
 		
-		player.update();
+		player.update(width, height);
 		gameOver = timer.update() || dock.arrivedWithData;
 		sandBarCollection.updateAll();
 		dock.dataCollected(buoy.collectedStatus());

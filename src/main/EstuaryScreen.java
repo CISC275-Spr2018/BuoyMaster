@@ -65,10 +65,10 @@ public class EstuaryScreen extends JPanel{
 		sandBarPanel.paintComponent(g);
 		wp.paintComponent(g);
 		dockPanel.paintComponent(g);
+		slp.paintComponent(g);
 		vesselPanel.paintComponent(g);
 		buoyPanel.paintComponent(g);
 		timerPanel.paintComponent(g);
 		gameMessagePanel.paintComponent(g);
-		slp.paintComponent(g);
     }
 }
