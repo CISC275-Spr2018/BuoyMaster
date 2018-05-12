@@ -29,7 +29,7 @@ public class Model implements Serializable{
 	ShoreLine shoreline;
 	boolean gameOver = false;
 	boolean addTime=false;
-	boolean tutorial=true;
+	boolean tutorial;
 	boolean tutorialSandbar=true;
 	boolean startShow=false;
 	boolean gameStart=false;
@@ -39,19 +39,31 @@ public class Model implements Serializable{
 	 * @param height height of the screen
 	 * 
 	 */
-	public Model(int width, int height){
+	public Model(int width, int height, boolean tutorial){
 		this.width = width;
 		this.height = height;
 		player = null;
 		timer = new Timer();
-		gameMessage = new GameMessage();
+		this.tutorial=tutorial;
+		gameMessage = new GameMessage(true);
 		buoy = new Buoy(width - 600, 100, gameMessage);
 		sandBarCollection = new SandBarCollection();
 		dock = new Dock(0, height/2, gameMessage);
 		shoreline = new ShoreLine(0, 420);
 		arrow=new Arrow(width-585, 20);
 	}
-	
+	public Model(int width, int height, boolean tutorial,Vessel player){
+		this.width = width;
+		this.height = height;
+		this.player = player;
+		timer = new Timer();
+		this.tutorial=tutorial;
+		gameMessage = new GameMessage(false);
+		buoy = new Buoy(width - 600, 100, gameMessage);
+		sandBarCollection = new SandBarCollection();
+		dock = new Dock(0, height/2, gameMessage);
+		shoreline = new ShoreLine(0, 420);
+	}
 	/*All individual model update methods in central method
 	 * 
 	 */
@@ -88,10 +100,8 @@ public class Model implements Serializable{
 		
 			
 		}
-		if(!dock.mt){
-			
-		}
 		if(!tutorial){
+		gameMessage=new GameMessage(false);
 		buoy=new Buoy(width - 100, 100, gameMessage);
 		buoy.setTutorial(false);
 		dock.setTutorial(false);

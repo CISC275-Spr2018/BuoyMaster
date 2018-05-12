@@ -102,6 +102,7 @@ public class Buoy extends GamePiece{
 	@Override
 	//onCollide method for buoy
 	public void onCollide() {
+		System.out.println(fact+" "+show);
 		if(tutorial){
 			if(tutorialShow){
 			JOptionPane.showMessageDialog(null, "Return to Dock! Avoid the sandbars! They are bad for the boat!");
@@ -110,7 +111,10 @@ public class Buoy extends GamePiece{
 			moveArrow=true;
 			}
 		}
-		if(!tutorial){
+		
+		
+		
+		else{
 			if(fact){
 				gameMessage.message = "Return to the dock with the data.";
 				this.yVel = -1;
@@ -119,8 +123,9 @@ public class Buoy extends GamePiece{
 					JOptionPane.showMessageDialog(null, createRandomFact());
 					collected=true;
 					question=true;
-					fact=false;
+					
 				}
+				fact=false;
 			}
 			if (question){
 				question=false;
@@ -129,7 +134,8 @@ public class Buoy extends GamePiece{
 					if (rand<7){
 						reply=JOptionPane.showConfirmDialog(null,askRandomQuestion(),"Salinity Question",reply);
 						switch(rand){
-					case 0:
+					
+						case 0:
 						if(reply==JOptionPane.YES_OPTION){
 							if(!showAnswer){
 								showAnswer=true;
@@ -143,7 +149,8 @@ public class Buoy extends GamePiece{
 								JOptionPane.showMessageDialog(null, "Incorrect, that is a good salinity. The ocean is 35 PPT!");	
 							}
 						}
-					case 1:
+					
+						case 1:
 						if(reply==JOptionPane.NO_OPTION){
 							if(!showAnswer){
 								showAnswer=true;
@@ -157,7 +164,8 @@ public class Buoy extends GamePiece{
 								JOptionPane.showMessageDialog(null, "Incorrect, that is a high salinity. The ocean is 35 PPT!");	
 							}
 						}
-					case 2:
+					
+						case 2:
 						if(reply==JOptionPane.YES_OPTION){
 							if(!showAnswer){
 								showAnswer=true;
@@ -171,7 +179,8 @@ public class Buoy extends GamePiece{
 								JOptionPane.showMessageDialog(null, "Incorrect, that is a good salinity. The ocean is 35 PPT!");	
 							}
 						}
-					case 3:
+					
+						case 3:
 						if(reply==JOptionPane.NO_OPTION){
 							if(!showAnswer){
 								showAnswer=true;
@@ -185,7 +194,8 @@ public class Buoy extends GamePiece{
 								JOptionPane.showMessageDialog(null, "Incorrect, that is a high salinity. The ocean is 35 PPT!");	
 							}
 						}
-					case 4:
+					
+						case 4:
 						if(reply==JOptionPane.YES_OPTION){
 							if(!showAnswer){
 								showAnswer=true;
@@ -199,7 +209,8 @@ public class Buoy extends GamePiece{
 								JOptionPane.showMessageDialog(null, "Incorrect, that is a good salinity. The ocean is 35 PPT!");	
 							}
 						}
-					case 5:
+					
+						case 5:
 						if(reply==JOptionPane.YES_OPTION){
 							if(!showAnswer){
 								showAnswer=true;
@@ -214,7 +225,8 @@ public class Buoy extends GamePiece{
 								JOptionPane.showMessageDialog(null, "Incorrect, that is a good salinity. The ocean is 35 PPT!");	
 							}
 						}
-					case 6:
+					
+						case 6:
 						if(reply==JOptionPane.YES_OPTION){
 							if(!showAnswer){
 								showAnswer=true;
@@ -231,7 +243,8 @@ public class Buoy extends GamePiece{
 						}
 					}
 				}
-				if (rand>=7 && rand<12){
+				
+					if (rand>=7 && rand<12){
 					reply=JOptionPane.showConfirmDialog(null,askRandomQuestion(),"Temperature Question",reply);
 					switch(rand){
 					case 7:
@@ -248,6 +261,7 @@ public class Buoy extends GamePiece{
 								JOptionPane.showMessageDialog(null, "Incorrect, that is 5 degrees Farenheit more than it should be!");	
 							}
 						}
+					
 					case 8:
 						if(reply==JOptionPane.YES_OPTION){
 							if(!showAnswer){
@@ -357,6 +371,7 @@ public class Buoy extends GamePiece{
 		}
 		}
 	}
+
 		
 	/*
 	 *@return returns the status of collected 

@@ -52,7 +52,12 @@ public class View extends JFrame{
 		
 		this.setVisible(true);
 	}
-	
+	public void setLayer(int x){
+		if(x==3){
+			this.tutorialScreen.setVisible(false);
+			this.estuaryScreen.setVisible(true);
+		}
+	}
 	/*Updates the view based on model input 
 	 *  @param bX x coordinate of buoy
 	 * @param bY y coordinate of buoy

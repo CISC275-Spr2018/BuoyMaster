@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -14,6 +15,8 @@ public class TutorialScreen extends JPanel implements ActionListener {
 	private DockPanel dockPanel;
 	private ArrowPanel arrowPanel;
 	private SandBarPanel sandBarPanel;
+	private GameMessagePanel gameMessagePanel;
+	JButton b1;
 	WakePanel wp;
 	
 	TutorialScreen(){
@@ -21,6 +24,7 @@ public class TutorialScreen extends JPanel implements ActionListener {
 		buoyPanel = new BuoyPanel();
 		dockPanel = new DockPanel();
 		sandBarPanel=new SandBarPanel();
+		gameMessagePanel=new GameMessagePanel();
 		wp = new WakePanel();
 		arrowPanel=new ArrowPanel();
 		this.setBackground(Color.CYAN.darker().darker());
