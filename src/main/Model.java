@@ -74,10 +74,7 @@ public class Model implements Serializable{
 	}
 	public void modelUpdate() {
 		if (tutorial){
-			if(startShow){
-				JOptionPane.showMessageDialog(null, "Use your arrow keys to guide you through the estuary.");
-				startShow=false;
-			}
+			
 			Random r = new Random();
 			int l = r.nextInt((health - 0) + 1) + 0;
 			health -= player.updatesBetweenWakes;

@@ -30,13 +30,14 @@ public class TutorialScreen extends JPanel implements ActionListener {
 		this.setBackground(Color.CYAN.darker().darker());
 	
 	}
-	public void update(int bX, int bY, int dX, int dY, int pX, int pY, VesselType vessel, Direction direction, SandBarCollection sbc,  WakeCollection wc, int sLX, int sLY, int aX, int aY){
+	public void update(int bX, int bY, int dX, int dY, int pX, int pY, VesselType vessel, Direction direction, SandBarCollection sbc,  WakeCollection wc, int sLX, int sLY, int aX, int aY, String message){
 		buoyPanel.update(bX, bY);
 		dockPanel.update( dX, dY);
 		vesselPanel.update(pX, pY, vessel, direction);
 		wp.updateAll(wc);
 		sandBarPanel.update(sbc);
 		arrowPanel.update(aX,aY);
+		gameMessagePanel.update(message);
 		this.repaint();
 	}
 	
@@ -48,6 +49,7 @@ public class TutorialScreen extends JPanel implements ActionListener {
 		vesselPanel.paintComponent(g);
 		buoyPanel.paintComponent(g);
 		sandBarPanel.paintComponent(g);
+		gameMessagePanel.paintComponent(g);
 		
     }
 	@Override

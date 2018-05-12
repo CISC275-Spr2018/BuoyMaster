@@ -2,6 +2,7 @@ package main;
 import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
 /*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
  */
@@ -49,7 +50,6 @@ public class View extends JFrame{
 	    layers.add(tutorialScreen,1,2);
 	    layers.add(estuaryScreen, 1,3);
 		this.add(layers);
-		
 		this.setVisible(true);
 	}
 	public void setLayer(int x){
@@ -76,7 +76,7 @@ public class View extends JFrame{
 	 * 
 	 */
 	public void update(int bX, int bY, int dX, int dY, int pX, int pY, VesselType vessel, Direction direction, SandBarCollection sbc, String message, String timerMessage, WakeCollection wc, int sLX, int sLY, int aX, int aY){ 
-		tutorialScreen.update(bX,  bY,  dX,  dY,  pX,  pY,  vessel,  direction,  sbc,  wc,  sLX,  sLY, aX, aY);
-		estuaryScreen.update( bX,  bY,  dX,  dY,  pX,  pY,  vessel,  direction,  sbc,  message,  timerMessage,  wc,  sLX,  sLY);
+		tutorialScreen.update(bX,  bY,  dX,  dY,  pX,  pY,  vessel,  direction,  sbc,  wc,  sLX,  sLY, aX, aY,message);
+		estuaryScreen.update( bX,  bY, dX,  dY,  pX,  pY,  vessel,  direction,  sbc,  message,  timerMessage,  wc,  sLX,  sLY);
 	}
 }

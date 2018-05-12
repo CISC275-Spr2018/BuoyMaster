@@ -115,6 +115,8 @@ public class Buoy extends GamePiece{
 		
 		
 		else{
+		if(!collected){
+			collected=true;
 			if(fact){
 				gameMessage.message = "Return to the dock with the data.";
 				this.yVel = -1;
@@ -128,9 +130,9 @@ public class Buoy extends GamePiece{
 				fact=false;
 			}
 			if (question){
-				question=false;
+				this.question=false;
 				if(!asked){
-					asked=true;
+					this.asked=true;
 					if (rand<7){
 						reply=JOptionPane.showConfirmDialog(null,askRandomQuestion(),"Salinity Question",reply);
 						switch(rand){
@@ -368,6 +370,7 @@ public class Buoy extends GamePiece{
 					}
 				}
 			}
+		}
 		}
 		}
 	}
