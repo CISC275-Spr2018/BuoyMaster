@@ -27,7 +27,7 @@ public abstract class Vessel extends GamePiece{
 	 */
 	void update() {
 		if(velocity > 0.1 || velocity < -0.1){ //Adds no wake if velocity is near 0
-			wakes.addWake(this.xLoc, this.yLoc, this.wakeStrength, this.rotationAngle); //wakeVelocity set to opposite of boat velocity
+			wakes.addWake(this.xLoc + 48, this.yLoc + 48, this.wakeStrength, this.rotationAngle); //48 is half size of boat immage
 		}
 		wakes.update();
 		super.updateLocation();
