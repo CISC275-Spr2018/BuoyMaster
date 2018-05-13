@@ -6,6 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -43,6 +44,7 @@ public class SelectionScreen extends JPanel implements ActionListener{
 		speedBoat.addActionListener(this);
 		
 		
+		this.setBackground(Color.CYAN.darker().darker());
 		this.add(jetSki);
 		this.add(fishingBoat);
 		this.add(speedBoat);
