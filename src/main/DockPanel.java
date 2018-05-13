@@ -9,13 +9,13 @@ import java.io.Serializable;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
-/*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
+/**@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
  */
 public class DockPanel extends JPanel{
 	private int xDrawLoc;
 	private int yDrawLoc;
-	/*Sets the value of the x and y coordinates of the dock
+	/**Sets the value of the x and y coordinates of the dock
 	 * @param x x coordinate of dock
 	 * @param y y coordinate of dock
 	 */
@@ -23,7 +23,7 @@ public class DockPanel extends JPanel{
 		xDrawLoc = x;
 		yDrawLoc = y;
 	}
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
 	 */
@@ -37,7 +37,7 @@ public class DockPanel extends JPanel{
 		Color c = new Color(0, 0, 0, 0);
     	g.drawImage(img, xDrawLoc, yDrawLoc, c, this);
     }
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see javax.swing.JComponent#getPreferredSize()
 	 */

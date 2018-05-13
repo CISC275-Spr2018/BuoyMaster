@@ -11,10 +11,10 @@ import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.JOptionPane;
-/*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
+/**@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
- */
-/*
+ *
+ *
  * Main Model for entire state of the game.
  * Will hold all different parts - player Vessels, Sandbars, Buoy, etc.
  */
@@ -38,7 +38,7 @@ public class Model implements Serializable{
 	boolean startShow=false;
 	boolean gameStart=false;
 	
-	/*Constructor for the model 
+	/**Constructor for the model 
 	 * @param width width of the screen
 	 * @param height height of the screen
 	 * 
@@ -56,7 +56,7 @@ public class Model implements Serializable{
 		shoreline = new ShoreLine(0, 420, timer, gameMessage);
 		arrow=new Arrow(width-585, 20);
 	}
-	/*All individual model update methods in central method
+	/**All individual model update methods in central method
 	 * 
 	 */
 
@@ -130,19 +130,19 @@ public class Model implements Serializable{
 		}
 		
 	}
-	/*@return returns the vessel the player is using
+	/**@return returns the vessel the player is using
 	 * 
 	 */
 	public Vessel getPlayer() {
 		return player;
 	}
-	/*@return returns the Buoy
+	/**@return returns the Buoy
 	 * 
 	 */
 	public Buoy getBuoy() {
 		return buoy;
 	}
-	/*@return returns the Timer
+	/**@return returns the Timer
 	 * 
 	 */
 	public Timer getTimer() {
@@ -156,13 +156,13 @@ public class Model implements Serializable{
 			return false;
 		}
 	}
-	/*@return returns the current GameMessage
+	/**@return returns the current GameMessage
 	 * 
 	 */
 	public GameMessage getGameMessage() {
 		return gameMessage;
 	}
-	/*@return returns the dock
+	/**@return returns the dock
 	 * 
 	 */
 	public Dock getDock() {
@@ -171,19 +171,19 @@ public class Model implements Serializable{
 	public Arrow getArrow(){
 		return arrow;
 	}
-	/*@return returns the width of the screen
+	/**@return returns the width of the screen
 	 * 
 	 */
 	public int getWidth() {
 		return width;
 	}
-	/*@return returns the height of the screen
+	/**@return returns the height of the screen
 	 * 
 	 */
 	public int getHeight() {
 		return height;
 	}
-	/*Sets the user's vessel selection
+	/**Sets the user's vessel selection
 	 * @param v user's vessel selection
 	 * 
 	 */

@@ -2,7 +2,7 @@ package main;
 
 import java.io.Serializable;
 
-/*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
+/**@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
  */
 public class Timer implements Serializable{
@@ -10,7 +10,7 @@ public class Timer implements Serializable{
 	int decrement;
 	String message; //message to be displayed when time runs out
 	boolean timesUp = false;
-	/*Constructor for the Timer class.
+	/**Constructor for the Timer class.
 	 * 
 	 */
 	Timer(){
@@ -21,7 +21,7 @@ public class Timer implements Serializable{
 	void increment(){
 		timeLeft+=30;
 	}
-	/*Updates the timer as time goes on by decrementing.
+	/**Updates the timer as time goes on by decrementing.
 	 * 
 	 */
 	boolean update() {

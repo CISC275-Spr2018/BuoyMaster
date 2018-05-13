@@ -8,7 +8,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
+/**@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
+ * 
+ */
 public class TutorialScreen extends JPanel implements ActionListener {
 	private VesselPanel vesselPanel;
 	private BuoyPanel buoyPanel;
@@ -17,7 +19,9 @@ public class TutorialScreen extends JPanel implements ActionListener {
 	private SandBarPanel sandBarPanel;
 	private GameMessagePanel gameMessagePanel;
 	WakePanel wp;
-	
+	/**Constructor for the Tutoriaal view
+	 * 
+	 */
 	TutorialScreen(){
 		vesselPanel = new VesselPanel();
 		buoyPanel = new BuoyPanel();
@@ -29,6 +33,21 @@ public class TutorialScreen extends JPanel implements ActionListener {
 		this.setBackground(Color.CYAN.darker().darker());
 	
 	}
+	/**Updates the view based on model input 
+	 *  @param bX x coordinate of buoy
+	 * @param bY y coordinate of buoy
+	 * @param dX x coordinate of dock
+	 * @param dY y coordinate of dock
+	 * @param pX x coordinate of player
+	 * @param pY y coordinate of player
+	 * @param vessel the type of boat the user selected
+	 * @param direction indicates the direction in which the users are moving
+	 * @param sbc passes in the SandBarCollection necessary for making sandbars
+	 * @param message creates the game message depending on if the user collected data or not
+	 * @param wc passes in the WakeCollection of the model in order to create wake behind the boat 
+	 * @param aX arrow x coordinate
+	 * @param aY arrow y coordinate
+	 */
 	public void update(int bX, int bY, int dX, int dY, int pX, int pY, VesselType vessel, Direction direction, SandBarCollection sbc,String message,  WakeCollection wc, int sLX, int sLY, int aX, int aY){
 		buoyPanel.update(bX, bY);
 		dockPanel.update( dX, dY);
@@ -39,7 +58,10 @@ public class TutorialScreen extends JPanel implements ActionListener {
 		gameMessagePanel.update("Use the arrow keys to guide yourself through the estuary.");
 		this.repaint();
 	}
-	
+	/**
+	 * (non-Javadoc)
+	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
+	 */
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		arrowPanel.paintComponent(g);
@@ -51,6 +73,10 @@ public class TutorialScreen extends JPanel implements ActionListener {
 		sandBarPanel.paintComponent(g);
 		
     }
+	/**
+	 * (non-Javadoc)
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		this.setVisible(false); //The StartScreen disappears when the button is pressed

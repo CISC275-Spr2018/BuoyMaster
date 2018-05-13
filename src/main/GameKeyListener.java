@@ -1,5 +1,7 @@
 package main;
-
+/**@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
+ * 
+ */
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -14,7 +16,7 @@ import java.io.Serializable;
 public class GameKeyListener implements KeyListener, Serializable{
 	Vessel player;
 	Model model;
-	/*Constructor for the GameKeyListener
+	/**Constructor for the GameKeyListener
 	 * @param v sets the player to the vessel
 	 * @param view passes in the view
 	 */
@@ -22,7 +24,7 @@ public class GameKeyListener implements KeyListener, Serializable{
 		this.player = v;
 		this.model = m;
 	}
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see java.awt.event.KeyListener#keyPressed(java.awt.event.KeyEvent)
 	 */
@@ -43,7 +45,7 @@ public class GameKeyListener implements KeyListener, Serializable{
 		}
 		
 	}
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)
 	 */
@@ -61,7 +63,7 @@ public class GameKeyListener implements KeyListener, Serializable{
 	}
 
 	@Override
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see java.awt.event.KeyListener#keyTyped(java.awt.event.KeyEvent)
 	 */

@@ -5,13 +5,13 @@ import java.util.HashSet;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-/*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
+/**@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
  */
 public class WakeCollection implements Serializable{
 	HashSet<Wake> wakes = new HashSet<Wake>();
 	int wakeStagger;
-	/*Adds the wake to the WakeCollection
+	/**Adds the wake to the WakeCollection
 	 * @param x x coordinate of wake
 	 * @param y y coordinate of wake
 	 * @param xv x velocity of wake
@@ -23,7 +23,7 @@ public class WakeCollection implements Serializable{
 			wakes.add(new Wake(x, y, xv, yv));
 		}
 	}
-	/*Removes wakes which wake life is below zero
+	/**Removes wakes which wake life is below zero
 	 * 
 	 */
 	void removeDeadWakes() {
@@ -35,7 +35,7 @@ public class WakeCollection implements Serializable{
 		}
 		wakes.removeAll(old);
 	}
-	/*Updates the WakeCollection class to remove wakes which have less than zero wake life 
+	/**Updates the WakeCollection class to remove wakes which have less than zero wake life 
 	 * 
 	 */
 	void update() {

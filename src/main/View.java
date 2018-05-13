@@ -5,10 +5,10 @@ import java.io.Serializable;
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
-/*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
+/**@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
  */
-/*
+/**
  * Main View class for the game.
  * Will hold all different Panels of objects - PlayerPanel, BuoyPanel, etc.
  */
@@ -19,7 +19,7 @@ public class View extends JFrame implements Serializable{
 	TutorialScreen tutorialScreen;
 	FactScreen factScreen;
 	JLayeredPane layers;
-	/*Constructor for the view 
+	/**Constructor for the view 
 	 * @param width width of screen
 	 * @param height height of screen
 	 */
@@ -60,7 +60,7 @@ public class View extends JFrame implements Serializable{
 			this.estuaryScreen.setVisible(true);
 		}
 	}
-	/*Updates the view based on model input 
+	/**Updates the view based on model input 
 	 *  @param bX x coordinate of buoy
 	 * @param bY y coordinate of buoy
 	 * @param dX x coordinate of dock

@@ -2,11 +2,11 @@ package main;
 
 import java.io.Serializable;
 
-/*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
+/**@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
  */
 public class SpeedBoat extends Vessel implements Serializable{
-	/*Constructor for the SpeedBoat
+	/**Constructor for the SpeedBoat
 	 * 
 	 */
 	public SpeedBoat(){

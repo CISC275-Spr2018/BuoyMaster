@@ -14,7 +14,7 @@ public class StartGamePanel extends JPanel implements ActionListener {
 	JButton startButton;
 	boolean start = false;
 	View v;
-	/*Constructor for the StartScreen
+	/**Constructor for the StartScreen
 	 * 
 	 */
 	StartGamePanel(){
@@ -32,7 +32,7 @@ public class StartGamePanel extends JPanel implements ActionListener {
 		
 		
 	}
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 	 */

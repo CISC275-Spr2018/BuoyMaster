@@ -2,7 +2,7 @@ package main;
 
 import javax.swing.JOptionPane;
 
-/*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
+/**@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
  */
 public class Dock extends GamePiece{
@@ -14,7 +14,7 @@ public class Dock extends GamePiece{
 	boolean showStart=true;
 	boolean mt=true;
 	int reply;
-	/*Buoy constructor
+	/**Buoy constructor
 	 * @param x this is the x position of dock in the frame
 	 * @param y this is the y position of the dock in the frame
 	 * @param g this is the gamemessage which appears when the user makes contact with the dock telling them they have returned with the data
@@ -33,7 +33,7 @@ public class Dock extends GamePiece{
 	public boolean getTutorial(){
 		return this.tutorial;
 	}
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see Collidable#onCollide()
 	 */
@@ -55,7 +55,7 @@ public class Dock extends GamePiece{
 		}
 	
 	}
-	/*
+	/**
 	 * 
 	 */
 	public void dataCollected(boolean buoyStatus){

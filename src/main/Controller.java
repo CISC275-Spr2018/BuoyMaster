@@ -16,7 +16,9 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
-
+/**@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
+ * 
+ */
 public class Controller implements ActionListener, Serializable{
 	private final int width = 1280;
 	private final int height = 720;
@@ -29,7 +31,7 @@ public class Controller implements ActionListener, Serializable{
 	boolean tutorial=true;
 
 	boolean start = false;
-/*Constructor for the Controller class
+/**Constructor for the Controller class
  * 
  */
 	public Controller(){
@@ -50,7 +52,7 @@ public class Controller implements ActionListener, Serializable{
 	public View getView(){
 		return view;
 	}
-/*
+/**
  * (non-Javadoc)
  * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
  */
@@ -96,7 +98,7 @@ public class Controller implements ActionListener, Serializable{
 		view.addKeyListener(gkl);
 		start = true;
 	}
-	/*Updates the model and the view based on the updates which happened in the model
+	/**Updates the model and the view based on the updates which happened in the model
 	 * 
 	 */
 	void update(){
@@ -222,7 +224,7 @@ public class Controller implements ActionListener, Serializable{
 		}
 		}
 	}
-/*Main method starts the run method for the event queue 
+/**Main method starts the run method for the event queue 
  * 
  */
 	public static void main(String[] args){

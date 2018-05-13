@@ -2,13 +2,13 @@ package main;
 import java.awt.image.BufferedImage;
 import java.io.Serializable;
 import java.awt.image.BufferedImage;
-/*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
+/**@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
  */
 public class Wake extends GamePiece implements Serializable{
 	Direction dir;
 	int wakeLife = 20;
-	/*Constructor for the Wake Class
+	/**Constructor for the Wake Class
 	 * @param x x coordinate of wake
 	 * @param y y coordinate of wake
 	 * @param xv x velocity of wake
@@ -20,7 +20,7 @@ public class Wake extends GamePiece implements Serializable{
 		this.xVel = xv;
 		this.yVel = yv;
 	}
-	/*Updates the wake class by decrementing the life of each wake
+	/**Updates the wake class by decrementing the life of each wake
 	 * 
 	 */
 	void update() {
@@ -28,7 +28,7 @@ public class Wake extends GamePiece implements Serializable{
 		wakeLife--;
 		dir = checkDirection();
 	}
-	/*@return returns the direction of the wake
+	/**@return returns the direction of the wake
 	 * 
 	 */
 	Direction checkDirection() {
@@ -64,7 +64,7 @@ public class Wake extends GamePiece implements Serializable{
 		}
 		return dir;
 	}
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see Collidable#onCollide()
 	 */

@@ -1,6 +1,6 @@
 package main;
 
-/*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
+/**@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
  */
 public enum Direction {
@@ -15,13 +15,13 @@ public enum Direction {
 	NORTHWEST("northwest");
 
 	private String name = null;
-	/*Sets the direction to the input string
+	/**Sets the direction to the input string
 	 * @param s the direction
 	 */
 	private Direction(String s){
 		name = s;
 	}
-	/*@return returns the given direction
+	/**@return returns the given direction
 	 * 
 	 */
 	public String getName() {
