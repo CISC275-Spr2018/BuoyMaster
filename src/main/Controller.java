@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.Random;
 
 import javax.swing.AbstractAction;
 import javax.swing.JOptionPane;
@@ -96,8 +97,49 @@ public class Controller implements ActionListener, Serializable{
 		if (start && model.addTime){
 			model.getTimer().increment();
 		}
-		if(model.gameOver){
-			reply=JOptionPane.showConfirmDialog(null,"Would you like to retry?","Restart",reply);
+		if(model.gameOver&&model.getDock().arrivedWithData){
+			reply=JOptionPane.showConfirmDialog(null,"You made it back with the data. Would you like to replay and collect more data?","Restart",reply);
+			
+			if(reply==JOptionPane.YES_OPTION){
+				FileInputStream fin = null;
+				try {
+					fin = new FileInputStream("f.ser");
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}  
+				ObjectInputStream in = null;
+				try {
+					in = new ObjectInputStream(fin);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				try {
+					try {
+						model = (Model) in.readObject();
+						Random random=new Random();
+						model.getBuoy().rand=random.nextInt(14);
+						model.setVessel(new FishingBoat());
+						gkl = new GameKeyListener(model.getPlayer(), model);
+						view.addKeyListener(gkl);
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}		
+			}
+			if(reply==JOptionPane.NO_OPTION){
+				System.exit(0);
+			}
+		}
+	
+		
+		if(model.gameOver&&!model.getDock().arrivedWithData){
+			reply=JOptionPane.showConfirmDialog(null,"Your boat caused too much erosion and you hit a sandbar. Would you like to retry with a slower boat?","Restart",reply);
 				
 			if(reply==JOptionPane.YES_OPTION){
 				FileInputStream fin = null;
@@ -117,6 +159,9 @@ public class Controller implements ActionListener, Serializable{
 				try {
 					try {
 						model = (Model) in.readObject();
+						model.setVessel(new FishingBoat());
+						Random random=new Random();
+						model.getBuoy().rand=random.nextInt(14);
 						gkl = new GameKeyListener(model.getPlayer(), model);
 						view.addKeyListener(gkl);
 					} catch (IOException e) {
