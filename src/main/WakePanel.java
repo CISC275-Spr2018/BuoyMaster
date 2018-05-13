@@ -45,9 +45,11 @@ public class WakePanel extends JPanel{
 			if(w.wakeLife <= 0){
 				//something
 			}
+			double scaleFactor = (1+w.wakeStrength-w.wakeLife)/5;
+			
 			BufferedImage img = createImage();
-			AffineTransform at = AffineTransform.getTranslateInstance(w.xLoc,w.yLoc);
-			at.scale(1.0/w.opacity,1.0/w.opacity);
+			AffineTransform at = AffineTransform.getTranslateInstance(-scaleFactor*img.getWidth()/2 + w.xLoc, -scaleFactor*img.getHeight()/2 + w.yLoc);
+			at.scale(scaleFactor, scaleFactor);
 			at.rotate(-Math.toRadians(w.rotationAngle), img.getWidth()/2, img.getHeight()/2);
 			Graphics2D g2d = (Graphics2D)g;
 			g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, w.opacity));
