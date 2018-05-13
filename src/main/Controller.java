@@ -191,7 +191,7 @@ public class Controller implements ActionListener, Serializable{
 		}
 	
 		
-		if(model.gameOver&&!model.getDock().arrivedWithData){
+		if(model.gameOver&&!model.getDock().arrivedWithData&&model.){
 			reply=JOptionPane.showConfirmDialog(null,"Your boat caused too much erosion and you hit sand. Would you like to retry with a slower boat?","Restart",reply);
 
 				
