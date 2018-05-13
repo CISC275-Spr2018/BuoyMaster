@@ -6,10 +6,10 @@ package main;
 public abstract class GamePiece implements Collidable{
 	protected int xLoc;
 	protected int yLoc;
-	protected int xVel;
-	protected int yVel;
+	protected double xVel;
+	protected double yVel;
 	protected double rotationAngle;
-	private int collisionRange =30; //Default set to 30 but will be changed for different pieces.
+	protected int collisionRange =30; //Default set to 30 but will be changed for different pieces.
 
 	/* Method to check if collision has occurred between to GamePieces
 	 * @param g2 second GamePiece which one GamePiece may come into contact with
@@ -53,13 +53,13 @@ public abstract class GamePiece implements Collidable{
 	/*
 	 *@return returns the x velocity of a GamePiece 
 	 */
-	public int getXVel() {
+	public double getXVel() {
 		return xVel;
 	}
 	/*
 	 *@return returns the y velocity of a GamePiece 
 	 */
-	public int getYVel() {
+	public double getYVel() {
 		return yVel;
 	}
 	

@@ -26,15 +26,13 @@ import javax.swing.JPanel;
  */
 public class VesselPanel extends JPanel{
 	private VesselType type;
-	private Direction dir;
+	private double drawAngle;
 	private int xDrawLoc;
 	private int yDrawLoc;
-	private double drawAngle;
-	/*@returns the buffered image for the vessel based on type selected and direction 
-	 * 
-	 */
+	
+	//returns the buffered image for the vessel based on type selected and direction 
 	BufferedImage getImage() {
-		return createImage(type, dir);
+		return createImage(type);
 	}
 	/*Updates the view with the vessel based on updated aspects
 	 * @param x x coordinate of the vessel
@@ -45,18 +43,18 @@ public class VesselPanel extends JPanel{
 	void update(int x, int y, VesselType type, double drawAngle) {
 		xDrawLoc = x;
 		yDrawLoc = y;
-		this.type = type;
 		this.drawAngle = drawAngle;
+		this.type = type;
 	}
 	/*@param type the type of vessel the user is using
 	 * @param dir the direction the vessel is going in
 	 * @return returns a buffered image of the vessel 
 	 * 
 	 */
-	BufferedImage createImage(VesselType type, Direction dir) {
+	BufferedImage createImage(VesselType type) {
 		BufferedImage img = null;
 		try {
-			img = ImageIO.read(new File("images/vessels/" + type.getName() + "/east.png"));
+		    img = ImageIO.read(new File("images/vessels/" + type.getName() + "/east.png"));
 		} catch (IOException e) {
 		}
 		return img;
@@ -67,14 +65,12 @@ public class VesselPanel extends JPanel{
 	 */
 	protected void paintComponent(Graphics g) {
 		Color c = new Color(0, 0, 0, 0); // transparent color
-		BufferedImage img = getImage();
     	
-    	AffineTransform at = AffineTransform.getTranslateInstance(xDrawLoc,yDrawLoc);
+    	BufferedImage img = getImage();
+		AffineTransform at = AffineTransform.getTranslateInstance(xDrawLoc,yDrawLoc);
 		at.rotate(-Math.toRadians(drawAngle), img.getWidth()/2, img.getHeight()/2);
 		Graphics2D g2d = (Graphics2D)g;
 		g2d.drawImage(img, at, null);
-    	
-    	
     	
     }
 	/*

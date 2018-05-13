@@ -6,16 +6,18 @@ import java.util.Collection;
  * 
  */
 public abstract class Vessel extends GamePiece{
-	int maxVel;
-	Direction dir = Direction.EAST;
+	double maxVel;
+	double acceleration;
+	double turnRate; //The rate at which the boat will turn.
 	VesselType type;
 	WakeCollection wakes;
-	int updatesBetweenWakes = 3; //How many times the model is updated between a wake being emitted behind the vessel
+	double wakeStrength = 10;
 	/*Constructor for the vessel class
 	 * 
 	 */
 	Vessel(){
 		maxVel = 0;
+		rotationAngle = 0; //Boat starts still, facing east.
 		this.xLoc = 0;
 		this.yLoc = 300;
 		wakes = new WakeCollection();
@@ -24,11 +26,16 @@ public abstract class Vessel extends GamePiece{
 	 * 
 	 */
 	void update() {
-		wakes.removeDeadWakes();
-		wakes.addWake(this.xLoc, this.yLoc, -this.xVel, -this.yVel, this.updatesBetweenWakes);
+		if(xVel > 0.1 || xVel < -0.1 || yVel > 0.1 || yVel < -0.1){ //Adds no wake if velocity is near 0
+			wakes.addWake(this.xLoc + 48, this.yLoc + 48, this.wakeStrength, this.rotationAngle); //48 is half size of boat immage
+		}
 		wakes.update();
 		super.updateLocation();
 	}
+	
+	/*@return returns the current direction the user is going in 
+	 * 
+	 */
 	
 	/*
 	 * (non-Javadoc)

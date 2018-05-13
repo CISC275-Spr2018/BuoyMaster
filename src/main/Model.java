@@ -5,10 +5,8 @@ import java.awt.event.KeyListener;
 import java.io.Serializable;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
-/*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
- * 
- */
-/*
+/*@authors Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
+ *
  * Main Model for entire state of the game.
  * Will hold all different parts - player Vessels, Sandbars, Buoy, etc.
  */
@@ -50,13 +48,13 @@ public class Model implements Serializable{
 	public void modelUpdate() {
 		Random r = new Random();
 		int i = r.nextInt((health - 0) + 1) + 0;
-		health -= player.updatesBetweenWakes;
+		health -= player.wakeStrength;
 		
 		buoy.hasCollided(player);
 		sandBarCollection.checkAllCollision(player);
 		dock.hasCollided(player);
 		
-		if (health > 0 && i % player.updatesBetweenWakes == 0){
+		if (health > 0 && i % player.wakeStrength == 0){
 			sandBarCollection.addRandomSandBar(player, timer, gameMessage, player);
 		}
 		
@@ -127,5 +125,4 @@ public class Model implements Serializable{
 	public void setVessel(Vessel v) {
 		this.player = v;
 	}
-
 }
