@@ -62,6 +62,8 @@ public class Model implements Serializable{
 		return i;
 	}
 	public void modelUpdate() {
+		
+		//model logic for tutorial
 		if (tutorial){
 			
 			Random r = new Random();
@@ -71,21 +73,25 @@ public class Model implements Serializable{
 			buoy.hasCollided(player);
 			player.update(width, height);
 			dock.hasCollided(player);
-      shoreline.hasCollided(player);
+			shoreline.hasCollided(player);
+			
 			if (buoy.sandBar){
 				if (tutorialSandbar){
 					sandBarCollection.addSandBar(randomNum(10, player.xLoc) - 50, 620, timer, gameMessage);
 					tutorialSandbar=false;
 				}
 			}
+			
 			sandBarCollection.checkAllCollision(player);
 			sandBarCollection.updateAll();
+			
 			if (buoy.moveArrow){
 				arrow=new Arrow(10, height/2-75);
 			}
 		
 
 		}
+		
 		//model settings for when player has completed the tutorial
 		if(!tutorial){
 			gameMessage=new GameMessage(false);
@@ -107,6 +113,7 @@ public class Model implements Serializable{
 			if (health > 0 && i % player.updatesBetweenWakes == 0){
 			sandBarCollection.addRandomSandBar(player, timer, gameMessage, player.xLoc);
 			}
+			
 			if (sandBarCollection.sandBars.size() % 5 == 1) {
 			shoreline.yLoc++;
 			shoreline.shiftCollisionPoints(1);
