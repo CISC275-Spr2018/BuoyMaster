@@ -5,7 +5,9 @@ import java.awt.event.ActionListener;
 import java.io.Serializable;
 
 import javax.swing.AbstractAction;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.Timer;
 
 public class Controller implements ActionListener, Serializable{
@@ -17,22 +19,26 @@ public class Controller implements ActionListener, Serializable{
 	private Model model;
 	private View view;
 	GameKeyListener gkl;
+	boolean tutorial=true;
 
 	boolean start = false;
 /*Constructor for the Controller class
  * 
  */
 	public Controller(){
-		model = new Model(width, height);
+		model = new Model(width, height,true);
 		view = new View(width, height);
 		view.addKeyListener(gkl);
-
+		
 		view.selectionScreen.jetSki.addActionListener(this);
 		view.selectionScreen.fishingBoat.addActionListener(this);
 		view.selectionScreen.speedBoat.addActionListener(this);
 	}
 	public Model getModel(){
 		return model;
+	}
+	public View getView(){
+		return view;
 	}
 /*
  * (non-Javadoc)
@@ -60,7 +66,36 @@ public class Controller implements ActionListener, Serializable{
 	void update() {
 		if (start && !model.gameOver) { //the game runs from start until gameOver is true
 			model.modelUpdate();
-			view.update(model.getBuoy().getXLoc(), model.getBuoy().getYLoc(),model.getDock().getXLoc(),model.getDock().getYLoc(),model.getPlayer().getXLoc(),model.getPlayer().getYLoc(),model.getPlayer().getVesselType(),model.getPlayer().checkDirection(),model.sandBarCollection,model.getTimer().message,model.getGameMessage().message,model.getPlayer().wakes,model.shoreline.getXLoc(),model.shoreline.getYLoc());
+			view.update(model.getBuoy().getXLoc(), model.getBuoy().getYLoc(),model.getDock().getXLoc(),model.getDock().getYLoc(),model.getPlayer().getXLoc(),model.getPlayer().getYLoc(),model.getPlayer().getVesselType(),model.getPlayer().checkDirection(),model.sandBarCollection,model.getTimer().message,model.getGameMessage().message,model.getPlayer().wakes,model.shoreline.getXLoc(),model.shoreline.getYLoc(),model.getArrow().getXLoc(),model.getArrow().getYLoc());
+		}
+		//if the dock indicates the player has returned from buoy in tutorial
+		if(!model.getDock().mt){
+			JButton b=new JButton("Click here if you are ready to be a Buoy Master, then EXIT this dialogue!");
+			b.addActionListener(new ActionListener(){
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					model.getPlayer().xLoc=0;
+					model.getPlayer().yLoc=300;
+					model.getPlayer().xVel=0;
+					model.getPlayer().yVel=0;
+					model.sandBarCollection=new SandBarCollection();
+					model.tutorial=false;
+					
+					view.setLayer(3);
+					
+					
+					
+				}
+			});
+			JPanel panel=new JPanel();
+			panel.add(b);	
+			Object[] options={b};
+			if(tutorial){
+				tutorial=false;
+				int result=JOptionPane.showOptionDialog(null, panel, "Start Game", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
+
 		}
 		if (start && model.addTime){
 			model.getTimer().increment();
@@ -69,22 +104,13 @@ public class Controller implements ActionListener, Serializable{
 			reply=JOptionPane.showConfirmDialog(null,"Would you like to retry?","Restart",reply);
 				
 			if(reply==JOptionPane.YES_OPTION){
-				model.gameOver=!model.gameOver;
-				Controller c = new Controller();
-				model = new Model(width, height);
-				view = new View(width, height);
-				c.model=model;
-				c.view=view;
-				c.view.addKeyListener(gkl);
-
-				c.view.selectionScreen.jetSki.addActionListener(this);
-				c.view.selectionScreen.fishingBoat.addActionListener(this);
-				c.view.selectionScreen.speedBoat.addActionListener(this);
+				model=new Model(width, height,false);
 				
 			}
 			if(reply==JOptionPane.NO_OPTION){
 				System.exit(0);
 			}
+		}
 		}
 	}
 /*Main method starts the run method for the event queue 
