@@ -74,7 +74,7 @@ public class Model implements Serializable{
       shoreline.hasCollided(player);
 			if (buoy.sandBar){
 				if (tutorialSandbar){
-					sandBarCollection.addSandBar(randomNum(10, player.xLoc) - 50, 620, timer, gameMessage, player);
+					sandBarCollection.addSandBar(randomNum(10, player.xLoc) - 50, 620, timer, gameMessage);
 					tutorialSandbar=false;
 				}
 			}
@@ -102,21 +102,22 @@ public class Model implements Serializable{
 			buoy.hasCollided(player);
 			sandBarCollection.checkAllCollision(player);
 			dock.hasCollided(player);
-      shoreline.hasCollided(player);
+			shoreline.hasCollided(player);
 		
 			if (health > 0 && i % player.updatesBetweenWakes == 0){
 			sandBarCollection.addRandomSandBar(player, timer, gameMessage, player.xLoc);
-		
+			}
 			if (sandBarCollection.sandBars.size() % 5 == 1) {
 			shoreline.yLoc++;
 			shoreline.shiftCollisionPoints(1);
-		}
+			}
 		
 			player.update(width, height);
 			gameOver = timer.update() || dock.arrivedWithData;
 			sandBarCollection.updateAll();
 			dock.dataCollected(buoy.collectedStatus());
 		}
+		
 	}
 	/*@return returns the vessel the player is using
 	 * 
