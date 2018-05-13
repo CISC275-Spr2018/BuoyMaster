@@ -45,8 +45,11 @@ public class SandBarCollection {
 	void addRandomSandBar(Vessel player, Timer t, GameMessage g, Vessel v) {
 		int chance = randomNum(0, 5);
 		if (chance == 0 && v.xLoc > 100) {
-			this.sandBars.add(new SandBar(randomNum(0, player.xLoc) - 50, 620, t, g, v));
+			this.sandBars.add(new SandBar(randomNum(10, player.xLoc) - 50, 620, t, g, v));
 		}
+	}
+	void addOneRandomSandBar(Vessel player, Timer t, GameMessage g, Vessel v){
+		this.sandBars.add(new SandBar(randomNum(10, player.xLoc) - 50, 620, t, g, v));
 	}
 	/* checks collisions from all sides of SandBar
 	 * @param g GamePiece to check collisions for
