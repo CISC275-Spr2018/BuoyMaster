@@ -23,8 +23,8 @@ public class SandBarCollection {
 	 * @param v user's vessel selection
 	 * 
 	 */
-	void addSandBar(int x, int y, Timer t, GameMessage g, Vessel v) {
-		this.sandBars.add(new SandBar(x, y, t, g, v));
+	void addSandBar(int x, int y, Timer t, GameMessage g) {
+		this.sandBars.add(new SandBar(x, y, t, g));
 	}
 	/*Adds SandBar based on second constructor 
 	 * @param x SandBar x coordinate
@@ -36,16 +36,17 @@ public class SandBarCollection {
 	 * @param v user's vessel selection
 	 * 
 	 */
-	void addSandBar(int x, int y, int xVel, int yVel, Timer t, GameMessage g, Vessel v) {
-		this.sandBars.add(new SandBar(x, y, xVel, yVel, t, g, v));
+	void addSandBar(int x, int y, int xVel, int yVel, Timer t, GameMessage g) {
+		this.sandBars.add(new SandBar(x, y, xVel, yVel, t, g));
 	}
 	/*Creates a random SandBar
 	 * 
 	 */
-	void addRandomSandBar(Vessel player, Timer t, GameMessage g, Vessel v) {
+	void addRandomSandBar(Vessel player, Timer t, GameMessage g, int buffer) {
 		int chance = randomNum(0, 5);
-		if (chance == 0 && v.xLoc > 100) {
-			this.sandBars.add(new SandBar(randomNum(10, player.xLoc) - 50, 620, t, g, v));
+
+		if (chance == 0 && buffer > 100) {
+			this.sandBars.add(new SandBar(randomNum(0, player.xLoc) - 50, 620, t, g));
 		}
 	}
 	void addOneRandomSandBar(Vessel player, Timer t, GameMessage g, Vessel v){
@@ -66,5 +67,9 @@ public class SandBarCollection {
 		for (SandBar s : sandBars) {
 			s.updateLocation();
 		}
+	}
+	
+	void addShorelineBoundaries(Timer t, GameMessage g) {
+		this.sandBars.add(new SandBar(200, 200, 0, 0, t, g));
 	}
 }

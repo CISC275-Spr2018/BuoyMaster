@@ -23,12 +23,25 @@ public abstract class Vessel extends GamePiece{
 	/*Updates aspects of the vessel the user selected
 	 * 
 	 */
-	void update() {
+	void update(int x, int y) {
 		wakes.removeDeadWakes();
 		checkDirection();
 		wakes.addWake(this.xLoc, this.yLoc, -this.xVel, -this.yVel, this.updatesBetweenWakes);
 		wakes.update();
+		if (outOfXBounds(x)) {
+			this.xVel = -this.xVel;
+		}
+		if (outOfYBounds(y)) {
+			this.yVel = -this.yVel;
+		}
 		super.updateLocation();
+	}
+	
+	boolean outOfXBounds(int x) {
+		return this.xLoc < 0 || this.xLoc > x;
+	}
+	boolean outOfYBounds(int y) {
+		return this.yLoc < 0 || this.yLoc > y;
 	}
 	
 	/*@return returns the current direction the user is going in 

@@ -49,12 +49,13 @@ public class Model implements Serializable{
 		buoy = new Buoy(width - 600, 100, gameMessage);
 		sandBarCollection = new SandBarCollection();
 		dock = new Dock(0, height/2, gameMessage);
-		shoreline = new ShoreLine(0, 420);
+		shoreline = new ShoreLine(0, 420, timer, gameMessage);
 		arrow=new Arrow(width-585, 20);
 	}
 	/*All individual model update methods in central method
 	 * 
 	 */
+
 	static int randomNum(int min, int max){
 		Random r = new Random();
 		int i = r.nextInt((max - min) + 1) + min;
@@ -68,8 +69,9 @@ public class Model implements Serializable{
 			health -= player.updatesBetweenWakes;
 			buoy.setTutorial(true);
 			buoy.hasCollided(player);
-			player.update();
+			player.update(width, height);
 			dock.hasCollided(player);
+      shoreline.hasCollided(player);
 			if (buoy.sandBar){
 				if (tutorialSandbar){
 					sandBarCollection.addSandBar(randomNum(10, player.xLoc) - 50, 620, timer, gameMessage, player);
@@ -82,11 +84,13 @@ public class Model implements Serializable{
 				arrow=new Arrow(10, height/2-75);
 			}
 		
+
 		}
 		//model settings for when player has completed the tutorial
 		if(!tutorial){
 			gameMessage=new GameMessage(false);
 		
+
 			buoy.xLoc=width-100;
 			buoy.yLoc=100;
 			buoy.setTutorial(false);
@@ -98,16 +102,17 @@ public class Model implements Serializable{
 			buoy.hasCollided(player);
 			sandBarCollection.checkAllCollision(player);
 			dock.hasCollided(player);
+      shoreline.hasCollided(player);
 		
 			if (health > 0 && i % player.updatesBetweenWakes == 0){
-				sandBarCollection.addRandomSandBar(player, timer, gameMessage, player);
-			}
+			sandBarCollection.addRandomSandBar(player, timer, gameMessage, player.xLoc);
 		
 			if (sandBarCollection.sandBars.size() % 5 == 1) {
-				shoreline.yLoc++;
-			}
+			shoreline.yLoc++;
+			shoreline.shiftCollisionPoints(1);
+		}
 		
-			player.update();
+			player.update(width, height);
 			gameOver = timer.update() || dock.arrivedWithData;
 			sandBarCollection.updateAll();
 			dock.dataCollected(buoy.collectedStatus());
