@@ -1,9 +1,11 @@
 package main;
 
+import java.io.Serializable;
+
 /*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
  */
-public abstract class GamePiece implements Collidable{
+public abstract class GamePiece implements Collidable, Serializable{
 	protected int xLoc;
 	protected int yLoc;
 	protected int xVel;

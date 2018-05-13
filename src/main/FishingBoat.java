@@ -1,9 +1,11 @@
 package main;
 
+import java.io.Serializable;
+
 /*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
  */
-public class FishingBoat extends Vessel{
+public class FishingBoat extends Vessel implements Serializable{
 	/*Constructor for the fishing boat
 	 * 
 	 */

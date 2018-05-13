@@ -1,4 +1,5 @@
 package main;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -7,7 +8,7 @@ import java.util.HashSet;
 /*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
  */
-public class WakeCollection {
+public class WakeCollection implements Serializable{
 	HashSet<Wake> wakes = new HashSet<Wake>();
 	int wakeStagger;
 	/*Adds the wake to the WakeCollection

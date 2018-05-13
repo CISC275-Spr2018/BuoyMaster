@@ -1,11 +1,12 @@
 package main;
 
+import java.io.Serializable;
 import java.util.HashSet;
 
 /*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
  */
-public class ShoreLine extends GamePiece{
+public class ShoreLine extends GamePiece implements Serializable{
 	HashSet<CollisionPoint> collisionPoints;
 	private GameMessage gameMessage;
 	Timer timer;
@@ -41,7 +42,7 @@ public class ShoreLine extends GamePiece{
 		}
 	}
 	
-	private class CollisionPoint {
+	private class CollisionPoint implements Serializable{
 		int x;
 		int y;
 		
