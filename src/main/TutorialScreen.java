@@ -36,7 +36,7 @@ public class TutorialScreen extends JPanel implements ActionListener {
 		wp.updateAll(wc);
 		sandBarPanel.update(sbc);
 		arrowPanel.update(aX,aY);
-		gameMessagePanel.update("Use the arrow keys to guide yourself to the buoy");
+		gameMessagePanel.update("Use the arrow keys to guide yourself through the estuary.");
 		this.repaint();
 	}
 	
