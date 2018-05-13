@@ -68,32 +68,7 @@ public class Controller implements ActionListener, Serializable{
 		if (e.getSource() == view.selectionScreen.speedBoat) {
 			model.setVessel(new SpeedBoat());
 		}
-		FileOutputStream fout = null;
-		try {
-			fout = new FileOutputStream("f.ser");
-		} catch (FileNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}  
-		ObjectOutputStream out = null;
-		try {
-			out = new ObjectOutputStream(fout);
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		try {
-			out.writeObject(model);
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		try {
-			out.close();
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		
 		gkl = new GameKeyListener(model.getPlayer(), model);
 		view.addKeyListener(gkl);
 		start = true;
@@ -122,7 +97,32 @@ public class Controller implements ActionListener, Serializable{
 					model.tutorial=false;
 					
 					view.setLayer(3);
-					
+					FileOutputStream fout = null;
+					try {
+						fout = new FileOutputStream("f.ser");
+					} catch (FileNotFoundException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}  
+					ObjectOutputStream out = null;
+					try {
+						out = new ObjectOutputStream(fout);
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					try {
+						out.writeObject(model);
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					try {
+						out.close();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					
 					
 				}
@@ -182,7 +182,7 @@ public class Controller implements ActionListener, Serializable{
 	
 		
 		if(model.gameOver&&!model.getDock().arrivedWithData){
-			reply=JOptionPane.showConfirmDialog(null,"Your boat caused too much erosion and you hit a sandbar. Would you like to retry with a slower boat?","Restart",reply);
+			reply=JOptionPane.showConfirmDialog(null,"Your boat caused too much erosion and you hit sand. Would you like to retry with a slower boat?","Restart",reply);
 
 				
 			if(reply==JOptionPane.YES_OPTION){
