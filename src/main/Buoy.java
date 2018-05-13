@@ -1,12 +1,13 @@
 package main;
 
+import java.io.Serializable;
 import java.util.Random;
 
 import javax.swing.JOptionPane;
 /*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
  */
-public class Buoy extends GamePiece{
+public class Buoy extends GamePiece implements Serializable{
 	private GameMessage gameMessage;
 	// Set true once the player makes contact with the buoy and collects the data
 	boolean collected = false; 

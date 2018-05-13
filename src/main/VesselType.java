@@ -1,9 +1,11 @@
 package main;
 
+import java.io.Serializable;
+
 /*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
  */
-public enum VesselType {
+public enum VesselType implements Serializable{
 	JETSKI("jet_ski"),
 	FISHINGBOAT("fishing_boat"),
 	SPEEDBOAT("speed_boat");

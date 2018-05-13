@@ -1,11 +1,12 @@
 package main;
 import java.awt.image.BufferedImage;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 /*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
  */
-public abstract class Vessel extends GamePiece{
+public abstract class Vessel extends GamePiece implements Serializable{
 	int maxVel;
 	Direction dir = Direction.EAST;
 	VesselType type;
