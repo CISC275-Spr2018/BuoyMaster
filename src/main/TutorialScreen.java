@@ -16,7 +16,6 @@ public class TutorialScreen extends JPanel implements ActionListener {
 	private ArrowPanel arrowPanel;
 	private SandBarPanel sandBarPanel;
 	private GameMessagePanel gameMessagePanel;
-	JButton b1;
 	WakePanel wp;
 	
 	TutorialScreen(){
@@ -30,14 +29,14 @@ public class TutorialScreen extends JPanel implements ActionListener {
 		this.setBackground(Color.CYAN.darker().darker());
 	
 	}
-	public void update(int bX, int bY, int dX, int dY, int pX, int pY, VesselType vessel, Direction direction, SandBarCollection sbc,  WakeCollection wc, int sLX, int sLY, int aX, int aY, String message){
+	public void update(int bX, int bY, int dX, int dY, int pX, int pY, VesselType vessel, Direction direction, SandBarCollection sbc,String message,  WakeCollection wc, int sLX, int sLY, int aX, int aY){
 		buoyPanel.update(bX, bY);
 		dockPanel.update( dX, dY);
 		vesselPanel.update(pX, pY, vessel, direction);
 		wp.updateAll(wc);
 		sandBarPanel.update(sbc);
 		arrowPanel.update(aX,aY);
-		gameMessagePanel.update(message);
+		gameMessagePanel.update("Use the arrow keys to guide yourself to the buoy");
 		this.repaint();
 	}
 	
@@ -45,11 +44,11 @@ public class TutorialScreen extends JPanel implements ActionListener {
 		super.paintComponent(g);
 		arrowPanel.paintComponent(g);
 		wp.paintComponent(g);
-		dockPanel.paintComponent(g);
+		dockPanel.paintComponent(g);		
+		gameMessagePanel.paintComponent(g);
 		vesselPanel.paintComponent(g);
 		buoyPanel.paintComponent(g);
 		sandBarPanel.paintComponent(g);
-		gameMessagePanel.paintComponent(g);
 		
     }
 	@Override

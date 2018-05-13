@@ -52,18 +52,6 @@ public class Model implements Serializable{
 		shoreline = new ShoreLine(0, 420);
 		arrow=new Arrow(width-585, 20);
 	}
-	public Model(int width, int height, boolean tutorial,Vessel player){
-		this.width = width;
-		this.height = height;
-		this.player = player;
-		timer = new Timer();
-		this.tutorial=tutorial;
-		gameMessage = new GameMessage(false);
-		buoy = new Buoy(width - 600, 100, gameMessage);
-		sandBarCollection = new SandBarCollection();
-		dock = new Dock(0, height/2, gameMessage);
-		shoreline = new ShoreLine(0, 420);
-	}
 	/*All individual model update methods in central method
 	 * 
 	 */
@@ -80,7 +68,6 @@ public class Model implements Serializable{
 			health -= player.updatesBetweenWakes;
 			buoy.setTutorial(true);
 			buoy.hasCollided(player);
-			
 			player.update();
 			dock.hasCollided(player);
 			if (buoy.sandBar){
@@ -95,33 +82,35 @@ public class Model implements Serializable{
 				arrow=new Arrow(10, height/2-75);
 			}
 		
-			
 		}
+		//model settings for when player has completed the tutorial
 		if(!tutorial){
-		gameMessage=new GameMessage(false);
-		buoy=new Buoy(width - 100, 100, gameMessage);
-		buoy.setTutorial(false);
-		dock.setTutorial(false);
-		Random r = new Random();
-		int i = r.nextInt((health - 0) + 1) + 0;
-		health -= player.updatesBetweenWakes;
+			gameMessage=new GameMessage(false);
 		
-		buoy.hasCollided(player);
-		sandBarCollection.checkAllCollision(player);
-		dock.hasCollided(player);
+			buoy.xLoc=width-100;
+			buoy.yLoc=100;
+			buoy.setTutorial(false);
+			dock.setTutorial(false);
+			Random t = new Random();
+			int i = t.nextInt((health - 0) + 1) + 0;
+			health -= player.updatesBetweenWakes;
 		
-		if (health > 0 && i % player.updatesBetweenWakes == 0){
-			sandBarCollection.addRandomSandBar(player, timer, gameMessage, player);
-		}
+			buoy.hasCollided(player);
+			sandBarCollection.checkAllCollision(player);
+			dock.hasCollided(player);
 		
-		if (sandBarCollection.sandBars.size() % 5 == 1) {
-			shoreline.yLoc++;
-		}
+			if (health > 0 && i % player.updatesBetweenWakes == 0){
+				sandBarCollection.addRandomSandBar(player, timer, gameMessage, player);
+			}
 		
-		player.update();
-		gameOver = timer.update() || dock.arrivedWithData;
-		sandBarCollection.updateAll();
-		dock.dataCollected(buoy.collectedStatus());
+			if (sandBarCollection.sandBars.size() % 5 == 1) {
+				shoreline.yLoc++;
+			}
+		
+			player.update();
+			gameOver = timer.update() || dock.arrivedWithData;
+			sandBarCollection.updateAll();
+			dock.dataCollected(buoy.collectedStatus());
 		}
 	}
 	/*@return returns the vessel the player is using

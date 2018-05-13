@@ -76,7 +76,7 @@ public class View extends JFrame{
 	 * 
 	 */
 	public void update(int bX, int bY, int dX, int dY, int pX, int pY, VesselType vessel, Direction direction, SandBarCollection sbc, String message, String timerMessage, WakeCollection wc, int sLX, int sLY, int aX, int aY){ 
-		tutorialScreen.update(bX,  bY,  dX,  dY,  pX,  pY,  vessel,  direction,  sbc,  wc,  sLX,  sLY, aX, aY,message);
+		tutorialScreen.update(bX,  bY,  dX,  dY,  pX,  pY,  vessel,  direction,  sbc, message, wc,  sLX,  sLY, aX, aY);
 		estuaryScreen.update( bX,  bY, dX,  dY,  pX,  pY,  vessel,  direction,  sbc,  message,  timerMessage,  wc,  sLX,  sLY);
 	}
 }

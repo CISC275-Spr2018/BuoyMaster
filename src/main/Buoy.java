@@ -37,7 +37,7 @@ public class Buoy extends GamePiece{
 		this.yLoc = y;
 		this.xVel = 0;
 		this.yVel = 0;
-		this.gameMessage = g;
+		this.setGameMessage(g);
 		rand=random.nextInt(14);
 		
 		//create the data array for 
@@ -102,7 +102,6 @@ public class Buoy extends GamePiece{
 	@Override
 	//onCollide method for buoy
 	public void onCollide() {
-		System.out.println(fact+" "+show);
 		if(tutorial){
 			if(tutorialShow){
 			JOptionPane.showMessageDialog(null, "Return to Dock! Avoid the sandbars! They are bad for the boat!");
@@ -114,13 +113,13 @@ public class Buoy extends GamePiece{
 		
 		
 		
-		else{
-		if(!collected){
-			collected=true;
-			if(fact){
-				gameMessage.message = "Return to the dock with the data.";
-				this.yVel = -1;
-				if(show){
+		if(!tutorial){
+			if(!collected){
+			
+				if(fact){
+					getGameMessage().message = "Return to the dock with the data.";
+					this.yVel = -1;
+					if(show){
 					show=!show;
 					JOptionPane.showMessageDialog(null, createRandomFact());
 					collected=true;
@@ -382,4 +381,11 @@ public class Buoy extends GamePiece{
 	public boolean collectedStatus(){
 		return collected;
 	}
+	public GameMessage getGameMessage() {
+		return gameMessage;
+	}
+	public void setGameMessage(GameMessage gameMessage) {
+		this.gameMessage = gameMessage;
+	}
+
 }

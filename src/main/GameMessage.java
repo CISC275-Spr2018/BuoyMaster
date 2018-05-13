@@ -5,15 +5,11 @@ package main;
  */
 public class GameMessage {
 	String message;
+	boolean tutorial;
 	/*Constructor for the GameMessage class. Sets initial message to: collect the data at the buoy.
 	 * 
 	 */
 	GameMessage(boolean tutorial){
-		if(tutorial){
-			this.message="Use the arrow keys to guide your boat.";
-		}
-		else{
-		this.message = "Go collect data from the buoy.";
+			this.message = "Go collect data from the buoy.";
 		}
 	}
-}
