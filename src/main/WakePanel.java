@@ -22,7 +22,7 @@ public class WakePanel extends JPanel{
 	 * @param wc WakeCollection to add to wakesPanel
 	 * 
 	 */
-	void updateAll(WakeCollection wc) {
+	void setWakeCollection(WakeCollection wc) {
 		wakeCollection = wc;
 	}
 	
@@ -51,7 +51,7 @@ public class WakePanel extends JPanel{
 			AffineTransform at = AffineTransform.getTranslateInstance(-scaleFactor*img.getWidth()/2 + w.xLoc, -scaleFactor*img.getHeight()/2 + w.yLoc);
 			at.scale(scaleFactor, scaleFactor);
 			at.rotate(-Math.toRadians(w.rotationAngle), img.getWidth()/2, img.getHeight()/2);
-			Graphics2D g2d = (Graphics2D)g;
+			Graphics2D g2d = (Graphics2D)g.create(); // casts g to Graphics2D rather than passing it as an argument and changing it
 			g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, w.opacity));
 			g2d.drawImage(img, at, null);
 		}

@@ -22,19 +22,17 @@ public class WakeCollection {
 
 
 	void addWake(int x, int y, double wakeStrength, double rotationAngle) {
-		if(wakeStagger %(int)(100.0/wakeStrength) == 0){
-			if(wakes.size() < maximumWakesOnScreen){
-				wakes.add(new Wake(x, y, wakeStrength, rotationAngle));
-			}
-			else{ //Replaces existing wakes if the maximumWakesOnScreen has been reached
-				if(wakeIndex >= maximumWakesOnScreen) wakeIndex = 0;
-				wakes.set(wakeIndex, new Wake(x, y, wakeStrength, rotationAngle));
-				wakeIndex ++;
-			}	
+		if(wakes.size() < maximumWakesOnScreen){
+			wakes.add(new Wake(x, y, wakeStrength, rotationAngle));
 		}
+		else{ //Replaces existing wakes if the maximumWakesOnScreen has been reached
+			if(wakeIndex >= maximumWakesOnScreen) wakeIndex = 0;
+			wakes.set(wakeIndex, new Wake(x, y, wakeStrength, rotationAngle));
+			wakeIndex ++;
+		}	
 		wakeStagger++;
 	}
-	
+
 	//Removes old wakes (This can't be done while iterating the wakes ArrayList)
 	void removeDeadWakes() {
 		HashSet<Wake> oldWakes = new HashSet<Wake>();
@@ -45,7 +43,7 @@ public class WakeCollection {
 		}
 		wakes.removeAll(oldWakes);
 	}
-	
+
 
 	/*Updates the position and decrements the life of each wake
 	 * 

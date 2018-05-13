@@ -52,8 +52,8 @@ public class EstuaryScreen extends JPanel{
 		sandBarPanel.update(sbc);
 		timerPanel.update(timerMessage);
 		gameMessagePanel.update(message);
-		wp.updateAll(wc);
 		slp.update(sLX, sLY);
+		wp.setWakeCollection(wc);
 		this.repaint();
 	}
 	/*
