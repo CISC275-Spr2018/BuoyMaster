@@ -151,7 +151,7 @@ public class Controller implements ActionListener, Serializable{
 
 				FileInputStream fin = null;
 				try {
-					fin = new FileInputStream("f.ser");
+					fin = new FileInputStream("buoyMasterSaveFile.ser");
 				} catch (FileNotFoundException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -198,7 +198,7 @@ public class Controller implements ActionListener, Serializable{
 			if(reply==JOptionPane.YES_OPTION){
 				FileInputStream fin = null;
 				try {
-					fin = new FileInputStream("f.ser");
+					fin = new FileInputStream("buoyMasterSaveFile.ser");
 				} catch (FileNotFoundException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
