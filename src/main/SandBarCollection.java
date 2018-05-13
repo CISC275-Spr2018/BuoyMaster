@@ -45,9 +45,13 @@ public class SandBarCollection implements Serializable{
 	 */
 	void addRandomSandBar(Vessel player, Timer t, GameMessage g, int buffer) {
 		int chance = randomNum(0, 5);
+
 		if (chance == 0 && buffer > 100) {
 			this.sandBars.add(new SandBar(randomNum(0, player.xLoc) - 50, 620, t, g));
 		}
+	}
+	void addOneRandomSandBar(Vessel player, Timer t, GameMessage g, Vessel v){
+		this.sandBars.add(new SandBar(randomNum(10, player.xLoc) - 50, 620, t, g, v));
 	}
 	/* checks collisions from all sides of SandBar
 	 * @param g GamePiece to check collisions for

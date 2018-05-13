@@ -10,7 +10,7 @@ public class modelTest extends TestCase {
 	Model target;
 	
 	protected void setUp() {
-		target = new Model(0,0);
+		target = new Model(0,0,false);
 		target.setVessel(new SpeedBoat());
 	}
 

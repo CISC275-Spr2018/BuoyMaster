@@ -22,6 +22,10 @@ public class Buoy extends GamePiece implements Serializable{
 	boolean asked=false;
 	boolean showAnswer=false;
 	boolean correct=false;
+	boolean tutorial=true;
+	boolean tutorialShow=true;
+	boolean sandBar=false;
+	boolean moveArrow=false;
 	//Buoy constructor
 	/*Buoy constructor
 	 * @param x this is the x position of buoy in the frame
@@ -34,7 +38,7 @@ public class Buoy extends GamePiece implements Serializable{
 		this.yLoc = y;
 		this.xVel = 0;
 		this.yVel = 0;
-		this.gameMessage = g;
+		this.setGameMessage(g);
 		rand=random.nextInt(14);
 		
 		//create the data array for 
@@ -83,7 +87,15 @@ public class Buoy extends GamePiece implements Serializable{
 	public String createRandomFact(){
 		return data[rand];	
 	}
-	
+	public void setTutorial(boolean b){
+		this.tutorial=b;
+	}
+	public boolean getTutorial(){
+		return this.tutorial;
+	}
+	public boolean getMoveArrow(){
+		return moveArrow;
+	}
 	/*
 	 * (non-Javadoc)
 	 * @see Collidable#onCollide()
@@ -91,24 +103,41 @@ public class Buoy extends GamePiece implements Serializable{
 	@Override
 	//onCollide method for buoy
 	public void onCollide() {
-		
-		if(fact){
-			gameMessage.message = "Return to the dock with the data.";
-			this.yVel = -1;
-			if(show){
-				show=!show;
-				JOptionPane.showMessageDialog(null, createRandomFact());
-				collected=true;
-				question=true;
+		if(tutorial){
+			if(tutorialShow){
+			JOptionPane.showMessageDialog(null, "Return to Dock! Avoid the sandbars! They are bad for the boat!");
+			tutorialShow=false;
+			sandBar=true;
+			moveArrow=true;
 			}
 		}
-		if (question){
-			if(!asked){
-				asked=true;
-				if (rand<7){
-					reply=JOptionPane.showConfirmDialog(null,askRandomQuestion(),"Salinity Question",reply);
-					switch(rand){
-					case 0:
+		
+		
+		
+		if(!tutorial){
+			if(!collected){
+			
+				if(fact){
+					getGameMessage().message = "Return to the dock with the data.";
+					this.yVel = -1;
+					if(show){
+					show=!show;
+					JOptionPane.showMessageDialog(null, createRandomFact());
+					collected=true;
+					question=true;
+					
+				}
+				fact=false;
+			}
+			if (question){
+				this.question=false;
+				if(!asked){
+					this.asked=true;
+					if (rand<7){
+						reply=JOptionPane.showConfirmDialog(null,askRandomQuestion(),"Salinity Question",reply);
+						switch(rand){
+					
+						case 0:
 						if(reply==JOptionPane.YES_OPTION){
 							if(!showAnswer){
 								showAnswer=true;
@@ -122,7 +151,8 @@ public class Buoy extends GamePiece implements Serializable{
 								JOptionPane.showMessageDialog(null, "Incorrect, that is a good salinity. The ocean is 35 PPT!");	
 							}
 						}
-					case 1:
+					
+						case 1:
 						if(reply==JOptionPane.NO_OPTION){
 							if(!showAnswer){
 								showAnswer=true;
@@ -136,7 +166,8 @@ public class Buoy extends GamePiece implements Serializable{
 								JOptionPane.showMessageDialog(null, "Incorrect, that is a high salinity. The ocean is 35 PPT!");	
 							}
 						}
-					case 2:
+					
+						case 2:
 						if(reply==JOptionPane.YES_OPTION){
 							if(!showAnswer){
 								showAnswer=true;
@@ -150,7 +181,8 @@ public class Buoy extends GamePiece implements Serializable{
 								JOptionPane.showMessageDialog(null, "Incorrect, that is a good salinity. The ocean is 35 PPT!");	
 							}
 						}
-					case 3:
+					
+						case 3:
 						if(reply==JOptionPane.NO_OPTION){
 							if(!showAnswer){
 								showAnswer=true;
@@ -164,7 +196,8 @@ public class Buoy extends GamePiece implements Serializable{
 								JOptionPane.showMessageDialog(null, "Incorrect, that is a high salinity. The ocean is 35 PPT!");	
 							}
 						}
-					case 4:
+					
+						case 4:
 						if(reply==JOptionPane.YES_OPTION){
 							if(!showAnswer){
 								showAnswer=true;
@@ -178,7 +211,8 @@ public class Buoy extends GamePiece implements Serializable{
 								JOptionPane.showMessageDialog(null, "Incorrect, that is a good salinity. The ocean is 35 PPT!");	
 							}
 						}
-					case 5:
+					
+						case 5:
 						if(reply==JOptionPane.YES_OPTION){
 							if(!showAnswer){
 								showAnswer=true;
@@ -193,7 +227,8 @@ public class Buoy extends GamePiece implements Serializable{
 								JOptionPane.showMessageDialog(null, "Incorrect, that is a good salinity. The ocean is 35 PPT!");	
 							}
 						}
-					case 6:
+					
+						case 6:
 						if(reply==JOptionPane.YES_OPTION){
 							if(!showAnswer){
 								showAnswer=true;
@@ -210,7 +245,8 @@ public class Buoy extends GamePiece implements Serializable{
 						}
 					}
 				}
-				if (rand>=7 && rand<12){
+				
+					if (rand>=7 && rand<12){
 					reply=JOptionPane.showConfirmDialog(null,askRandomQuestion(),"Temperature Question",reply);
 					switch(rand){
 					case 7:
@@ -227,6 +263,7 @@ public class Buoy extends GamePiece implements Serializable{
 								JOptionPane.showMessageDialog(null, "Incorrect, that is 5 degrees Farenheit more than it should be!");	
 							}
 						}
+					
 					case 8:
 						if(reply==JOptionPane.YES_OPTION){
 							if(!showAnswer){
@@ -334,12 +371,22 @@ public class Buoy extends GamePiece implements Serializable{
 				}
 			}
 		}
+		}
+		}
+	}
+
 		
-	}	
 	/*
 	 *@return returns the status of collected 
 	 */
 	public boolean collectedStatus(){
 		return collected;
 	}
+	public GameMessage getGameMessage() {
+		return gameMessage;
+	}
+	public void setGameMessage(GameMessage gameMessage) {
+		this.gameMessage = gameMessage;
+	}
+
 }
