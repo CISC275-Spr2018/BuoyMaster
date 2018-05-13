@@ -83,8 +83,10 @@ public class Controller implements ActionListener, Serializable{
 			view.update(model.getBuoy().getXLoc(), model.getBuoy().getYLoc(),model.getDock().getXLoc(),model.getDock().getYLoc(),model.getPlayer().getXLoc(),model.getPlayer().getYLoc(),model.getPlayer().getVesselType(),model.getPlayer().checkDirection(),model.sandBarCollection,model.getTimer().message,model.getGameMessage().message,model.getPlayer().wakes,model.shoreline.getXLoc(),model.shoreline.getYLoc(),model.getArrow().getXLoc(),model.getArrow().getYLoc());
 		}
 		//if the dock indicates the player has returned from buoy in tutorial
+		
 		if(!model.getDock().mt){
-			JButton b=new JButton("Click here if you are ready to be a Buoy Master, then EXIT this dialogue!");
+			if(model.getBuoy().tutorialVisited){
+			JButton b=new JButton("Click HERE if you are ready to be a Buoy Master, THEN EXIT this dialogue by hitting the RED X at the TOP LEFT!");
 			b.addActionListener(new ActionListener(){
 
 				@Override
@@ -134,15 +136,16 @@ public class Controller implements ActionListener, Serializable{
 			if(tutorial){
 				tutorial=false;
 				int result=JOptionPane.showOptionDialog(null, panel, "Start Game", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
-
+			}
 		}
 		if (start && model.addTime){
 			model.getTimer().increment();
 		}
 		if(model.getBuoy().correct){
-			if (answered)
-			view.estuaryScreen.getTimerPanel().timerLength+=30;
-			answered=false;
+			if (answered){
+				view.estuaryScreen.getTimerPanel().timerLength+=30;
+				answered=false;
+			}
 		}
 		if(model.gameOver&&model.getDock().arrivedWithData){
 			reply=JOptionPane.showConfirmDialog(null,"You made it back with the data. Would you like to re-play and collect more data?","Restart",reply);
@@ -168,12 +171,12 @@ public class Controller implements ActionListener, Serializable{
 						model = (Model) in.readObject();
 						Random random=new Random();
 						model.getBuoy().rand=random.nextInt(14);
-						model.setVessel(new FishingBoat());
 						model.tutorial=false;
+						model.getBuoy().correct=false;
 						gkl = new GameKeyListener(model.getPlayer(), model);
 						view.addKeyListener(gkl);
 						view.estuaryScreen.getTimerPanel().timerLength=500;
-						answered=false;
+						this.answered=false;
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -215,10 +218,11 @@ public class Controller implements ActionListener, Serializable{
 						Random random=new Random();
 						model.getBuoy().rand=random.nextInt(14);
 						model.tutorial=false;
+						model.getBuoy().correct=false;
 						gkl = new GameKeyListener(model.getPlayer(), model);
 						view.addKeyListener(gkl);
 						view.estuaryScreen.getTimerPanel().timerLength=500;
-						answered=false;
+						this.answered=false;
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
