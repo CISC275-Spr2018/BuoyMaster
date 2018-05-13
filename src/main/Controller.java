@@ -170,10 +170,12 @@ public class Controller implements ActionListener, Serializable{
 						model.getBuoy().rand=random.nextInt(14);
 						model.setVessel(new FishingBoat());
 						model.tutorial=false;
+						
 						gkl = new GameKeyListener(model.getPlayer(), model);
 						view.addKeyListener(gkl);
 						view.estuaryScreen.getTimerPanel().timerLength=500;
 						answered=false;
+						this.view.selectionScreen.setVisible(true);
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -215,10 +217,12 @@ public class Controller implements ActionListener, Serializable{
 						Random random=new Random();
 						model.getBuoy().rand=random.nextInt(14);
 						model.tutorial=false;
+						
 						gkl = new GameKeyListener(model.getPlayer(), model);
 						view.addKeyListener(gkl);
 						view.estuaryScreen.getTimerPanel().timerLength=500;
 						answered=false;
+						this.view.selectionScreen.setVisible(true);
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
