@@ -26,6 +26,7 @@ public class Buoy extends GamePiece implements Serializable{
 	boolean tutorialShow=true;
 	boolean sandBar=false;
 	boolean moveArrow=false;
+	boolean tutorialVisited=false;
 	//Buoy constructor
 	/**Buoy constructor
 	 * @param x this is the x position of buoy in the frame
@@ -109,6 +110,7 @@ public class Buoy extends GamePiece implements Serializable{
 			tutorialShow=false;
 			sandBar=true;
 			moveArrow=true;
+			tutorialVisited=true;
 			}
 		}
 		
