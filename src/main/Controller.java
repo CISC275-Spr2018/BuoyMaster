@@ -100,7 +100,7 @@ public class Controller implements ActionListener, Serializable{
 					view.setLayer(3);
 					FileOutputStream fout = null;
 					try {
-						fout = new FileOutputStream("f.ser");
+						fout = new FileOutputStream("buoyMasterSaveFile.ser");
 					} catch (FileNotFoundException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
