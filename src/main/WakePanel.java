@@ -4,30 +4,31 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
-/*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
+/**@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
  */
 public class WakePanel extends JPanel{
 	HashSet<Wake> wakesPanel;
-	/*Creates the HashSet of wakes
+	/**Creates the HashSet of wakes
 	 * 
 	 */
 	WakePanel(){
 		wakesPanel = new HashSet<Wake>();
 	}
-	/*updates all wakes in a wake collection
+	/**updates all wakes in a wake collection
 	 * @param wc WakeCollection to add to wakesPanel
 	 * 
 	 */
 	void updateAll(WakeCollection wc) {
 		wakesPanel = wc.wakes;
 	}
-	/*@param dir Direction of wake 
+	/**@param dir Direction of wake 
 	 * @return returns a buffered image of a wake based on direction
 	 * 
 	 * 
@@ -42,7 +43,7 @@ public class WakePanel extends JPanel{
 		}
 		return img;
 	}
-	/*Remvoes wakes which wakeLife is below zero. 
+	/**Remvoes wakes which wakeLife is below zero. 
 	 * 
 	 */
 	void removeDeadWakes() {
@@ -54,7 +55,7 @@ public class WakePanel extends JPanel{
 		}
 		wakesPanel.removeAll(old);
 	}
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
 	 */

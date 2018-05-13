@@ -1,12 +1,13 @@
 package main;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Random;
-/*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
+/**@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
  */
-public class SandBarCollection {
+public class SandBarCollection implements Serializable{
 	HashSet<SandBar> sandBars = new HashSet<SandBar>();
-	/*@param min minimum number for range of random number
+	/**@param min minimum number for range of random number
 	 * @param max maximum number for range of random number
 	 * @returns a random number between min and max
 	 */
@@ -15,7 +16,7 @@ public class SandBarCollection {
 		int i = r.nextInt((max - min) + 1) + min;
 		return i;
 	}
-	/*Adds SandBar based on first constructor
+	/**Adds SandBar based on first constructor
 	 * @param x SandBar x coordinate
 	 * @param y SandBar y coordinate
 	 * @param t SandBar timer
@@ -23,10 +24,10 @@ public class SandBarCollection {
 	 * @param v user's vessel selection
 	 * 
 	 */
-	void addSandBar(int x, int y, Timer t, GameMessage g, Vessel v) {
-		this.sandBars.add(new SandBar(x, y, t, g, v));
+	void addSandBar(int x, int y, Timer t, GameMessage g) {
+		this.sandBars.add(new SandBar(x, y, t, g));
 	}
-	/*Adds SandBar based on second constructor 
+	/**Adds SandBar based on second constructor 
 	 * @param x SandBar x coordinate
 	 * @param y SandBar y coordinate
 	 * @param xVel x velocity of a SandBar
@@ -36,19 +37,23 @@ public class SandBarCollection {
 	 * @param v user's vessel selection
 	 * 
 	 */
-	void addSandBar(int x, int y, int xVel, int yVel, Timer t, GameMessage g, Vessel v) {
-		this.sandBars.add(new SandBar(x, y, xVel, yVel, t, g, v));
+	void addSandBar(int x, int y, int xVel, int yVel, Timer t, GameMessage g) {
+		this.sandBars.add(new SandBar(x, y, xVel, yVel, t, g));
 	}
-	/*Creates a random SandBar
+	/**Creates a random SandBar
 	 * 
 	 */
-	void addRandomSandBar(Vessel player, Timer t, GameMessage g, Vessel v) {
+	void addRandomSandBar(Vessel player, Timer t, GameMessage g, int buffer) {
 		int chance = randomNum(0, 5);
-		if (chance == 0 && v.xLoc > 100) {
-			this.sandBars.add(new SandBar(randomNum(0, player.xLoc) - 50, 620, t, g, v));
+
+		if (chance == 0 && buffer > 100) {
+			this.sandBars.add(new SandBar(randomNum(0, player.xLoc) - 50, 620, t, g));
 		}
 	}
-	/* checks collisions from all sides of SandBar
+	void addOneRandomSandBar(Vessel player, Timer t, GameMessage g){
+		this.sandBars.add(new SandBar(randomNum(10, player.xLoc) - 50, 620, t, g));
+	}
+	/** checks collisions from all sides of SandBar
 	 * @param g GamePiece to check collisions for
 	 */
 	void checkAllCollision(GamePiece g) {
@@ -56,12 +61,16 @@ public class SandBarCollection {
 			s.hasCollided(g);
 		}
 	}
-	/*updates all sandbars
+	/**updates all sandbars
 	 * 
 	 */
 	void updateAll() {
 		for (SandBar s : sandBars) {
 			s.updateLocation();
 		}
+	}
+	
+	void addShorelineBoundaries(Timer t, GameMessage g) {
+		this.sandBars.add(new SandBar(200, 200, 0, 0, t, g));
 	}
 }

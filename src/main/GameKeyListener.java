@@ -1,23 +1,30 @@
 package main;
-
+/**@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
+ * 
+ */
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 /*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
  */
-public class GameKeyListener implements KeyListener {
+import java.io.Serializable;
+public class GameKeyListener implements KeyListener, Serializable{
 	Vessel player;
-	View view;
-	/*Constructor for the GameKeyListener
+	Model model;
+	/**Constructor for the GameKeyListener
 	 * @param v sets the player to the vessel
 	 * @param view passes in the view
 	 */
-	GameKeyListener(Vessel v, View view){
+	GameKeyListener(Vessel v, Model m){
 		this.player = v;
-		this.view = view;
+		this.model = m;
 	}
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see java.awt.event.KeyListener#keyPressed(java.awt.event.KeyEvent)
 	 */
@@ -38,7 +45,7 @@ public class GameKeyListener implements KeyListener {
 		}
 		
 	}
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)
 	 */
@@ -56,7 +63,7 @@ public class GameKeyListener implements KeyListener {
 	}
 
 	@Override
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see java.awt.event.KeyListener#keyTyped(java.awt.event.KeyEvent)
 	 */

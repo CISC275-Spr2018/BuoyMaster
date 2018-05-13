@@ -1,17 +1,18 @@
 package main;
 import java.awt.image.BufferedImage;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
-/*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
+/**@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
  */
-public abstract class Vessel extends GamePiece{
+public abstract class Vessel extends GamePiece implements Serializable{
 	int maxVel;
 	Direction dir = Direction.EAST;
 	VesselType type;
 	WakeCollection wakes;
 	int updatesBetweenWakes = 3; //How many times the model is updated between a wake being emitted behind the vessel
-	/*Constructor for the vessel class
+	/**Constructor for the vessel class
 	 * 
 	 */
 	Vessel(){
@@ -20,18 +21,31 @@ public abstract class Vessel extends GamePiece{
 		this.yLoc = 300;
 		wakes = new WakeCollection();
 	}
-	/*Updates aspects of the vessel the user selected
+	/**Updates aspects of the vessel the user selected
 	 * 
 	 */
-	void update() {
+	void update(int x, int y) {
 		wakes.removeDeadWakes();
 		checkDirection();
 		wakes.addWake(this.xLoc, this.yLoc, -this.xVel, -this.yVel, this.updatesBetweenWakes);
 		wakes.update();
+		if (outOfXBounds(x)) {
+			this.xVel = -this.xVel;
+		}
+		if (outOfYBounds(y)) {
+			this.yVel = -this.yVel;
+		}
 		super.updateLocation();
 	}
 	
-	/*@return returns the current direction the user is going in 
+	boolean outOfXBounds(int x) {
+		return this.xLoc < 0 || this.xLoc > x;
+	}
+	boolean outOfYBounds(int y) {
+		return this.yLoc < 0 || this.yLoc > y;
+	}
+	
+	/**@return returns the current direction the user is going in 
 	 * 
 	 */
 	Direction checkDirection() {
@@ -64,7 +78,7 @@ public abstract class Vessel extends GamePiece{
 		}
 		return dir;
 	}
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see Collidable#onCollide()
 	 */
@@ -72,7 +86,7 @@ public abstract class Vessel extends GamePiece{
 	public void onCollide() {
 		// TODO Auto-generated method stub
 	}
-	/*@return returns the VesselType the user selected
+	/**@return returns the VesselType the user selected
 	 * 
 	 */
 	public VesselType getVesselType(){
