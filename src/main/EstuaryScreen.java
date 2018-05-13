@@ -57,6 +57,9 @@ public class EstuaryScreen extends JPanel{
 		slp.update(sLX, sLY);
 		this.repaint();
 	}
+	public TimerPanel getTimerPanel(){
+		return timerPanel;
+	}
 	/**
 	 * (non-Javadoc)
 	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)

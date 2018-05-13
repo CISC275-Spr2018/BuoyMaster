@@ -9,6 +9,8 @@ import javax.swing.JPanel;
  */
 public class TimerPanel extends JPanel{
 	String messageDraw;
+	int rectLength=500;
+	int timerLength=500;
 	/**Updates the timer's timer
 	 * @param d the time to update the timer with
 	 */
@@ -21,7 +23,10 @@ public class TimerPanel extends JPanel{
 	 */
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.setFont(new Font("TimesRoman", Font.PLAIN, 54));
-    	g.drawString(messageDraw, 25, 50);
+    	g.drawRect(0, 40, rectLength, 20);
+    	g.fillRect(0, 40, timerLength, 20);
+    	timerLength-=1;
+    	g.setFont(new Font("TimesRoman", Font.PLAIN, 20)); 
+    	g.drawString("Time Remaining", rectLength+10, 60);
     }
 }

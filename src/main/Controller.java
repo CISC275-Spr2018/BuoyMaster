@@ -25,6 +25,7 @@ public class Controller implements ActionListener, Serializable{
 	private final static int DRAWDELAY = 50;
 	int reply;
 	boolean restart=true;
+	boolean answered=true;
 	private Model model;
 	private transient View view;
 	GameKeyListener gkl;
@@ -138,8 +139,13 @@ public class Controller implements ActionListener, Serializable{
 		if (start && model.addTime){
 			model.getTimer().increment();
 		}
+		if(model.getBuoy().correct){
+			if (answered)
+			view.estuaryScreen.getTimerPanel().timerLength+=30;
+			answered=false;
+		}
 		if(model.gameOver&&model.getDock().arrivedWithData){
-			reply=JOptionPane.showConfirmDialog(null,"You made it back with the data. Would you like to replay and collect more data?","Restart",reply);
+			reply=JOptionPane.showConfirmDialog(null,"You made it back with the data. Would you like to re-play and collect more data?","Restart",reply);
 			
 			if(reply==JOptionPane.YES_OPTION){
 
@@ -166,6 +172,8 @@ public class Controller implements ActionListener, Serializable{
 						model.tutorial=false;
 						gkl = new GameKeyListener(model.getPlayer(), model);
 						view.addKeyListener(gkl);
+						view.estuaryScreen.getTimerPanel().timerLength=500;
+						answered=false;
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -209,6 +217,8 @@ public class Controller implements ActionListener, Serializable{
 						model.tutorial=false;
 						gkl = new GameKeyListener(model.getPlayer(), model);
 						view.addKeyListener(gkl);
+						view.estuaryScreen.getTimerPanel().timerLength=500;
+						answered=false;
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
