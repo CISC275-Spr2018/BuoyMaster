@@ -69,7 +69,7 @@ public abstract class GamePiece implements Collidable{
 	/*Updates the location of a GamePiece based on the x and y velocities
 	 * 
 	 */
-	void updateLocation() {
+	void updateLocationAndRotation() {
 		this.rotationAngle = -Math.toDegrees(Math.atan2(this.yVel, this.xVel)); //Sets the rotation angle based on the velocity
 		this.xLoc += this.xVel;
 		this.yLoc += this.yVel;

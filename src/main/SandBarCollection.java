@@ -61,7 +61,7 @@ public class SandBarCollection {
 	 */
 	void updateAll() {
 		for (SandBar s : sandBars) {
-			s.updateLocation();
+			s.updateLocationAndRotation();
 		}
 	}
 }

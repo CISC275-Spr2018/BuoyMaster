@@ -30,7 +30,7 @@ public abstract class Vessel extends GamePiece{
 			wakes.addWake(this.xLoc + 48, this.yLoc + 48, this.wakeStrength, this.rotationAngle); //48 is half size of boat immage
 		}
 		wakes.update();
-		super.updateLocation();
+		super.updateLocationAndRotation();
 	}
 	
 	/*@return returns the current direction the user is going in 

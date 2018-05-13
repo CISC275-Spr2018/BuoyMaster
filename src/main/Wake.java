@@ -21,7 +21,6 @@ public class Wake extends GamePiece{
 	
 	//updates the location, decreases opacity and wakeLife
 	void update(){
-		updateLocation();
 		opacity -= (float)(1.0/(wakeStrength + 1));
 		wakeLife--;
 	}
