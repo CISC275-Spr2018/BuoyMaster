@@ -26,6 +26,7 @@ public class Model implements Serializable{
 	ShoreLine shoreline;
 	boolean gameOver = false;
 	boolean addTime=false;
+	boolean haventIncremented=true;
 	
 	/*Constructor for the model 
 	 * @param width width of the screen
@@ -59,11 +60,16 @@ public class Model implements Serializable{
 		if (health > 0 && i % player.updatesBetweenWakes == 0){
 			sandBarCollection.addRandomSandBar(player, timer, gameMessage, player);
 		}
-		
+	
 		if (sandBarCollection.sandBars.size() % 5 == 1) {
 			shoreline.yLoc++;
 		}
-		
+		if(buoy.correct){
+			if(haventIncremented){
+				timer.timeLeft+=50;
+				haventIncremented=false;
+			}
+		}
 		player.update();
 		gameOver = timer.update() || dock.arrivedWithData;
 		sandBarCollection.updateAll();
