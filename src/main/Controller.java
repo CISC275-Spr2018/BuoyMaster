@@ -19,7 +19,7 @@ public class Controller implements ActionListener, Serializable{
 	GameKeyListener gkl;
 
 	boolean start = false;
-/*Constructor for the Controller class
+/**Constructor for the Controller class
  * 
  */
 	public Controller(){
@@ -34,7 +34,7 @@ public class Controller implements ActionListener, Serializable{
 	public Model getModel(){
 		return model;
 	}
-/*
+/**
  * (non-Javadoc)
  * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
  */
@@ -54,16 +54,13 @@ public class Controller implements ActionListener, Serializable{
 		view.addKeyListener(gkl);
 		start = true;
 	}
-	/*Updates the model and the view based on the updates which happened in the model
+	/**Updates the model and the view based on the updates which happened in the model
 	 * 
 	 */
 	void update() {
 		if (start && !model.gameOver) { //the game runs from start until gameOver is true
 			model.modelUpdate();
 			view.update(model.getBuoy().getXLoc(), model.getBuoy().getYLoc(),model.getDock().getXLoc(),model.getDock().getYLoc(),model.getPlayer().getXLoc(),model.getPlayer().getYLoc(),model.getPlayer().getVesselType(),model.getPlayer().checkDirection(),model.sandBarCollection,model.getTimer().message,model.getGameMessage().message,model.getPlayer().wakes,model.shoreline.getXLoc(),model.shoreline.getYLoc());
-		}
-		if (start && model.addTime){
-			model.getTimer().increment();
 		}
 		if(model.gameOver){
 			reply=JOptionPane.showConfirmDialog(null,"Would you like to retry?","Restart",reply);
@@ -87,7 +84,7 @@ public class Controller implements ActionListener, Serializable{
 			}
 		}
 	}
-/*Main method starts the run method for the event queue 
+/**Main method starts the run method for the event queue 
  * 
  */
 	public static void main(String[] args) {
