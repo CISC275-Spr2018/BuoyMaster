@@ -1,5 +1,5 @@
 package main;
-/**@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
+/***@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
  */
 public class Timer {
@@ -7,7 +7,7 @@ public class Timer {
 	int decrement;
 	String message; //message to be displayed when time runs out
 	boolean timesUp = false;
-	/*Constructor for the Timer class.
+	/**Constructor for the Timer class.
 	 * 
 	 */
 	Timer(){
@@ -15,7 +15,7 @@ public class Timer {
 		decrement = 1;
 		message = "";
 	}
-	/*Updates the timer as time goes on by decrementing.
+	/**Updates the timer as time goes on by decrementing.
 	 * 
 	 */
 	boolean update() {

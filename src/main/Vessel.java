@@ -2,7 +2,7 @@ package main;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Collection;
-/*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
+/**@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
  */
 public abstract class Vessel extends GamePiece{
@@ -11,7 +11,7 @@ public abstract class Vessel extends GamePiece{
 	VesselType type;
 	WakeCollection wakes;
 	int updatesBetweenWakes = 3; //How many times the model is updated between a wake being emitted behind the vessel
-	/*Constructor for the vessel class
+	/**Constructor for the vessel class
 	 * 
 	 */
 	Vessel(){
@@ -20,7 +20,7 @@ public abstract class Vessel extends GamePiece{
 		this.yLoc = 300;
 		wakes = new WakeCollection();
 	}
-	/*Updates aspects of the vessel the user selected
+	/**Updates aspects of the vessel the user selected
 	 * 
 	 */
 	void update() {
@@ -31,7 +31,7 @@ public abstract class Vessel extends GamePiece{
 		super.updateLocation();
 	}
 	
-	/*@return returns the current direction the user is going in 
+	/**@return returns the current direction the user is going in 
 	 * 
 	 */
 	Direction checkDirection() {
@@ -64,7 +64,7 @@ public abstract class Vessel extends GamePiece{
 		}
 		return dir;
 	}
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see Collidable#onCollide()
 	 */
@@ -72,7 +72,7 @@ public abstract class Vessel extends GamePiece{
 	public void onCollide() {
 		// TODO Auto-generated method stub
 	}
-	/*@return returns the VesselType the user selected
+	/**@return returns the VesselType the user selected
 	 * 
 	 */
 	public VesselType getVesselType(){

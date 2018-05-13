@@ -9,13 +9,13 @@ import java.util.HashSet;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
-/*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
+/**@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
  */
 public class SandBarPanel extends JPanel{
 	HashSet<SandBar> sandBars=new HashSet<SandBar>();
 	BufferedImage img;
-	/*Constructor for the SandBar panel creates an image of a SandBar
+	/**Constructor for the SandBar panel creates an image of a SandBar
 	 * 
 	 */
 	SandBarPanel(){
@@ -24,14 +24,14 @@ public class SandBarPanel extends JPanel{
 		} catch (IOException e) {
 		}
 	}
-	/*Updates the panel with the SandBarCollection
+	/**Updates the panel with the SandBarCollection
 	 * @param sbc SandBarCollection from model
 	 * 
 	 */
 	void update(SandBarCollection sbc) {
 		sandBars = sbc.sandBars;
 	}
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
 	 */

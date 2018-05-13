@@ -1,6 +1,6 @@
 package main;
 
-/*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
+/**@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
  */
 public enum VesselType {
@@ -9,13 +9,13 @@ public enum VesselType {
 	SPEEDBOAT("speed_boat");
 	
 	private String name = null;
-	/*@return returns the VesselType the user selected
+	/**@return returns the VesselType the user selected
 	 * 
 	 */
 	private VesselType(String s){
 		name = s;
 	}
-	/*@returns the string key for the user's selection
+	/**@returns the string key for the user's selection
 	 * 
 	 */
 	public String getName(){

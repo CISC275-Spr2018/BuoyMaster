@@ -1,12 +1,13 @@
 package main;
 
+import java.io.Serializable;
 import java.util.Random;
 
 import javax.swing.JOptionPane;
-/**@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
+/*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
  */
-public class Buoy extends GamePiece{
+public class Buoy extends GamePiece implements Serializable{
 	private GameMessage gameMessage;
 	// Set true once the player makes contact with the buoy and collects the data
 	boolean collected = false; 
@@ -22,7 +23,7 @@ public class Buoy extends GamePiece{
 	boolean showAnswer=false;
 	boolean correct=false;
 	//Buoy constructor
-	/**Buoy constructor
+	/*Buoy constructor
 	 * @param x this is the x position of buoy in the frame
 	 * @param y this is the y position of the buoy in the frame
 	 * @param g this is the gamemessage which appears when the user makes contact with the buoy telling them they have collected the data
@@ -70,20 +71,20 @@ public class Buoy extends GamePiece{
 		questions[13]="The pH measure the acidity of the estuary. It woud be bad for the pH to be below 6 and above 8. Was the pH data recorded within this range?";
 		questions[14]="The pH measure the acidity of the estuary. It woud be bad for the pH to be below 6 and above 8. Was the pH data recorded within this range?";
 	}
-	/**
+	/*
 	 *@return returns a random question from the question array 
 	 */
 	public String askRandomQuestion(){
 		return questions[rand];
 	}
-	/**
+	/*
 	 * @return returns a random fact from fact array
 	 */
 	public String createRandomFact(){
 		return data[rand];	
 	}
 	
-	/**
+	/*
 	 * (non-Javadoc)
 	 * @see Collidable#onCollide()
 	 */
@@ -335,7 +336,7 @@ public class Buoy extends GamePiece{
 		}
 		
 	}	
-	/**
+	/*
 	 *@return returns the status of collected 
 	 */
 	public boolean collectedStatus(){

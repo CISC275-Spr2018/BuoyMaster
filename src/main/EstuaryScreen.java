@@ -3,7 +3,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 import javax.swing.JPanel;
-/*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
+/**@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
  */
 public class EstuaryScreen extends JPanel{
@@ -15,7 +15,7 @@ public class EstuaryScreen extends JPanel{
 	private DockPanel dockPanel;
 	WakePanel wp;
 	ShorelinePanel slp;
-	/*Constructor for the EstuaryScreen class
+	/**Constructor for the EstuaryScreen class
 	 * 
 	 */
 	EstuaryScreen() {
@@ -29,7 +29,7 @@ public class EstuaryScreen extends JPanel{
 		slp = new ShorelinePanel();
 		this.setBackground(Color.CYAN.darker().darker());
 	}
-	/*Updates the view based on the model
+	/**Updates the view based on the model
 	 * @param bX x coordinate of buoy
 	 * @param bY y coordinate of buoy
 	 * @param dX x coordinate of dock

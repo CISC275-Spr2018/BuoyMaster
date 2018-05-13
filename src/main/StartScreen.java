@@ -8,13 +8,13 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-/*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
+/**@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
  */
 public class StartScreen extends JPanel implements ActionListener{
 	JButton startButton;
 	boolean start = false;
-	/*Constructor for the StartScreen
+	/**Constructor for the StartScreen
 	 * 
 	 */
 	StartScreen(){
@@ -32,7 +32,7 @@ public class StartScreen extends JPanel implements ActionListener{
 		
 		
 	}
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 	 */

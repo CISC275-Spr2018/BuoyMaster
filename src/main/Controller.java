@@ -2,6 +2,12 @@ package main;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 import javax.swing.AbstractAction;
@@ -15,17 +21,16 @@ public class Controller implements ActionListener, Serializable{
 	int reply;
 	boolean restart=true;
 	private Model model;
-	private View view;
+	private transient View view;
 	GameKeyListener gkl;
 
 	boolean start = false;
-/**Constructor for the Controller class
+/*Constructor for the Controller class
  * 
  */
 	public Controller(){
 		model = new Model(width, height);
 		view = new View(width, height);
-		view.addKeyListener(gkl);
 
 		view.selectionScreen.jetSki.addActionListener(this);
 		view.selectionScreen.fishingBoat.addActionListener(this);
@@ -34,7 +39,7 @@ public class Controller implements ActionListener, Serializable{
 	public Model getModel(){
 		return model;
 	}
-/**
+/*
  * (non-Javadoc)
  * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
  */
@@ -50,47 +55,92 @@ public class Controller implements ActionListener, Serializable{
 		if (e.getSource() == view.selectionScreen.speedBoat) {
 			model.setVessel(new SpeedBoat());
 		}
-		gkl = new GameKeyListener(model.getPlayer(), view);
+		FileOutputStream fout = null;
+		try {
+			fout = new FileOutputStream("f.ser");
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}  
+		ObjectOutputStream out = null;
+		try {
+			out = new ObjectOutputStream(fout);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		try {
+			out.writeObject(model);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		try {
+			out.close();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		gkl = new GameKeyListener(model.getPlayer(), model);
 		view.addKeyListener(gkl);
 		start = true;
 	}
-	/**Updates the model and the view based on the updates which happened in the model
+	/*Updates the model and the view based on the updates which happened in the model
 	 * 
 	 */
-	void update() {
+	void update(){
 		if (start && !model.gameOver) { //the game runs from start until gameOver is true
 			model.modelUpdate();
 			view.update(model.getBuoy().getXLoc(), model.getBuoy().getYLoc(),model.getDock().getXLoc(),model.getDock().getYLoc(),model.getPlayer().getXLoc(),model.getPlayer().getYLoc(),model.getPlayer().getVesselType(),model.getPlayer().checkDirection(),model.sandBarCollection,model.getTimer().message,model.getGameMessage().message,model.getPlayer().wakes,model.shoreline.getXLoc(),model.shoreline.getYLoc());
+		}
+		if (start && model.addTime){
+			model.getTimer().increment();
 		}
 		if(model.gameOver){
 			reply=JOptionPane.showConfirmDialog(null,"Would you like to retry?","Restart",reply);
 				
 			if(reply==JOptionPane.YES_OPTION){
-				model.gameOver=!model.gameOver;
-				Controller c = new Controller();
-				model = new Model(width, height);
-				view = new View(width, height);
-				c.model=model;
-				c.view=view;
-				c.view.addKeyListener(gkl);
-
-				c.view.selectionScreen.jetSki.addActionListener(this);
-				c.view.selectionScreen.fishingBoat.addActionListener(this);
-				c.view.selectionScreen.speedBoat.addActionListener(this);
-				
+				FileInputStream fin = null;
+				try {
+					fin = new FileInputStream("f.ser");
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}  
+				ObjectInputStream in = null;
+				try {
+					in = new ObjectInputStream(fin);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				try {
+					try {
+						model = (Model) in.readObject();
+						gkl = new GameKeyListener(model.getPlayer(), model);
+						view.addKeyListener(gkl);
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}		
 			}
 			if(reply==JOptionPane.NO_OPTION){
 				System.exit(0);
 			}
 		}
 	}
-/**Main method starts the run method for the event queue 
+/*Main method starts the run method for the event queue 
  * 
  */
-	public static void main(String[] args) {
+	public static void main(String[] args){
+		final Controller c = new Controller();
 		EventQueue.invokeLater(new Runnable(){
 			public void run(){
-				final Controller c = new Controller(); //Needs to be final or it won't work on my computer -Greg
+				//final Controller c = new Controller(); //Needs to be final or it won't work on my computer -Greg
 				Timer t = new Timer(DRAWDELAY, new AbstractAction() {
 					public void actionPerformed(ActionEvent e) {
 						c.update();

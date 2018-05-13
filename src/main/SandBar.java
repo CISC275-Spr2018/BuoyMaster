@@ -1,13 +1,13 @@
 package main;
 
-/*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
+/**@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
  */
 public class SandBar extends GamePiece{
 	private GameMessage gameMessage;
 	Vessel player;
 	Timer timer; //There is a better way to communicate crashing into a sandbar back to the controller. However, it is 7am and I'm too tired to figure it out right now. - Greg
-	/*Constructor for the SandBar class
+	/**Constructor for the SandBar class
 	 * @param x x coordinate of SandBar
 	 * @param y y coordinate of SandBar
 	 * @param xVel x velocity of SandBar
@@ -26,7 +26,7 @@ public class SandBar extends GamePiece{
 		gameMessage = g;
 		player = v;
 	}
-	/*@param x sets the x location of the SandBar
+	/**@param x sets the x location of the SandBar
 	 * @param y	sets the y location of the SandBar
 	 * @param t timer
 	 * @param g sets the GameMessage for hitting a SandBar
@@ -40,7 +40,7 @@ public class SandBar extends GamePiece{
 		gameMessage = g;
 		player = v;
 	}
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see Collidable#onCollide()
 	 */

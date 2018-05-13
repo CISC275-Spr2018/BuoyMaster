@@ -3,13 +3,13 @@ package main;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-/*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
+/**@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
  */
 public class GameKeyListener implements KeyListener {
 	Vessel player;
 	View view;
-	/*Constructor for the GameKeyListener
+	/**Constructor for the GameKeyListener
 	 * @param v sets the player to the vessel
 	 * @param view passes in the view
 	 */
@@ -17,7 +17,7 @@ public class GameKeyListener implements KeyListener {
 		this.player = v;
 		this.view = view;
 	}
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see java.awt.event.KeyListener#keyPressed(java.awt.event.KeyEvent)
 	 */
@@ -38,7 +38,7 @@ public class GameKeyListener implements KeyListener {
 		}
 		
 	}
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)
 	 */
@@ -56,7 +56,7 @@ public class GameKeyListener implements KeyListener {
 	}
 
 	@Override
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see java.awt.event.KeyListener#keyTyped(java.awt.event.KeyEvent)
 	 */

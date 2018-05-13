@@ -1,10 +1,10 @@
 package main;
 
-/*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
+/**@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
  */
 public class SpeedBoat extends Vessel{
-	/*Constructor for the SpeedBoat
+	/**Constructor for the SpeedBoat
 	 * 
 	 */
 	public SpeedBoat(){

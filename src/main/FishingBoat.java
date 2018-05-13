@@ -1,10 +1,10 @@
 package main;
 
-/*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
+/**@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
  */
 public class FishingBoat extends Vessel{
-	/*Constructor for the fishing boat
+	/**Constructor for the fishing boat
 	 * 
 	 */
 	FishingBoat() {
