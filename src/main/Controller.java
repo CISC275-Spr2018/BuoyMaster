@@ -102,7 +102,7 @@ public class Controller implements ActionListener, Serializable{
 					view.setLayer(3);
 					FileOutputStream fout = null;
 					try {
-						fout = new FileOutputStream("f.ser");
+						fout = new FileOutputStream("buoyMasterSaveFile.ser");
 					} catch (FileNotFoundException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -172,11 +172,14 @@ public class Controller implements ActionListener, Serializable{
 						Random random=new Random();
 						model.getBuoy().rand=random.nextInt(14);
 						model.tutorial=false;
-						model.getBuoy().correct=false;
+
+						
 						gkl = new GameKeyListener(model.getPlayer(), model);
 						view.addKeyListener(gkl);
 						view.estuaryScreen.getTimerPanel().timerLength=500;
-						this.answered=false;
+						answered=false;
+						this.view.selectionScreen.setVisible(true);
+
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -218,11 +221,14 @@ public class Controller implements ActionListener, Serializable{
 						Random random=new Random();
 						model.getBuoy().rand=random.nextInt(14);
 						model.tutorial=false;
-						model.getBuoy().correct=false;
+
+						
 						gkl = new GameKeyListener(model.getPlayer(), model);
 						view.addKeyListener(gkl);
 						view.estuaryScreen.getTimerPanel().timerLength=500;
-						this.answered=false;
+						answered=false;
+						this.view.selectionScreen.setVisible(true);
+
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
