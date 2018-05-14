@@ -96,7 +96,9 @@ public class Controller implements ActionListener, Serializable{
 					model.getPlayer().yVel=0;
 					model.sandBarCollection=new SandBarCollection();
 					model.tutorial=false;
-					
+
+					model.shoreline.addCollisionPoints();
+
 
 					view.setLayer(3);
 					FileOutputStream fout = null;

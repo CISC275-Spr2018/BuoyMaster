@@ -34,12 +34,6 @@ public class ShoreLine extends GamePiece implements Serializable{
 		this.gameMessage = g;
 		
 		this.collisionPoints = new HashSet<CollisionPoint>();
-		for (int i = 0; i <= 900; i++) {
-			this.collisionPoints.add(new CollisionPoint(i, 400));
-		}
-		for (int i = 901; i <= 1280; i++) {
-			this.collisionPoints.add(new CollisionPoint(i, 500));
-		}
 	}
 	
 	private class CollisionPoint implements Serializable{
@@ -55,6 +49,15 @@ public class ShoreLine extends GamePiece implements Serializable{
 	void shiftCollisionPoints(int factor) {
 		for (CollisionPoint c : collisionPoints) {
 			c.y += factor;
+		}
+	}
+	
+	void addCollisionPoints() {
+		for (int i = 0; i <= 900; i++) {
+			this.collisionPoints.add(new CollisionPoint(i, 400));
+		}
+		for (int i = 901; i <= 1280; i++) {
+			this.collisionPoints.add(new CollisionPoint(i, 500));
 		}
 	}
 	
