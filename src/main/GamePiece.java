@@ -8,9 +8,10 @@ import java.io.Serializable;
 public abstract class GamePiece implements Collidable, Serializable{
 	protected int xLoc;
 	protected int yLoc;
-	protected int xVel;
-	protected int yVel;
-	private int collisionRange =30; //Default set to 30 but will be changed for different pieces.
+	protected double xVel;
+	protected double yVel;
+	protected double rotationAngle;
+	protected int collisionRange =30; //Default set to 30 but will be changed for different pieces.
 
 	/** Method to check if collision has occurred between to GamePieces
 	 * @param g2 second GamePiece which one GamePiece may come into contact with
@@ -54,19 +55,24 @@ public abstract class GamePiece implements Collidable, Serializable{
 	/**
 	 *@return returns the x velocity of a GamePiece 
 	 */
-	public int getXVel() {
+	public double getXVel() {
 		return xVel;
 	}
 	/**
 	 *@return returns the y velocity of a GamePiece 
 	 */
-	public int getYVel() {
+	public double getYVel() {
 		return yVel;
 	}
-	/**Updates the location of a GamePiece based on the x and y velocities
+	
+	double getRotationAngle() {	
+		return rotationAngle;
+	}
+	/*Updates the location of a GamePiece based on the x and y velocities
 	 * 
 	 */
-	void updateLocation() {
+	void updateLocationAndRotation() {
+		this.rotationAngle = -Math.toDegrees(Math.atan2(this.yVel, this.xVel)); //Sets the rotation angle based on the velocity
 		this.xLoc += this.xVel;
 		this.yLoc += this.yVel;
 	}

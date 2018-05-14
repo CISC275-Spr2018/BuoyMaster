@@ -43,6 +43,9 @@ public class GameKeyListener implements KeyListener, Serializable{
 		if (key == KeyEvent.VK_DOWN && player.yVel < player.maxVel) {
 			player.yVel += 4;
 		}
+		if (key == KeyEvent.VK_G) {
+			System.out.println(player.rotationAngle);
+		}
 		
 	}
 	/**

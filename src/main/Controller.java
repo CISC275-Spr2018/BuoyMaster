@@ -32,16 +32,16 @@ public class Controller implements ActionListener, Serializable{
 	boolean tutorial=true;
 
 	boolean start = false;
-/**Constructor for the Controller class
- * 
- */
+	/**Constructor for the Controller class
+	 * 
+	 */
 	public Controller(){
 		model = new Model(width, height,true);
 		view = new View(width, height);
 
 
 		view.addKeyListener(gkl);
-		
+
 
 		view.selectionScreen.jetSki.addActionListener(this);
 		view.selectionScreen.fishingBoat.addActionListener(this);
@@ -53,10 +53,10 @@ public class Controller implements ActionListener, Serializable{
 	public View getView(){
 		return view;
 	}
-/**
- * (non-Javadoc)
- * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
- */
+	/**
+	 * (non-Javadoc)
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		//sets the boat type based on the button pressed
@@ -69,7 +69,7 @@ public class Controller implements ActionListener, Serializable{
 		if (e.getSource() == view.selectionScreen.speedBoat) {
 			model.setVessel(new SpeedBoat());
 		}
-		
+
 		gkl = new GameKeyListener(model.getPlayer(), model);
 		view.addKeyListener(gkl);
 		start = true;
@@ -80,7 +80,7 @@ public class Controller implements ActionListener, Serializable{
 	void update(){
 		if (start && !model.gameOver) { //the game runs from start until gameOver is true
 			model.modelUpdate();
-			view.update(model.getBuoy().getXLoc(), model.getBuoy().getYLoc(),model.getDock().getXLoc(),model.getDock().getYLoc(),model.getPlayer().getXLoc(),model.getPlayer().getYLoc(),model.getPlayer().getVesselType(),model.getPlayer().checkDirection(),model.sandBarCollection,model.getTimer().message,model.getGameMessage().message,model.getPlayer().wakes,model.shoreline.getXLoc(),model.shoreline.getYLoc(),model.getArrow().getXLoc(),model.getArrow().getYLoc());
+			view.update(model.getBuoy().getXLoc(), model.getBuoy().getYLoc(),model.getDock().getXLoc(),model.getDock().getYLoc(),model.getPlayer().getXLoc(),model.getPlayer().getYLoc(),model.getPlayer().getVesselType(),model.getPlayer().getRotationAngle(),model.sandBarCollection,model.getTimer().message,model.getGameMessage().message,model.getPlayer().wakes,model.shoreline.getXLoc(),model.shoreline.getYLoc(),model.getArrow().getXLoc(),model.getArrow().getYLoc());
 		}
 		//if the dock indicates the player has returned from buoy in tutorial
 		if(!model.getDock().mt){
@@ -96,7 +96,7 @@ public class Controller implements ActionListener, Serializable{
 					model.getPlayer().yVel=0;
 					model.sandBarCollection=new SandBarCollection();
 					model.tutorial=false;
-					
+
 					view.setLayer(3);
 					FileOutputStream fout = null;
 					try {
@@ -124,8 +124,8 @@ public class Controller implements ActionListener, Serializable{
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-					
-					
+
+
 				}
 			});
 			JPanel panel=new JPanel();
@@ -135,112 +135,112 @@ public class Controller implements ActionListener, Serializable{
 				tutorial=false;
 				int result=JOptionPane.showOptionDialog(null, panel, "Start Game", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
 
-		}
-		if (start && model.addTime){
-			model.getTimer().increment();
-		}
-		if(model.getBuoy().correct){
-			if (answered)
-			view.estuaryScreen.getTimerPanel().timerLength+=30;
-			answered=false;
-		}
-		if(model.gameOver&&model.getDock().arrivedWithData){
-			reply=JOptionPane.showConfirmDialog(null,"You made it back with the data. Would you like to re-play and collect more data?","Restart",reply);
-			
-			if(reply==JOptionPane.YES_OPTION){
+			}
+			if (start && model.addTime){
+				model.getTimer().increment();
+			}
+			if(model.getBuoy().correct){
+				if (answered)
+					view.estuaryScreen.getTimerPanel().timerLength+=30;
+				answered=false;
+			}
+			if(model.gameOver&&model.getDock().arrivedWithData){
+				reply=JOptionPane.showConfirmDialog(null,"You made it back with the data. Would you like to re-play and collect more data?","Restart",reply);
 
-				FileInputStream fin = null;
-				try {
-					fin = new FileInputStream("buoyMasterSaveFile.ser");
-				} catch (FileNotFoundException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}  
-				ObjectInputStream in = null;
-				try {
-					in = new ObjectInputStream(fin);
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				try {
+				if(reply==JOptionPane.YES_OPTION){
+
+					FileInputStream fin = null;
 					try {
-						model = (Model) in.readObject();
-						Random random=new Random();
-						model.getBuoy().rand=random.nextInt(14);
-						model.setVessel(new FishingBoat());
-						model.tutorial=false;
-						
-						gkl = new GameKeyListener(model.getPlayer(), model);
-						view.addKeyListener(gkl);
-						view.estuaryScreen.getTimerPanel().timerLength=500;
-						answered=false;
-						this.view.selectionScreen.setVisible(true);
-					} catch (IOException e) {
+						fin = new FileInputStream("buoyMasterSaveFile.ser");
+					} catch (FileNotFoundException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}  
+					ObjectInputStream in = null;
+					try {
+						in = new ObjectInputStream(fin);
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					try {
+						try {
+							model = (Model) in.readObject();
+							Random random=new Random();
+							model.getBuoy().rand=random.nextInt(14);
+							model.setVessel(new FishingBoat());
+							model.tutorial=false;
+
+							gkl = new GameKeyListener(model.getPlayer(), model);
+							view.addKeyListener(gkl);
+							view.estuaryScreen.getTimerPanel().timerLength=500;
+							answered=false;
+							this.view.selectionScreen.setVisible(true);
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					} catch (ClassNotFoundException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
-					}
-				} catch (ClassNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}		
-			}
-			if(reply==JOptionPane.NO_OPTION){
-				System.exit(0);
-			}
-		}
-	
-		
-		if(model.gameOver&&!model.getDock().arrivedWithData){
-			reply=JOptionPane.showConfirmDialog(null,"Your boat caused too much erosion and you hit sand. Would you like to retry with a slower boat?","Restart",reply);
-
-				
-			if(reply==JOptionPane.YES_OPTION){
-				FileInputStream fin = null;
-				try {
-					fin = new FileInputStream("buoyMasterSaveFile.ser");
-				} catch (FileNotFoundException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}  
-				ObjectInputStream in = null;
-				try {
-					in = new ObjectInputStream(fin);
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					}		
 				}
-				try {
+				if(reply==JOptionPane.NO_OPTION){
+					System.exit(0);
+				}
+			}
+
+
+			if(model.gameOver&&!model.getDock().arrivedWithData){
+				reply=JOptionPane.showConfirmDialog(null,"Your boat caused too much erosion and you hit sand. Would you like to retry with a slower boat?","Restart",reply);
+
+
+				if(reply==JOptionPane.YES_OPTION){
+					FileInputStream fin = null;
 					try {
-						model = (Model) in.readObject();
-						model.setVessel(new FishingBoat());
-						Random random=new Random();
-						model.getBuoy().rand=random.nextInt(14);
-						model.tutorial=false;
-						
-						gkl = new GameKeyListener(model.getPlayer(), model);
-						view.addKeyListener(gkl);
-						view.estuaryScreen.getTimerPanel().timerLength=500;
-						answered=false;
-						this.view.selectionScreen.setVisible(true);
-					} catch (IOException e) {
+						fin = new FileInputStream("buoyMasterSaveFile.ser");
+					} catch (FileNotFoundException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}  
+					ObjectInputStream in = null;
+					try {
+						in = new ObjectInputStream(fin);
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					try {
+						try {
+							model = (Model) in.readObject();
+							model.setVessel(new FishingBoat());
+							Random random=new Random();
+							model.getBuoy().rand=random.nextInt(14);
+							model.tutorial=false;
+
+							gkl = new GameKeyListener(model.getPlayer(), model);
+							view.addKeyListener(gkl);
+							view.estuaryScreen.getTimerPanel().timerLength=500;
+							answered=false;
+							this.view.selectionScreen.setVisible(true);
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					} catch (ClassNotFoundException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
-					}
-				} catch (ClassNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}		
+					}		
+				}
+				if(reply==JOptionPane.NO_OPTION){
+					System.exit(0);
+				}
 			}
-			if(reply==JOptionPane.NO_OPTION){
-				System.exit(0);
-			}
-		}
 		}
 	}
-/**Main method starts the run method for the event queue 
- * 
- */
+	/**Main method starts the run method for the event queue 
+	 * 
+	 */
 	public static void main(String[] args){
 		final Controller c = new Controller();
 		EventQueue.invokeLater(new Runnable(){

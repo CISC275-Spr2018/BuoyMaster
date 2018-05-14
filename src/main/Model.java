@@ -9,12 +9,11 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
-
 import javax.swing.JOptionPane;
-/**@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
- * 
- *
- *
+
+
+/*
+ * @authors Arvin Aya-ay, Evan Caplan, Dan Hinrichs, Riley Shaw, Greg White
  * Main Model for entire state of the game.
  * Will hold all different parts - player Vessels, Sandbars, Buoy, etc.
  */
@@ -62,6 +61,7 @@ public class Model implements Serializable{
 
 	static int randomNum(int min, int max){
 		Random r = new Random();
+
 		int i = r.nextInt((max - min) + 1) + min;
 		return i;
 	}
@@ -93,7 +93,9 @@ public class Model implements Serializable{
 				arrow=new Arrow(10, height/2-75);
 			}
 		
-
+    // MAY BE OUTDATED
+		if (health > 0 && i % player.wakeStrength == 0){
+			sandBarCollection.addRandomSandBar(player, timer, gameMessage, player);
 		}
 		
 		//model settings for when player has completed the tutorial
@@ -189,9 +191,6 @@ public class Model implements Serializable{
 	 */
 	public void setVessel(Vessel v) {
 		this.player = v;
-	}
-	public void setStart(boolean start){
-		this.gameStart=true;
 	}
 
 }
