@@ -46,11 +46,13 @@ public class TutorialScreen extends JPanel implements ActionListener {
 	 * @param aX arrow x coordinate
 	 * @param aY arrow y coordinate
 	 */
-	public void update(int bX, int bY, int dX, int dY, int pX, int pY, VesselType vessel, double rotationAngle, SandBarCollection sbc,String message,  WakeCollection wc, int sLX, int sLY, int aX, int aY){
+	public void update(int bX, int bY, int dX, int dY, int pX, int pY, VesselType vessel, Direction direction, SandBarCollection sbc,String message,  WakeCollection wc, int sLX, int sLY, int aX, int aY){
 		buoyPanel.update(bX, bY);
 		dockPanel.update( dX, dY);
+
 		vesselPanel.update(pX, pY, vessel, rotationAngle);
 		wp.setWakeCollection(wc);
+
 		sandBarPanel.update(sbc);
 		arrowPanel.update(aX,aY);
 		gameMessagePanel.update("Use the arrow keys to guide yourself through the estuary.");

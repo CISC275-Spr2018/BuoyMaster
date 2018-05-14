@@ -2,14 +2,19 @@ package main;
 import java.io.Serializable;
 import java.util.Random;
 
+import java.util.concurrent.ThreadLocalRandom;
 
-/*
- * @authors Arvin Aya-ay, Evan Caplan, Dan Hinrichs, Riley Shaw, Greg White
+
+import javax.swing.JOptionPane;
+/**@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
+ * 
+ *
+ *
  * Main Model for entire state of the game.
  * Will hold all different parts - player Vessels, Sandbars, Buoy, etc.
  */
 public class Model implements Serializable{
-
+	
 	private final int width;
 	private final int height;
 	private Timer timer;
@@ -27,7 +32,7 @@ public class Model implements Serializable{
 	boolean tutorialSandbar=true;
 	boolean startShow=false;
 	boolean gameStart=false;
-
+	
 	/**Constructor for the model 
 	 * @param width width of the screen
 	 * @param height height of the screen
@@ -56,30 +61,34 @@ public class Model implements Serializable{
 		return i;
 	}
 	public void modelUpdate() {
-
+		
 		//model logic for tutorial
 		if (tutorial){
+
 			Random r = new Random();
 			int l = r.nextInt((health - 0) + 1) + 0;
-			health -= player.wakeStrength;
+			health -= player.updatesBetweenWakes;
 			buoy.setTutorial(true);
 			buoy.hasCollided(player);
 			player.update(width, height);
 			dock.hasCollided(player);
 			shoreline.hasCollided(player);
+
 			if (buoy.sandBar){
 				if (tutorialSandbar){
 					sandBarCollection.addSandBar(randomNum(10, player.xLoc) - 50, 620, timer, gameMessage);
 					tutorialSandbar=false;
 				}
 			}
+
 			sandBarCollection.checkAllCollision(player);
 			sandBarCollection.updateAll();
-
+			
 			if (buoy.moveArrow){
 				arrow=new Arrow(10, height/2-75);
 			}
 		
+
     // MAY BE OUTDATED
 		}
 		
@@ -142,11 +151,16 @@ public class Model implements Serializable{
 				gameOver = timer.update() || dock.arrivedWithData;
 				sandBarCollection.updateAll();
 				dock.dataCollected(buoy.collectedStatus());
+
 			}
+		
+			player.update(width, height);
+			gameOver = timer.update() || dock.arrivedWithData;
+			sandBarCollection.updateAll();
+			dock.dataCollected(buoy.collectedStatus());
 		}
 		
 	}
-
 	/**@return returns the vessel the player is using
 	 * 
 	 */
@@ -207,6 +221,8 @@ public class Model implements Serializable{
 	public void setVessel(Vessel v) {
 		this.player = v;
 	}
+	public void setStart(boolean start){
+		this.gameStart=true;
+	}
 
 }
-

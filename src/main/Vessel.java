@@ -7,18 +7,16 @@ import java.util.Collection;
  * 
  */
 public abstract class Vessel extends GamePiece implements Serializable{
-	double maxVel;
-	double acceleration;
-	double turnRate; //The rate at which the boat will turn.
+	int maxVel;
+	Direction dir = Direction.EAST;
 	VesselType type;
 	WakeCollection wakes;
-	double wakeStrength = 10;
-	/*Constructor for the vessel class
+	int updatesBetweenWakes = 3; //How many times the model is updated between a wake being emitted behind the vessel
+	/**Constructor for the vessel class
 	 * 
 	 */
 	Vessel(){
 		maxVel = 0;
-		rotationAngle = 0; //Boat starts still, facing east.
 		this.xLoc = 0;
 		this.yLoc = 300;
 		wakes = new WakeCollection();
@@ -26,19 +24,18 @@ public abstract class Vessel extends GamePiece implements Serializable{
 	/**Updates aspects of the vessel the user selected
 	 * 
 	 */
-
 	void update(int x, int y) {
-		if(xVel > 0.1 || xVel < -0.1 || yVel > 0.1 || yVel < -0.1){ //Adds no wake if velocity is near 0
-			wakes.addWake(this.xLoc + 48, this.yLoc + 48, this.wakeStrength, this.rotationAngle); //48 is half size of boat immage
-		}
+		wakes.removeDeadWakes();
+		checkDirection();
+		wakes.addWake(this.xLoc, this.yLoc, -this.xVel, -this.yVel, this.updatesBetweenWakes);
 		wakes.update();
-    if (outOfXBounds(x)) {
+		if (outOfXBounds(x)) {
 			this.xVel = -this.xVel;
 		}
 		if (outOfYBounds(y)) {
 			this.yVel = -this.yVel;
 		}
-		super.updateLocationAndRotation();
+		super.updateLocation();
 	}
 	
 	boolean outOfXBounds(int x) {
@@ -48,7 +45,40 @@ public abstract class Vessel extends GamePiece implements Serializable{
 		return this.yLoc < 0 || this.yLoc > y;
 	}
 	
-	/*
+	/**@return returns the current direction the user is going in 
+	 * 
+	 */
+	Direction checkDirection() {
+		if (xVel == 0 && yVel < 0) { // north
+			dir = Direction.NORTH;
+		}
+		else if (xVel > 0 && yVel < 0) { // northeast
+			dir = Direction.NORTHEAST;
+		}
+		else if (xVel > 0 && yVel == 0) { // east
+			dir = Direction.EAST;
+		}
+		else if (xVel > 0 && yVel > 0) { // southeast
+			dir = Direction.SOUTHEAST;
+		}
+		else if (xVel == 0 && yVel > 0) { // south
+			dir = Direction.SOUTH;
+		}
+		else if (xVel < 0 && yVel > 0) { // southwest
+			dir = Direction.SOUTHWEST;
+		}
+		else if (xVel < 0 && yVel == 0) { // west
+			dir = Direction.WEST;
+		}
+		else if (xVel < 0 && yVel < 0) { // northwest
+			dir = Direction.NORTHWEST;
+		}
+		else { // east
+			dir = Direction.EAST;
+		}
+		return dir;
+	}
+	/**
 	 * (non-Javadoc)
 	 * @see Collidable#onCollide()
 	 */
