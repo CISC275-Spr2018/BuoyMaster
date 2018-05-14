@@ -40,16 +40,10 @@ public class SandBarCollection implements Serializable{
 	void addSandBar(int x, int y, int xVel, int yVel, Timer t, GameMessage g) {
 		this.sandBars.add(new SandBar(x, y, xVel, yVel, t, g));
 	}
+	
 	/**Creates a random SandBar
 	 * 
 	 */
-	void addRandomSandBar(Vessel player, Timer t, GameMessage g, int buffer) {
-		int chance = randomNum(0, 5);
-
-		if (chance == 0 && buffer > 100) {
-			this.sandBars.add(new SandBar(randomNum(0, player.xLoc) - 50, 620, t, g));
-		}
-	}
 	void addOneRandomSandBar(Vessel player, Timer t, GameMessage g){
 		this.sandBars.add(new SandBar(randomNum(0, player.xLoc) - 50, 620, t, g));
 	}
@@ -65,24 +59,20 @@ public class SandBarCollection implements Serializable{
 	 * 
 	 */
 	void updateAll() {
+		removeOldSandbars();
 		for (SandBar s : sandBars) {
-			s.updateLocationAndRotation();
+			s.update();
 		}
 	}
 	
-	void addShorelineBoundaries(Timer t, GameMessage g) {
-		this.sandBars.add(new SandBar(200, 200, 0, 0, t, g));
-	}
-	
-	boolean addRandomByWakeStrength(Vessel player, Timer t, GameMessage g, int buffer, int strength) {
-		Random rnd = new Random();
-		int i = rnd.nextInt(100);
-		if (i < strength) {
-			return this.sandBars.add(new SandBar(randomNum(0, player.xLoc) - 50, 620, t, g));
+	void removeOldSandbars(){
+		HashSet<SandBar> oldSandBars = new HashSet<SandBar>();
+		for (SandBar s : sandBars) {
+			if (s.lifeSpan <= 0) {
+				oldSandBars.add(s);
+			}
 		}
-		else {
-			return false;
-		}
+		sandBars.removeAll(oldSandBars);
 	}
 	
 }
