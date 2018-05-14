@@ -6,68 +6,25 @@ import java.awt.image.BufferedImage;
  * 
  */
 public class Wake extends GamePiece implements Serializable{
-	Direction dir;
-	int wakeLife = 20;
-	/**Constructor for the Wake Class
-	 * @param x x coordinate of wake
-	 * @param y y coordinate of wake
-	 * @param xv x velocity of wake
-	 * @param yv y velocity of wake
-	 */
-	Wake(int x, int y, int xv, int yv){
+	double wakeStrength;
+	int wakeLife; // the number of updates that the wake will last
+	float opacity = 1f; //fade starts at 1 and will go to 0;
+
+	
+	Wake(int x, int y, double wakeStrength, double rotationAngle){
+		this.wakeStrength = wakeStrength;
 		this.xLoc = x;
 		this.yLoc = y;
-		this.xVel = xv;
-		this.yVel = yv;
+		this.wakeLife = (int) wakeStrength; //TEMPORARY VALUE  should be a function of strength and then decrement
+		this.rotationAngle = rotationAngle;
 	}
-	/**Updates the wake class by decrementing the life of each wake
-	 * 
-	 */
-	void update() {
-		super.updateLocation();
+	
+	//updates the location, decreases opacity and wakeLife
+	void update(){
+		opacity -= (float)(1.0/(wakeStrength + 1));
 		wakeLife--;
-		dir = checkDirection();
 	}
-	/**@return returns the direction of the wake
-	 * 
-	 */
-	Direction checkDirection() {
-		if (xVel == 0 && yVel < 0) { // north
-			dir = Direction.NORTH;
-		}
-		else if (xVel > 0 && yVel < 0) { // northeast
-			dir = Direction.NORTHEAST;
-		}
-		else if (xVel > 0 && yVel == 0) { // east
-			dir = Direction.EAST;
-		}
-		else if (xVel > 0 && yVel > 0) { // southeast
-			dir = Direction.SOUTHEAST;
-		}
-		else if (xVel == 0 && yVel > 0) { // south
-			dir = Direction.SOUTH;
-		}
-		else if (xVel < 0 && yVel > 0) { // southwest
-			dir = Direction.SOUTHWEST;
-		}
-		else if (xVel < 0 && yVel == 0) { // west
-			dir = Direction.WEST;
-		}
-		else if (xVel < 0 && yVel < 0) { // northwest
-			dir = Direction.NORTHWEST;
-		}
-		else if (xVel > 0 && yVel == 0){ // east
-			dir = Direction.EAST;
-		}
-		else{
-			return null;
-		}
-		return dir;
-	}
-	/**
-	 * (non-Javadoc)
-	 * @see Collidable#onCollide()
-	 */
+  
 	@Override
 	public void onCollide() {
 		//nothing happens when a wake collides with another game object
