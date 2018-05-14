@@ -44,11 +44,4 @@ public class BuoyPanel extends JPanel{
 		Color c = new Color(0, 0, 0, 0); // transparent color
     	g.drawImage(img, xDrawLoc, yDrawLoc, c, this);
     }
-	/**
-	 * (non-Javadoc)
-	 * @see javax.swing.JComponent#getPreferredSize()
-	 */
-	public Dimension getPreferredSize() {
-		return new Dimension(250, 250);
-	}
 }

@@ -3,8 +3,8 @@ package main;
  * 
  */
 public class Arrow extends GamePiece {
-	boolean atBuoy=true;
-	boolean atDock=false;
+	boolean atBuoy = true;
+	boolean atDock = false;
 	/**
 	 * 
 	 * @param x location of arrow x
@@ -21,15 +21,14 @@ public class Arrow extends GamePiece {
 	 */
 	@Override
 	public void onCollide() {
-			
+		//Nothing happens if you collide with the arrow
 	}
+	
 	/**
 	 * sets the locations from buoy and dock
 	 */
 	public void goToDock(){
-		atBuoy=false;
-		atDock=true;
+		atBuoy = false;
+		atDock = true;
 	}
-	
-	
 }
