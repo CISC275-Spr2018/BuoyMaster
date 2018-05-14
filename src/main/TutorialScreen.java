@@ -26,7 +26,7 @@ public class TutorialScreen extends JPanel implements ActionListener {
 		dockPanel = new DockPanel();
 		sandBarPanel=new SandBarPanel();
 		gameMessagePanel=new GameMessagePanel();
-	//	wp = new WakePanel();
+		wp = new WakePanel();
 		arrowPanel=new ArrowPanel();
 		this.setBackground(Color.CYAN.darker().darker());
 	
@@ -50,7 +50,7 @@ public class TutorialScreen extends JPanel implements ActionListener {
 		buoyPanel.update(bX, bY);
 		dockPanel.update( dX, dY);
 		vesselPanel.update(pX, pY, vessel, rotationAngle);
-		//wp.update();
+		wp.update();
 		sandBarPanel.update(sbc);
 		arrowPanel.update(aX,aY);
 		gameMessagePanel.update("Use the arrow keys to guide yourself through the estuary.");
@@ -63,7 +63,7 @@ public class TutorialScreen extends JPanel implements ActionListener {
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		arrowPanel.paintComponent(g);
-		//wp.paintComponent(g);
+		wp.paintComponent(g);
 		dockPanel.paintComponent(g);		
 		gameMessagePanel.paintComponent(g);
 		vesselPanel.paintComponent(g);
