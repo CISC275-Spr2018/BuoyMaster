@@ -90,55 +90,21 @@ public class Model implements Serializable{
 		
 		//model settings for when player has completed the tutorial
 		if(!tutorial){
-			gameMessage=new GameMessage(false);
-		
-
-			buoy.xLoc=width-100;
-			buoy.yLoc=100;
-			buoy.setTutorial(false);
-			dock.setTutorial(false);
-			Random t = new Random();
-			int i = t.nextInt((health - 0) + 1) + 0;
-			//health -= player.updatesBetweenWakes;
-		
-			buoy.hasCollided(player);
-			sandBarCollection.checkAllCollision(player);
-			dock.hasCollided(player);
-			shoreline.hasCollided(player);
-		
-			if (health > 0 ){
-			sandBarCollection.addRandomSandBar(player, timer, gameMessage, player.xLoc);
-			}
-			
-			if (sandBarCollection.sandBars.size() % 5 == 1) {
-			shoreline.yLoc++;
-			shoreline.shiftCollisionPoints(1);
-
-			}
-
 			//model settings for when player has completed the tutorial
 			if(!tutorial){
 				gameMessage=new GameMessage(false);
-
-
 				buoy.xLoc=width-100;
 				buoy.yLoc=100;
 				buoy.setTutorial(false);
 				dock.setTutorial(false);
-				t = new Random();
-				i = t.nextInt((health - 0) + 1) + 0;
-				health -= player.wakeStrength;
-
 				buoy.hasCollided(player);
 				sandBarCollection.checkAllCollision(player);
 				dock.hasCollided(player);
 				shoreline.hasCollided(player);
-
-				if (health > 0 && i % player.wakeStrength == 0){
-					sandBarCollection.addRandomSandBar(player, timer, gameMessage, player.xLoc);
-				}
-
-				if (sandBarCollection.sandBars.size() % 5 == 1) {
+				Random rnd = new Random();
+				int chance = rnd.nextInt(100);
+				if (chance < player.wakeStrength*2) {
+					sandBarCollection.addOneRandomSandBar(player, timer, gameMessage);
 					shoreline.yLoc++;
 					shoreline.shiftCollisionPoints(1);
 				}

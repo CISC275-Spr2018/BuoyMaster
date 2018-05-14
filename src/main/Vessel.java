@@ -12,7 +12,7 @@ public abstract class Vessel extends GamePiece implements Serializable{
 	double turnRate; //The rate at which the boat will turn.
 	VesselType type;
 	WakeCollection wakes;
-	double wakeStrength = 10;
+	double wakeStrength;
 	/*Constructor for the vessel class
 	 * 
 	 */
@@ -23,6 +23,11 @@ public abstract class Vessel extends GamePiece implements Serializable{
 		this.yLoc = 300;
 		wakes = new WakeCollection();
 	}
+	
+	double getWakeStrength() {
+		return this.wakeStrength;
+	}
+	
 	/**Updates aspects of the vessel the user selected
 	 * 
 	 */

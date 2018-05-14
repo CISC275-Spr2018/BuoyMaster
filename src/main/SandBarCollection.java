@@ -51,7 +51,7 @@ public class SandBarCollection implements Serializable{
 		}
 	}
 	void addOneRandomSandBar(Vessel player, Timer t, GameMessage g){
-		this.sandBars.add(new SandBar(randomNum(10, player.xLoc) - 50, 620, t, g));
+		this.sandBars.add(new SandBar(randomNum(0, player.xLoc) - 50, 620, t, g));
 	}
 	/** checks collisions from all sides of SandBar
 	 * @param g GamePiece to check collisions for
@@ -73,4 +73,16 @@ public class SandBarCollection implements Serializable{
 	void addShorelineBoundaries(Timer t, GameMessage g) {
 		this.sandBars.add(new SandBar(200, 200, 0, 0, t, g));
 	}
+	
+	boolean addRandomByWakeStrength(Vessel player, Timer t, GameMessage g, int buffer, int strength) {
+		Random rnd = new Random();
+		int i = rnd.nextInt(100);
+		if (i < strength) {
+			return this.sandBars.add(new SandBar(randomNum(0, player.xLoc) - 50, 620, t, g));
+		}
+		else {
+			return false;
+		}
+	}
+	
 }
