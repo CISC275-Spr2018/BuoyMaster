@@ -31,6 +31,7 @@ public class View extends JFrame implements Serializable{
 	 */
 	View(int width, int height){
 		this.setSize(width, height);
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		startScreen = new StartScreen();
@@ -56,10 +57,6 @@ public class View extends JFrame implements Serializable{
 	    layers.add(estuaryScreen, 1,3);
 		this.add(layers);
 		this.setVisible(true);
-		
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-	    this.setSize(screenSize.width, screenSize.height);
-	   
 	}
 	
 	public void setLayer(int x){
