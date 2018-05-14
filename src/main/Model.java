@@ -72,7 +72,7 @@ public class Model implements Serializable{
 			
 			Random r = new Random();
 			int l = r.nextInt((health - 0) + 1) + 0;
-			health -= player.updatesBetweenWakes;
+			//health -= player.updatesBetweenWakes;
 			buoy.setTutorial(true);
 			buoy.hasCollided(player);
 			player.update(width, height);
@@ -94,8 +94,6 @@ public class Model implements Serializable{
 			}
 		
     // MAY BE OUTDATED
-		if (health > 0 && i % player.wakeStrength == 0){
-			sandBarCollection.addRandomSandBar(player, timer, gameMessage, player);
 		}
 		
 		//model settings for when player has completed the tutorial
@@ -109,14 +107,14 @@ public class Model implements Serializable{
 			dock.setTutorial(false);
 			Random t = new Random();
 			int i = t.nextInt((health - 0) + 1) + 0;
-			health -= player.updatesBetweenWakes;
+			//health -= player.updatesBetweenWakes;
 		
 			buoy.hasCollided(player);
 			sandBarCollection.checkAllCollision(player);
 			dock.hasCollided(player);
 			shoreline.hasCollided(player);
 		
-			if (health > 0 && i % player.updatesBetweenWakes == 0){
+			if (health > 0 ){
 			sandBarCollection.addRandomSandBar(player, timer, gameMessage, player.xLoc);
 			}
 			
@@ -130,6 +128,7 @@ public class Model implements Serializable{
 			sandBarCollection.updateAll();
 			dock.dataCollected(buoy.collectedStatus());
 		}
+		
 		
 	}
 	/**@return returns the vessel the player is using
