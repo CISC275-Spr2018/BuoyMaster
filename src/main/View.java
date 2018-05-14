@@ -32,7 +32,7 @@ public class View extends JFrame implements Serializable{
 	View(int width, int height){
 		this.setSize(width, height);
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
-		//this.setUndecorated(true); //uncomment if you want there to be no bar along the top and bottom
+		this.setUndecorated(true); //uncomment if you want there to be no bar along the top and bottom
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		

@@ -90,38 +90,38 @@ public class SelectionScreen extends JPanel implements ActionListener{
 		
 		super.paintComponent(g);
 		g.setFont(new Font("Times New Roman", Font.PLAIN, 50));
-    	g.drawString("Select Your Boat", 10, 40);
+    	g.drawString("Click to Select Your Boat", 10, 40);
 		Color c = new Color(0, 0, 0, 0);
 		
 		//create the stats 
-    	g.drawRect(800, 50, RectangleX, RectangleY);
-    	g.fillRect(800, 50, RectangleX-20, RectangleY); 
+    	g.drawRect(900, 50, RectangleX, RectangleY);
+    	g.fillRect(900, 50, RectangleX-20, RectangleY); 
     	g.setFont(new Font("Times New Roman", Font.PLAIN,20));
-    	g.drawString(Speed, 700, 60);
-    	g.drawRect(800, 80, RectangleX, RectangleY);
-    	g.fillRect(800, 80, RectangleX-20, RectangleY);
-    	g.drawString(WakeSize, 700, 90);
-    	g.drawRect(800, 110, RectangleX, RectangleY);
-    	g.fillRect(800, 110, RectangleX-100, RectangleY);
-    	g.drawString(Turning, 700, 120);
-    	g.drawRect(800, 350, RectangleX, RectangleY);
-    	g.fillRect(800, 350, RectangleX-50, RectangleY);
-    	g.drawString(Speed, 700, 360);
-    	g.drawRect(800, 380, RectangleX, RectangleY);
-    	g.fillRect(800, 380, RectangleX-50, RectangleY);
-    	g.drawString(WakeSize, 700, 390);
-    	g.drawRect(800, 410, RectangleX, RectangleY);
-    	g.fillRect(800, 410, RectangleX-50, RectangleY);
-    	g.drawString(Turning, 700, 420);
-    	g.drawRect(800, 620, RectangleX, RectangleY);
-    	g.fillRect(800, 620, RectangleX-100, RectangleY);
-    	g.drawString(Speed, 700, 630);
-    	g.drawRect(800, 650, RectangleX, RectangleY);
-    	g.fillRect(800, 650, RectangleX-100, RectangleY);
-    	g.drawString(WakeSize, 700, 660);
-    	g.drawRect(800, 680, RectangleX, RectangleY);
-    	g.fillRect(800, 680, RectangleX-20, RectangleY);
-    	g.drawString(Turning, 700, 690);
+    	g.drawString(Speed, 800, 60);
+    	g.drawRect(900, 80, RectangleX, RectangleY);
+    	g.fillRect(900, 80, RectangleX-20, RectangleY);
+    	g.drawString(WakeSize, 800, 90);
+    	g.drawRect(900, 110, RectangleX, RectangleY);
+    	g.fillRect(900, 110, RectangleX-100, RectangleY);
+    	g.drawString(Turning, 800, 120);
+    	g.drawRect(900, 350, RectangleX, RectangleY);
+    	g.fillRect(900, 350, RectangleX-50, RectangleY);
+    	g.drawString(Speed, 800, 360);
+    	g.drawRect(900, 380, RectangleX, RectangleY);
+    	g.fillRect(900, 380, RectangleX-50, RectangleY);
+    	g.drawString(WakeSize, 800, 390);
+    	g.drawRect(900, 410, RectangleX, RectangleY);
+    	g.fillRect(900, 410, RectangleX-50, RectangleY);
+    	g.drawString(Turning, 800, 420);
+    	g.drawRect(900, 650, RectangleX, RectangleY);
+    	g.fillRect(900, 650, RectangleX-100, RectangleY);
+    	g.drawString(Speed, 800, 660);
+    	g.drawRect(900, 680, RectangleX, RectangleY);
+    	g.fillRect(900, 680, RectangleX-100, RectangleY);
+    	g.drawString(WakeSize, 800, 690);
+    	g.drawRect(900, 710, RectangleX, RectangleY);
+    	g.fillRect(900, 710, RectangleX-20, RectangleY);
+    	g.drawString(Turning, 800, 720);
 
     }
 	/*

@@ -21,6 +21,7 @@ public class Dock extends GamePiece{
 	 * 	
 	 */
 	Dock(int x, int y, GameMessage g){
+		this.collisionRange = 50;
 		this.xLoc = x;
 		this.yLoc = y;
 		this.xVel = 0;
