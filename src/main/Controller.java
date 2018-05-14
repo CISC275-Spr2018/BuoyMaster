@@ -96,6 +96,7 @@ public class Controller implements ActionListener, Serializable{
 					model.getPlayer().yVel=0;
 					model.sandBarCollection=new SandBarCollection();
 					model.tutorial=false;
+					
 
 					view.setLayer(3);
 					FileOutputStream fout = null;
@@ -133,6 +134,7 @@ public class Controller implements ActionListener, Serializable{
 			Object[] options={b};
 			if(tutorial){
 				tutorial=false;
+				model.gameOver=false;
 				int result=JOptionPane.showOptionDialog(null, panel, "Start Game", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
 
 			}

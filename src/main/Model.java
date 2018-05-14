@@ -78,7 +78,7 @@ public class Model implements Serializable{
 					tutorialSandbar=false;
 				}
 			}
-			sandBarCollection.checkAllCollision(player);
+			//sandBarCollection.checkAllCollision(player);
 			sandBarCollection.updateAll();
 
 			if (buoy.moveArrow){
@@ -90,6 +90,7 @@ public class Model implements Serializable{
 		
 		//model settings for when player has completed the tutorial
 		if(!tutorial){
+			gameOver=false;
 			gameMessage=new GameMessage(false);
 		
 
