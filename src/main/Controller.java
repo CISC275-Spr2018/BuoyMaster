@@ -84,7 +84,7 @@ public class Controller implements ActionListener, Serializable{
 		}
 		//if the dock indicates the player has returned from buoy in tutorial
 		if(!model.getDock().mt){
-			JButton b=new JButton("Click here if you are ready to be a Buoy Master, then EXIT this dialogue!");
+			JButton b=new JButton("Click here if you are ready to be a Buoy Master, !THEN EXIT THIS DIALOGUE!");
 			b.addActionListener(new ActionListener(){
 
 				@Override

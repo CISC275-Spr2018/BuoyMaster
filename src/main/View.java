@@ -53,6 +53,7 @@ public class View extends JFrame implements Serializable{
 	    layers.add(estuaryScreen, 1,3);
 		this.add(layers);
 		this.setVisible(true);
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 	}
 	public void setLayer(int x){
 		if(x==3){
@@ -61,7 +62,7 @@ public class View extends JFrame implements Serializable{
 		}
 	}
 	/**Updates the view based on model input 
-	 *  @param bX x coordinate of buoy
+	 * @param bX x coordinate of buoy
 	 * @param bY y coordinate of buoy
 	 * @param dX x coordinate of dock
 	 * @param dY y coordinate of dock
