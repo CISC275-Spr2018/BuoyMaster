@@ -37,9 +37,9 @@ public class SelectionScreen extends JPanel implements ActionListener{
 	SelectionScreen(){
 		try {
 		 
-		BufferedImage img1 = ImageIO.read(new File("Images/vessels/speed_boat/east.png"));
-		BufferedImage img2 = ImageIO.read(new File("Images/vessels/jet_ski/east.png"));
-		BufferedImage img3 = ImageIO.read(new File("Images/vessels/fishing_boat/east.png"));
+		BufferedImage img1 = ImageIO.read(new File("Images/vessels/speed_boat.png"));
+		BufferedImage img2 = ImageIO.read(new File("Images/vessels/jet_ski.png"));
+		BufferedImage img3 = ImageIO.read(new File("Images/vessels/fishing_boat.png"));
 		BufferedImage img4 = ImageIO.read(new File("Images/fishingBoatStats.png"));
 		BufferedImage img5 = ImageIO.read(new File("Images/jetSkiStats.png"));
 		BufferedImage img6 = ImageIO.read(new File("Images/speedBoatStats.png"));
