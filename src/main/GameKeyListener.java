@@ -43,16 +43,16 @@ public class GameKeyListener implements KeyListener, Serializable{
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();
 		if (key == KeyEvent.VK_LEFT && player.xVel > -player.maxVel) {
-			player.xVel -= 4;
+			player.xVel -= player.acceleration;
 		}
 		if (key == KeyEvent.VK_RIGHT && player.xVel < player.maxVel) {
-			player.xVel += 4;
+			player.xVel += player.acceleration;
 		}	
 		if (key == KeyEvent.VK_UP && player.yVel > -player.maxVel) {
-			player.yVel -= 4;
+			player.yVel -= player.acceleration;
 		}
 		if (key == KeyEvent.VK_DOWN && player.yVel < player.maxVel) {
-			player.yVel += 4;
+			player.yVel += player.acceleration;
 		}
 		if (key == KeyEvent.VK_G) {
 			System.out.println(player.rotationAngle);

@@ -20,7 +20,7 @@ public abstract class Vessel extends GamePiece implements Serializable{
 		maxVel = 0;
 		rotationAngle = 0; //Boat starts still, facing east.
 		this.xLoc = 0;
-		this.yLoc = 300;
+		this.yLoc = 300; // Starts 300 pixels south of origin
 		wakes = new WakeCollection();
 	}
 	
