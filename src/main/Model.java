@@ -28,8 +28,8 @@ public class Model implements Serializable{
 	ShoreLine shoreline;
 	boolean gameOver = false;
 	boolean addTime=false;
-	boolean tutorial;
-	boolean tutorialSandbar=true;
+	private boolean tutorial;
+	private boolean tutorialSandbar=true;
 	boolean startShow=false;
 	boolean gameStart=false;
 
@@ -43,7 +43,7 @@ public class Model implements Serializable{
 		this.height = height;
 		player = null;
 		timer = new Timer();
-		this.tutorial=tutorial;
+		this.setTutorial(tutorial);
 		gameMessage = new GameMessage(true);
 		buoy = new Buoy(width - 600, 100, gameMessage);
 		sandBarCollection = new SandBarCollection();
@@ -55,7 +55,7 @@ public class Model implements Serializable{
 	 * 
 	 */
 
-	static int randomNum(int min, int max){
+	public static int randomNum(int min, int max){
 		Random r = new Random();
 		int i = r.nextInt((max - min) + 1) + min;
 		return i;
@@ -63,7 +63,7 @@ public class Model implements Serializable{
 	public void modelUpdate() {
 
 		//model logic for tutorial
-		if (tutorial){
+		if (isTutorial()){
 			Random r = new Random();
 			int l = r.nextInt((health - 0) + 1) + 0;
 			health -= player.wakeStrength;
@@ -73,9 +73,9 @@ public class Model implements Serializable{
 			dock.hasCollided(player);
 			shoreline.hasCollided(player);
 			if (buoy.sandBar){
-				if (tutorialSandbar){
+				if (isTutorialSandbar()){
 					sandBarCollection.addSandBar(randomNum(10, player.xLoc) - 50, 620, timer, gameMessage);
-					tutorialSandbar=false;
+					setTutorialSandbar(false);
 				}
 			}
 			sandBarCollection.checkAllCollision(player);
@@ -89,9 +89,9 @@ public class Model implements Serializable{
 		}
 		
 		//model settings for when player has completed the tutorial
-		if(!tutorial){
+		if(!isTutorial()){
 			//model settings for when player has completed the tutorial
-			if(!tutorial){
+			if(!isTutorial()){
 				gameMessage=new GameMessage(false);
 				buoy.xLoc=width-100;
 				buoy.yLoc=100;
@@ -177,6 +177,18 @@ public class Model implements Serializable{
 	 */
 	public void setVessel(Vessel v) {
 		this.player = v;
+	}
+	public boolean isTutorial() {
+		return tutorial;
+	}
+	public void setTutorial(boolean tutorial) {
+		this.tutorial = tutorial;
+	}
+	public boolean isTutorialSandbar() {
+		return tutorialSandbar;
+	}
+	public void setTutorialSandbar(boolean tutorialSandbar) {
+		this.tutorialSandbar = tutorialSandbar;
 	}
 
 }

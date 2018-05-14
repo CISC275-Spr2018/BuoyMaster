@@ -95,7 +95,7 @@ public class Controller implements ActionListener, Serializable{
 					model.getPlayer().xVel=0;
 					model.getPlayer().yVel=0;
 					model.sandBarCollection=new SandBarCollection();
-					model.tutorial=false;
+					model.setTutorial(false);
 					model.shoreline.addCollisionPoints();
 
 					view.setLayer(3);
@@ -170,7 +170,7 @@ public class Controller implements ActionListener, Serializable{
 							Random random=new Random();
 							model.getBuoy().rand=random.nextInt(14);
 							model.setVessel(new FishingBoat());
-							model.tutorial=false;
+							model.setTutorial(false);
 
 							gkl = new GameKeyListener(model.getPlayer(), model);
 							view.addKeyListener(gkl);
@@ -217,7 +217,7 @@ public class Controller implements ActionListener, Serializable{
 							model.setVessel(new FishingBoat());
 							Random random=new Random();
 							model.getBuoy().rand=random.nextInt(14);
-							model.tutorial=false;
+							model.setTutorial(false);
 
 							gkl = new GameKeyListener(model.getPlayer(), model);
 							view.addKeyListener(gkl);

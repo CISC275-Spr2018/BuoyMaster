@@ -21,10 +21,10 @@ public class Buoy extends GamePiece implements Serializable{
 	boolean question=false;
 	boolean asked=false;
 	boolean showAnswer=false;
-	boolean correct=false;
+	public boolean correct=false;
 	boolean tutorial=true;
 	boolean tutorialShow=true;
-	boolean sandBar=false;
+	public boolean sandBar=false;
 	boolean moveArrow=false;
 	boolean tutorialVisited=false;
 	//Buoy constructor

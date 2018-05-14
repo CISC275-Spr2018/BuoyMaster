@@ -1,5 +1,6 @@
 package UnitTests;
 import junit.framework.TestCase;
+import main.Arrow;
 import main.Buoy;
 import main.Model;
 import main.SpeedBoat;
@@ -26,6 +27,11 @@ public class modelTest extends TestCase {
 	}
 
 	public void testModelUpdate() {
+		target.setTutorial(true);
+		target.getBuoy().sandBar = true;
+//		target.setTutorialSandbar(true);
+		target.modelUpdate();
+		target.setTutorial(false);
 		target.modelUpdate();
 	}
 
@@ -61,6 +67,21 @@ public class modelTest extends TestCase {
 	public void testSetVessel() {
 		target.setVessel(new SpeedBoat());
 		assertTrue("speedBoat is a vessel",target.getPlayer() instanceof Vessel);
+	}
+	
+	public void testAddTime() {
+		assertFalse("add time, buoy not correct",target.addTime());
+		target.getBuoy().correct = true;
+		assertTrue("add time, buoy correct",target.addTime());
+	}
+	
+	public void testGetArrow() {
+		assertTrue("get arrow returns Arrow object",target.getArrow() instanceof Arrow);
+	}
+	
+	public void testRandomNum() {
+		int rand = Model.randomNum(0,10);
+		assertTrue("rand works", (rand<10) && (rand>0));
 	}
 
 }
