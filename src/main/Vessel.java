@@ -47,10 +47,10 @@ public abstract class Vessel extends GamePiece implements Serializable{
 	}
 	
 	boolean outOfXBounds(int x) {
-		return this.xLoc < 0 || this.xLoc > x;
+		return this.xLoc < 0 || this.xLoc + 95 > x; //Should be a collision range or something rather than 95
 	}
 	boolean outOfYBounds(int y) {
-		return this.yLoc < 0 || this.yLoc > y;
+		return this.yLoc < 0 || this.yLoc +95 > y;
 	}
 	
 	/*

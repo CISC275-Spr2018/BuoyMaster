@@ -34,24 +34,21 @@ public class View extends JFrame implements Serializable{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		startScreen = new StartScreen();
-		startScreen.setBackground(Color.CYAN.darker().darker());
 		selectionScreen = new SelectionScreen();
+		tutorialScreen = new TutorialScreen();
 		estuaryScreen = new EstuaryScreen();
-		estuaryScreen.setBackground(Color.CYAN.darker().darker());
-		startScreen.setBackground(Color.CYAN.darker().darker());
-		tutorialScreen=new TutorialScreen();
-		tutorialScreen.setBackground(Color.CYAN.darker().darker());
-		layers = new JLayeredPane();
 		
-		//factScreen = new FactScreen();
-		//factScreen.setBounds(500, 500, 250, 250);
-		//estuaryScreen.add(factScreen);
-		//factScreen.setVisible(false);
+		startScreen.setBackground(Color.CYAN.darker().darker()); //Sets the aqua background color
+		selectionScreen.setBackground(Color.CYAN.darker().darker());
+		tutorialScreen.setBackground(Color.CYAN.darker().darker());
+		estuaryScreen.setBackground(Color.CYAN.darker().darker());
 		
 		startScreen.setBounds(0, 0, width, height); // Sets the size of each of the screens
 		selectionScreen.setBounds(0, 0, width, height);
 		tutorialScreen.setBounds(0, 0, width, height);
 		estuaryScreen.setBounds(0, 0, width, height);
+		
+		layers = new JLayeredPane();
 		
 	    layers.add(startScreen, 1, 0); //Not certain why an integer is needed as a constraint but it is.
 	    layers.add(selectionScreen, 1, 1);
@@ -59,6 +56,7 @@ public class View extends JFrame implements Serializable{
 	    layers.add(estuaryScreen, 1,3);
 		this.add(layers);
 		this.setVisible(true);
+		
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	    this.setSize(screenSize.width, screenSize.height);
 	   
