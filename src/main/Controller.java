@@ -1,5 +1,7 @@
 package main;
+import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileInputStream;
@@ -20,8 +22,8 @@ import javax.swing.Timer;
  * 
  */
 public class Controller implements ActionListener, Serializable{
-	private final int width = 1280;
-	private final int height = 720;
+	private int width = 1280;
+	private int height = 720;
 	private final static int DRAWDELAY = 50;
 	int reply;
 	boolean restart=true;
@@ -36,6 +38,10 @@ public class Controller implements ActionListener, Serializable{
 	 * 
 	 */
 	public Controller(){
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+	    width = screenSize.width;
+	    height = screenSize.height;
+		
 		model = new Model(width, height,true);
 		view = new View(width, height);
 		view.addKeyListener(gkl);

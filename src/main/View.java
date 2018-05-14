@@ -31,6 +31,9 @@ public class View extends JFrame implements Serializable{
 	 */
 	View(int width, int height){
 		this.setSize(width, height);
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+		//this.setUndecorated(true); //uncomment if you want there to be no bar along the top and bottom
+		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		startScreen = new StartScreen();
@@ -55,11 +58,7 @@ public class View extends JFrame implements Serializable{
 	    layers.add(tutorialScreen,1,2);
 	    layers.add(estuaryScreen, 1,3);
 		this.add(layers);
-		this.setVisible(true);
-		
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-	    this.setSize(screenSize.width, screenSize.height);
-	   
+		this.setVisible(true);   
 	}
 	
 	public void setLayer(int x){
