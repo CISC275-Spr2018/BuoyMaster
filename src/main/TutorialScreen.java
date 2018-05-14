@@ -5,8 +5,6 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 /**@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
@@ -19,7 +17,7 @@ public class TutorialScreen extends JPanel implements ActionListener {
 	private SandBarPanel sandBarPanel;
 	private GameMessagePanel gameMessagePanel;
 	WakePanel wp;
-	/**Constructor for the Tutoriaal view
+	/**Constructor for the Tutorial view
 	 * 
 	 */
 	TutorialScreen(){
@@ -28,7 +26,7 @@ public class TutorialScreen extends JPanel implements ActionListener {
 		dockPanel = new DockPanel();
 		sandBarPanel=new SandBarPanel();
 		gameMessagePanel=new GameMessagePanel();
-		wp = new WakePanel();
+	//	wp = new WakePanel();
 		arrowPanel=new ArrowPanel();
 		this.setBackground(Color.CYAN.darker().darker());
 	
@@ -48,11 +46,11 @@ public class TutorialScreen extends JPanel implements ActionListener {
 	 * @param aX arrow x coordinate
 	 * @param aY arrow y coordinate
 	 */
-	public void update(int bX, int bY, int dX, int dY, int pX, int pY, VesselType vessel, Direction direction, SandBarCollection sbc,String message,  WakeCollection wc, int sLX, int sLY, int aX, int aY){
+	public void update(int bX, int bY, int dX, int dY, int pX, int pY, VesselType vessel, double rotationAngle, SandBarCollection sbc,String message,  WakeCollection wc, int sLX, int sLY, int aX, int aY){
 		buoyPanel.update(bX, bY);
 		dockPanel.update( dX, dY);
-		vesselPanel.update(pX, pY, vessel, direction);
-		wp.updateAll(wc);
+		vesselPanel.update(pX, pY, vessel, rotationAngle);
+		//wp.update();
 		sandBarPanel.update(sbc);
 		arrowPanel.update(aX,aY);
 		gameMessagePanel.update("Use the arrow keys to guide yourself through the estuary.");
@@ -65,7 +63,7 @@ public class TutorialScreen extends JPanel implements ActionListener {
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		arrowPanel.paintComponent(g);
-		wp.paintComponent(g);
+		//wp.paintComponent(g);
 		dockPanel.paintComponent(g);		
 		gameMessagePanel.paintComponent(g);
 		vesselPanel.paintComponent(g);
