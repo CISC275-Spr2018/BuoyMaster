@@ -15,7 +15,7 @@ public class FishingBoat extends Vessel implements Serializable{
 		maxVel = 5;
 		this.acceleration = 2;
 		this.turnRate = 10; //degrees turned per update (should be a factor of 360)
-		this.wakeStrength = 8;
+		this.wakeStrength = 6;
 	}
 
 }
