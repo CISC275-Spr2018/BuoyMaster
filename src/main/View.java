@@ -1,10 +1,16 @@
 package main;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
+import java.awt.Toolkit;
 import java.io.Serializable;
 
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
+
+
 /**@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
  */
@@ -53,8 +59,10 @@ public class View extends JFrame implements Serializable{
 	    layers.add(estuaryScreen, 1,3);
 		this.add(layers);
 		this.setVisible(true);
-		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+	    this.setSize(screenSize.width, screenSize.height);
 	}
+	
 	public void setLayer(int x){
 		if(x==3){
 			this.tutorialScreen.setVisible(false);
