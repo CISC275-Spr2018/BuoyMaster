@@ -72,7 +72,7 @@ public class Model implements Serializable{
 			
 			Random r = new Random();
 			int l = r.nextInt((health - 0) + 1) + 0;
-			//health -= player.updatesBetweenWakes;
+			health -= player.updatesBetweenWakes;
 			buoy.setTutorial(true);
 			buoy.hasCollided(player);
 			player.update(width, height);
