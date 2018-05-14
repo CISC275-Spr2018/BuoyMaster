@@ -1,13 +1,14 @@
 package main;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-/*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
+/**@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
  */
-public class WakeCollection {
+public class WakeCollection implements Serializable{
 	final int maximumWakesOnScreen = 50;
 	ArrayList<Wake> wakes = new ArrayList<Wake>();
 	int wakeStagger;
@@ -33,7 +34,9 @@ public class WakeCollection {
 		wakeStagger++;
 	}
 
-	//Removes old wakes (This can't be done while iterating the wakes ArrayList)
+	/*Removes wakes who's wakeLifes have reached 0
+	 * 
+	 */
 	void removeDeadWakes() {
 		HashSet<Wake> oldWakes = new HashSet<Wake>();
 		for (Wake w : wakes) {
@@ -44,8 +47,9 @@ public class WakeCollection {
 		wakes.removeAll(oldWakes);
 	}
 
+  /*Updates the position and decrements the life of each wake
 
-	/*Updates the position and decrements the life of each wake
+	/*Updates the WakeCollection class to remove wakes which have less than zero wake life 
 	 * 
 	 */
 	void update() {

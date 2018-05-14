@@ -1,10 +1,12 @@
 package main;
 
-/*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
+import java.io.Serializable;
+
+/**@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
  */
-public class SpeedBoat extends Vessel{
-	/*Constructor for the SpeedBoat
+public class SpeedBoat extends Vessel implements Serializable{
+	/**Constructor for the SpeedBoat
 	 * 
 	 */
 	public SpeedBoat(){

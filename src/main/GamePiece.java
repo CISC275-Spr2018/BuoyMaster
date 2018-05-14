@@ -1,9 +1,11 @@
 package main;
 
-/*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
+import java.io.Serializable;
+
+/**@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
  */
-public abstract class GamePiece implements Collidable{
+public abstract class GamePiece implements Collidable, Serializable{
 	protected int xLoc;
 	protected int yLoc;
 	protected double xVel;
@@ -11,7 +13,7 @@ public abstract class GamePiece implements Collidable{
 	protected double rotationAngle;
 	protected int collisionRange =30; //Default set to 30 but will be changed for different pieces.
 
-	/* Method to check if collision has occurred between to GamePieces
+	/** Method to check if collision has occurred between to GamePieces
 	 * @param g2 second GamePiece which one GamePiece may come into contact with
 	 * @return returns a boolean value of if there was a collision or not
 	 */
@@ -22,7 +24,7 @@ public abstract class GamePiece implements Collidable{
 		}
 		return withinCollisionRange;
 	}
-	/*Checks to see if two GamePieces are within the XRange of collision
+	/**Checks to see if two GamePieces are within the XRange of collision
 	 * @param g2 second GamePiece which one GamePiece may come into contact with
 	 * @return returns a boolean value of if there was a collision or not
 	 * 
@@ -30,7 +32,7 @@ public abstract class GamePiece implements Collidable{
 	boolean withinXRange(GamePiece g2) {
 		return (this.xLoc < g2.xLoc + collisionRange) && (this.xLoc > g2.xLoc - collisionRange);
 	}
-	/*Checks to see if two GamePieces are within the YRange of collision
+	/**Checks to see if two GamePieces are within the YRange of collision
 	 * @param g2 second GamePiece which one GamePiece may come into contact with
 	 * @return returns a boolean value of if there was a collision or not
 	 * 
@@ -38,25 +40,25 @@ public abstract class GamePiece implements Collidable{
 	boolean withinYRange(GamePiece g2) {
 		return (this.yLoc < g2.yLoc + collisionRange) && (this.yLoc > g2.yLoc - collisionRange);
 	}
-	/*
+	/**
 	 *@return returns the x location of a GamePiece 
 	 */
 	public int getXLoc() {
 		return xLoc;
 	}
-	/*
+	/**
 	 * @return returns the y location of a GamePiece
 	 */
 	public int getYLoc() {
 		return yLoc;
 	}
-	/*
+	/**
 	 *@return returns the x velocity of a GamePiece 
 	 */
 	public double getXVel() {
 		return xVel;
 	}
-	/*
+	/**
 	 *@return returns the y velocity of a GamePiece 
 	 */
 	public double getYVel() {

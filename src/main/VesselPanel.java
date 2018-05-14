@@ -7,6 +7,7 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
@@ -21,7 +22,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
-/*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
+/**@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * PlayerPanel that holds info on how to draw our player's Vessel
  */
 public class VesselPanel extends JPanel{
@@ -29,12 +30,14 @@ public class VesselPanel extends JPanel{
 	private double drawAngle;
 	private int xDrawLoc;
 	private int yDrawLoc;
-	
-	//returns the buffered image for the vessel based on type selected and direction 
+
+	/*
+	 * return returns the buffered image for the vessel based on type selected and direction 
+	 */
 	BufferedImage getImage() {
 		return createImage(type);
 	}
-	/*Updates the view with the vessel based on updated aspects
+	/**Updates the view with the vessel based on updated aspects
 	 * @param x x coordinate of the vessel
 	 * @param y y coordinate of the vessel
 	 * @param type the type of boat the user is using
@@ -46,7 +49,7 @@ public class VesselPanel extends JPanel{
 		this.drawAngle = drawAngle;
 		this.type = type;
 	}
-	/*@param type the type of vessel the user is using
+	/**@param type the type of vessel the user is using
 	 * @param dir the direction the vessel is going in
 	 * @return returns a buffered image of the vessel 
 	 * 
@@ -59,7 +62,7 @@ public class VesselPanel extends JPanel{
 		}
 		return img;
 	}
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
 	 */
@@ -73,7 +76,7 @@ public class VesselPanel extends JPanel{
 		g2d.drawImage(img, at, null);
     	
     }
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see javax.swing.JComponent#getPreferredSize()
 	 */

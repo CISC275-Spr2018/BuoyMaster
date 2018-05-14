@@ -1,21 +1,25 @@
 package main;
 import java.awt.Color;
+import java.io.Serializable;
+
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
-/*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
+import javax.swing.JOptionPane;
+/**@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
  */
-/*
+/**
  * Main View class for the game.
  * Will hold all different Panels of objects - PlayerPanel, BuoyPanel, etc.
  */
-public class View extends JFrame{
+public class View extends JFrame implements Serializable{
 	EstuaryScreen estuaryScreen;
 	StartScreen startScreen;
 	SelectionScreen selectionScreen;
+	TutorialScreen tutorialScreen;
 	FactScreen factScreen;
 	JLayeredPane layers;
-	/*Constructor for the view 
+	/**Constructor for the view 
 	 * @param width width of screen
 	 * @param height height of screen
 	 */
@@ -29,6 +33,8 @@ public class View extends JFrame{
 		estuaryScreen = new EstuaryScreen();
 		estuaryScreen.setBackground(Color.CYAN.darker().darker());
 		startScreen.setBackground(Color.CYAN.darker().darker());
+		tutorialScreen=new TutorialScreen();
+		tutorialScreen.setBackground(Color.CYAN.darker().darker());
 		layers = new JLayeredPane();
 		
 		//factScreen = new FactScreen();
@@ -38,17 +44,23 @@ public class View extends JFrame{
 		
 		startScreen.setBounds(0, 0, width, height); // Sets the size of each of the screens
 		selectionScreen.setBounds(0, 0, width, height);
+		tutorialScreen.setBounds(0, 0, width, height);
 		estuaryScreen.setBounds(0, 0, width, height);
 		
 	    layers.add(startScreen, 1, 0); //Not certain why an integer is needed as a constraint but it is.
 	    layers.add(selectionScreen, 1, 1);
-	    layers.add(estuaryScreen, 1, 2);
+	    layers.add(tutorialScreen,1,2);
+	    layers.add(estuaryScreen, 1,3);
 		this.add(layers);
-		
 		this.setVisible(true);
 	}
-	
-	/*Updates the view based on model input 
+	public void setLayer(int x){
+		if(x==3){
+			this.tutorialScreen.setVisible(false);
+			this.estuaryScreen.setVisible(true);
+		}
+	}
+	/**Updates the view based on model input 
 	 *  @param bX x coordinate of buoy
 	 * @param bY y coordinate of buoy
 	 * @param dX x coordinate of dock
@@ -65,8 +77,8 @@ public class View extends JFrame{
 	 * @param sLY y coordinate of the shore line
 	 * 
 	 */
-	public void update(int bX, int bY, int dX, int dY, int pX, int pY, VesselType vessel, double drawAngle, SandBarCollection sbc, String message, String timerMessage, WakeCollection wc, int sLX, int sLY){ //this method should take something other than the entire model object //// TO DO!!!!!!!!
-		estuaryScreen.update( bX,  bY,  dX,  dY,  pX,  pY,  vessel,  drawAngle,  sbc,  message,  timerMessage,  wc,  sLX,  sLY);
-		//factScreen.setVisible(model.getBuoy().hasCollided(model.getPlayer()));
+	public void update(int bX, int bY, int dX, int dY, int pX, int pY, VesselType vessel, double drawAngle, SandBarCollection sbc, String message, String timerMessage, WakeCollection wc, int sLX, int sLY, int aX, int aY){
+		tutorialScreen.update(bX,  bY,  dX,  dY,  pX,  pY,  vessel,  drawAngle,  sbc, message, wc,  sLX,  sLY, aX, aY);
+    estuaryScreen.update( bX,  bY,  dX,  dY,  pX,  pY,  vessel,  drawAngle,  sbc,  message,  timerMessage,  wc,  sLX,  sLY);
 	}
 }

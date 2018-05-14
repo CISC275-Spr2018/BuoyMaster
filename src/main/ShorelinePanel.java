@@ -4,17 +4,18 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
-/*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
+/**@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
  */
 public class ShorelinePanel extends JPanel{
 	BufferedImage img;
 	private int xDrawLoc;
 	private int yDrawLoc;
-	/*Constructor for the ShoreLinePanel class. Gets the ShoreLine image.
+	/**Constructor for the ShoreLinePanel class. Gets the ShoreLine image.
 	 * 
 	 */
 	ShorelinePanel() {
@@ -23,7 +24,7 @@ public class ShorelinePanel extends JPanel{
 		} catch (IOException e) {
 		}
 	}
-	/*Updates the view when the ShoreLine moves
+	/**Updates the view when the ShoreLine moves
 	 * @param x x coordinate of ShoreLine
 	 * @param y y coordinate of ShoreLine
 	 */
@@ -32,7 +33,7 @@ public class ShorelinePanel extends JPanel{
 		xDrawLoc = x;
 		yDrawLoc = y;
 	}
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
 	 */
