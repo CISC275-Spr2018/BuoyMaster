@@ -13,6 +13,17 @@ import java.io.ObjectOutputStream;
  * 
  */
 import java.io.Serializable;
+import java.awt.Color;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+/*@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
+ * 
+ */
+import java.io.Serializable;
 public class GameKeyListener implements KeyListener, Serializable{
 	Vessel player;
 	Model model;
@@ -42,6 +53,9 @@ public class GameKeyListener implements KeyListener, Serializable{
 		}
 		if (key == KeyEvent.VK_DOWN && player.yVel < player.maxVel) {
 			player.yVel += 4;
+		}
+		if (key == KeyEvent.VK_G) {
+			System.out.println(player.rotationAngle);
 		}
 		
 	}
