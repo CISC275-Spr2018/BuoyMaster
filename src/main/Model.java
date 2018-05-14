@@ -1,14 +1,9 @@
 package main;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Random;
+
 import java.util.concurrent.ThreadLocalRandom;
+
 
 import javax.swing.JOptionPane;
 /**@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
@@ -69,7 +64,7 @@ public class Model implements Serializable{
 		
 		//model logic for tutorial
 		if (tutorial){
-			
+
 			Random r = new Random();
 			int l = r.nextInt((health - 0) + 1) + 0;
 			health -= player.updatesBetweenWakes;
@@ -78,14 +73,14 @@ public class Model implements Serializable{
 			player.update(width, height);
 			dock.hasCollided(player);
 			shoreline.hasCollided(player);
-			
+
 			if (buoy.sandBar){
 				if (tutorialSandbar){
 					sandBarCollection.addSandBar(randomNum(10, player.xLoc) - 50, 620, timer, gameMessage);
 					tutorialSandbar=false;
 				}
 			}
-			
+
 			sandBarCollection.checkAllCollision(player);
 			sandBarCollection.updateAll();
 			
@@ -94,6 +89,7 @@ public class Model implements Serializable{
 			}
 		
 
+    // MAY BE OUTDATED
 		}
 		
 		//model settings for when player has completed the tutorial
@@ -107,20 +103,55 @@ public class Model implements Serializable{
 			dock.setTutorial(false);
 			Random t = new Random();
 			int i = t.nextInt((health - 0) + 1) + 0;
-			health -= player.updatesBetweenWakes;
+			//health -= player.updatesBetweenWakes;
 		
 			buoy.hasCollided(player);
 			sandBarCollection.checkAllCollision(player);
 			dock.hasCollided(player);
 			shoreline.hasCollided(player);
 		
-			if (health > 0 && i % player.updatesBetweenWakes == 0){
+			if (health > 0 ){
 			sandBarCollection.addRandomSandBar(player, timer, gameMessage, player.xLoc);
 			}
 			
 			if (sandBarCollection.sandBars.size() % 5 == 1) {
 			shoreline.yLoc++;
 			shoreline.shiftCollisionPoints(1);
+
+			}
+
+			//model settings for when player has completed the tutorial
+			if(!tutorial){
+				gameMessage=new GameMessage(false);
+
+
+				buoy.xLoc=width-100;
+				buoy.yLoc=100;
+				buoy.setTutorial(false);
+				dock.setTutorial(false);
+				t = new Random();
+				i = t.nextInt((health - 0) + 1) + 0;
+				health -= player.wakeStrength;
+
+				buoy.hasCollided(player);
+				sandBarCollection.checkAllCollision(player);
+				dock.hasCollided(player);
+				shoreline.hasCollided(player);
+
+				if (health > 0 && i % player.wakeStrength == 0){
+					sandBarCollection.addRandomSandBar(player, timer, gameMessage, player.xLoc);
+				}
+
+				if (sandBarCollection.sandBars.size() % 5 == 1) {
+					shoreline.yLoc++;
+					shoreline.shiftCollisionPoints(1);
+				}
+
+				player.update(width, height);
+				gameOver = timer.update() || dock.arrivedWithData;
+				sandBarCollection.updateAll();
+				dock.dataCollected(buoy.collectedStatus());
+
 			}
 		
 			player.update(width, height);

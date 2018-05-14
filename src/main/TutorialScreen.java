@@ -5,8 +5,6 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 /**@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
@@ -19,7 +17,7 @@ public class TutorialScreen extends JPanel implements ActionListener {
 	private SandBarPanel sandBarPanel;
 	private GameMessagePanel gameMessagePanel;
 	WakePanel wp;
-	/**Constructor for the Tutoriaal view
+	/**Constructor for the Tutorial view
 	 * 
 	 */
 	TutorialScreen(){
@@ -51,8 +49,10 @@ public class TutorialScreen extends JPanel implements ActionListener {
 	public void update(int bX, int bY, int dX, int dY, int pX, int pY, VesselType vessel, Direction direction, SandBarCollection sbc,String message,  WakeCollection wc, int sLX, int sLY, int aX, int aY){
 		buoyPanel.update(bX, bY);
 		dockPanel.update( dX, dY);
-		vesselPanel.update(pX, pY, vessel, direction);
-		wp.updateAll(wc);
+
+		vesselPanel.update(pX, pY, vessel, rotationAngle);
+		wp.setWakeCollection(wc);
+
 		sandBarPanel.update(sbc);
 		arrowPanel.update(aX,aY);
 		gameMessagePanel.update("Use the arrow keys to guide yourself through the estuary.");
