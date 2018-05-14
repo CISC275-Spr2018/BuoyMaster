@@ -55,7 +55,7 @@ public class Dock extends GamePiece{
 		}
 	
 	}
-	/**
+	/**@param buoyStatus tells dock whether or not data has been collected
 	 * 
 	 */
 	public void dataCollected(boolean buoyStatus){

@@ -61,6 +61,7 @@ public class View extends JFrame implements Serializable{
 		this.setVisible(true);
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	    this.setSize(screenSize.width, screenSize.height);
+	   
 	}
 	
 	public void setLayer(int x){
@@ -77,7 +78,6 @@ public class View extends JFrame implements Serializable{
 	 * @param pX x coordinate of player
 	 * @param pY y coordinate of player
 	 * @param vessel the type of boat the user selected
-	 * @param direction indicates the direction in which the users are moving
 	 * @param sbc passes in the SandBarCollection necessary for making sandbars
 	 * @param timerMessage passes in the time left on the timer
 	 * @param message creates the game message depending on if the user collected data or not

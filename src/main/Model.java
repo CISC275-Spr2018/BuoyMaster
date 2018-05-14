@@ -36,7 +36,7 @@ public class Model implements Serializable{
 	/**Constructor for the model 
 	 * @param width width of the screen
 	 * @param height height of the screen
-	 * 
+	 * @param tutorial tells model whether or not it is in tutorial mode
 	 */
 	public Model(int width, int height, boolean tutorial){
 		this.width = width;

@@ -38,11 +38,7 @@ public class Controller implements ActionListener, Serializable{
 	public Controller(){
 		model = new Model(width, height,true);
 		view = new View(width, height);
-
-
 		view.addKeyListener(gkl);
-
-
 		view.selectionScreen.jetSki.addActionListener(this);
 		view.selectionScreen.fishingBoat.addActionListener(this);
 		view.selectionScreen.speedBoat.addActionListener(this);
