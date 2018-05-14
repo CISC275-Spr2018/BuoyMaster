@@ -13,9 +13,6 @@ public class SpeedBoat extends Vessel implements Serializable{
 		super();
 		type = VesselType.SPEEDBOAT;
 		maxVel = 14;
-		this.acceleration = 2;
-		this.turnRate = 6; //degrees turned per update (should be a factor of 360)
-		this.wakeStrength = 20;
-		this.collisionRange = 200;
+		this.updatesBetweenWakes = 1;
 	}
 }

@@ -66,7 +66,7 @@ public class SandBarCollection implements Serializable{
 	 */
 	void updateAll() {
 		for (SandBar s : sandBars) {
-			s.updateLocationAndRotation();
+			s.updateLocation();
 		}
 	}
 	
