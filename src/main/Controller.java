@@ -2,6 +2,8 @@ package main;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -19,7 +21,7 @@ import javax.swing.Timer;
 /**@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
  */
-public class Controller implements ActionListener, Serializable{
+public class Controller implements ActionListener, Serializable, KeyListener{
 	private final int width = 1280;
 	private final int height = 720;
 	private final static int DRAWDELAY = 50;
@@ -49,6 +51,9 @@ public class Controller implements ActionListener, Serializable{
 	public View getView(){
 		return view;
 	}
+	public void setModel(Model m) {
+		this.model = m;
+	}
 	/**
 	 * (non-Javadoc)
 	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
@@ -66,7 +71,7 @@ public class Controller implements ActionListener, Serializable{
 			model.setVessel(new SpeedBoat());
 		}
 
-		gkl = new GameKeyListener(model.getPlayer(), model);
+		gkl = new GameKeyListener(this);
 		view.addKeyListener(gkl);
 		start = true;
 	}
@@ -171,7 +176,7 @@ public class Controller implements ActionListener, Serializable{
 							model.setVessel(new FishingBoat());
 							model.tutorial=false;
 
-							gkl = new GameKeyListener(model.getPlayer(), model);
+							gkl = new GameKeyListener(this);
 							view.addKeyListener(gkl);
 							view.estuaryScreen.getTimerPanel().timerLength=500;
 							answered=false;
@@ -218,7 +223,7 @@ public class Controller implements ActionListener, Serializable{
 							model.getBuoy().rand=random.nextInt(14);
 							model.tutorial=false;
 
-							gkl = new GameKeyListener(model.getPlayer(), model);
+							gkl = new GameKeyListener(this);
 							view.addKeyListener(gkl);
 							view.estuaryScreen.getTimerPanel().timerLength=500;
 							answered=false;
@@ -255,5 +260,20 @@ public class Controller implements ActionListener, Serializable{
 				t.start();
 			}
 		});
+	}
+	@Override
+	public void keyPressed(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 }
