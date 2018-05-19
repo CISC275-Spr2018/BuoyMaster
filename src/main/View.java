@@ -1,10 +1,16 @@
 package main;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
+import java.awt.Toolkit;
 import java.io.Serializable;
 
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
+
+
 /**@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
  */
@@ -25,27 +31,25 @@ public class View extends JFrame implements Serializable{
 	 */
 	View(int width, int height){
 		this.setSize(width, height);
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		startScreen = new StartScreen();
-		startScreen.setBackground(Color.CYAN.darker().darker());
 		selectionScreen = new SelectionScreen();
+		tutorialScreen = new TutorialScreen();
 		estuaryScreen = new EstuaryScreen();
-		estuaryScreen.setBackground(Color.CYAN.darker().darker());
-		startScreen.setBackground(Color.CYAN.darker().darker());
-		tutorialScreen=new TutorialScreen();
-		tutorialScreen.setBackground(Color.CYAN.darker().darker());
-		layers = new JLayeredPane();
 		
-		//factScreen = new FactScreen();
-		//factScreen.setBounds(500, 500, 250, 250);
-		//estuaryScreen.add(factScreen);
-		//factScreen.setVisible(false);
+		startScreen.setBackground(Color.CYAN.darker().darker()); //Sets the aqua background color
+		selectionScreen.setBackground(Color.CYAN.darker().darker());
+		tutorialScreen.setBackground(Color.CYAN.darker().darker());
+		estuaryScreen.setBackground(Color.CYAN.darker().darker());
 		
 		startScreen.setBounds(0, 0, width, height); // Sets the size of each of the screens
 		selectionScreen.setBounds(0, 0, width, height);
 		tutorialScreen.setBounds(0, 0, width, height);
 		estuaryScreen.setBounds(0, 0, width, height);
+		
+		layers = new JLayeredPane();
 		
 	    layers.add(startScreen, 1, 0); //Not certain why an integer is needed as a constraint but it is.
 	    layers.add(selectionScreen, 1, 1);
@@ -54,6 +58,7 @@ public class View extends JFrame implements Serializable{
 		this.add(layers);
 		this.setVisible(true);
 	}
+	
 	public void setLayer(int x){
 		if(x==3){
 			this.tutorialScreen.setVisible(false);
@@ -61,14 +66,13 @@ public class View extends JFrame implements Serializable{
 		}
 	}
 	/**Updates the view based on model input 
-	 *  @param bX x coordinate of buoy
+	 * @param bX x coordinate of buoy
 	 * @param bY y coordinate of buoy
 	 * @param dX x coordinate of dock
 	 * @param dY y coordinate of dock
 	 * @param pX x coordinate of player
 	 * @param pY y coordinate of player
 	 * @param vessel the type of boat the user selected
-	 * @param direction indicates the direction in which the users are moving
 	 * @param sbc passes in the SandBarCollection necessary for making sandbars
 	 * @param timerMessage passes in the time left on the timer
 	 * @param message creates the game message depending on if the user collected data or not

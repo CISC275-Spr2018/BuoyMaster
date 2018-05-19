@@ -2,6 +2,8 @@ package main;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -19,7 +21,7 @@ import javax.swing.Timer;
 /**@author Arvin Aya-ay, Greg White, Evan Caplan, Riley Shaw, Dan Hinrichs 
  * 
  */
-public class Controller implements ActionListener, Serializable{
+public class Controller implements ActionListener, Serializable, KeyListener{
 	private final int width = 1280;
 	private final int height = 720;
 	private final static int DRAWDELAY = 50;
@@ -38,11 +40,7 @@ public class Controller implements ActionListener, Serializable{
 	public Controller(){
 		model = new Model(width, height,true);
 		view = new View(width, height);
-
-
 		view.addKeyListener(gkl);
-
-
 		view.selectionScreen.jetSki.addActionListener(this);
 		view.selectionScreen.fishingBoat.addActionListener(this);
 		view.selectionScreen.speedBoat.addActionListener(this);
@@ -52,6 +50,9 @@ public class Controller implements ActionListener, Serializable{
 	}
 	public View getView(){
 		return view;
+	}
+	public void setModel(Model m) {
+		this.model = m;
 	}
 	/**
 	 * (non-Javadoc)
@@ -70,7 +71,7 @@ public class Controller implements ActionListener, Serializable{
 			model.setVessel(new SpeedBoat());
 		}
 
-		gkl = new GameKeyListener(model.getPlayer(), model);
+		gkl = new GameKeyListener(this);
 		view.addKeyListener(gkl);
 		start = true;
 	}
@@ -80,11 +81,11 @@ public class Controller implements ActionListener, Serializable{
 	void update(){
 		if (start && !model.gameOver) { //the game runs from start until gameOver is true
 			model.modelUpdate();
-			view.update(model.getBuoy().getXLoc(), model.getBuoy().getYLoc(),model.getDock().getXLoc(),model.getDock().getYLoc(),model.getPlayer().getXLoc(),model.getPlayer().getYLoc(),model.getPlayer().getVesselType(),model.getPlayer().getRotationAngle(),model.sandBarCollection,model.getTimer().message,model.getGameMessage().message,model.getPlayer().wakes,model.shoreline.getXLoc(),model.shoreline.getYLoc(),model.getArrow().getXLoc(),model.getArrow().getYLoc());
+			view.update(model.getBuoy().getXLoc(), model.getBuoy().getYLoc(),model.getDock().getXLoc(),model.getDock().getYLoc(),model.getPlayer().getXLoc(),model.getPlayer().getYLoc(),model.getPlayer().getVesselType(),model.getPlayer().getRotationAngle(),model.sandBarCollection,model.getTimer().message,model.getGameMessage().message,model.getPlayer().getWakes(),model.shoreline.getXLoc(),model.shoreline.getYLoc(),model.getArrow().getXLoc(),model.getArrow().getYLoc());
 		}
 		//if the dock indicates the player has returned from buoy in tutorial
 		if(!model.getDock().mt){
-			JButton b=new JButton("Click here if you are ready to be a Buoy Master, then EXIT this dialogue!");
+			JButton b=new JButton("Click here if you are ready to be a Buoy Master, !THEN EXIT THIS DIALOGUE!");
 			b.addActionListener(new ActionListener(){
 
 				@Override
@@ -92,11 +93,12 @@ public class Controller implements ActionListener, Serializable{
 					// TODO Auto-generated method stub
 					model.getPlayer().xLoc=0;
 					model.getPlayer().yLoc=300;
-					model.getPlayer().xVel=0;
-					model.getPlayer().yVel=0;
+					model.getPlayer().setxVel(0);
+					model.getPlayer().setyVel(0);
 					model.sandBarCollection=new SandBarCollection();
 					model.setTutorial(false);
 					model.shoreline.addCollisionPoints();
+
 
 					view.setLayer(3);
 					FileOutputStream fout = null;
@@ -134,6 +136,7 @@ public class Controller implements ActionListener, Serializable{
 			Object[] options={b};
 			if(tutorial){
 				tutorial=false;
+				model.gameOver=false;
 				int result=JOptionPane.showOptionDialog(null, panel, "Start Game", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
 
 			}
@@ -172,7 +175,7 @@ public class Controller implements ActionListener, Serializable{
 							model.setVessel(new FishingBoat());
 							model.setTutorial(false);
 
-							gkl = new GameKeyListener(model.getPlayer(), model);
+							gkl = new GameKeyListener(this);
 							view.addKeyListener(gkl);
 							view.estuaryScreen.getTimerPanel().timerLength=500;
 							answered=false;
@@ -219,7 +222,7 @@ public class Controller implements ActionListener, Serializable{
 							model.getBuoy().rand=random.nextInt(14);
 							model.setTutorial(false);
 
-							gkl = new GameKeyListener(model.getPlayer(), model);
+							gkl = new GameKeyListener(this);
 							view.addKeyListener(gkl);
 							view.estuaryScreen.getTimerPanel().timerLength=500;
 							answered=false;
@@ -256,5 +259,20 @@ public class Controller implements ActionListener, Serializable{
 				t.start();
 			}
 		});
+	}
+	@Override
+	public void keyPressed(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 }

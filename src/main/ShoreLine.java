@@ -28,8 +28,8 @@ public class ShoreLine extends GamePiece implements Serializable{
 	ShoreLine(int x, int y, Timer t, GameMessage g){
 		this.xLoc = x;
 		this.yLoc = y;
-		this.xVel = 0;
-		this.yVel = 10;
+		this.setxVel(0);
+		this.setyVel(10);
 		this.timer = t;
 		this.gameMessage = g;
 		

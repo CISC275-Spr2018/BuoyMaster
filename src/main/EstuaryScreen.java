@@ -38,13 +38,13 @@ public class EstuaryScreen extends JPanel{
 	 * @param pX x coordinate of player
 	 * @param pY y coordinate of player
 	 * @param vessel the type of boat the user selected
-	 * @param direction indicates the direction in which the users are moving
 	 * @param sbc passes in the SandBarCollection necessary for making sandbars
 	 * @param timerMessage passes in the time left on the timer
 	 * @param message creates the game message depending on if the user collected data or not
 	 * @param wc passes in the WakeCollection of the model in order to create wake behind the boat 
 	 * @param sLX x coordinate of the shore line
 	 * @param sLY y coordinate of the shore line
+	 * @param rotationAngle rotation angle of vessel
  	 */
 	public void update(int bX, int bY, int dX, int dY, int pX, int pY, VesselType vessel, double rotationAngle, SandBarCollection sbc, String timerMessage, String message, WakeCollection wc, int sLX, int sLY){
 		buoyPanel.update(bX, bY);

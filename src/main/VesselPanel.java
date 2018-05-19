@@ -76,11 +76,4 @@ public class VesselPanel extends JPanel{
 		g2d.drawImage(img, at, null);
     	
     }
-	/**
-	 * (non-Javadoc)
-	 * @see javax.swing.JComponent#getPreferredSize()
-	 */
-	public Dimension getPreferredSize() {
-		return new Dimension(250, 250);
-	}
 }

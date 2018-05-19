@@ -37,8 +37,8 @@ public class Buoy extends GamePiece implements Serializable{
 	Buoy(int x, int y, GameMessage g){
 		this.xLoc = x;
 		this.yLoc = y;
-		this.xVel = 0;
-		this.yVel = 0;
+		this.setxVel(0);
+		this.setyVel(0);
 		this.setGameMessage(g);
 		rand=random.nextInt(14);
 		
@@ -121,7 +121,7 @@ public class Buoy extends GamePiece implements Serializable{
 			
 				if(fact){
 					getGameMessage().message = "Return to the dock with the data.";
-					this.yVel = -1;
+					this.setyVel(-1);
 					if(show){
 					show=!show;
 					JOptionPane.showMessageDialog(null, createRandomFact());

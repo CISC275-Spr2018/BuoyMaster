@@ -48,7 +48,7 @@ public class TutorialScreen extends JPanel implements ActionListener {
 	 * @param pX x coordinate of player
 	 * @param pY y coordinate of player
 	 * @param vessel the type of boat the user selected
-	 * @param direction indicates the direction in which the users are moving
+	 * @param rotationAngle angle of rotation of vessel
 	 * @param sbc passes in the SandBarCollection necessary for making sandbars
 	 * @param message creates the game message depending on if the user collected data or not
 	 * @param wc passes in the WakeCollection of the model in order to create wake behind the boat 

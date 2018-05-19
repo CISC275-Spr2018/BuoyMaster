@@ -36,7 +36,7 @@ public class Model implements Serializable{
 	/**Constructor for the model 
 	 * @param width width of the screen
 	 * @param height height of the screen
-	 * 
+	 * @param tutorial tells model whether or not it is in tutorial mode
 	 */
 	public Model(int width, int height, boolean tutorial){
 		this.width = width;
@@ -57,11 +57,12 @@ public class Model implements Serializable{
 
 	public static int randomNum(int min, int max){
 		Random r = new Random();
+		System.out.println(min+" "+max);
 		int i = r.nextInt((max - min) + 1) + min;
 		return i;
 	}
 	public void modelUpdate() {
-
+		System.out.println(player.getXLoc());
 		//model logic for tutorial
 		if (isTutorial()){
 			Random r = new Random();
@@ -78,7 +79,7 @@ public class Model implements Serializable{
 					setTutorialSandbar(false);
 				}
 			}
-			sandBarCollection.checkAllCollision(player);
+			//sandBarCollection.checkAllCollision(player);
 			sandBarCollection.updateAll();
 
 			if (buoy.moveArrow){
@@ -103,20 +104,21 @@ public class Model implements Serializable{
 				shoreline.hasCollided(player);
 				Random rnd = new Random();
 				int chance = rnd.nextInt(100);
-				if (chance < player.wakeStrength*2) {
-					sandBarCollection.addOneRandomSandBar(player, timer, gameMessage);
-					shoreline.yLoc++;
-					shoreline.shiftCollisionPoints(1);
+				if(player.getXLoc()>20){
+					if (chance < player.wakeStrength*2) {
+						sandBarCollection.addOneRandomSandBar(player, timer, gameMessage);
+						shoreline.yLoc++;
+						shoreline.shiftCollisionPoints(1);
+					}
 				}
-
 				player.update(width, height);
 				gameOver = timer.update() || dock.arrivedWithData;
 				sandBarCollection.updateAll();
 				dock.dataCollected(buoy.collectedStatus());
 			}
 		}
-		
 	}
+		
 
 	/**@return returns the vessel the player is using
 	 * 

@@ -27,6 +27,6 @@ public class Wake extends GamePiece implements Serializable{
   
 	@Override
 	public void onCollide() {
-		//nothing happens when a wake collides with another game object
+		//nothing happens when a wake collides with another game object but in the future something may
 	}
 }

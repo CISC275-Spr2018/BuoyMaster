@@ -23,8 +23,8 @@ public class Dock extends GamePiece{
 	Dock(int x, int y, GameMessage g){
 		this.xLoc = x;
 		this.yLoc = y;
-		this.xVel = 0;
-		this.yVel = 0;
+		this.setxVel(0);
+		this.setyVel(0);
 		gameMessage = g;
 	}
 	public void setTutorial(boolean b){
@@ -55,7 +55,7 @@ public class Dock extends GamePiece{
 		}
 	
 	}
-	/**
+	/**@param buoyStatus tells dock whether or not data has been collected
 	 * 
 	 */
 	public void dataCollected(boolean buoyStatus){

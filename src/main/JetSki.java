@@ -7,11 +7,11 @@ public class JetSki extends Vessel{
 	/**Constructor for the jet ski boat
 	 * 
 	 */
-	JetSki(){
+	public JetSki(){
 		super();
 		type = VesselType.JETSKI;
-		maxVel = 10;
-		this.acceleration = 4;
+		setMaxVel(10);
+		this.acceleration = 5;
 		this.turnRate = 15; //degrees turned per update (should be a factor of 360)
 		this.wakeStrength = 12;
 	}

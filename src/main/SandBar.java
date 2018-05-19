@@ -19,8 +19,8 @@ public class SandBar extends GamePiece{
 	SandBar(int x, int y, int xVel, int yVel, Timer t, GameMessage g){
 		this.xLoc = x;
 		this.yLoc = y;
-		this.xVel = xVel;
-		this.yVel = yVel;
+		this.setxVel(xVel);
+		this.setyVel(yVel);
 		
 		timer = t;
 		gameMessage = g;
@@ -33,7 +33,7 @@ public class SandBar extends GamePiece{
 	 */
 	SandBar(int x, int y, Timer t, GameMessage g){
 		this.xLoc = x;
-		this.yVel = -5;
+		this.setyVel(-5);
 		this.yLoc = y;
 		timer = t;
 		gameMessage = g;
