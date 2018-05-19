@@ -84,8 +84,6 @@ public class Model implements Serializable{
 			if (buoy.moveArrow){
 				arrow=new Arrow(10, height/2-75);
 			}
-		
-    // MAY BE OUTDATED
 		}
 		
 			//model settings for when player has completed the tutorial

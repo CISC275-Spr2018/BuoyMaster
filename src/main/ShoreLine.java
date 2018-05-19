@@ -62,7 +62,7 @@ public class ShoreLine extends GamePiece implements Serializable{
 	}
 	
 	@Override
-	boolean hasCollided(GamePiece g2) {
+	public boolean hasCollided(GamePiece g2) {
 		for (CollisionPoint c : collisionPoints) {
 			if (g2.xLoc == c.x  && g2.yLoc >= c.y) {
 				this.onCollide();

@@ -17,7 +17,7 @@ public abstract class GamePiece implements Collidable, Serializable{
 	 * @param g2 second GamePiece which one GamePiece may come into contact with
 	 * @return returns a boolean value of if there was a collision or not
 	 */
-	boolean hasCollided(GamePiece g2) { //checks to see if g2 is within collisionRange of this gamePiece. If so, calls onCollide.
+	public boolean hasCollided(GamePiece g2) { //checks to see if g2 is within collisionRange of this gamePiece. If so, calls onCollide.
 		boolean withinCollisionRange = withinXRange(g2) && withinYRange(g2); //calls helper functions to check if g2 is within range
 		if(withinCollisionRange){
 			this.onCollide();
@@ -29,7 +29,7 @@ public abstract class GamePiece implements Collidable, Serializable{
 	 * @return returns a boolean value of if there was a collision or not
 	 * 
 	 */
-	boolean withinXRange(GamePiece g2) {
+	public boolean withinXRange(GamePiece g2) {
 		return (this.xLoc < g2.xLoc + collisionRange) && (this.xLoc > g2.xLoc - collisionRange);
 	}
 	/**Checks to see if two GamePieces are within the YRange of collision
@@ -37,7 +37,7 @@ public abstract class GamePiece implements Collidable, Serializable{
 	 * @return returns a boolean value of if there was a collision or not
 	 * 
 	 */
-	boolean withinYRange(GamePiece g2) {
+	public boolean withinYRange(GamePiece g2) {
 		return (this.yLoc < g2.yLoc + collisionRange) && (this.yLoc > g2.yLoc - collisionRange);
 	}
 	/**
