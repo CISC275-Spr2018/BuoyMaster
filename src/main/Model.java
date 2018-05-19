@@ -89,8 +89,6 @@ public class Model implements Serializable{
     // MAY BE OUTDATED
 		}
 		
-		//model settings for when player has completed the tutorial
-		if(!isTutorial()){
 			//model settings for when player has completed the tutorial
 			if(!isTutorial()){
 				gameMessage=new GameMessage(false);
@@ -117,7 +115,6 @@ public class Model implements Serializable{
 				dock.dataCollected(buoy.collectedStatus());
 			}
 		}
-	}
 		
 
 	/**@return returns the vessel the player is using
