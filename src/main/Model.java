@@ -62,7 +62,6 @@ public class Model implements Serializable{
 		return i;
 	}
 	public void modelUpdate() {
-		System.out.println(player.getXLoc());
 		//model logic for tutorial
 		if (isTutorial()){
 			Random r = new Random();
