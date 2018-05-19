@@ -1,5 +1,6 @@
 package UnitTests;
 import junit.framework.TestCase;
+import main.Arrow;
 import main.Buoy;
 import main.Model;
 import main.SpeedBoat;
@@ -10,7 +11,7 @@ public class modelTest extends TestCase {
 	Model target;
 	
 	protected void setUp() {
-		target = new Model(0,0,false);
+		target = new Model(1280,720,false);
 		target.setVessel(new SpeedBoat());
 	}
 
@@ -26,6 +27,15 @@ public class modelTest extends TestCase {
 	}
 
 	public void testModelUpdate() {
+		//some of the logic for the model update && tutorial switching
+		target.setTutorial(true);
+		target.modelUpdate();
+		target.setTutorialSandbar(true);
+		target.getPlayer().setxVel(15);
+		target.getBuoy().sandBar = true;
+		target.modelUpdate();
+		assertEquals("vessel is at 15",target.getPlayer().getXLoc(),15);
+		target.setTutorial(false);
 		target.modelUpdate();
 	}
 
@@ -51,16 +61,31 @@ public class modelTest extends TestCase {
 	}
 
 	public void testGetWidth() {
-		assertEquals(target.getWidth(),0);
+		assertEquals(target.getWidth(),1280);
 	}
 
 	public void testGetHeight() {
-		assertEquals(target.getHeight(),0);
+		assertEquals(target.getHeight(),720);
 	}
 
 	public void testSetVessel() {
 		target.setVessel(new SpeedBoat());
 		assertTrue("speedBoat is a vessel",target.getPlayer() instanceof Vessel);
+	}
+	
+	public void testAddTime() {
+		assertFalse("add time, buoy not correct",target.addTime());
+		target.getBuoy().correct = true;
+		assertTrue("add time, buoy correct",target.addTime());
+	}
+	
+	public void testGetArrow() {
+		assertTrue("get arrow returns Arrow object",target.getArrow() instanceof Arrow);
+	}
+	
+	public void testRandomNum() {
+		int rand = Model.randomNum(0,10);
+		assertTrue("rand works", (rand<=10) && (rand>=0));
 	}
 
 }

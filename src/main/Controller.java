@@ -81,7 +81,7 @@ public class Controller implements ActionListener, Serializable, KeyListener{
 	void update(){
 		if (start && !model.gameOver) { //the game runs from start until gameOver is true
 			model.modelUpdate();
-			view.update(model.getBuoy().getXLoc(), model.getBuoy().getYLoc(),model.getDock().getXLoc(),model.getDock().getYLoc(),model.getPlayer().getXLoc(),model.getPlayer().getYLoc(),model.getPlayer().getVesselType(),model.getPlayer().getRotationAngle(),model.sandBarCollection,model.getTimer().message,model.getGameMessage().message,model.getPlayer().wakes,model.shoreline.getXLoc(),model.shoreline.getYLoc(),model.getArrow().getXLoc(),model.getArrow().getYLoc());
+			view.update(model.getBuoy().getXLoc(), model.getBuoy().getYLoc(),model.getDock().getXLoc(),model.getDock().getYLoc(),model.getPlayer().getXLoc(),model.getPlayer().getYLoc(),model.getPlayer().getVesselType(),model.getPlayer().getRotationAngle(),model.sandBarCollection,model.getTimer().message,model.getGameMessage().message,model.getPlayer().getWakes(),model.shoreline.getXLoc(),model.shoreline.getYLoc(),model.getArrow().getXLoc(),model.getArrow().getYLoc());
 		}
 		//if the dock indicates the player has returned from buoy in tutorial
 		if(!model.getDock().mt){
@@ -93,11 +93,10 @@ public class Controller implements ActionListener, Serializable, KeyListener{
 					// TODO Auto-generated method stub
 					model.getPlayer().xLoc=0;
 					model.getPlayer().yLoc=300;
-					model.getPlayer().xVel=0;
-					model.getPlayer().yVel=0;
+					model.getPlayer().setxVel(0);
+					model.getPlayer().setyVel(0);
 					model.sandBarCollection=new SandBarCollection();
-					model.tutorial=false;
-
+					model.setTutorial(false);
 					model.shoreline.addCollisionPoints();
 
 
@@ -174,7 +173,7 @@ public class Controller implements ActionListener, Serializable, KeyListener{
 							Random random=new Random();
 							model.getBuoy().rand=random.nextInt(14);
 							model.setVessel(new FishingBoat());
-							model.tutorial=false;
+							model.setTutorial(false);
 
 							gkl = new GameKeyListener(this);
 							view.addKeyListener(gkl);
@@ -221,7 +220,7 @@ public class Controller implements ActionListener, Serializable, KeyListener{
 							model.setVessel(new FishingBoat());
 							Random random=new Random();
 							model.getBuoy().rand=random.nextInt(14);
-							model.tutorial=false;
+							model.setTutorial(false);
 
 							gkl = new GameKeyListener(this);
 							view.addKeyListener(gkl);

@@ -7,24 +7,24 @@ import java.util.Collection;
  * 
  */
 public abstract class Vessel extends GamePiece implements Serializable{
-	double maxVel;
+	private double maxVel;
 	double acceleration;
 	double turnRate; //The rate at which the boat will turn.
 	VesselType type;
-	WakeCollection wakes;
+	private WakeCollection wakes;
 	double wakeStrength;
 	/*Constructor for the vessel class
 	 * 
 	 */
 	Vessel(){
-		maxVel = 0;
+		setMaxVel(0);
 		rotationAngle = 0; //Boat starts still, facing east.
 		this.xLoc = 0;
 		this.yLoc = 300; // Starts 300 pixels south of origin
-		wakes = new WakeCollection();
+		setWakes(new WakeCollection());
 	}
 	
-	double getWakeStrength() {
+	public double getWakeStrength() {
 		return this.wakeStrength;
 	}
 	
@@ -32,24 +32,24 @@ public abstract class Vessel extends GamePiece implements Serializable{
 	 * 
 	 */
 
-	void update(int x, int y) {
-		if(xVel > 0.1 || xVel < -0.1 || yVel > 0.1 || yVel < -0.1){ //Adds no wake if velocity is near 0
-			wakes.addWake(this.xLoc + 48, this.yLoc + 48, this.wakeStrength, this.rotationAngle); //48 is half size of boat immage
+	public void update(int x, int y) {
+		if(getxVel() > 0.1 || getxVel() < -0.1 || getyVel() > 0.1 || getyVel() < -0.1){ //Adds no wake if velocity is near 0
+			getWakes().addWake(this.xLoc + 48, this.yLoc + 48, this.wakeStrength, this.rotationAngle); //48 is half size of boat immage
 		}
-		wakes.update();
-    if (outOfXBounds(x)) {
-			this.xVel = -this.xVel;
+		getWakes().update();
+		if (outOfXBounds(x)) {
+			this.setxVel(-this.getxVel());
 		}
 		if (outOfYBounds(y)) {
-			this.yVel = -this.yVel;
+			this.setyVel(-this.getyVel());
 		}
 		super.updateLocationAndRotation();
 	}
 	
-	boolean outOfXBounds(int x) {
+	public boolean outOfXBounds(int x) {
 		return this.xLoc < 0 || this.xLoc + 95 > x; //Should be a collision range or something rather than 95
 	}
-	boolean outOfYBounds(int y) {
+	public boolean outOfYBounds(int y) {
 		return this.yLoc < 0 || this.yLoc +95 > y;
 	}
 	
@@ -66,6 +66,22 @@ public abstract class Vessel extends GamePiece implements Serializable{
 	 */
 	public VesselType getVesselType(){
 		return type;
+	}
+
+	public double getMaxVel() {
+		return maxVel;
+	}
+
+	public void setMaxVel(double maxVel) {
+		this.maxVel = maxVel;
+	}
+
+	public WakeCollection getWakes() {
+		return wakes;
+	}
+
+	public void setWakes(WakeCollection wakes) {
+		this.wakes = wakes;
 	}
 	
 }
